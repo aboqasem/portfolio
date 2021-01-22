@@ -51,7 +51,7 @@ const MyAbout = () => {
           {/* Responsive sized box */}
           <Box height={"min(4vw, 35px)"}/>
           <Button variant={"contained"} color={"primary"}
-                  href={"https://drive.google.com/file/d/17so8IyeydhpoN2DKBFnblggmBBNeVATC/view?usp=sharing"}
+                  href={"https://drive.google.com/file/d/1BC5VROktcMhvsBnkWtApbYVd7gO882o_/view?usp=sharing"}
                   target={"_blank"}>
             <Typography variant={"body1"}>View Resume</Typography>
           </Button>

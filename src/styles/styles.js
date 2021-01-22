@@ -1,10 +1,3 @@
-export const heroImageStyle = {
-  width: "100%",
-  height: "52vw",
-  maxHeight: "455px",
-  borderRadius: "10px",
-}
-
 export const listItemIconIconStyle = {
   small: {
     fontSize: "clamp(1.25rem, 4vw, 2.25rem)",

@@ -1,8 +1,6 @@
 import React from "react";
 import {Box, Grid, Typography} from "@material-ui/core";
 import {tDarkTheme} from "../../styles/themes";
-import HeroImage from "../../assets/hero-image.jpeg";
-import {heroImageStyle} from "../../styles/styles";
 import MyHomeSection from "../../components/MyHomeSection";
 
 const MyHero = () => {
@@ -15,9 +13,6 @@ const MyHero = () => {
 
         {/* Responsive sized box */}
         <Grid item xs={12}><Box height={"min(4vw, 35px)"}/></Grid>
-
-        {/* Hero image */}
-        <img style={heroImageStyle} alt={"Mohammad Al Zouabi"} src={HeroImage}/>
 
 
       </MyHomeSection>

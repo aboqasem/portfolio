@@ -1,5 +1,5 @@
 import React from "react";
-import {AppBar, Button, Slide, Toolbar, Typography, useScrollTrigger} from "@material-ui/core";
+import {AppBar, Slide, Toolbar, Typography, useScrollTrigger} from "@material-ui/core";
 
 const MyNavbar = () => {
   const trigger = useScrollTrigger();

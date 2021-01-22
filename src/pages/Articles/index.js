@@ -10,7 +10,7 @@ const MyArticles = () => {
       <ThemeProvider theme={tLightTheme}>
         <MySection minHeight={"100vh"}>
           <MyCenter>
-            <Typography variant={"h1"}>🛠 Coming Soon! 🛠</Typography>
+            <Typography variant={"h1"}>🛠 Coming Not So Soon! 🛠</Typography>
           </MyCenter>
         </MySection>
       </ThemeProvider>

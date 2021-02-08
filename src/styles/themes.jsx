@@ -1,24 +1,25 @@
-import {createMuiTheme} from "@material-ui/core";
+import { createMuiTheme } from "@material-ui/core";
 
 /* = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = */
-const defaultDarkTheme = createMuiTheme({palette: {type: "dark"}});
+const defaultDarkTheme = createMuiTheme({ palette: { type: "dark" } });
 
-const defaultLightTheme = createMuiTheme({palette: {type: "light"}});
+const defaultLightTheme = createMuiTheme({ palette: { type: "light" } });
 
-const generateHeadingStyle = (theme, fontWeight) => {
+function generateHeadingStyle(theme, fontWeight) {
   return {
     fontSize: "clamp(1.32rem, 5vw, 3rem)",
     fontWeight: fontWeight,
     display: "inline-block",
     lineHeight: "2em",
-    background: theme === "dark" ?
-        "-webkit-linear-gradient(0deg, #2c7744 0%, #5a3f37 75%)" :
-        "-webkit-linear-gradient(0deg, #5a3f37 0%, #2c7744 75%)",
+    background:
+      theme === "dark"
+        ? "-webkit-linear-gradient(0deg, #2c7744 0%, #5a3f37 75%)"
+        : "-webkit-linear-gradient(0deg, #5a3f37 0%, #2c7744 75%)",
     backgroundClip: "text",
     "-webkit-background-clip": "text",
     color: "transparent",
   };
-};
+}
 /* = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = */
 
 /* = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = */
@@ -27,7 +28,7 @@ const tDarkTheme = createMuiTheme({
     MuiListItemIcon: {
       style: {
         color: defaultDarkTheme.palette.text.primary,
-      }
+      },
     },
   },
   palette: {
@@ -66,7 +67,7 @@ const tLightTheme = createMuiTheme({
     MuiListItemIcon: {
       style: {
         color: defaultLightTheme.palette.text.primary,
-      }
+      },
     },
   },
   palette: {
@@ -99,4 +100,4 @@ const tLightTheme = createMuiTheme({
 });
 /* = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = */
 
-export {tDarkTheme, tLightTheme}
+export { tDarkTheme, tLightTheme };

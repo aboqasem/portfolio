@@ -44,7 +44,7 @@ const About = () => {
       <List>
         {myInformation.map((value) => {
           return (
-            <ListItem>
+            <ListItem key={value.icon.toString() + value.text}>
               <ListItemIcon>
                 <value.icon style={sListItemIconIconStyle.large} />
                 {/* Responsive sized box */}

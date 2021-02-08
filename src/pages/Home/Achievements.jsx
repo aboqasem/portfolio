@@ -9,7 +9,7 @@ import {
   Typography,
 } from "@material-ui/core";
 import { tLightTheme } from "../../styles/themes";
-import { listItemIconImgStyle } from "../../styles/styles";
+import { sListItemIconImgStyle } from "../../styles/styles";
 import HomeSection from "../../components/HomeSection";
 
 const myAchievements = [
@@ -63,7 +63,7 @@ const Achievements = () => {
                   <img
                     src={value.logoUrl}
                     alt={""}
-                    style={listItemIconImgStyle}
+                    style={sListItemIconImgStyle}
                   />
                 </Button>
                 {/* Responsive sized box */}

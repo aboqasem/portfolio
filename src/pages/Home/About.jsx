@@ -10,7 +10,7 @@ import {
 } from "@material-ui/core";
 import { Home, Language, LocalLibrary, PersonPin } from "@material-ui/icons";
 import { tLightTheme } from "../../styles/themes";
-import { listItemIconIconStyle } from "../../styles/styles";
+import { sListItemIconIconStyle } from "../../styles/styles";
 import HomeSection from "../../components/HomeSection";
 
 const myInformation = [
@@ -46,7 +46,7 @@ const About = () => {
           return (
             <ListItem>
               <ListItemIcon>
-                <value.icon style={listItemIconIconStyle.large} />
+                <value.icon style={sListItemIconIconStyle.large} />
                 {/* Responsive sized box */}
                 <Box width={"min(4vw, 35px)"} />
               </ListItemIcon>

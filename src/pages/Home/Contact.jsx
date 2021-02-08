@@ -3,7 +3,7 @@ import { IconButton } from "@material-ui/core";
 import { tLightTheme } from "../../styles/themes";
 import HomeSection from "../../components/HomeSection";
 import { CallTwoTone, GitHub, MailOutline, WhatsApp } from "@material-ui/icons";
-import { listItemIconIconStyle } from "../../styles/styles";
+import { sListItemIconIconStyle } from "../../styles/styles";
 
 const myContacts = [
   {
@@ -46,7 +46,7 @@ const Contact = () => {
               }}
             >
               <value.icon
-                style={{ ...listItemIconIconStyle.large, color: value.color }}
+                style={{ ...sListItemIconIconStyle.large, color: value.color }}
               />
             </IconButton>
           );

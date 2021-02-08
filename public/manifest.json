@@ -1,9 +1,9 @@
 {
-  "short_name": "aboqasem",
-  "name": "Portfolio website",
+  "short_name": "Mohammad Al Zouabi",
+  "name": "Mohammad Al Zouabi's Portfolio Website",
   "icons": [],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#000",
+  "background_color": "#000"
 }

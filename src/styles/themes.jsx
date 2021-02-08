@@ -1,26 +1,7 @@
 import { createMuiTheme } from "@material-ui/core";
 
-/* = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = */
 const defaultDarkTheme = createMuiTheme({ palette: { type: "dark" } });
-
 const defaultLightTheme = createMuiTheme({ palette: { type: "light" } });
-
-function generateHeadingStyle(theme, fontWeight) {
-  return {
-    fontSize: "clamp(1.32rem, 5vw, 3rem)",
-    fontWeight: fontWeight,
-    display: "inline-block",
-    lineHeight: "2em",
-    background:
-      theme === "dark"
-        ? "-webkit-linear-gradient(0deg, #2c7744 0%, #5a3f37 75%)"
-        : "-webkit-linear-gradient(0deg, #5a3f37 0%, #2c7744 75%)",
-    backgroundClip: "text",
-    "-webkit-background-clip": "text",
-    color: "transparent",
-  };
-}
-/* = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = */
 
 /* = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = */
 const tDarkTheme = createMuiTheme({
@@ -34,8 +15,8 @@ const tDarkTheme = createMuiTheme({
   palette: {
     type: "dark",
     background: {
-      default: "#121212",
-      paper: "#121212",
+      default: "#000",
+      paper: "#000",
     },
     text: {
       primary: "#fff",
@@ -59,8 +40,6 @@ const tDarkTheme = createMuiTheme({
     },
   },
 });
-/* = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = */
-
 /* = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = */
 const tLightTheme = createMuiTheme({
   props: {
@@ -98,6 +77,22 @@ const tLightTheme = createMuiTheme({
     },
   },
 });
+/* = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = */
+function generateHeadingStyle(theme, fontWeight) {
+  return {
+    fontSize: "clamp(1.32rem, 5vw, 3rem)",
+    fontWeight: fontWeight,
+    display: "inline-block",
+    lineHeight: "2em",
+    background:
+      theme === "dark"
+        ? "-webkit-linear-gradient(0deg, #2c7744 0%, #5a3f37 75%)"
+        : "-webkit-linear-gradient(0deg, #5a3f37 0%, #2c7744 75%)",
+    backgroundClip: "text",
+    "-webkit-background-clip": "text",
+    color: "transparent",
+  };
+}
 /* = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = */
 
 export { tDarkTheme, tLightTheme };

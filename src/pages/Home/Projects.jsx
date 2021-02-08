@@ -12,7 +12,7 @@ import {
 } from "@material-ui/core";
 import { Code, Launch } from "@material-ui/icons";
 import { tDarkTheme } from "../../styles/themes";
-import { listItemIconIconStyle } from "../../styles/styles";
+import { sListItemIconIconStyle } from "../../styles/styles";
 import HomeSection from "../../components/HomeSection";
 import AntsAndBugsPrev from "../../assets/ants-and-bugs.gif";
 import AiLuminancePrev from "../../assets/ai-luminance.gif";
@@ -74,7 +74,7 @@ const Projects = () => {
                           target={"_blank"}
                           style={{ margin: tDarkTheme.spacing(1) }}
                         >
-                          <Code style={listItemIconIconStyle.small} />
+                          <Code style={sListItemIconIconStyle.small} />
                         </Button>
                       </Tooltip>
                     )}
@@ -87,7 +87,7 @@ const Projects = () => {
                           target={"_blank"}
                           style={{ margin: tDarkTheme.spacing(1) }}
                         >
-                          <Launch style={listItemIconIconStyle.small} />
+                          <Launch style={sListItemIconIconStyle.small} />
                         </Button>
                       </Tooltip>
                     )}

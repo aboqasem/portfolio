@@ -40,7 +40,7 @@ const Projects = () => {
       <List>
         {myProjects.map((value) => {
           return (
-            <ListItem>
+            <ListItem key={value.url || value.sourceCode}>
               <Card
                 variant="outlined"
                 style={{ width: "100%", borderRadius: "10px" }}

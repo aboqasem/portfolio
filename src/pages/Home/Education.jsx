@@ -26,26 +26,24 @@ const Education = () => {
       <List>
         {myEducation.reverse().map((value) => {
           return (
-            <>
-              <ListItem>
-                <ListItemText
-                  primary={
-                    <>
-                      <Typography component={"span"} variant={"subtitle2"}>
-                        {value.dateFrom} - {value.dateTo}
-                      </Typography>
-                      <br />
-                      {value.certificate}
-                    </>
-                  }
-                  secondary={
-                    <Typography variant={"subtitle2"} color={"textSecondary"}>
-                      {value.school} - {value.location}
+            <ListItem key={value.dateFrom + value.dateTo + value.certificate}>
+              <ListItemText
+                primary={
+                  <>
+                    <Typography component={"span"} variant={"subtitle2"}>
+                      {value.dateFrom} - {value.dateTo}
                     </Typography>
-                  }
-                />
-              </ListItem>
-            </>
+                    <br />
+                    {value.certificate}
+                  </>
+                }
+                secondary={
+                  <Typography variant={"subtitle2"} color={"textSecondary"}>
+                    {value.school} - {value.location}
+                  </Typography>
+                }
+              />
+            </ListItem>
           );
         })}
       </List>

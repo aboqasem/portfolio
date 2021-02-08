@@ -39,6 +39,7 @@ const Contact = () => {
         {myContacts.map((value) => {
           return (
             <IconButton
+              key={value.url}
               href={value.url}
               target={"_blank"}
               style={{

@@ -52,7 +52,7 @@ const Achievements = () => {
       <List>
         {myAchievements.map((value) => {
           return (
-            <ListItem alignItems={"flex-start"}>
+            <ListItem key={value.url} alignItems={"flex-start"}>
               <ListItemIcon>
                 <Button
                   variant={"outlined"}
@@ -69,7 +69,6 @@ const Achievements = () => {
                 {/* Responsive sized box */}
                 <Box width={"min(4vw, 35px)"} />
               </ListItemIcon>
-
               <ListItemText
                 primary={value.achievement}
                 secondary={

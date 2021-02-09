@@ -44,6 +44,7 @@ const Contact = () => {
               target={"_blank"}
               style={{
                 margin: "clamp(5px, 2.5vw, 35px)",
+                border: `2px solid ${value.color}`,
               }}
             >
               <value.icon

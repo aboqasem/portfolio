@@ -59,7 +59,7 @@ const Projects = () => {
                       width: "90%",
                       height: "clamp(20px, 20vw, 250px)",
                       marginLeft: "5%",
-                      borderRadius: "10px",
+                      borderRadius: "clamp(5px, 1.5vw, 25px)",
                     }}
                   />
                 )}

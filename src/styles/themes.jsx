@@ -11,6 +11,13 @@ const tDarkTheme = createMuiTheme({
         color: defaultDarkTheme.palette.text.primary,
       },
     },
+    MuiListItemText: {
+      primaryTypographyProps: {
+        style: {
+          fontSize: "clamp(0.75rem, 2.8vw, 1.75rem)",
+        },
+      },
+    },
   },
   palette: {
     type: "dark",
@@ -46,6 +53,13 @@ const tLightTheme = createMuiTheme({
     MuiListItemIcon: {
       style: {
         color: defaultLightTheme.palette.text.primary,
+      },
+    },
+    MuiListItemText: {
+      primaryTypographyProps: {
+        style: {
+          fontSize: "clamp(0.75rem, 2.8vw, 1.75rem)",
+        },
       },
     },
   },

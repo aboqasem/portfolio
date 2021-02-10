@@ -4,7 +4,7 @@ import Section from './Section';
 import Center from './Center';
 import MainColumn from './MainColumn';
 
-const HomeSection = (props: any) => {
+const HomeSection = (props: any): JSX.Element => {
   return (
     <ThemeProvider theme={props.theme}>
       {/* Responsive section */}

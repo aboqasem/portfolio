@@ -4,7 +4,7 @@
 import React from 'react';
 import { Paper } from '@material-ui/core';
 
-const Section = (props: any) => {
+const Section = (props: any): JSX.Element => {
   return (
     <Paper
       square

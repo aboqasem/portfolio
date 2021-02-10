@@ -35,7 +35,7 @@ const myContacts = [
 const Contact = () => {
   return (
     <HomeSection theme={tLightTheme} title={"Get in Touch!"}>
-      <div align={"center"}>
+      <div style={{ textAlign: "center" }}>
         {myContacts.map((value) => {
           return (
             <IconButton

@@ -1,4 +1,5 @@
 import { createMuiTheme } from "@material-ui/core";
+import { TypographyStyleOptions } from "@material-ui/core/styles/createTypography";
 
 const defaultDarkTheme = createMuiTheme({ palette: { type: "dark" } });
 const defaultLightTheme = createMuiTheme({ palette: { type: "light" } });
@@ -92,7 +93,21 @@ const tLightTheme = createMuiTheme({
   },
 });
 /* = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = */
-function generateHeadingStyle(theme, fontWeight) {
+function generateHeadingStyle(
+  theme: string,
+  fontWeight:
+    | number
+    | "-moz-initial"
+    | "inherit"
+    | "initial"
+    | "revert"
+    | "unset"
+    | "bold"
+    | "normal"
+    | "bolder"
+    | "lighter"
+    | undefined
+): TypographyStyleOptions {
   return {
     fontSize: "clamp(1.32rem, 5vw, 3rem)",
     fontWeight: fontWeight,

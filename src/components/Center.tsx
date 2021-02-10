@@ -4,13 +4,13 @@
 import React from "react";
 import { Grid } from "@material-ui/core";
 
-const Center = (props) => {
+const Center = (props: any) => {
   return (
     <Grid
       container
       direction={"column"}
       style={{
-        justify: "center",
+        justifyContent: "center",
         alignItems: "center",
         margin: "auto",
         marginTop: "min(20vw, 100px)",

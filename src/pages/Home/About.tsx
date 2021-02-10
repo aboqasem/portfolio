@@ -56,7 +56,7 @@ const About = () => {
         })}
       </List>
 
-      <div align={"center"}>
+      <div style={{ textAlign: "center" }}>
         {/* Responsive sized box */}
         <Box height={"min(4vw, 35px)"} />
         <Button

@@ -14,7 +14,7 @@ git add -A
 
 git commit -m 'Deploy'
 
-git push -f git@github.com:aboqasem/portfolio-client.git main:gh-pages
+git push -f git@github.com:aboqasem/aboqasem.dev.git main:gh-pages
 
 cd -
 

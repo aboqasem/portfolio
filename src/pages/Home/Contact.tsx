@@ -1,55 +1,53 @@
-import React from "react";
-import { IconButton } from "@material-ui/core";
-import { tLightTheme } from "../../styles/themes";
-import HomeSection from "../../components/HomeSection";
-import { CallTwoTone, GitHub, MailOutline, WhatsApp } from "@material-ui/icons";
-import { sListItemIconIconStyle } from "../../styles/styles";
+import React from 'react';
+import { IconButton } from '@material-ui/core';
+import { CallTwoTone, GitHub, MailOutline, WhatsApp } from '@material-ui/icons';
+import { tLightTheme } from '../../styles/themes';
+import HomeSection from '../../components/HomeSection';
+import { sListItemIconIconStyle } from '../../styles/styles';
 
 const myContacts = [
   {
-    name: "Call me",
+    name: 'Call me',
     icon: CallTwoTone,
-    url: "tel:+60176495945",
-    color: "#000",
+    url: 'tel:+60176495945',
+    color: '#000',
   },
   {
-    name: "Email",
+    name: 'Email',
     icon: MailOutline,
-    url: "mailto:mb.alzouabi@gmail.com",
-    color: "#E65A4D",
+    url: 'mailto:mb.alzouabi@gmail.com',
+    color: '#E65A4D',
   },
   {
-    name: "WhatsApp",
+    name: 'WhatsApp',
     icon: WhatsApp,
-    url: "https://wa.me/60176495945",
-    color: "#05E776",
+    url: 'https://wa.me/60176495945',
+    color: '#05E776',
   },
   {
-    name: "GitHub",
+    name: 'GitHub',
     icon: GitHub,
-    url: "https://github.com/aboqasem",
-    color: "#24292E",
+    url: 'https://github.com/aboqasem',
+    color: '#24292E',
   },
 ];
 
 const Contact = () => {
   return (
-    <HomeSection theme={tLightTheme} title={"Get in Touch!"}>
-      <div style={{ textAlign: "center" }}>
+    <HomeSection theme={tLightTheme} title={'Get in Touch!'}>
+      <div style={{ textAlign: 'center' }}>
         {myContacts.map((value) => {
           return (
             <IconButton
               key={value.url}
               href={value.url}
-              target={"_blank"}
+              target={'_blank'}
               style={{
-                margin: "clamp(5px, 2.5vw, 35px)",
+                margin: 'clamp(5px, 2.5vw, 35px)',
                 border: `2px solid ${value.color}`,
               }}
             >
-              <value.icon
-                style={{ ...sListItemIconIconStyle.large, color: value.color }}
-              />
+              <value.icon style={{ ...sListItemIconIconStyle.large, color: value.color }} />
             </IconButton>
           );
         })}

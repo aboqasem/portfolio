@@ -1,26 +1,18 @@
-import React from "react";
-import {
-  Box,
-  Button,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-  Typography,
-} from "@material-ui/core";
-import { Home, Language, LocalLibrary, PersonPin } from "@material-ui/icons";
-import { tLightTheme } from "../../styles/themes";
-import { sListItemIconIconStyle } from "../../styles/styles";
-import HomeSection from "../../components/HomeSection";
+import React from 'react';
+import { Box, Button, List, ListItem, ListItemIcon, ListItemText, Typography } from '@material-ui/core';
+import { Home, Language, LocalLibrary, PersonPin } from '@material-ui/icons';
+import { tLightTheme } from '../../styles/themes';
+import { sListItemIconIconStyle } from '../../styles/styles';
+import HomeSection from '../../components/HomeSection';
 
 const myInformation = [
   {
     icon: Home,
-    text: "From Daraa, Syria",
+    text: 'From Daraa, Syria',
   },
   {
     icon: PersonPin,
-    text: "In Cyberjaya, Malaysia",
+    text: 'In Cyberjaya, Malaysia',
   },
   {
     icon: LocalLibrary,
@@ -28,16 +20,15 @@ const myInformation = [
   },
   {
     icon: Language,
-    text: "Arabic, English, and basics of Turkish",
+    text: 'Arabic, English, and basics of Turkish',
   },
 ];
 
 const About = () => {
   return (
-    <HomeSection theme={tLightTheme} title={"Quick Brief"}>
-      <Typography variant={"body1"}>
-        Software engineering student who is eager to learn. Here is some
-        information about me:
+    <HomeSection theme={tLightTheme} title={'Quick Brief'}>
+      <Typography variant={'body1'}>
+        Software engineering student who is eager to learn. Here is some information about me:
         <br />
       </Typography>
 
@@ -48,7 +39,7 @@ const About = () => {
               <ListItemIcon>
                 <value.icon style={sListItemIconIconStyle.large} />
                 {/* Responsive sized box */}
-                <Box width={"min(4vw, 35px)"} />
+                <Box width={'min(4vw, 35px)'} />
               </ListItemIcon>
               <ListItemText primary={value.text} />
             </ListItem>
@@ -56,18 +47,16 @@ const About = () => {
         })}
       </List>
 
-      <div style={{ textAlign: "center" }}>
+      <div style={{ textAlign: 'center' }}>
         {/* Responsive sized box */}
-        <Box height={"min(4vw, 35px)"} />
+        <Box height={'min(4vw, 35px)'} />
         <Button
-          variant={"contained"}
-          color={"primary"}
-          href={
-            "https://drive.google.com/file/d/1BC5VROktcMhvsBnkWtApbYVd7gO882o_/view?usp=sharing"
-          }
-          target={"_blank"}
+          variant={'contained'}
+          color={'primary'}
+          href={'https://drive.google.com/file/d/1BC5VROktcMhvsBnkWtApbYVd7gO882o_/view?usp=sharing'}
+          target={'_blank'}
         >
-          <Typography variant={"body1"}>View Resume</Typography>
+          <Typography variant={'body1'}>View Resume</Typography>
         </Button>
       </div>
     </HomeSection>

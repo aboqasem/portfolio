@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   Button,
   Card,
@@ -9,13 +9,13 @@ import {
   ListItem,
   Tooltip,
   Typography,
-} from "@material-ui/core";
-import { Code, Launch } from "@material-ui/icons";
-import { tDarkTheme } from "../../styles/themes";
-import { sListItemIconIconStyle } from "../../styles/styles";
-import HomeSection from "../../components/HomeSection";
-import AntsAndBugsPrev from "../../assets/ants-and-bugs.gif";
-import AiLuminancePrev from "../../assets/ai-luminance.gif";
+} from '@material-ui/core';
+import { Code, Launch } from '@material-ui/icons';
+import { tDarkTheme } from '../../styles/themes';
+import { sListItemIconIconStyle } from '../../styles/styles';
+import HomeSection from '../../components/HomeSection';
+import AntsAndBugsPrev from '../../assets/ants-and-bugs.gif';
+import AiLuminancePrev from '../../assets/ai-luminance.gif';
 
 const myProjects: {
   title: string;
@@ -25,58 +25,54 @@ const myProjects: {
   sourceCode?: string;
 }[] = [
   {
-    title: "AI Luminance",
-    description:
-      "Simple color luminance detector using neural networks from brain.js.",
+    title: 'AI Luminance',
+    description: 'Simple color luminance detector using neural networks from brain.js.',
     preview: AiLuminancePrev,
-    url: "https://ai-luminance.herokuapp.com/",
-    sourceCode: "https://github.com/aboqasem/ai-luminance",
+    url: 'https://ai-luminance.herokuapp.com/',
+    sourceCode: 'https://github.com/aboqasem/ai-luminance',
   },
   {
-    title: "Ants and Bugs",
-    description: "Simple Java Swing simulation game applying design patterns.",
+    title: 'Ants and Bugs',
+    description: 'Simple Java Swing simulation game applying design patterns.',
     preview: AntsAndBugsPrev,
-    sourceCode: "https://github.com/aboqasem/ants-and-bugs",
+    sourceCode: 'https://github.com/aboqasem/ants-and-bugs',
   },
 ];
 
 const Projects = () => {
   return (
-    <HomeSection theme={tDarkTheme} title={"Projects"}>
+    <HomeSection theme={tDarkTheme} title={'Projects'}>
       <List>
         {myProjects.map((value) => {
           return (
             <ListItem key={value.url || value.sourceCode}>
-              <Card
-                variant="outlined"
-                style={{ width: "100%", borderRadius: "10px" }}
-              >
+              <Card variant="outlined" style={{ width: '100%', borderRadius: '10px' }}>
                 <CardContent>
-                  <Typography variant={"body1"}>{value.title}</Typography>
-                  <Typography variant={"subtitle2"} color={"textSecondary"}>
+                  <Typography variant={'body1'}>{value.title}</Typography>
+                  <Typography variant={'subtitle2'} color={'textSecondary'}>
                     {value.description}
                   </Typography>
                 </CardContent>
 
-                {(value.preview ?? "") === "" ? null : (
+                {(value.preview ?? '') === '' ? null : (
                   <CardMedia
                     image={value.preview}
                     style={{
-                      width: "90%",
-                      height: "clamp(20px, 20vw, 250px)",
-                      marginLeft: "5%",
-                      borderRadius: "clamp(5px, 1.5vw, 25px)",
+                      width: '90%',
+                      height: 'clamp(20px, 20vw, 250px)',
+                      marginLeft: '5%',
+                      borderRadius: 'clamp(5px, 1.5vw, 25px)',
                     }}
                   />
                 )}
 
                 <CardActions>
-                  <div style={{ marginLeft: "auto" }}>
-                    {(value.sourceCode?.trim() ?? "") === "" ? null : (
+                  <div style={{ marginLeft: 'auto' }}>
+                    {(value.sourceCode?.trim() ?? '') === '' ? null : (
                       <Tooltip title="View source-code">
                         <Button
                           variant="outlined"
-                          href={value.sourceCode || ""}
+                          href={value.sourceCode || ''}
                           target="_blank"
                           style={{ margin: tDarkTheme.spacing(1) }}
                         >
@@ -85,11 +81,11 @@ const Projects = () => {
                       </Tooltip>
                     )}
 
-                    {(value.url?.trim() ?? "") === "" ? null : (
+                    {(value.url?.trim() ?? '') === '' ? null : (
                       <Tooltip title="Launch">
                         <Button
                           variant="outlined"
-                          href={value.url || ""}
+                          href={value.url || ''}
                           target="_blank"
                           style={{ margin: tDarkTheme.spacing(1) }}
                         >

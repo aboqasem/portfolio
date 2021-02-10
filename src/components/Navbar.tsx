@@ -1,22 +1,11 @@
-import React from "react";
-import {
-  AppBar,
-  Slide,
-  Toolbar,
-  Typography,
-  useScrollTrigger,
-} from "@material-ui/core";
+import React from 'react';
+import { AppBar, Slide, Toolbar, Typography, useScrollTrigger } from '@material-ui/core';
 
 const Navbar = () => {
   const trigger = useScrollTrigger();
   return (
     <Slide in={!trigger}>
-      <AppBar
-        component="nav"
-        position="fixed"
-        color="transparent"
-        elevation={0}
-      >
+      <AppBar component="nav" position="fixed" color="transparent" elevation={0}>
         <Toolbar>
           <Typography>aboqasem</Typography>
         </Toolbar>

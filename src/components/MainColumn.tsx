@@ -1,17 +1,17 @@
 /**
  * A component for responsive width.
  */
-import React from "react";
-import { Grid } from "@material-ui/core";
+import React from 'react';
+import { Grid } from '@material-ui/core';
 
 const MainColumn = (props: any) => {
   return (
     <Grid
       container
       style={{
-        width: "80vw",
-        maxWidth: "700px",
-        alignItems: "baseline",
+        width: '80vw',
+        maxWidth: '700px',
+        alignItems: 'baseline',
       }}
     >
       {props.children}

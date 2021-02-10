@@ -12,9 +12,9 @@ const Navbar = () => {
   return (
     <Slide in={!trigger}>
       <AppBar
-        component={"nav"}
-        position={"fixed"}
-        color={"transparent"}
+        component="nav"
+        position="fixed"
+        color="transparent"
         elevation={0}
       >
         <Toolbar>

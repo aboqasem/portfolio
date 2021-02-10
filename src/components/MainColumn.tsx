@@ -4,7 +4,7 @@
 import React from "react";
 import { Grid } from "@material-ui/core";
 
-const MainColumn = (props) => {
+const MainColumn = (props: any) => {
   return (
     <Grid
       container

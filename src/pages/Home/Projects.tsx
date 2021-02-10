@@ -17,7 +17,13 @@ import HomeSection from "../../components/HomeSection";
 import AntsAndBugsPrev from "../../assets/ants-and-bugs.gif";
 import AiLuminancePrev from "../../assets/ai-luminance.gif";
 
-const myProjects = [
+const myProjects: {
+  title: string;
+  description: string;
+  preview: string;
+  url?: string;
+  sourceCode?: string;
+}[] = [
   {
     title: "AI Luminance",
     description:
@@ -69,9 +75,9 @@ const Projects = () => {
                     {(value.sourceCode?.trim() ?? "") === "" ? null : (
                       <Tooltip title="View source-code">
                         <Button
-                          variant={"outlined"}
-                          href={value.sourceCode}
-                          target={"_blank"}
+                          variant="outlined"
+                          href={value.sourceCode || ""}
+                          target="_blank"
                           style={{ margin: tDarkTheme.spacing(1) }}
                         >
                           <Code style={sListItemIconIconStyle.small} />
@@ -82,9 +88,9 @@ const Projects = () => {
                     {(value.url?.trim() ?? "") === "" ? null : (
                       <Tooltip title="Launch">
                         <Button
-                          variant={"outlined"}
-                          href={value.url}
-                          target={"_blank"}
+                          variant="outlined"
+                          href={value.url || ""}
+                          target="_blank"
                           style={{ margin: tDarkTheme.spacing(1) }}
                         >
                           <Launch style={sListItemIconIconStyle.small} />

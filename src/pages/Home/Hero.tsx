@@ -6,7 +6,7 @@ import HomeSection from '../../components/HomeSection';
 const Hero = (): JSX.Element => {
   return (
     <HomeSection hero theme={tDarkTheme} title={"Hey, I'm Mohammad Al Zouabi."}>
-      <Typography variant={'body1'}>
+      <Typography variant={'body1'} style={{ position: 'relative', zIndex: 1 }}>
         Enthusiastic software developer who stands for quality, consistency, and attention to details.
       </Typography>
 

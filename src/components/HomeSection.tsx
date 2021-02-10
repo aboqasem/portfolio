@@ -14,7 +14,12 @@ const HomeSection = (props: any): JSX.Element => {
           {/* Responsive width container */}
           <MainColumn>
             {/* Heading */}
-            <Typography variant={props.hero ? 'h1' : 'h2'}>{props.title}</Typography>
+            <Typography
+              variant={props.hero ? 'h1' : 'h2'}
+              style={props.hero ? { position: 'relative', zIndex: 1 } : {}}
+            >
+              {props.title}
+            </Typography>
 
             {/* Body */}
             <Grid item xs={12}>

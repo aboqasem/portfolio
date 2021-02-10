@@ -24,7 +24,7 @@ const myInformation = [
   },
 ];
 
-const About = () => {
+const About = (): JSX.Element => {
   return (
     <HomeSection theme={tLightTheme} title={'Quick Brief'}>
       <Typography variant={'body1'}>

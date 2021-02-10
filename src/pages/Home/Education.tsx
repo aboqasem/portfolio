@@ -20,7 +20,7 @@ const myEducation = [
   },
 ];
 
-const Education = () => {
+const Education = (): JSX.Element => {
   return (
     <HomeSection theme={tDarkTheme} title={'Education'}>
       <List>

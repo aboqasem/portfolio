@@ -39,7 +39,7 @@ const myProjects: {
   },
 ];
 
-const Projects = () => {
+const Projects = (): JSX.Element => {
   return (
     <HomeSection theme={tDarkTheme} title={'Projects'}>
       <List>

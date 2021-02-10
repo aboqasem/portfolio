@@ -31,7 +31,7 @@ const myAchievements = [
   },
 ];
 
-const Achievements = () => {
+const Achievements = (): JSX.Element => {
   return (
     <HomeSection theme={tLightTheme} title={'Achievements'}>
       <List>

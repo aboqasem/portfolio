@@ -1,7 +1,7 @@
 import React from 'react';
 import { AppBar, Slide, Toolbar, Typography, useScrollTrigger } from '@material-ui/core';
 
-const Navbar = () => {
+> {
   const trigger = useScrollTrigger();
   return (
     <Slide in={!trigger}>

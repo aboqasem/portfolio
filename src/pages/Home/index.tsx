@@ -6,7 +6,7 @@ import Achievements from './Achievements';
 import Projects from './Projects';
 import Contact from './Contact';
 
-const MyHome = (): JSX.Element => {
+const Home = (): JSX.Element => {
   return (
     <>
       <Hero />
@@ -19,4 +19,4 @@ const MyHome = (): JSX.Element => {
   );
 };
 
-export default MyHome;
+export default Home;

@@ -32,7 +32,7 @@ const myContacts = [
   },
 ];
 
-const Contact = () => {
+const Contact = (): JSX.Element => {
   return (
     <HomeSection theme={tLightTheme} title={'Get in Touch!'}>
       <div style={{ textAlign: 'center' }}>

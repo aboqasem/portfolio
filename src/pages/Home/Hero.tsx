@@ -3,7 +3,7 @@ import { Box, Grid, Typography } from '@material-ui/core';
 import { tDarkTheme } from '../../styles/themes';
 import HomeSection from '../../components/HomeSection';
 
-const Hero = () => {
+const Hero = (): JSX.Element => {
   return (
     <HomeSection hero theme={tDarkTheme} title={"Hey, I'm Mohammad Al Zouabi."}>
       <Typography variant={'body1'}>

@@ -6,7 +6,7 @@ import Achievements from './Achievements';
 import Projects from './Projects';
 import Contact from './Contact';
 
-const MyHome = () => {
+const MyHome = (): JSX.Element => {
   return (
     <>
       <Hero />

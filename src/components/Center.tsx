@@ -1,10 +1,14 @@
 /**
  * A component for horizontal and vertical responsive centering.
  */
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { Grid } from '@material-ui/core';
 
-const Center = (props: any): JSX.Element => {
+interface Props {
+  children: ReactNode;
+}
+
+const Center = (props: Props): JSX.Element => {
   return (
     <Grid
       container

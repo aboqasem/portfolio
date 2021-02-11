@@ -3,7 +3,15 @@ import { List, ListItem, ListItemText, Typography } from '@material-ui/core';
 import { tDarkTheme } from '../../styles/themes';
 import HomeSection from '../../components/HomeSection';
 
-const myEducation = [
+interface IEducation {
+  dateFrom: string;
+  dateTo: string;
+  certificate: string;
+  school: string;
+  location: string;
+}
+
+const myEducation: IEducation[] = [
   {
     dateFrom: 'Early 2017',
     dateTo: 'November 2017',

@@ -1,11 +1,19 @@
 import React from 'react';
-import { IconButton } from '@material-ui/core';
+import { IconButton, SvgIconTypeMap } from '@material-ui/core';
 import { CallTwoTone, GitHub, MailOutline, WhatsApp } from '@material-ui/icons';
+import { OverridableComponent } from '@material-ui/core/OverridableComponent';
 import { tLightTheme } from '../../styles/themes';
 import HomeSection from '../../components/HomeSection';
 import { sListItemIconIconStyle } from '../../styles/styles';
 
-const myContacts = [
+interface IContact {
+  name: string;
+  icon: OverridableComponent<SvgIconTypeMap<Record<string, unknown>, 'svg'>>;
+  url: string;
+  color: string;
+}
+
+const myContacts: IContact[] = [
   {
     name: 'Call me',
     icon: CallTwoTone,

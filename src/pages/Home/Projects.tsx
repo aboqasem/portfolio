@@ -17,13 +17,15 @@ import HomeSection from '../../components/HomeSection';
 import AntsAndBugsPrev from '../../assets/ants-and-bugs.gif';
 import AiLuminancePrev from '../../assets/ai-luminance.gif';
 
-const myProjects: {
+interface IProject {
   title: string;
   description: string;
   preview: string;
   url?: string;
   sourceCode?: string;
-}[] = [
+}
+
+const myProjects: IProject[] = [
   {
     title: 'AI Luminance',
     description: 'Simple color luminance detector using neural networks from brain.js.',

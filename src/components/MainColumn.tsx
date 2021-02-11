@@ -1,10 +1,14 @@
 /**
  * A component for responsive width.
  */
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { Grid } from '@material-ui/core';
 
-const MainColumn = (props: any): JSX.Element => {
+interface Props {
+  children: ReactNode;
+}
+
+const MainColumn = (props: Props): JSX.Element => {
   return (
     <Grid
       container

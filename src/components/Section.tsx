@@ -1,10 +1,15 @@
 /**
  * A component for a responsive section.
  */
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { Paper } from '@material-ui/core';
 
-const Section = (props: any): JSX.Element => {
+interface Props {
+  children: ReactNode;
+  minHeight?: string | undefined;
+}
+
+const Section = (props: Props): JSX.Element => {
   return (
     <Paper
       square

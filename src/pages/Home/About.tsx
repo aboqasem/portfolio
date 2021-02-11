@@ -1,11 +1,17 @@
 import React from 'react';
-import { Box, Button, List, ListItem, ListItemIcon, ListItemText, Typography } from '@material-ui/core';
+import { Box, Button, List, ListItem, ListItemIcon, ListItemText, SvgIconTypeMap, Typography } from '@material-ui/core';
 import { Home, Language, LocalLibrary, PersonPin } from '@material-ui/icons';
+import { OverridableComponent } from '@material-ui/core/OverridableComponent';
 import { tLightTheme } from '../../styles/themes';
 import { sListItemIconIconStyle } from '../../styles/styles';
 import HomeSection from '../../components/HomeSection';
 
-const myInformation = [
+interface IInformation {
+  icon: OverridableComponent<SvgIconTypeMap<Record<string, unknown>, 'svg'>>;
+  text: string;
+}
+
+const myInformation: IInformation[] = [
   {
     icon: Home,
     text: 'From Daraa, Syria',

@@ -4,7 +4,14 @@ import { tLightTheme } from '../../styles/themes';
 import { sListItemIconImgStyle } from '../../styles/styles';
 import HomeSection from '../../components/HomeSection';
 
-const myAchievements = [
+interface IAchievement {
+  from: string;
+  logoUrl: string;
+  achievement: string;
+  url: string;
+}
+
+const myAchievements: IAchievement[] = [
   {
     from: 'Multimedia University',
     logoUrl: 'https://www.mmu.edu.my/wp-content/themes/mmu2018/assets/images/cropped-mmulogo-only-192x192.png',

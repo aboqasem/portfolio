@@ -14,8 +14,6 @@ import { Code, Launch } from '@material-ui/icons';
 import { tDarkTheme } from '../../styles/themes';
 import { sListItemIconIconStyle } from '../../styles/styles';
 import HomeSection from '../../components/HomeSection';
-import AntsAndBugsPrev from '../../assets/ants-and-bugs.gif';
-import AiLuminancePrev from '../../assets/ai-luminance.gif';
 
 interface IProject {
   title: string;
@@ -25,19 +23,28 @@ interface IProject {
   sourceCode?: string;
 }
 
+const ghUrl = 'https://github.com/aboqasem';
+const previewUrlOf = (repo: string) => `${ghUrl}/${repo}/blob/main/docs/images/hero.gif?raw=true`;
 const myProjects: IProject[] = [
   {
     title: 'AI Luminance',
     description: 'Simple color luminance detector using neural networks from brain.js.',
-    preview: AiLuminancePrev,
-    url: 'https://ai-luminance.herokuapp.com/',
-    sourceCode: 'https://github.com/aboqasem/ai-luminance',
+    preview: previewUrlOf('ai-luminance'),
+    url: 'https://ai-luminance.aboqasem.dev/',
+    sourceCode: `${ghUrl}/ai-luminance`,
+  },
+  {
+    title: 'Time Progress',
+    description: 'Various time progress bars.',
+    preview: previewUrlOf('time_progress'),
+    url: 'https://time-progress.aboqasem.dev/',
+    sourceCode: `${ghUrl}/time_progress`,
   },
   {
     title: 'Ants and Bugs',
     description: 'Simple Java Swing simulation game applying design patterns.',
-    preview: AntsAndBugsPrev,
-    sourceCode: 'https://github.com/aboqasem/ants-and-bugs',
+    preview: previewUrlOf('ants-and-bugs'),
+    sourceCode: `${ghUrl}/ants-and-bugs`,
   },
 ];
 

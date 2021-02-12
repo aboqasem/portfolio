@@ -46,7 +46,13 @@ const Achievements = (): JSX.Element => {
           return (
             <ListItem key={value.url} alignItems="flex-start">
               <ListItemIcon>
-                <Button variant="outlined" href={value.url} target="_blank" style={{ height: '100%', width: '100%' }}>
+                <Button
+                  variant="outlined"
+                  href={value.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  style={{ height: '100%', width: '100%' }}
+                >
                   <img src={value.logoUrl} alt={''} style={sListItemIconImgStyle} />
                 </Button>
                 {/* Responsive sized box */}

@@ -61,6 +61,7 @@ const About = (): JSX.Element => {
           color="primary"
           href="https://drive.google.com/file/d/1BC5VROktcMhvsBnkWtApbYVd7gO882o_/view?usp=sharing"
           target="_blank"
+          rel="noreferrer"
         >
           <Typography variant="body1">View Resume</Typography>
         </Button>

@@ -83,6 +83,7 @@ const Projects = (): JSX.Element => {
                           variant="outlined"
                           href={value.sourceCode || ''}
                           target="_blank"
+                          rel="noreferrer"
                           style={{ margin: tDarkTheme.spacing(1) }}
                         >
                           <Code style={sListItemIconIconStyle.small} />
@@ -96,6 +97,7 @@ const Projects = (): JSX.Element => {
                           variant="outlined"
                           href={value.url || ''}
                           target="_blank"
+                          rel="noreferrer"
                           style={{ margin: tDarkTheme.spacing(1) }}
                         >
                           <Launch style={sListItemIconIconStyle.small} />

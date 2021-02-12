@@ -50,15 +50,15 @@ const myProjects: IProject[] = [
 
 const Projects = (): JSX.Element => {
   return (
-    <HomeSection theme={tDarkTheme} title={'Projects'}>
+    <HomeSection theme={tDarkTheme} title="Projects">
       <List>
         {myProjects.map((value) => {
           return (
             <ListItem key={value.url || value.sourceCode}>
               <Card variant="outlined" style={{ width: '100%', borderRadius: '10px' }}>
                 <CardContent>
-                  <Typography variant={'body1'}>{value.title}</Typography>
-                  <Typography variant={'subtitle2'} color={'textSecondary'}>
+                  <Typography variant="body1">{value.title}</Typography>
+                  <Typography variant="subtitle2" color="textSecondary">
                     {value.description}
                   </Typography>
                 </CardContent>

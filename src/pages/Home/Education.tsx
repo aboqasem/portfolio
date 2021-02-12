@@ -30,7 +30,7 @@ const myEducation: IEducation[] = [
 
 const Education = (): JSX.Element => {
   return (
-    <HomeSection theme={tDarkTheme} title={'Education'}>
+    <HomeSection theme={tDarkTheme} title="Education">
       <List>
         {myEducation.reverse().map((value) => {
           return (
@@ -38,7 +38,7 @@ const Education = (): JSX.Element => {
               <ListItemText
                 primary={
                   <>
-                    <Typography component={'span'} variant={'subtitle2'}>
+                    <Typography component="span" variant="subtitle2">
                       {value.dateFrom} - {value.dateTo}
                     </Typography>
                     <br />
@@ -46,7 +46,7 @@ const Education = (): JSX.Element => {
                   </>
                 }
                 secondary={
-                  <Typography variant={'subtitle2'} color={'textSecondary'}>
+                  <Typography variant="subtitle2" color="textSecondary">
                     {value.school} - {value.location}
                   </Typography>
                 }

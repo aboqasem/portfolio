@@ -12,7 +12,7 @@ const Center = (props: Props): JSX.Element => {
   return (
     <Grid
       container
-      direction={'column'}
+      direction="column"
       style={{
         justifyContent: 'center',
         alignItems: 'center',

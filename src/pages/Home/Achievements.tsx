@@ -40,27 +40,22 @@ const myAchievements: IAchievement[] = [
 
 const Achievements = (): JSX.Element => {
   return (
-    <HomeSection theme={tLightTheme} title={'Achievements'}>
+    <HomeSection theme={tLightTheme} title="Achievements">
       <List>
         {myAchievements.map((value) => {
           return (
-            <ListItem key={value.url} alignItems={'flex-start'}>
+            <ListItem key={value.url} alignItems="flex-start">
               <ListItemIcon>
-                <Button
-                  variant={'outlined'}
-                  href={value.url}
-                  target={'_blank'}
-                  style={{ height: '100%', width: '100%' }}
-                >
+                <Button variant="outlined" href={value.url} target="_blank" style={{ height: '100%', width: '100%' }}>
                   <img src={value.logoUrl} alt={''} style={sListItemIconImgStyle} />
                 </Button>
                 {/* Responsive sized box */}
-                <Box width={'min(4vw, 35px)'} />
+                <Box width="min(4vw, 35px)" />
               </ListItemIcon>
               <ListItemText
                 primary={value.achievement}
                 secondary={
-                  <Typography variant={'subtitle2'} color={'textSecondary'}>
+                  <Typography variant="subtitle2" color="textSecondary">
                     {value.from}
                   </Typography>
                 }

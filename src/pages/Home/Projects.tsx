@@ -23,28 +23,29 @@ interface IProject {
   sourceCode?: string;
 }
 
-const ghUrl = 'https://github.com/aboqasem';
-const previewUrlOf = (repo: string) => `${ghUrl}/${repo}/blob/main/docs/images/hero.gif?raw=true`;
+const githubUrl = 'https://github.com/aboqasem';
+const githubRawContentUrl = 'https://raw.githubusercontent.com/aboqasem';
+const previewUrlOf = (repo: string) => `${githubRawContentUrl}/${repo}/main/docs/preview.webm`;
 const myProjects: IProject[] = [
   {
     title: 'AI Luminance',
     description: 'Simple color luminance detector using neural networks from brain.js.',
     preview: previewUrlOf('ai-luminance'),
     url: 'https://ai-luminance.aboqasem.dev/',
-    sourceCode: `${ghUrl}/ai-luminance`,
+    sourceCode: `${githubUrl}/ai-luminance`,
   },
   {
     title: 'Time Progress',
     description: 'Various time progress bars.',
     preview: previewUrlOf('time_progress'),
     url: 'https://time-progress.aboqasem.dev/',
-    sourceCode: `${ghUrl}/time_progress`,
+    sourceCode: `${githubUrl}/time_progress`,
   },
   {
     title: 'Ants and Bugs',
     description: 'Simple Java Swing simulation game applying design patterns.',
     preview: previewUrlOf('ants-and-bugs'),
-    sourceCode: `${ghUrl}/ants-and-bugs`,
+    sourceCode: `${githubUrl}/ants-and-bugs`,
   },
 ];
 
@@ -65,8 +66,12 @@ const Projects = (): JSX.Element => {
 
                 {(value.preview ?? '') === '' ? null : (
                   <CardMedia
-                    image={value.preview}
+                    component="video"
+                    src={value.preview}
+                    autoPlay
+                    loop
                     style={{
+                      objectFit: 'cover',
                       width: '90%',
                       height: 'clamp(20px, 20vw, 250px)',
                       marginLeft: '5%',

@@ -20,13 +20,13 @@ const myAchievements: IAchievement[] = [
   },
   {
     from: 'Udemy',
-    logoUrl: 'https://www.udemy.com/staticx/udemy/images/v6/favicon-196x196.png',
+    logoUrl: 'https://www.udemy.com/staticx/udemy/images/v6/favicon-96x96.png',
     achievement: 'The Complete 2020 Web Development Bootcamp',
     url: 'https://www.udemy.com/certificate/UC-df9853fa-31a9-4d62-bbfe-d0d9269f4d6a/',
   },
   {
     from: 'Udemy',
-    logoUrl: 'https://www.udemy.com/staticx/udemy/images/v6/favicon-196x196.png',
+    logoUrl: 'https://www.udemy.com/staticx/udemy/images/v6/favicon-96x96.png',
     achievement: 'The Complete 2020 Flutter Development Bootcamp with Dart',
     url: 'https://www.udemy.com/certificate/UC-268bcbe8-7826-4c72-8b2b-c42ad3391789/',
   },

@@ -5,14 +5,14 @@ import HomeSection from '../../components/HomeSection';
 
 const Hero = (): JSX.Element => {
   return (
-    <HomeSection hero theme={tDarkTheme} title={"Hey, I'm Mohammad Al Zouabi."}>
-      <Typography variant={'body1'} style={{ position: 'relative', zIndex: 1 }}>
+    <HomeSection hero theme={tDarkTheme} title="Hey, I'm Mohammad Al Zouabi.">
+      <Typography variant="body1" style={{ position: 'relative', zIndex: 1 }}>
         An enthusiastic software developer that stands for quality, consistency, and attention to details.
       </Typography>
 
       {/* Responsive sized box */}
       <Grid item xs={12}>
-        <Box height={'min(4vw, 35px)'} />
+        <Box height="min(4vw, 35px)" />
       </Grid>
     </HomeSection>
   );

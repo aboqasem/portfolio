@@ -42,14 +42,14 @@ const myContacts: IContact[] = [
 
 const Contact = (): JSX.Element => {
   return (
-    <HomeSection theme={tLightTheme} title={'Get in Touch!'}>
+    <HomeSection theme={tLightTheme} title="Get in Touch!">
       <div style={{ textAlign: 'center' }}>
         {myContacts.map((value) => {
           return (
             <IconButton
               key={value.url}
               href={value.url}
-              target={'_blank'}
+              target="_blank"
               style={{
                 margin: 'clamp(5px, 2.5vw, 35px)',
                 border: `2px solid ${value.color}`,

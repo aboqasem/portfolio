@@ -4,18 +4,6 @@ set -e
 
 npm run build
 
-cd build/
-
-echo www.aboqasem.dev >CNAME
-
-git init
-
-git add -A
-
-git commit -m 'Deploy'
-
-git push -f git@github.com:aboqasem/aboqasem.dev.git main:gh-pages
-
-cd -
+netlify deploy --dir=build --prod
 
 rm -rf build/

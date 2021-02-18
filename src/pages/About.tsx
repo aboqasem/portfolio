@@ -3,13 +3,13 @@ import { myInformation } from '../common/data';
 
 const About = (): JSX.Element => {
   return (
-    <div>
-      Software engineering student who is eager to learn. Here is some information about me:
+    <>
+      <p>Software engineering student who is eager to learn. Here is some information about me:</p>
       <br />
       <ul>
-        {myInformation.map((value, i) => {
-          return <li key={`myInformation@${i}`}>{value.text}</li>;
-        })}
+        {myInformation.map((v, i) => (
+          <li key={`myInformation@${i}`}>{v.text}</li>
+        ))}
       </ul>
       <div>
         <a
@@ -20,7 +20,7 @@ const About = (): JSX.Element => {
           View Resume
         </a>
       </div>
-    </div>
+    </>
   );
 };
 

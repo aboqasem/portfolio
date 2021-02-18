@@ -1,7 +1,7 @@
 import React from 'react';
 
 const NotFound = (): JSX.Element => {
-  return <h1>Not Found.</h1>;
+  return <p className="text-2xl">Not Found.</p>;
 };
 
 export default NotFound;

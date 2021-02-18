@@ -1,16 +1,18 @@
 import React from 'react';
-import { AppBar, Slide, Toolbar, Typography, useScrollTrigger } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
 const Navbar = (): JSX.Element => {
-  const trigger = useScrollTrigger();
   return (
-    <Slide in={!trigger}>
-      <AppBar component="nav" position="fixed" color="transparent" elevation={0}>
-        <Toolbar>
-          <Typography>aboqasem</Typography>
-        </Toolbar>
-      </AppBar>
-    </Slide>
+    <nav>
+      <ul>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/about">About</Link>
+        </li>
+      </ul>
+    </nav>
   );
 };
 

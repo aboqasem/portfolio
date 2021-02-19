@@ -1,19 +1,55 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useRef } from 'react';
+import { Link, withRouter, RouteComponentProps } from 'react-router-dom';
+import { FiMenu } from 'react-icons/fi';
 
-const Navbar = (): JSX.Element => {
+const Navbar = (props: RouteComponentProps): JSX.Element => {
+  const { pathname } = props.location;
+  const navRef = useRef<HTMLDivElement>(null);
+
+  const toggleNavMenu = () => {
+    navRef.current?.classList.toggle('hidden');
+  };
+
   return (
-    <nav>
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/about">About</Link>
-        </li>
-      </ul>
-    </nav>
+    <header className="bg-transparent px-6 py-3 flex flex-wrap items-center md:px-16 md:py-0">
+      <p className="flex-1 flex justify-between items-center">
+        <Link to="/" className={`font-mono text-lg ${pathname === '/' && 'pointer-events-none'}`}>
+          aboqasem.dev
+        </Link>
+      </p>
+
+      <p onClick={toggleNavMenu} className="text-2xl cursor-pointer block md:hidden">
+        <FiMenu />
+      </p>
+
+      <nav ref={navRef} className="hidden w-full md:flex md:items-center md:w-auto">
+        <ul className="text-base text-gray-700 items-center justify-between text-center md:flex pt-4 md:pt-0">
+          <li>
+            <Link
+              to="/"
+              onClick={toggleNavMenu}
+              className={`py-3 px-0 block md:p-4 hover:text-gray-900 ${
+                pathname === '/' ? 'text-black pointer-events-none' : 'text-gray-700'
+              }`}
+            >
+              Home
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/about"
+              onClick={toggleNavMenu}
+              className={`py-3 px-0 block md:p-4 hover:text-gray-900 ${
+                pathname === '/about' ? 'text-black pointer-events-none' : 'text-gray-700'
+              }`}
+            >
+              About
+            </Link>
+          </li>
+        </ul>
+      </nav>
+    </header>
   );
 };
 
-export default Navbar;
+export default withRouter(Navbar);

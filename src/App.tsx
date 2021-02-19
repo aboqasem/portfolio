@@ -8,7 +8,7 @@ import NotFound from './pages/NotFound';
 
 const App = (): JSX.Element => {
   return (
-    <>
+    <div className="min-h-screen">
       <BrowserRouter>
         <Navbar />
         <Switch>
@@ -17,7 +17,7 @@ const App = (): JSX.Element => {
           <Route path="*" component={NotFound} />
         </Switch>
       </BrowserRouter>
-    </>
+    </div>
   );
 };
 

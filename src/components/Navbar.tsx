@@ -20,19 +20,18 @@ const Navbar = (props: RouteComponentProps): JSX.Element => {
   }, []);
 
   return (
-    <header className="bg-transparent px-6 py-3 flex flex-wrap items-center md:px-16 md:py-0">
+    <header className="bg-transparent px-6 py-3 flex flex-wrap items-center md:px-16 md:py-2">
       <p className="flex-1 flex justify-between items-center">
-        <Link to="/" className={`font-mono text-lg ${pathname === '/' && 'pointer-events-none'}`}>
-          aboqasem.dev
+        <Link to="/" className={`text-xl select-none md:text-3xl ${pathname === '/' && 'pointer-events-none'}`}>
+          aboqasem<p className="animate-bounce inline-block ml-2 md:ml-2">🦅</p>
         </Link>
       </p>
-
       <p onClick={toggleNavMenu} className="text-2xl cursor-pointer block md:hidden">
         <FiMenu />
       </p>
 
       <nav ref={navRef} className="hidden w-full md:flex md:items-center md:w-auto">
-        <ul className="text-base text-gray-700 items-center justify-between text-center md:flex pt-4 md:pt-0">
+        <ul className="text-lg text-gray-700 items-center justify-between text-center md:text-xl md:flex pt-4 md:pt-0">
           <li>
             <Link
               to="/"

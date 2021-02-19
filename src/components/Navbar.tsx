@@ -1,14 +1,23 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link, withRouter, RouteComponentProps } from 'react-router-dom';
 import { FiMenu } from 'react-icons/fi';
 
 const Navbar = (props: RouteComponentProps): JSX.Element => {
   const { pathname } = props.location;
   const navRef = useRef<HTMLDivElement>(null);
+  const [isMedium, setIsMedium] = useState(window.innerWidth < 768);
 
   const toggleNavMenu = () => {
-    navRef.current?.classList.toggle('hidden');
+    // only work on medium view width
+    if (isMedium) navRef.current?.classList.toggle('hidden');
   };
+
+  useEffect(() => {
+    window.onresize = () => setIsMedium(window.innerWidth < 768);
+    return () => {
+      window.onresize = null;
+    };
+  }, []);
 
   return (
     <header className="bg-transparent px-6 py-3 flex flex-wrap items-center md:px-16 md:py-0">

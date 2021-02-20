@@ -1,8 +1,8 @@
 import React from 'react';
-import { Link, withRouter, RouteComponentProps } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
-const Navbar = (props: RouteComponentProps): JSX.Element => {
-  const { pathname } = props.location;
+const Navbar = (): JSX.Element => {
+  const { pathname } = useLocation();
 
   return (
     <header className="bg-transparent px-6 py-3 flex flex-wrap md:px-14 md:py-4">
@@ -30,4 +30,4 @@ const Navbar = (props: RouteComponentProps): JSX.Element => {
   );
 };
 
-export default withRouter(Navbar);
+export default Navbar;

@@ -1,56 +1,26 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import { Link, withRouter, RouteComponentProps } from 'react-router-dom';
-import { FiMenu } from 'react-icons/fi';
 
 const Navbar = (props: RouteComponentProps): JSX.Element => {
   const { pathname } = props.location;
-  const navRef = useRef<HTMLDivElement>(null);
-  const [isMedium, setIsMedium] = useState(window.innerWidth < 768);
-
-  const toggleNavMenu = () => {
-    // only work on medium view width
-    if (isMedium) navRef.current?.classList.toggle('hidden');
-  };
-
-  useEffect(() => {
-    window.onresize = () => setIsMedium(window.innerWidth < 768);
-    return () => {
-      window.onresize = null;
-    };
-  }, []);
 
   return (
-    <header className="bg-transparent px-6 py-3 flex flex-wrap items-center md:px-16 md:py-2">
-      <div className="flex-1 flex justify-between items-center">
-        <Link to="/" className={`text-xl select-none md:text-3xl ${pathname === '/' && 'pointer-events-none'}`}>
-          aboqasem<p className="animate-bounce inline-block ml-2">🦅</p>
+    <header className="bg-transparent px-6 py-3 flex flex-wrap md:px-14 md:py-4">
+      <div className="flex-1 flex items-center select-none">
+        <Link to="/" className={`text-xl sm:text-2xl md:text-3xl ${pathname === '/' && 'pointer-events-none'}`}>
+          aboqasem<p className="animate-bounce inline-block pl-2">🦅</p>
         </Link>
       </div>
-      <p onClick={toggleNavMenu} className="text-2xl cursor-pointer block md:hidden">
-        <FiMenu />
-      </p>
 
-      <nav ref={navRef} className="hidden w-full md:flex md:items-center md:w-auto">
-        <ul className="text-lg text-gray-700 items-center justify-between text-center md:text-xl md:flex pt-4 md:pt-0">
+      <nav className="w-auto flex text-gray-700 select-none">
+        <ul className="text-lg flex sm:text-xl md:text-2xl">
           <li>
-            <Link
-              to="/"
-              onClick={toggleNavMenu}
-              className={`py-3 px-0 block md:p-4 hover:text-gray-900 ${
-                pathname === '/' ? 'text-black pointer-events-none' : 'text-gray-700'
-              }`}
-            >
+            <Link to="/" className={`p-3 block md:p-4 hover:text-gray-900 ${pathname === '/' && 'hidden'}`}>
               Home
             </Link>
           </li>
           <li>
-            <Link
-              to="/about"
-              onClick={toggleNavMenu}
-              className={`py-3 px-0 block md:p-4 hover:text-gray-900 ${
-                pathname === '/about' ? 'text-black pointer-events-none' : 'text-gray-700'
-              }`}
-            >
+            <Link to="/about" className={`p-3 block md:p-4 hover:text-gray-900 ${pathname === '/about' && 'hidden'}`}>
               About
             </Link>
           </li>

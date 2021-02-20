@@ -5,7 +5,7 @@ interface IProps {
 }
 
 const CenteredSection = (props: IProps): JSX.Element => {
-  return <div className="mx-10 my-14 max-w-xl md:mx-auto">{props.children}</div>;
+  return <div className="max-w-xl mx-auto py-14 px-10 md:px-0">{props.children}</div>;
 };
 
 export default CenteredSection;

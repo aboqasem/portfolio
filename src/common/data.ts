@@ -1,3 +1,19 @@
+import {
+  SiJavascript,
+  SiDart,
+  SiCplusplus,
+  SiC,
+  SiJava,
+  SiGnubash,
+  SiMongodb,
+  SiArduino,
+  SiNodeDotJs,
+  SiFlutter,
+  SiReact,
+  SiRust,
+} from 'react-icons/si';
+import { GoMarkGithub } from 'react-icons/go';
+import { FaVuejs } from 'react-icons/fa';
 import { IInformation } from './types';
 
 export const myInformation: IInformation[] = [
@@ -17,6 +33,23 @@ export const myInformation: IInformation[] = [
     icon: 'Language', // TODO: svg
     text: 'Arabic, English, and basics of Turkish',
   },
+];
+
+export const myTechnologies = [
+  SiJavascript,
+  SiDart,
+  SiJava,
+  SiCplusplus,
+  SiC,
+  SiRust,
+  SiGnubash,
+  GoMarkGithub,
+  SiNodeDotJs,
+  SiMongodb,
+  SiFlutter,
+  SiReact,
+  FaVuejs,
+  SiArduino,
 ];
 
 // const myAchievements: IAchievement[] = [
@@ -63,32 +96,6 @@ export const myInformation: IInformation[] = [
 //   },
 // ];
 
-// const githubUrl = 'https://github.com/aboqasem';
-// const githubRawContentUrl = 'https://raw.githubusercontent.com/aboqasem';
-// const previewUrlOf = (repo: string) => `${githubRawContentUrl}/${repo}/main/docs/preview.webm`;
-// const myProjects: IProject[] = [
-//   {
-//     title: 'AI Luminance',
-//     description: 'Simple color luminance detector using neural networks from brain.js.',
-//     preview: previewUrlOf('ai-luminance'),
-//     url: 'https://ai-luminance.aboqasem.dev/',
-//     sourceCode: `${githubUrl}/ai-luminance`,
-//   },
-//   {
-//     title: 'Time Progress',
-//     description: 'Various time progress bars.',
-//     preview: previewUrlOf('time_progress'),
-//     url: 'https://time-progress.aboqasem.dev/',
-//     sourceCode: `${githubUrl}/time_progress`,
-//   },
-//   {
-//     title: 'Ants and Bugs',
-//     description: 'Simple Java Swing simulation game applying design patterns.',
-//     preview: previewUrlOf('ants-and-bugs'),
-//     sourceCode: `${githubUrl}/ants-and-bugs`,
-//   },
-// ];
-
 // const myContacts: IContact[] = [
 //   {
 //     name: 'Call me',
@@ -115,5 +122,3 @@ export const myInformation: IInformation[] = [
 //     color: '#24292E',
 //   },
 // ];
-
-export default {};

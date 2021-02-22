@@ -14,7 +14,7 @@ import {
 } from 'react-icons/si';
 import { GoMarkGithub } from 'react-icons/go';
 import { FaVuejs } from 'react-icons/fa';
-import { IInformation } from './types';
+import { IInformation, IProject } from './types';
 
 export const myInformation: IInformation[] = [
   {
@@ -50,6 +50,51 @@ export const myTechnologies = [
   SiReact,
   FaVuejs,
   SiArduino,
+];
+
+const githubUrl = 'https://github.com/aboqasem';
+const githubRawContentUrl = 'https://raw.githubusercontent.com/aboqasem';
+const previewUrlOf = (repo: string) => `${githubRawContentUrl}/${repo}/main/docs/preview.webm`;
+const previewMp4UrlOf = (repo: string) => `${githubRawContentUrl}/${repo}/main/docs/preview.mp4`;
+
+export const myProjects: IProject[] = [
+  {
+    title: 'AI Luminance',
+    description: 'Simple color luminance detector using neural networks from brain.js.',
+    preview: previewUrlOf('ai-luminance'),
+    previewMp4: previewMp4UrlOf('ai-luminance'),
+    url: 'https://ai-luminance.aboqasem.dev/',
+    sourceCode: `${githubUrl}/ai-luminance`,
+  },
+  {
+    title: 'Time Progress',
+    description: 'Various time progress bars.',
+    preview: previewUrlOf('time_progress'),
+    previewMp4: previewMp4UrlOf('time_progress'),
+    url: 'https://time-progress.aboqasem.dev/',
+    sourceCode: `${githubUrl}/time_progress`,
+  },
+  {
+    title: 'Ants and Bugs',
+    description: 'Simple Java Swing simulation game applying design patterns.',
+    preview: previewUrlOf('ants-and-bugs'),
+    previewMp4: previewMp4UrlOf('ants-and-bugs'),
+    sourceCode: `${githubUrl}/ants-and-bugs`,
+  },
+  {
+    title: 'FiRecorder',
+    description: 'A simple sound recorder/player with Firebase auth and storage.',
+    preview: previewUrlOf('firecorder'),
+    previewMp4: previewMp4UrlOf('firecorder'),
+    sourceCode: `${githubUrl}/firecorder`,
+  },
+  {
+    title: 'International Checkers',
+    description: 'Simple C++ implementation of international checkers in the command-line.',
+    preview: previewUrlOf('international-checkers'),
+    previewMp4: previewMp4UrlOf('international-checkers'),
+    sourceCode: `${githubUrl}/international-checkers`,
+  },
 ];
 
 // const myAchievements: IAchievement[] = [

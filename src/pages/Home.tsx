@@ -1,8 +1,12 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import RainStage from '../components/RainStage';
 import { myTechnologies } from '../common/data';
 
 const Home = (): JSX.Element => {
+  useEffect(() => {
+    document.title = 'Mohammad Al Zouabi';
+  }, []);
+
   return (
     <>
       <RainStage icons={myTechnologies} />

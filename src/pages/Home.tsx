@@ -11,7 +11,7 @@ const Home = (): JSX.Element => {
     <>
       <RainStage icons={myTechnologies} />
       <div
-        className="p-5 rounded-xl shadow-md bg-gradient-to-br from-vista-white via-transparent to-vista-white md:shadow-xl sm:p-7 md:p-10"
+        className="p-5 rounded-xl shadow-md bg-gradient-to-tr from-vista-white md:shadow-xl sm:p-7 md:p-10"
         style={{ backdropFilter: 'blur(8px)' }}
       >
         <p className="text-dallas text-xl mb-4 sm:text-2xl md:text-3xl">Hey, I'm Mohammad Al Zouabi.</p>

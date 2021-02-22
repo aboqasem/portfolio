@@ -1,20 +1,26 @@
 /* eslint-disable no-param-reassign */
 import React, { Component, createRef, RefObject } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { myTechnologies } from '../common/data';
+import { IconType } from 'react-icons';
+
+interface IProps {
+  icons: IconType[];
+}
 
 interface IState {
   ticker?: number;
 }
-export class RainStage extends Component<Record<string, unknown>, IState> {
+
+export class RainStage extends Component<IProps, IState> {
   private stageRef: RefObject<HTMLDivElement>;
 
-  constructor(props: Record<string, unknown>) {
+  constructor(props: IProps) {
     super(props);
     this.stageRef = createRef<HTMLDivElement>();
   }
 
   componentDidMount = (): void => {
+    const { icons } = this.props;
     const { stageRef } = this;
     const { current: stage } = stageRef;
     const { random: rand } = Math;
@@ -23,9 +29,9 @@ export class RainStage extends Component<Record<string, unknown>, IState> {
       const { offsetWidth: stageWidth, offsetHeight: stageHeight } = stage;
 
       // initialize randomly placed drops on screens
-      const drops = myTechnologies.map((t) => {
+      const drops = icons.map((i) => {
         // covert react element to html string
-        const svg = renderToStaticMarkup(t({}));
+        const svg = renderToStaticMarkup(i({}));
         // create a new drop
         const drop = document.createElement('div');
         drop.innerHTML = svg;

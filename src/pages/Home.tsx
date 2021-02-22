@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import RainStage from '../components/RainStage';
+import { myTechnologies } from '../common/data';
 
 export class Home extends Component {
   render = (): JSX.Element => {
     return (
       <>
-        <RainStage />
+        <RainStage icons={myTechnologies} />
         <div className="p-5 rounded-xl shadow-md md:shadow-xl sm:p-7 md:p-10" style={{ backdropFilter: 'blur(8px)' }}>
           <p className="text-xl  mb-4 sm:text-2xl md:text-3xl" style={{ color: '#664D33' }}>
             Hey, I'm Mohammad Al Zouabi.

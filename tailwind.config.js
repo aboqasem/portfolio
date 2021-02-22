@@ -3,6 +3,14 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {},
+    textColor: (theme) => ({
+      ...theme('colors'),
+      dallas: '#664A2D',
+    }),
+    gradientColorStops: (theme) => ({
+      ...theme('colors'),
+      'vista-white': '#E1DFDC',
+    }),
   },
   variants: {
     extend: {},

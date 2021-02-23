@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import CenteredSection from './components/CenteredSection';
 import Navbar from './components/Navbar';
 import './index.css';
-import About from './pages/About';
+import ErrorBoundary from './pages/ErrorBoundary';
 import Home from './pages/Home';
-import NotFound from './pages/NotFound';
+import Loading from './pages/Loading';
+
+const About = React.lazy(() => import('./pages/About'));
+const NotFound = React.lazy(() => import('./pages/NotFound'));
 
 const App = (): JSX.Element => {
   return (
@@ -13,11 +16,15 @@ const App = (): JSX.Element => {
       <BrowserRouter>
         <Navbar />
         <CenteredSection>
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/about" component={About} />
-            <Route path="*" component={NotFound} />
-          </Switch>
+          <ErrorBoundary>
+            <Suspense fallback={<Loading />}>
+              <Switch>
+                <Route exact path="/" component={Home} />
+                <Route exact path="/about" component={About} />
+                <Route path="*" component={NotFound} />
+              </Switch>
+            </Suspense>
+          </ErrorBoundary>
         </CenteredSection>
       </BrowserRouter>
     </div>

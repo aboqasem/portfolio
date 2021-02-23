@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import RainStage from '../components/RainStage';
-import { myTechnologies } from '../common/data';
+import { myContacts, myTechnologies } from '../common/data';
 
 const Home = (): JSX.Element => {
   useEffect(() => {
@@ -18,6 +18,14 @@ const Home = (): JSX.Element => {
         <p className="text-lg sm:text-xl md:text-2xl">
           An enthusiastic software developer who stands for quality, consistency, and attention to details.
         </p>
+
+        <div className="grid text-2xl grid-flow-col-dense justify-evenly mt-4 sm:text-4xl">
+          {myContacts.map((c, i) => (
+            <a href={c.url} key={`myContacts@${i}`} className={`hover:text-${c.color}`}>
+              <c.icon />
+            </a>
+          ))}
+        </div>
       </div>
     </>
   );

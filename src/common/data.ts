@@ -11,27 +11,38 @@ import {
   SiFlutter,
   SiReact,
   SiRust,
+  SiLinkedin,
+  SiWhatsapp,
+  SiGmail,
 } from 'react-icons/si';
 import { GoMarkGithub } from 'react-icons/go';
 import { FaVuejs } from 'react-icons/fa';
-import { IInformation, IProject } from './types';
+import { IContact, IProject } from './types';
 
-export const myInformation: IInformation[] = [
+export const myContacts: IContact[] = [
   {
-    icon: 'Home', // TODO: svg
-    text: 'From Daraa, Syria',
+    name: 'GitHub',
+    icon: GoMarkGithub,
+    url: 'https://github.com/aboqasem',
+    color: 'blue-charcoal',
   },
   {
-    icon: 'PersonPin', // TODO: svg
-    text: 'In Cyberjaya, Malaysia',
+    name: 'LinkedIn',
+    icon: SiLinkedin,
+    url: 'https://www.linkedin.com/in/aboqasem/',
+    color: 'denim',
   },
   {
-    icon: 'LocalLibrary', // TODO: svg
-    text: "Pursuing Bachelor's at Multimedia University",
+    name: 'WhatsApp',
+    icon: SiWhatsapp,
+    url: 'https://wa.me/60176495945',
+    color: 'spring-green',
   },
   {
-    icon: 'Language', // TODO: svg
-    text: 'Arabic, English, and basics of Turkish',
+    name: 'Email',
+    icon: SiGmail,
+    url: 'mailto:mb.alzouabi@gmail.com',
+    color: 'flamingo',
   },
 ];
 
@@ -97,6 +108,25 @@ export const myProjects: IProject[] = [
   },
 ];
 
+// export const myInformation: IInformation[] = [
+//   {
+//     icon: 'Home', // TODO: svg
+//     text: 'From Daraa, Syria',
+//   },
+//   {
+//     icon: 'PersonPin', // TODO: svg
+//     text: 'In Cyberjaya, Malaysia',
+//   },
+//   {
+//     icon: 'LocalLibrary', // TODO: svg
+//     text: "Pursuing Bachelor's at Multimedia University",
+//   },
+//   {
+//     icon: 'Language', // TODO: svg
+//     text: 'Arabic, English, and basics of Turkish',
+//   },
+// ];
+
 // const myAchievements: IAchievement[] = [
 //   {
 //     from: 'Multimedia University',
@@ -138,32 +168,5 @@ export const myProjects: IProject[] = [
 //     certificate: 'Bachelor of Computer Science (Software Engineering)',
 //     school: 'Multimedia University',
 //     location: 'Cyberjaya, Malaysia',
-//   },
-// ];
-
-// const myContacts: IContact[] = [
-//   {
-//     name: 'Call me',
-//     icon: 'CallTwoTone', // TODO: svg
-//     url: 'tel:+60176495945',
-//     color: '#000',
-//   },
-//   {
-//     name: 'Email',
-//     icon: 'MailOutline', // TODO: svg
-//     url: 'mailto:mb.alzouabi@gmail.com',
-//     color: '#E65A4D',
-//   },
-//   {
-//     name: 'WhatsApp',
-//     icon: 'WhatsApp', // TODO: svg
-//     url: 'https://wa.me/60176495945',
-//     color: '#05E776',
-//   },
-//   {
-//     name: 'GitHub',
-//     icon: 'GitHub', // TODO: svg
-//     url: 'https://github.com/aboqasem',
-//     color: '#24292E',
 //   },
 // ];

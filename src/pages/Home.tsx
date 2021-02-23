@@ -12,7 +12,7 @@ const Home = (): JSX.Element => {
       <RainStage icons={myTechnologies} />
       <div
         className="p-5 rounded-xl shadow-md bg-gradient-to-tr from-vista-white md:shadow-xl sm:p-7 md:p-10"
-        style={{ backdropFilter: 'blur(8px)' }}
+        style={{ backdropFilter: 'blur(8px)', WebkitBackdropFilter: 'blur(8px)' }}
       >
         <p className="text-dallas text-xl mb-4 sm:text-2xl md:text-3xl">Hey, I'm Mohammad Al Zouabi.</p>
         <p className="text-lg sm:text-xl md:text-2xl">

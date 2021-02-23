@@ -7,7 +7,7 @@ const Navbar = (): JSX.Element => {
   return (
     <header
       className="bg-transparent px-6 py-3 flex flex-wrap md:px-14 md:py-4"
-      style={{ backdropFilter: 'blur(8px)' }}
+      style={{ backdropFilter: 'blur(8px)', WebkitBackdropFilter: 'blur(8px)' }}
     >
       <div className="flex-1 flex items-center select-none">
         <Link to="/" className={`text-xl sm:text-2xl md:text-3xl ${pathname === '/' && 'pointer-events-none'}`}>

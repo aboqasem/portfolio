@@ -1,24 +1,22 @@
 {
   "name": "aboqasem.dev",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
   "dependencies": {
-    "@material-ui/core": "^4.11.3",
-    "@material-ui/icons": "^4.11.2",
-    "@material-ui/styles": "^4.11.3",
+    "@craco/craco": "^6.1.1",
     "@types/node": "^14.14.25",
     "@types/react": "^17.0.1",
     "@types/react-dom": "^17.0.0",
-    "particlesjs": "^2.2.3",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-icons": "^4.2.0",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.2",
-    "react-scroll": "^1.8.1",
     "typescript": "^4.1.4"
   },
   "scripts": {
-    "start": "PORT=8000 react-scripts start",
-    "build": "react-scripts build",
+    "start": "craco start",
+    "build": "craco build",
     "lint": "eslint src/ --ext .js,.jsx,.ts,.tsx --fix --quiet"
   },
   "eslintConfig": {
@@ -40,14 +38,19 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "@tailwindcss/postcss7-compat": "^2.0.3",
+    "@types/react-router-dom": "^5.1.7",
     "@typescript-eslint/eslint-plugin": "^4.15.0",
+    "autoprefixer": "^9.8.6",
     "eslint-config-airbnb-typescript": "^12.3.1",
     "eslint-config-prettier": "^7.2.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-json": "^2.1.2",
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-react": "^7.22.0",
+    "postcss": "^7.0.35",
     "prettier": "^2.2.1",
-    "prettier-eslint": "^12.0.0"
+    "prettier-eslint": "^12.0.0",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.3"
   }
 }

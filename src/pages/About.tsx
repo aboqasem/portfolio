@@ -12,7 +12,7 @@ const About = (): JSX.Element => {
         <div className="text-dallas text-3xl self-center text-center mb-5 md:text-4xl">Some Mini Side Projects</div>
         {myProjects.map((p, i) => (
           <a href={p.sourceCode || p.url} target="_blank" rel="noreferrer" key={`myProjects@${i}`}>
-            <video className="object-cover w-full h-full rounded-xl shadow-xl" autoPlay loop muted>
+            <video className="object-cover w-full h-full rounded-xl shadow-xl" autoPlay loop muted playsInline>
               <source src={p.preview} type="video/webm" />
               {p.previewMp4 && <source src={p.previewMp4} type="video/mp4" />}
               Your browser does not support the <code>video</code> element.

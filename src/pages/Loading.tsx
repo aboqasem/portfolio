@@ -1,10 +1,11 @@
 import React from 'react';
+import LoadingIcon from '../svgs/LoadingIcon';
 
 const Loading = (): JSX.Element => {
   return (
-    <>
-      <p className="text-3xl text-center animate-pulse sm:text-5xl md:text-6xl">Loading...</p>
-    </>
+    <div className="flex justify-center">
+      <LoadingIcon className="w-16 h-16 animate-spin sm:w-20 sm:h-20 md:w-24 md:h-24" />
+    </div>
   );
 };
 

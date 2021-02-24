@@ -14,6 +14,10 @@ import {
   SiLinkedin,
   SiWhatsapp,
   SiGmail,
+  SiTypescript,
+  SiTailwindcss,
+  SiHtml5,
+  SiCss3,
 } from 'react-icons/si';
 import { GoMarkGithub } from 'react-icons/go';
 import { FaVuejs } from 'react-icons/fa';
@@ -48,6 +52,7 @@ export const myContacts: IContact[] = [
 
 export const myTechnologies = [
   SiJavascript,
+  SiTypescript,
   SiDart,
   SiJava,
   SiCplusplus,
@@ -59,6 +64,9 @@ export const myTechnologies = [
   SiMongodb,
   SiFlutter,
   SiReact,
+  SiHtml5,
+  SiCss3,
+  SiTailwindcss,
   FaVuejs,
   SiArduino,
 ];

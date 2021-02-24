@@ -4,6 +4,10 @@ set -e
 
 npm run build
 
-netlify deploy --dir=build --prod
+if [ $# -eq 0 ]; then
+  netlify deploy --dir=build --prod
+else
+  netlify deploy --dir=build --prod --message "$1"
+fi
 
 rm -rf build/

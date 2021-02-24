@@ -10,7 +10,7 @@ const Navbar = (): JSX.Element => {
       style={{ backdropFilter: 'blur(8px)', WebkitBackdropFilter: 'blur(8px)' }}
     >
       <div className="flex-1 flex items-center select-none">
-        <Link to="/" className={`text-xl sm:text-2xl md:text-3xl ${pathname === '/' && 'pointer-events-none'}`}>
+        <Link to="/" className={`text-xl sm:text-2xl md:text-3xl ${pathname === '/' ? 'pointer-events-none' : ''}`}>
           aboqasem<p className="animate-bounce inline-block pl-2">🦅</p>
         </Link>
       </div>
@@ -18,12 +18,15 @@ const Navbar = (): JSX.Element => {
       <nav className="w-auto flex text-gray-700 select-none">
         <ul className="text-lg flex sm:text-xl md:text-2xl">
           <li>
-            <Link to="/" className={`p-3 block md:p-4 hover:text-gray-900 ${pathname === '/' && 'hidden'}`}>
+            <Link to="/" className={`p-3 block md:p-4 hover:text-gray-900 ${pathname === '/' ? 'hidden' : ''}`}>
               Home
             </Link>
           </li>
           <li>
-            <Link to="/about" className={`p-3 block md:p-4 hover:text-gray-900 ${pathname === '/about' && 'hidden'}`}>
+            <Link
+              to="/about"
+              className={`p-3 block md:p-4 hover:text-gray-900 ${pathname === '/about' ? 'hidden' : ''}`}
+            >
               About
             </Link>
           </li>

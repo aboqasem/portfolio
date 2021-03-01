@@ -13,7 +13,7 @@ const About = (): JSX.Element => {
       <div className="grid gap-4 grid-cols-1 auto-rows-min md:grid-cols-2 md:gap-2">
         <div className="text-dallas text-3xl self-center text-center mb-5 md:text-4xl">Some Mini Side Projects</div>
         {myProjects.map((p, i) => (
-          <div className="relative" key={`myProjects@${i}`}>
+          <div className="relative" key={i}>
             <video className="object-cover w-full h-full rounded-xl shadow-xl" autoPlay loop muted playsInline>
               <source src={p.preview} type="video/webm" />
               {p.previewMp4 && <source src={p.previewMp4} type="video/mp4" />}

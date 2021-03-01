@@ -21,13 +21,7 @@ const Home = (): JSX.Element => {
 
         <div className="grid text-2xl grid-flow-col-dense justify-evenly mt-4 sm:text-4xl">
           {myContacts.map((c, i) => (
-            <a
-              href={c.url}
-              target="_blank"
-              rel="noreferrer"
-              key={`myContacts@${i}`}
-              className={`hover:text-${c.color}`}
-            >
+            <a href={c.url} target="_blank" rel="noreferrer" key={i} className={`hover:text-${c.color}`}>
               <c.icon />
             </a>
           ))}

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import RainStage from '../components/RainStage';
 import { myContacts, myTechnologies } from '../common/data';
+import CollapsibleResume from '../components/CollapsibleResume';
 
 const Home = (): JSX.Element => {
   useEffect(() => {
@@ -28,6 +29,7 @@ const Home = (): JSX.Element => {
             ))}
           </div>
         </div>
+        <CollapsibleResume />
       </div>
     </>
   );

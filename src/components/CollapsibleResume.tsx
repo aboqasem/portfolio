@@ -6,7 +6,7 @@ const CollapsibleResume = (): JSX.Element => {
   const [isResumeShown, setIsResumeShown] = useState(false);
   const resumeRef = useRef<HTMLDivElement>(null);
 
-  const showResume = () => {
+  const toggleResume = () => {
     setIsResumeShown((state) => !state);
     resumeRef.current?.classList.toggle('hidden');
   };
@@ -21,7 +21,7 @@ const CollapsibleResume = (): JSX.Element => {
         className="w-full flex flex-col items-center text-2xl rounded-b-lg pt-3 cursor-pointer sm:text-3xl md:text-4xl"
         title={`${!isResumeShown ? 'Show Resume' : 'Hide Resume'}`}
         style={{ backgroundColor: 'rgba(0, 0, 0, 0.03)' }}
-        onClick={showResume}
+        onClick={toggleResume}
       >
         {!isResumeShown ? <IoIosArrowDown className="animate-bounce" /> : <IoIosArrowUp className="animate-bounce" />}
       </div>

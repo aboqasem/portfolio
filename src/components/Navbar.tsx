@@ -11,7 +11,7 @@ const Navbar = (): JSX.Element => {
     >
       <div className="flex-1 flex items-center select-none">
         <Link to="/" className={`text-xl sm:text-2xl md:text-3xl ${pathname === '/' ? 'pointer-events-none' : ''}`}>
-          aboqasem<p className="animate-bounce inline-block pl-2">🦅</p>
+          aboqasem
         </Link>
       </div>
 

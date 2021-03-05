@@ -18,6 +18,9 @@ module.exports = {
       gradientColorStops: {
         'vista-white': '#E1DFDC',
       },
+      transitionProperty: {
+        spacing: 'margin, padding',
+      },
     },
   },
   variants: {

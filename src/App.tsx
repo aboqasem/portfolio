@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import CenteredSection from './components/CenteredSection';
+import Center from './components/Center';
 import Navbar from './components/Navbar';
 import './index.css';
 import ErrorBoundary from './pages/ErrorBoundary';
@@ -15,7 +15,7 @@ const App = (): JSX.Element => {
     <div className="min-h-screen font-serif">
       <BrowserRouter>
         <Navbar />
-        <CenteredSection>
+        <Center>
           <ErrorBoundary>
             <Suspense fallback={<Loading />}>
               <Switch>
@@ -25,7 +25,7 @@ const App = (): JSX.Element => {
               </Switch>
             </Suspense>
           </ErrorBoundary>
-        </CenteredSection>
+        </Center>
       </BrowserRouter>
     </div>
   );

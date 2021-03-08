@@ -5,7 +5,7 @@ interface IProps {
   children: ReactNode | ReactNode[];
 }
 
-const CenteredSection = (props: IProps): JSX.Element => {
+const Center = (props: IProps): JSX.Element => {
   const { pathname } = useLocation();
 
   return (
@@ -13,4 +13,4 @@ const CenteredSection = (props: IProps): JSX.Element => {
   );
 };
 
-export default CenteredSection;
+export default Center;

@@ -43,9 +43,17 @@ export class RainStage extends Component<IProps, IState> {
         return drop;
       });
 
+      // rearrange overlapping drops
+      drops.forEach((drop) => {
+        while (RainStage.anyOverlapping(drops, drop)) {
+          drop.style.marginTop = `${rand() * stageHeight}px`;
+          drop.style.marginLeft = `${rand() * stageWidth}px`;
+        }
+      });
+
       // start ticking
       this.setState({
-        ticker: setInterval(this.tick, 10, stage, drops),
+        ticker: setInterval(RainStage.tick, 10, stage, drops),
       });
     }
   };
@@ -57,8 +65,30 @@ export class RainStage extends Component<IProps, IState> {
     }
   };
 
-  tick = (stage: HTMLDivElement, drops: HTMLDivElement[]): void => {
+  private static areOverlapping = (d1: HTMLDivElement, d2: HTMLDivElement): boolean => {
+    // if the same drop, skip
+    if (d1 === d2) return false;
+
+    const tl1 = { x: +d1.style.marginLeft.replace('px', ''), y: +d1.style.marginTop.replace('px', '') };
+    const br1 = { x: d1.offsetWidth + tl1.x, y: d1.offsetHeight + tl1.y };
+    const tl2 = { x: +d2.style.marginLeft.replace('px', ''), y: +d2.style.marginTop.replace('px', '') };
+    const br2 = { x: d2.offsetWidth + tl2.x, y: d2.offsetHeight + tl2.y };
+
+    // if one rectangle is beside other
+    if (tl1.x >= br2.x || tl2.x >= br1.x) return false;
+    // if one rectangle is above other
+    if (tl1.y >= br2.y || tl2.y >= br1.y) return false;
+
+    return true;
+  };
+
+  private static anyOverlapping = (drops: HTMLDivElement[], drop: HTMLDivElement): boolean => {
+    return drops.some((drop2) => RainStage.areOverlapping(drop, drop2));
+  };
+
+  private static tick = (stage: HTMLDivElement, drops: HTMLDivElement[]): void => {
     const { offsetWidth: stageWidth, offsetHeight: stageHeight } = stage;
+    const { random: rand } = Math;
 
     drops.forEach((drop) => {
       const [marginTop, marginLeft] = [
@@ -75,8 +105,10 @@ export class RainStage extends Component<IProps, IState> {
       }
       // if the stage gets smaller then make sure every drop is inside
       if (marginLeft >= stageWidth) {
-        drop.style.marginTop = `-${dropHeight}px`;
-        drop.style.marginLeft = `${Math.random() * stageWidth}px`;
+        drop.style.marginLeft = `${rand() * stageWidth}px`;
+        while (RainStage.anyOverlapping(drops, drop)) {
+          drop.style.marginLeft = `${rand() * stageWidth}px`;
+        }
       }
     });
   };

@@ -2,13 +2,13 @@ import React, { Suspense } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Center from './components/Center';
-import ErrorBoundary from './pages/ErrorBoundary';
-import Loading from './pages/Loading';
+import ErrorBoundary from './components/ErrorBoundary';
+import Loading from './components/Loading';
 import './index.css';
 
 const Home = React.lazy(() => import('./pages/Home'));
 const About = React.lazy(() => import('./pages/About'));
-const NotFound = React.lazy(() => import('./pages/NotFound'));
+const NotFound = React.lazy(() => import('./components/NotFound'));
 
 const App = (): JSX.Element => {
   return (

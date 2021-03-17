@@ -36,10 +36,14 @@ export class RainStage extends Component<IProps, IState> {
         const drop = document.createElement('div');
         drop.innerHTML = svg;
         drop.classList.add('fixed', 'text-2xl', 'sm:text-3xl', 'md:text-4xl');
-        drop.style.marginTop = `${rand() * stageHeight}px`;
-        drop.style.marginLeft = `${rand() * stageWidth}px`;
         // add drop to stage
         stage.appendChild(drop);
+        // retrieve width after appending
+        const { offsetWidth: dropWidth } = drop;
+        drop.style.marginTop = `${rand() * stageHeight}px`;
+        // make sure drop is inside stage
+        drop.style.marginLeft = `${rand() * (stageWidth - dropWidth)}px`;
+
         return drop;
       });
 

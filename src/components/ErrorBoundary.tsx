@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 import React from 'react';
+import Center from './Center';
 
 interface IState {
   hasError: boolean;
@@ -24,7 +25,11 @@ class ErrorBoundary extends React.Component<Record<string, unknown>, IState> {
 
   render = (): React.ReactNode => {
     if (this.state.hasError) {
-      return <p className="text-3xl text-center text-red-800 sm:text-5xl md:text-6xl">Something went wrong...</p>;
+      return (
+        <Center>
+          <p className="text-3xl text-center text-red-800 sm:text-5xl md:text-6xl">Something went wrong...</p>
+        </Center>
+      );
     }
 
     return this.props.children;

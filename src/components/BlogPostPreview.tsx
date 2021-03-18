@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { IBlogPost } from '../common/types';
+import AvatarLink from './AvatarLink';
 
 interface IProps {
   blogPost: IBlogPost;
@@ -31,15 +32,7 @@ const BlogPostPreview = (props: IProps): JSX.Element => {
         </header>
 
         <footer className="flex items-center justify-between">
-          <a
-            className="flex items-center no-underline hover:underline text-black"
-            href="https://github.com/aboqasem"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <img alt="Me" className="block rounded-full h-8" src="https://github.com/aboqasem.png?size=96" />
-            <p className="ml-2 text-sm">aboqasem</p>
-          </a>
+          <AvatarLink />
           <p className="text-gray-700 text-sm">{`${d.toDateString()}`}</p>
         </footer>
       </article>

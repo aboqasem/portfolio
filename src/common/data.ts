@@ -21,7 +21,7 @@ import {
 } from 'react-icons/si';
 import { GoMarkGithub } from 'react-icons/go';
 import { FaVuejs } from 'react-icons/fa';
-import { IContact, IProject } from './types';
+import { IBlogPost, IContact, IProject } from './types';
 
 export const myContacts: IContact[] = [
   {
@@ -113,6 +113,15 @@ export const myProjects: IProject[] = [
     preview: previewUrlOf('international-checkers'),
     previewMp4: previewMp4UrlOf('international-checkers'),
     sourceCode: `${githubUrl}/international-checkers`,
+  },
+];
+
+export const blogPosts: IBlogPost[] = [
+  {
+    _id: 'SGVsbG8sIFdvcmxkIQ==',
+    title: 'Hello, World!',
+    content: '## Hello, Everyone.',
+    createdAt: new Date('2021-03-18T00:27:18.178Z'),
   },
 ];
 

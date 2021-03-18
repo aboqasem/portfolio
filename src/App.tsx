@@ -1,7 +1,6 @@
 import React, { Suspense } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Center from './components/Center';
 import ErrorBoundary from './components/ErrorBoundary';
 import Loading from './components/Loading';
 import './index.css';
@@ -16,19 +15,17 @@ const App = (): JSX.Element => {
     <div className="min-h-screen font-serif">
       <BrowserRouter>
         <Navbar />
-        <Center>
-          <ErrorBoundary>
-            <Suspense fallback={<Loading />}>
-              <Switch>
-                <Route exact path="/" component={Home} />
-                <Route exact path="/about" component={About} />
-                <Route exact path="/blog" component={Blog} />
-                <Route exact path="/blog/:id" component={Blog} />
-                <Route path="*" component={NotFound} />
-              </Switch>
-            </Suspense>
-          </ErrorBoundary>
-        </Center>
+        <ErrorBoundary>
+          <Suspense fallback={<Loading />}>
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route exact path="/about" component={About} />
+              <Route exact path="/blog" component={Blog} />
+              <Route exact path="/blog/:id" component={Blog} />
+              <Route path="*" component={NotFound} />
+            </Switch>
+          </Suspense>
+        </ErrorBoundary>
       </BrowserRouter>
     </div>
   );

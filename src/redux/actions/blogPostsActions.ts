@@ -13,7 +13,7 @@ export const fetchBlogPosts = () => async (dispatch: Dispatch<BlogPostsDispatchT
     dispatch({
       type: BLOG_POSTS_LOADING,
     });
-    const res = await fetch('https://api-aboqasem.herokuapp.com/posts');
+    const res = await fetch(`${process.env.API_URL || 'https://api-aboqasem.herokuapp.com/'}posts`);
     const posts: IBlogPostDB[] = await res.json();
     dispatch({
       type: BLOG_POSTS_SUCCESS,

@@ -8,7 +8,7 @@ interface IProps {
 }
 
 const BlogPostPreview = (props: IProps): JSX.Element => {
-  const { _id: id, title, img, createdAt: d } = props.blogPost;
+  const { id, title, img, createdAt: d } = props.blogPost;
 
   return (
     <div className="w-full overflow-hidden rounded-lg shadow-lg">

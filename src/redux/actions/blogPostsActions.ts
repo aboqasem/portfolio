@@ -1,5 +1,6 @@
 import { Dispatch } from 'redux';
 import { IBlogPostDB } from '../../common/types';
+import { apiUrl } from '../../constants';
 import {
   BlogPostsDispatchTypes,
   BLOG_POSTS_FAIL,
@@ -13,8 +14,10 @@ export const fetchBlogPosts = () => async (dispatch: Dispatch<BlogPostsDispatchT
     dispatch({
       type: BLOG_POSTS_LOADING,
     });
-    const res = await fetch(`${process.env.API_URL || 'https://api-aboqasem.herokuapp.com/'}posts`);
+
+    const res = await fetch(`${apiUrl}posts`);
     const posts: IBlogPostDB[] = await res.json();
+
     dispatch({
       type: BLOG_POSTS_SUCCESS,
       payload: posts.map((post) => ({

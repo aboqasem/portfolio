@@ -17,11 +17,19 @@ export interface IProject {
 }
 
 export interface IBlogPost {
-  _id: string;
+  id: string;
   img?: string;
   title: string;
   content: string;
   createdAt: Date;
+}
+
+export interface IBlogPostDB {
+  _id: string;
+  img?: string;
+  title: string;
+  content: string;
+  createdAt: string;
 }
 
 // export interface IInformation {

@@ -1,14 +1,18 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import { useParams } from 'react-router-dom';
-import { blogPosts } from '../../common/data';
+import { useSelector } from 'react-redux';
 import Center from '../../components/Center';
 import AvatarLink from '../../components/AvatarLink';
+import { RootStore } from '../../redux/store';
+import Loading from '../../components/Loading';
 
 const BlogPost = (): JSX.Element => {
   const { id } = useParams<{ id: string }>();
-  const post = blogPosts.find(({ _id: i }) => i === id);
+  const { areLoading, blogPosts } = useSelector((state: RootStore) => state.blogPosts);
+  const post = blogPosts.find(({ id: i }) => i === id);
 
+  if (areLoading) return <Loading />;
   return (
     <>
       {post ? (
@@ -22,6 +26,7 @@ const BlogPost = (): JSX.Element => {
             <AvatarLink lg />
             <p className="text-gray-700 text-base md:text-lg">{`${post.createdAt.toDateString()}`}</p>
           </div>
+          <hr className="border-gray-400" />
           <Center>
             <article className="prose prose-lg sm:prose-xl">
               <ReactMarkdown>{post.content || ''}</ReactMarkdown>

@@ -115,7 +115,6 @@ export const myProjects: IProject[] = [
     sourceCode: `${githubUrl}/international-checkers`,
   },
 ];
-
 // export const myInformation: IInformation[] = [
 //   {
 //     icon: 'Home', // TODO: svg

@@ -4,19 +4,19 @@ export const BLOG_POSTS_LOADING = 'BLOG_POSTS_LOADING';
 export const BLOG_POSTS_FAIL = 'BLOG_POSTS_FAIL';
 export const BLOG_POSTS_SUCCESS = 'BLOG_POSTS_SUCCESS';
 
-export type BlogPosts = IBlogPost[];
+export type BlogPosts = Map<string, IBlogPost>;
 
-export interface BlogPostsLoading {
+interface IBlogPostsLoading {
   type: typeof BLOG_POSTS_LOADING;
 }
 
-export interface BlogPostsFail {
+interface IBlogPostsFail {
   type: typeof BLOG_POSTS_FAIL;
 }
 
-export interface BlogPostsSuccess {
+interface IBlogPostsSuccess {
   type: typeof BLOG_POSTS_SUCCESS;
-  payload: IBlogPost[];
+  payload: BlogPosts;
 }
 
-export type BlogPostsDispatchTypes = BlogPostsLoading | BlogPostsFail | BlogPostsSuccess;
+export type BlogPostsDispatchTypes = IBlogPostsLoading | IBlogPostsFail | IBlogPostsSuccess;

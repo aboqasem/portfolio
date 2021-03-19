@@ -8,7 +8,6 @@ import {
   BLOG_POSTS_SUCCESS,
 } from './blogPostsActionTypes';
 
-// eslint-disable-next-line import/prefer-default-export
 export const fetchBlogPosts = () => async (dispatch: Dispatch<BlogPostsDispatchTypes>): Promise<void> => {
   try {
     dispatch({
@@ -20,14 +19,18 @@ export const fetchBlogPosts = () => async (dispatch: Dispatch<BlogPostsDispatchT
 
     dispatch({
       type: BLOG_POSTS_SUCCESS,
-      payload: posts.map((post) => ({
-        ...post,
-        // eslint-disable-next-line no-underscore-dangle
-        id: post._id,
-        // unescape newlines escaped by mongodb
-        content: post.content.replaceAll('\\n', '\n'),
-        createdAt: new Date(post.createdAt),
-      })),
+      payload: new Map(
+        posts.map((post) => [
+          post._id,
+          {
+            ...post,
+            id: post._id,
+            // unescape newlines escaped by mongodb
+            content: post.content.replaceAll('\\n', '\n'),
+            createdAt: new Date(post.createdAt),
+          },
+        ]),
+      ),
     });
   } catch (e) {
     dispatch({

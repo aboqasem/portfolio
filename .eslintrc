@@ -12,7 +12,6 @@
   "env": {
     "browser": true,
     "es6": true
-
   },
   "globals": {
     "Atomics": "readonly",
@@ -28,9 +27,11 @@
     "project": "./tsconfig.json"
   },
   "rules": {
-    "no-plusplus":"off",
+    "no-plusplus": "off",
     "linebreak-style": "off",
     "import/extensions": "off",
+    "import/prefer-default-export": "off",
+    "no-underscore-dangle": "off",
     "prettier/prettier": [
       "error",
       {

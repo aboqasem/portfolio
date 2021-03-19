@@ -13,7 +13,7 @@ export interface IBlogPostsState {
 
 const initialState: IBlogPostsState = {
   areLoading: false,
-  blogPosts: [],
+  blogPosts: new Map([]),
 };
 
 const blogPostsReducer = (state = initialState, action: BlogPostsDispatchTypes): IBlogPostsState => {

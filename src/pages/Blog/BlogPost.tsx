@@ -10,7 +10,7 @@ import Loading from '../../components/Loading';
 const BlogPost = (): JSX.Element => {
   const { id } = useParams<{ id: string }>();
   const { areLoading, blogPosts } = useSelector((state: RootStore) => state.blogPosts);
-  const post = blogPosts.find(({ id: i }) => i === id);
+  const post = blogPosts.get(id);
 
   if (areLoading) return <Loading />;
   return (

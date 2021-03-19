@@ -11,7 +11,7 @@ const Blog = (): JSX.Element => {
   const { areLoading, blogPosts } = useSelector((state: RootStore) => state.blogPosts);
 
   useEffect(() => {
-    if (!areLoading && blogPosts.length === 0) {
+    if (!areLoading && blogPosts.size === 0) {
       dispatch(fetchBlogPosts());
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -20,10 +20,10 @@ const Blog = (): JSX.Element => {
   if (areLoading) return <Loading />;
   return (
     <Center>
-      {blogPosts.length ? (
+      {blogPosts.size ? (
         <div className="grid gap-4 grid-cols-1 md:grid-cols-2 md:gap-2">
-          {blogPosts.map((post) => {
-            return <BlogPostPreview key={post.id} blogPost={post} />;
+          {Array.from(blogPosts).map(([id, post]) => {
+            return <BlogPostPreview key={id} blogPost={post} />;
           })}
         </div>
       ) : (

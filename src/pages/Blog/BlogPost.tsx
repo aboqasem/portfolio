@@ -29,7 +29,7 @@ const BlogPost = (): JSX.Element => {
           <hr className="border-gray-400" />
           <Center>
             <article className="prose prose-lg sm:prose-xl">
-              <ReactMarkdown>{post.content || ''}</ReactMarkdown>
+              <ReactMarkdown>{post.content}</ReactMarkdown>
             </article>
           </Center>
         </div>

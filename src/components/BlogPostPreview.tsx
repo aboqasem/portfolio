@@ -8,7 +8,7 @@ interface IProps {
 }
 
 const BlogPostPreview = (props: IProps): JSX.Element => {
-  const { id, title, img, createdAt: d } = props.blogPost;
+  const { id, title, img, createdAt } = props.blogPost;
 
   return (
     <div className="w-full overflow-hidden rounded-lg shadow-lg">
@@ -33,7 +33,7 @@ const BlogPostPreview = (props: IProps): JSX.Element => {
 
         <footer className="flex items-center justify-between">
           <AvatarLink />
-          <p className="text-gray-700 text-sm">{`${d.toDateString()}`}</p>
+          <p className="text-gray-700 text-sm">{`${createdAt.toDateString()}`}</p>
         </footer>
       </article>
     </div>

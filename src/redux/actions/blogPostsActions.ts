@@ -21,6 +21,8 @@ export const fetchBlogPosts = () => async (dispatch: Dispatch<BlogPostsDispatchT
         ...post,
         // eslint-disable-next-line no-underscore-dangle
         id: post._id,
+        // unescape newlines escaped by mongodb
+        content: post.content.replaceAll('\\n', '\n'),
         createdAt: new Date(post.createdAt),
       })),
     });

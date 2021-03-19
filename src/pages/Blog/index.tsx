@@ -22,8 +22,8 @@ const Blog = (): JSX.Element => {
     <Center>
       {blogPosts.length ? (
         <div className="grid gap-4 grid-cols-1 md:grid-cols-2 md:gap-2">
-          {blogPosts.map((p) => {
-            return <BlogPostPreview key={p.id} blogPost={p} />;
+          {blogPosts.map((post) => {
+            return <BlogPostPreview key={post.id} blogPost={post} />;
           })}
         </div>
       ) : (

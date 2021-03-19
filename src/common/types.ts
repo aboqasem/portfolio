@@ -16,6 +16,22 @@ export interface IProject {
   sourceCode?: string;
 }
 
+export interface IBlogPost {
+  id: string;
+  img?: string;
+  title: string;
+  content: string;
+  createdAt: Date;
+}
+
+export interface IBlogPostDB {
+  _id: string;
+  img?: string;
+  title: string;
+  content: string;
+  createdAt: string;
+}
+
 // export interface IInformation {
 //   icon: string; // TODO: svg
 //   text: string;

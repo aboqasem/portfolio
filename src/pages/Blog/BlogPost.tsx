@@ -26,7 +26,7 @@ const BlogPost = (): JSX.Element => {
             <AvatarLink lg />
             <p className="text-gray-700 text-base md:text-lg">{`${post.createdAt.toDateString()}`}</p>
           </div>
-          <hr className="border-gray-400 sm:pb-6 md:pb-8" />
+          <hr className="border-gray-400 pb-4 sm:pb-6 md:pb-8" />
           <Center>
             <article className="prose prose-lg sm:prose-xl">
               <ReactMarkdown>{`# ${post.title}\n${post.content}`}</ReactMarkdown>

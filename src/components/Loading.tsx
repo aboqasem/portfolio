@@ -6,7 +6,7 @@ const Loading = (): JSX.Element => {
   return (
     <Center>
       <div className="flex justify-center">
-        <LoadingIcon className="w-16 h-16 animate-spin sm:w-20 sm:h-20 md:w-24 md:h-24" />
+        <LoadingIcon className="animate-spin w-1/6 h-1/6 sm:w-1/5 sm:h-1/5 md:w-1/4 md:h-1/4" />
       </div>
     </Center>
   );

@@ -1,6 +1,6 @@
 import { Dispatch } from 'redux';
 import { IBlogPostDB } from '../../common/types';
-import { apiUrl } from '../../constants';
+import { kApiUrl } from '../../constants';
 import {
   BlogPostsDispatchTypes,
   BLOG_POSTS_FAIL,
@@ -14,7 +14,7 @@ export const fetchBlogPosts = () => async (dispatch: Dispatch<BlogPostsDispatchT
       type: BLOG_POSTS_LOADING,
     });
 
-    const res = await fetch(`${apiUrl}posts`);
+    const res = await fetch(`${kApiUrl}posts`);
     const posts: IBlogPostDB[] = await res.json();
 
     dispatch({

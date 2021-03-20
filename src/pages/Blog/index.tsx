@@ -14,6 +14,12 @@ const Blog = (): JSX.Element => {
     if (!areLoading && blogPosts.size === 0) {
       dispatch(fetchBlogPosts());
     }
+
+    document.title = 'Blog — Mohammad Al Zouabi';
+
+    return () => {
+      document.title = 'Mohammad Al Zouabi';
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

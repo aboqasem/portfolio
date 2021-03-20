@@ -6,6 +6,10 @@ import Project from '../components/Project';
 const About = (): JSX.Element => {
   useEffect(() => {
     document.title = 'About — Mohammad Al Zouabi';
+
+    return () => {
+      document.title = 'Mohammad Al Zouabi';
+    };
   }, []);
 
   return (

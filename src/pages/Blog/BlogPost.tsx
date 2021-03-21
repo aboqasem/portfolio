@@ -24,7 +24,10 @@ const BlogPost = (): JSX.Element => {
           />
           <div className="flex items-center justify-between py-4 px-10">
             <AvatarLink lg />
-            <p className="text-gray-700 text-base md:text-lg">{`${post.createdAt.toDateString()}`}</p>
+            <p
+              className="text-gray-700 text-base md:text-lg"
+              title={post.createdAt.toString()}
+            >{`${post.createdAt.toDateString()}`}</p>
           </div>
           <hr className="border-gray-400 pb-4 sm:pb-6 md:pb-8" />
           <Center>

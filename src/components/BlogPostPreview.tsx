@@ -13,7 +13,7 @@ const BlogPostPreview = (props: IProps): JSX.Element => {
   return (
     <div className="w-full overflow-hidden rounded-lg shadow-lg">
       <Link to={`/blog/${id}`}>
-        <div className="w-full h-52 md:h-28">
+        <div className="w-full h-52 md:h-64">
           <img
             className="object-cover h-full w-full"
             src={img || `https://dummyimage.com/300x200/000000/E1DFDC&text=${title}`}
@@ -22,10 +22,10 @@ const BlogPostPreview = (props: IProps): JSX.Element => {
         </div>
       </Link>
 
-      <article className="p-4">
-        <header className="pb-4">
-          <p className="text-lg">
-            <Link className="no-underline hover:underline text-black" to={`/blog/${id}`}>
+      <article className="p-4 md:p-6">
+        <header className="pb-4 md:pb-6">
+          <p className="text-xl md:text-3xl">
+            <Link className="text-black no-underline hover:underline" to={`/blog/${id}`}>
               {title}
             </Link>
           </p>
@@ -33,7 +33,10 @@ const BlogPostPreview = (props: IProps): JSX.Element => {
 
         <footer className="flex items-center justify-between">
           <AvatarLink />
-          <p className="text-gray-700 text-sm">{`${createdAt.toDateString()}`}</p>
+          <p
+            className="text-sm text-gray-700 md:text-lg"
+            title={createdAt.toString()}
+          >{`${createdAt.toDateString()}`}</p>
         </footer>
       </article>
     </div>

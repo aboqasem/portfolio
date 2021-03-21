@@ -1,14 +1,9 @@
-import { Dispatch } from 'redux';
 import { IBlogPostDB } from '../../common/types';
 import { kApiUrl } from '../../constants';
-import {
-  BlogPostsDispatchTypes,
-  BLOG_POSTS_FAIL,
-  BLOG_POSTS_LOADING,
-  BLOG_POSTS_SUCCESS,
-} from './blogPostsActionTypes';
+import { BLOG_POSTS_FAILED, BLOG_POSTS_LOADING, BLOG_POSTS_SUCCEEDED } from './blogPostsActionTypes';
+import { BlogPostsThunk } from '../reducers/blogPostsReducer';
 
-export const fetchBlogPosts = () => async (dispatch: Dispatch<BlogPostsDispatchTypes>): Promise<void> => {
+export const fetchBlogPosts = (): BlogPostsThunk => async (dispatch) => {
   try {
     dispatch({
       type: BLOG_POSTS_LOADING,
@@ -18,7 +13,7 @@ export const fetchBlogPosts = () => async (dispatch: Dispatch<BlogPostsDispatchT
     const posts: IBlogPostDB[] = await res.json();
 
     dispatch({
-      type: BLOG_POSTS_SUCCESS,
+      type: BLOG_POSTS_SUCCEEDED,
       payload: new Map(
         posts.map((post) => [
           post._id,
@@ -34,7 +29,7 @@ export const fetchBlogPosts = () => async (dispatch: Dispatch<BlogPostsDispatchT
     });
   } catch (e) {
     dispatch({
-      type: BLOG_POSTS_FAIL,
+      type: BLOG_POSTS_FAILED,
     });
   }
 };

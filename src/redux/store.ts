@@ -5,8 +5,6 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import rootReducer from './reducers/rootReducer';
 import { __DEV__ } from '../constants';
 
-export type RootStore = ReturnType<typeof rootReducer>;
-
 let enhancer = applyMiddleware(thunk);
 
 if (__DEV__) {
@@ -14,5 +12,7 @@ if (__DEV__) {
 }
 
 const store = createStore(rootReducer, enhancer);
+
+export type RootState = ReturnType<typeof store.getState>;
 
 export default store;

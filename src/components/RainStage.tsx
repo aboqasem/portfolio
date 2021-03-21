@@ -57,7 +57,7 @@ export class RainStage extends Component<IProps, IState> {
 
       // start ticking
       this.setState({
-        ticker: setInterval(RainStage.tick, 10, stage, drops),
+        ticker: setInterval(RainStage.tick, 25, stage, drops),
       });
     }
   };
@@ -86,8 +86,8 @@ export class RainStage extends Component<IProps, IState> {
     return true;
   };
 
-  private static anyOverlapping = (drops: HTMLDivElement[], drop: HTMLDivElement): boolean => {
-    return drops.some((drop2) => RainStage.areOverlapping(drop, drop2));
+  private static anyOverlapping = (otherDrops: HTMLDivElement[], drop: HTMLDivElement): boolean => {
+    return otherDrops.some((otherDrop) => RainStage.areOverlapping(drop, otherDrop));
   };
 
   private static tick = (stage: HTMLDivElement, drops: HTMLDivElement[]): void => {
@@ -102,7 +102,7 @@ export class RainStage extends Component<IProps, IState> {
       const dropHeight = +drop.offsetHeight;
 
       // move the drop down
-      drop.style.marginTop = `${marginTop + 0.7}px`;
+      drop.style.marginTop = `${marginTop + 1}px`;
       // if it is out of stage, get it back to top
       if (marginTop >= stageHeight) {
         drop.style.marginTop = `-${dropHeight}px`;

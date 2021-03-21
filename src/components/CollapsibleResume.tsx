@@ -17,7 +17,7 @@ const CollapsibleResume = (): JSX.Element => {
         style={{ paddingTop: isResumeShown ? '75%' : '0' }}
         ref={resumeRef}
       >
-        <iframe className="w-full h-full absolute left-0 top-0" src={ResumePdf}></iframe>
+        <iframe className="w-full h-full absolute left-0 top-0" src={`${ResumePdf}#view=FitV`}></iframe>
       </div>
 
       <div

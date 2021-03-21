@@ -13,7 +13,7 @@ const NotFound = React.lazy(() => import('./components/NotFound'));
 
 const App = (): JSX.Element => {
   return (
-    <div className="min-h-screen font-serif">
+    <div className="font-serif">
       <BrowserRouter>
         <Navbar />
         <ErrorBoundary>

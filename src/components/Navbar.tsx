@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import NavLink from './NavLink';
+import LogoImg from '../assets/logo.png';
 
 const Navbar = (): JSX.Element => {
   const { pathname } = useLocation();
@@ -11,8 +12,15 @@ const Navbar = (): JSX.Element => {
       style={{ backdropFilter: 'blur(8px)', WebkitBackdropFilter: 'blur(8px)' }}
     >
       <div className="flex-1 flex items-center select-none">
-        <Link to="/" className={`text-base sm:text-2xl md:text-3xl ${pathname === '/' ? 'pointer-events-none' : ''}`}>
-          aboqasem
+        <Link
+          to="/"
+          className={`font-nova-mono text-kilamanjaro text-lg sm:text-3xl md:text-4xl ${
+            pathname === '/' ? 'pointer-events-none' : ''
+          }`}
+        >
+          {'{ '}
+          <img className="h-8 sm:h-10 md:h-12 inline-block transform -translate-y-1" src={LogoImg} alt="Logo" />
+          {' }'}
         </Link>
       </div>
 

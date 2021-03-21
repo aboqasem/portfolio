@@ -14,12 +14,26 @@ module.exports = {
         denim: '#0D66C2',
         'spring-green': '#05E776',
         flamingo: '#E65A4D',
+        kilamanjaro: '#3F3530',
       },
       gradientColorStops: {
         'vista-white': '#E1DFDC',
       },
       transitionProperty: {
         spacing: 'margin, padding',
+      },
+      fontFamily: {
+        'nova-mono': [
+          '"Nova Mono"',
+          'ui-monospace',
+          'SFMono-Regular',
+          'Menlo',
+          'Monaco',
+          'Consolas',
+          '"Liberation Mono"',
+          '"Courier New"',
+          'monospace',
+        ],
       },
     },
   },

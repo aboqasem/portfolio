@@ -4,12 +4,12 @@ import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Center from '../../components/Center';
 import AvatarLink from '../../components/AvatarLink';
-import { RootStore } from '../../redux/store';
+import { RootState } from '../../redux/store';
 import Loading from '../../components/Loading';
 
 const BlogPost = (): JSX.Element => {
   const { id } = useParams<{ id: string }>();
-  const { areLoading, blogPosts } = useSelector((state: RootStore) => state.blogPosts);
+  const { areLoading, blogPosts } = useSelector((state: RootState) => state.blogPosts);
   const post = blogPosts.get(id);
 
   if (areLoading) return <Loading />;

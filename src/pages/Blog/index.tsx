@@ -1,14 +1,14 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import BlogPostPreview from '../../components/BlogPostPreview';
 import Center from '../../components/Center';
-import { RootStore } from '../../redux/store';
+import { RootState } from '../../redux/store';
 import Loading from '../../components/Loading';
 import { fetchBlogPosts } from '../../redux/actions/blogPostsActions';
 
 const Blog = (): JSX.Element => {
   const dispatch = useDispatch();
-  const { areLoading, blogPosts } = useSelector((state: RootStore) => state.blogPosts);
+  const { areLoading, blogPosts } = useSelector((state: RootState) => state.blogPosts);
 
   useEffect(() => {
     if (!areLoading && blogPosts.size === 0) {

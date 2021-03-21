@@ -13,34 +13,37 @@ const BlogPost = (): JSX.Element => {
   const post = blogPosts.get(id);
 
   if (areLoading) return <Loading />;
+
+  if (!post)
+    return (
+      <Center>
+        <p className="text-3xl text-center text-red-800 sm:text-5xl md:text-6xl">Post Not Found</p>
+      </Center>
+    );
+
+  const { title, content, img, createdAt } = post;
   return (
     <>
-      {post ? (
-        <div className="pb-20">
-          <img
-            className="object-cover w-screen h-64"
-            src={post.img || `https://dummyimage.com/700x200/000000/E1DFDC&text=${post.title}`}
-            alt={post.title}
-          />
-          <div className="flex items-center justify-between py-4 px-10">
-            <AvatarLink lg />
-            <p
-              className="text-gray-700 text-base md:text-lg"
-              title={post.createdAt.toString()}
-            >{`${post.createdAt.toDateString()}`}</p>
-          </div>
-          <hr className="border-gray-400 pb-4 sm:pb-6 md:pb-8" />
-          <Center>
-            <article className="prose prose-lg sm:prose-xl">
-              <ReactMarkdown>{`# ${post.title}\n${post.content}`}</ReactMarkdown>
-            </article>
-          </Center>
+      <div className="pb-20">
+        <img
+          className="object-cover w-screen h-64"
+          src={img || `https://dummyimage.com/700x200/000000/E1DFDC&text=${title}`}
+          alt={title}
+        />
+        <div className="flex items-center justify-between py-4 px-10">
+          <AvatarLink lg />
+          <p
+            className="text-gray-700 text-base md:text-lg"
+            title={createdAt.toString()}
+          >{`${createdAt.toDateString()}`}</p>
         </div>
-      ) : (
+        <hr className="border-gray-400 pb-4 sm:pb-6 md:pb-8" />
         <Center>
-          <p className="text-3xl text-center text-red-800 sm:text-5xl md:text-6xl">Post Not Found</p>
+          <article className="prose prose-lg sm:prose-xl">
+            <ReactMarkdown>{`# ${title}\n${content}`}</ReactMarkdown>
+          </article>
         </Center>
-      )}
+      </div>
     </>
   );
 };

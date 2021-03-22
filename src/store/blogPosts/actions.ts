@@ -1,6 +1,6 @@
 import { kApiUrl } from '../../constants';
 import { BLOG_POSTS_FAILED, BLOG_POSTS_LOADING, BLOG_POSTS_SUCCEEDED } from './actionTypes';
-import { IBlogPostDB, BlogPostsThunk } from './types';
+import { BlogPostsThunk, ApiBlogPosts } from './types';
 
 export const fetchBlogPosts = (): BlogPostsThunk => async (dispatch) => {
   try {
@@ -9,7 +9,7 @@ export const fetchBlogPosts = (): BlogPostsThunk => async (dispatch) => {
     });
 
     const res = await fetch(`${kApiUrl}posts`);
-    const posts: IBlogPostDB[] = await res.json();
+    const posts: ApiBlogPosts = await res.json();
 
     dispatch({
       type: BLOG_POSTS_SUCCEEDED,

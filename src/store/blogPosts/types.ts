@@ -9,7 +9,7 @@ export interface IBlogPost {
   createdAt: Date;
 }
 
-export interface IBlogPostDB {
+export interface IApiBlogPost {
   _id: string;
   img?: string;
   title: string;
@@ -18,6 +18,8 @@ export interface IBlogPostDB {
 }
 
 export type BlogPosts = Map<string, IBlogPost>;
+
+export type ApiBlogPosts = IApiBlogPost[];
 
 export interface IBlogPostsState {
   areLoading: boolean;

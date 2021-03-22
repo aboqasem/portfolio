@@ -2,12 +2,51 @@
 
 set -e
 
-npm run build
+#!/usr/bin/env bash
 
-if [ $# -eq 0 ]; then
-  netlify deploy --dir=build --prod
+# default to production
+target="p"
+
+while getopts ":th" opt; do
+  case ${opt} in
+  t)
+    # set to testing
+    target="t"
+    ;;
+  h)
+    echo "Usage:"
+    echo "  $0 [msg]    Deploy to production, with optional message."
+    echo "  $0 -t       Deploy in a testing environment."
+    exit 0
+    ;;
+  \?)
+    echo "Usage:"
+    echo "  $0 [msg]    Deploy to production, with optional message."
+    echo "  $0 -t       Deploy in a testing environment."
+    exit 1
+    ;;
+  esac
+  shift $((OPTIND - 1))
+done
+
+if [ $target == "p" ]; then
+  echo "Deploying to production..."
+
+  npm run build
+
+  if [ $# -eq 0 ]; then
+    netlify deploy --dir=build --prod --open
+  else
+    netlify deploy --dir=build --prod --message "$1" --open
+  fi
+
+  rm -rf build/
+
 else
-  netlify deploy --dir=build --prod --message "$1"
-fi
+  echo "Deploying to testing server..."
 
-rm -rf build/
+  npm run build
+
+  netlify dev --dir=build
+
+fi

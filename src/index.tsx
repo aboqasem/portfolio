@@ -4,10 +4,8 @@ import { Provider } from 'react-redux';
 import { ThunkDispatch } from 'redux-thunk';
 import App from './App';
 import ErrorBoundary from './components/ErrorBoundary';
-import store from './app/store';
-import { fetchBlogPosts } from './app/actions/blogPostsActions';
-import { IBlogPostsState } from './app/reducers/blogPostsReducer';
-import { BlogPostsDispatchTypes } from './app/actions/blogPostsActionTypes';
+import store from './store';
+import { fetchBlogPosts, IBlogPostsState, BlogPostsDispatchTypes } from './store/blogPosts';
 
 // fetch blog posts on app mount for faster loading
 (store.dispatch as ThunkDispatch<IBlogPostsState, void, BlogPostsDispatchTypes>)(fetchBlogPosts());

@@ -3,9 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import BlogPostPreview from '../../components/BlogPostPreview';
 import Center from '../../components/Center';
 import Loading from '../../components/Loading';
-import { fetchBlogPosts } from '../../app/actions/blogPostsActions';
-import { blogPostsStateEquals } from '../../app/utils/blogPostsUtils';
-import { selectBlogPostsState } from '../../app/selectors';
+import { fetchBlogPosts, blogPostsStateEquals } from '../../store/blogPosts';
+import { selectBlogPostsState } from '../../store';
 
 const Blog = (): JSX.Element => {
   const dispatch = useDispatch();

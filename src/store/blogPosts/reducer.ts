@@ -1,17 +1,5 @@
-import { Action } from 'redux';
-import { ThunkAction } from 'redux-thunk';
-import {
-  BlogPosts,
-  BlogPostsDispatchTypes,
-  BLOG_POSTS_FAILED,
-  BLOG_POSTS_LOADING,
-  BLOG_POSTS_SUCCEEDED,
-} from '../actions/blogPostsActionTypes';
-
-export interface IBlogPostsState {
-  areLoading: boolean;
-  blogPosts: BlogPosts;
-}
+import { BlogPostsDispatchTypes, BLOG_POSTS_FAILED, BLOG_POSTS_LOADING, BLOG_POSTS_SUCCEEDED } from './actionTypes';
+import { IBlogPostsState } from './types';
 
 const initialState: IBlogPostsState = {
   areLoading: false,
@@ -42,7 +30,5 @@ const blogPostsReducer = (state = initialState, action: BlogPostsDispatchTypes):
       return state;
   }
 };
-
-export type BlogPostsThunk<ReturnType = void> = ThunkAction<ReturnType, IBlogPostsState, unknown, Action<string>>;
 
 export default blogPostsReducer;

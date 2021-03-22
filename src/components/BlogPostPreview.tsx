@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { blogPostEquals } from '../app/utils/blogPostsUtils';
 import { IBlogPost } from '../common/types';
 import AvatarLink from './AvatarLink';
 
@@ -41,4 +42,4 @@ const BlogPostPreview = ({ blogPost: { id, title, img, createdAt } }: IProps): J
   );
 };
 
-export default BlogPostPreview;
+export default React.memo(BlogPostPreview, (prev, next) => blogPostEquals(prev.blogPost, next.blogPost));

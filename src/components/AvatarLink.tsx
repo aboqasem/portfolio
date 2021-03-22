@@ -4,9 +4,7 @@ interface IProps {
   lg?: boolean;
 }
 
-const AvatarLink = (props: IProps): JSX.Element => {
-  const { lg } = props;
-
+const AvatarLink = ({ lg }: IProps): JSX.Element => {
   return (
     <a
       className="flex items-center no-underline hover:underline text-black"

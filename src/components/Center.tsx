@@ -5,13 +5,11 @@ interface IProps {
   children: ReactNode | ReactNode[];
 }
 
-const Center = (props: IProps): JSX.Element => {
+const Center = ({ children }: IProps): JSX.Element => {
   const { pathname } = useLocation();
 
   return (
-    <div className={`max-w-2xl mx-auto ${pathname === '/' ? 'pt-14' : 'pt-5'} pb-8 px-10 md:px-0`}>
-      {props.children}
-    </div>
+    <div className={`max-w-2xl mx-auto ${pathname === '/' ? 'pt-14' : 'pt-5'} pb-8 px-10 md:px-0`}>{children}</div>
   );
 };
 

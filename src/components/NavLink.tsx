@@ -6,8 +6,7 @@ interface IProps {
   children: ReactNode | ReactNode[];
 }
 
-const NavLink = (props: IProps): JSX.Element => {
-  const { to, children } = props;
+const NavLink = ({ to, children }: IProps): JSX.Element => {
   const { pathname } = useLocation();
 
   return (

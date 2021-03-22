@@ -4,6 +4,9 @@ import { BlogPosts } from '../actions/blogPostsActionTypes';
 import { IBlogPostsState } from '../reducers/blogPostsReducer';
 
 export const blogPostEquals = (l: IBlogPost, r: IBlogPost): boolean => {
+  if (l === r) {
+    return true;
+  }
   return (
     l.id === r.id &&
     l.title === r.title &&
@@ -39,5 +42,8 @@ export const blogPostsEquals = (l: BlogPosts, r: BlogPosts): boolean => {
 };
 
 export const blogPostsStateEquals = (l: IBlogPostsState, r: IBlogPostsState): boolean => {
+  if (l === r) {
+    return true;
+  }
   return l.areLoading === r.areLoading && blogPostsEquals(l.blogPosts, r.blogPosts);
 };

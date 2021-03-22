@@ -17,11 +17,11 @@ const CollapsibleResume = (): JSX.Element => {
         style={{ paddingTop: isResumeShown ? '75%' : '0' }}
         ref={resumeRef}
       >
-        <iframe className="w-full h-full absolute left-0 top-0" src={`${ResumePdf}#view=FitV`}></iframe>
+        <iframe className="absolute top-0 left-0 w-full h-full" src={`${ResumePdf}#view=FitV`}></iframe>
       </div>
 
       <div
-        className="w-full flex flex-col items-center text-2xl rounded-b-lg pt-3 cursor-pointer sm:text-3xl md:text-4xl"
+        className="flex flex-col items-center w-full pt-3 text-2xl rounded-b-lg cursor-pointer sm:text-3xl md:text-4xl"
         title={`${isResumeShown ? 'Hide Resume' : 'Show Resume'}`}
         style={{ backgroundColor: 'rgba(0, 0, 0, 0.03)' }}
         onClick={toggleResume}

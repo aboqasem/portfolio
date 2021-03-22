@@ -30,14 +30,14 @@ const BlogPost = (): JSX.Element => {
           src={img || `https://dummyimage.com/700x200/000000/E1DFDC&text=${title}`}
           alt={title}
         />
-        <div className="flex items-center justify-between py-4 px-10">
+        <div className="flex items-center justify-between px-10 py-4">
           <AvatarLink lg />
           <p
-            className="text-gray-700 text-base md:text-lg"
+            className="text-base text-gray-700 md:text-lg"
             title={createdAt.toString()}
           >{`${createdAt.toDateString()}`}</p>
         </div>
-        <hr className="border-gray-400 pb-4 sm:pb-6 md:pb-8" />
+        <hr className="pb-4 border-gray-400 sm:pb-6 md:pb-8" />
         <Center>
           <article className="prose prose-lg sm:prose-xl">
             <ReactMarkdown>{`# ${title}\n${content}`}</ReactMarkdown>

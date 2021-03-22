@@ -7,7 +7,7 @@ interface IProps {
 const AvatarLink = ({ lg }: IProps): JSX.Element => {
   return (
     <a
-      className="flex items-center no-underline hover:underline text-black"
+      className="flex items-center text-black no-underline hover:underline"
       href="https://github.com/aboqasem"
       target="_blank"
       rel="noreferrer"

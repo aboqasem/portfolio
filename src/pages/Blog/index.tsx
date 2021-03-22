@@ -27,7 +27,7 @@ const Blog = (): JSX.Element => {
   return (
     <Center>
       {blogPosts.size ? (
-        <div className="grid gap-4 grid-cols-1">
+        <div className="grid grid-cols-1 gap-4">
           {Array.from(blogPosts).map(([id, post]) => {
             return <BlogPostPreview key={id} blogPost={post} />;
           })}

@@ -8,10 +8,10 @@ const Navbar = (): JSX.Element => {
 
   return (
     <header
-      className="bg-transparent px-6 py-3 flex flex-wrap md:px-14 md:py-4"
+      className="flex flex-wrap px-6 py-3 bg-transparent md:px-14 md:py-4"
       style={{ backdropFilter: 'blur(8px)', WebkitBackdropFilter: 'blur(8px)' }}
     >
-      <div className="flex-1 flex items-center select-none">
+      <div className="flex items-center flex-1 select-none">
         <Link
           to="/"
           className={`font-nova-mono text-kilamanjaro text-lg sm:text-3xl md:text-4xl ${
@@ -19,13 +19,13 @@ const Navbar = (): JSX.Element => {
           }`}
         >
           {'{ '}
-          <img className="h-8 sm:h-10 md:h-12 inline-block transform -translate-y-1" src={LogoImg} alt="Logo" />
+          <img className="inline-block h-8 transform -translate-y-1 sm:h-10 md:h-12" src={LogoImg} alt="Logo" />
           {' }'}
         </Link>
       </div>
 
-      <nav className="w-auto flex text-gray-700 select-none">
-        <ul className="text-sm flex sm:text-xl md:text-2xl">
+      <nav className="flex w-auto text-gray-700 select-none">
+        <ul className="flex text-sm sm:text-xl md:text-2xl">
           <li>
             <NavLink to="/">Home</NavLink>
           </li>

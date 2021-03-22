@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Center from '../../components/Center';
 import AvatarLink from '../../components/AvatarLink';
-import { RootState } from '../../app/store';
+import { RootState } from '../../store';
 import Loading from '../../components/Loading';
 
 const BlogPost = (): JSX.Element => {

@@ -1,12 +1,11 @@
 /* eslint-disable no-restricted-syntax */
-import { IBlogPost } from '../../common/types';
-import { BlogPosts } from '../actions/blogPostsActionTypes';
-import { IBlogPostsState } from '../reducers/blogPostsReducer';
+import { IBlogPost, BlogPosts, IBlogPostsState } from './types';
 
 export const blogPostEquals = (l: IBlogPost, r: IBlogPost): boolean => {
   if (l === r) {
     return true;
   }
+
   return (
     l.id === r.id &&
     l.title === r.title &&
@@ -20,6 +19,7 @@ export const blogPostsEquals = (l: BlogPosts, r: BlogPosts): boolean => {
   if (l === r) {
     return true;
   }
+
   if (l.size !== r.size) {
     return false;
   }
@@ -45,5 +45,6 @@ export const blogPostsStateEquals = (l: IBlogPostsState, r: IBlogPostsState): bo
   if (l === r) {
     return true;
   }
+
   return l.areLoading === r.areLoading && blogPostsEquals(l.blogPosts, r.blogPosts);
 };

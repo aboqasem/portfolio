@@ -1,7 +1,6 @@
-import { IBlogPostDB } from '../../common/types';
 import { kApiUrl } from '../../constants';
-import { BLOG_POSTS_FAILED, BLOG_POSTS_LOADING, BLOG_POSTS_SUCCEEDED } from './blogPostsActionTypes';
-import { BlogPostsThunk } from '../reducers/blogPostsReducer';
+import { BLOG_POSTS_FAILED, BLOG_POSTS_LOADING, BLOG_POSTS_SUCCEEDED } from './actionTypes';
+import { IBlogPostDB, BlogPostsThunk } from './types';
 
 export const fetchBlogPosts = (): BlogPostsThunk => async (dispatch) => {
   try {
@@ -20,7 +19,7 @@ export const fetchBlogPosts = (): BlogPostsThunk => async (dispatch) => {
           {
             ...post,
             id: post._id,
-            // unescape newlines escaped by mongodb
+            // unescape escaped newlines if any
             content: post.content.replaceAll('\\n', '\n'),
             createdAt: new Date(post.createdAt),
           },

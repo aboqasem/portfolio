@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { blogPostEquals } from '../app/utils/blogPostsUtils';
-import { IBlogPost } from '../common/types';
+import { IBlogPost, blogPostEquals } from '../store/blogPosts';
 import AvatarLink from './AvatarLink';
 
 interface IProps {

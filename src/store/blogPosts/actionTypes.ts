@@ -1,10 +1,8 @@
-import { IBlogPost } from '../../common/types';
+import { BlogPosts } from './types';
 
 export const BLOG_POSTS_LOADING = 'BLOG_POSTS_LOADING';
 export const BLOG_POSTS_FAILED = 'BLOG_POSTS_FAILED';
 export const BLOG_POSTS_SUCCEEDED = 'BLOG_POSTS_SUCCEEDED';
-
-export type BlogPosts = Map<string, IBlogPost>;
 
 interface IBlogPostsLoading {
   type: typeof BLOG_POSTS_LOADING;

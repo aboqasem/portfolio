@@ -2,9 +2,9 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import BlogPostPreview from '../../components/BlogPostPreview';
 import Center from '../../components/Center';
-import { RootState } from '../../redux/store';
+import { RootState } from '../../app/store';
 import Loading from '../../components/Loading';
-import { fetchBlogPosts } from '../../redux/actions/blogPostsActions';
+import { fetchBlogPosts } from '../../app/actions/blogPostsActions';
 
 const Blog = (): JSX.Element => {
   const dispatch = useDispatch();

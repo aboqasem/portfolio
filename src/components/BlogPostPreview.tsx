@@ -13,7 +13,7 @@ const BlogPostPreview = ({ blogPost: { id, title, img, createdAt } }: IProps): J
       <Link to={`/blog/${id}`}>
         <div className="w-full h-52 md:h-64">
           <img
-            className="object-cover h-full w-full"
+            className="object-cover w-full h-full"
             src={img || `https://dummyimage.com/300x200/000000/E1DFDC&text=${title}`}
             alt={title}
           />

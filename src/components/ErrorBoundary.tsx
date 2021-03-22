@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import React from 'react';
+import React, { ErrorInfo } from 'react';
 import Center from './Center';
 
 interface IState {
@@ -17,8 +17,7 @@ class ErrorBoundary extends React.Component<Record<string, unknown>, IState> {
     return { hasError: true };
   };
 
-  // eslint-disable-next-line class-methods-use-this
-  componentDidCatch = (error: Error, errorInfo: React.ErrorInfo): void => {
+  componentDidCatch = (error: Error, errorInfo: ErrorInfo): void => {
     console.log(`Error: ${error.message}`);
     console.log(`Component Stack: ${errorInfo.componentStack}`);
   };

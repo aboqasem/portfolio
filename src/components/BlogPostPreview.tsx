@@ -7,9 +7,7 @@ interface IProps {
   blogPost: IBlogPost;
 }
 
-const BlogPostPreview = (props: IProps): JSX.Element => {
-  const { id, title, img, createdAt } = props.blogPost;
-
+const BlogPostPreview = ({ blogPost: { id, title, img, createdAt } }: IProps): JSX.Element => {
   return (
     <div className="w-full overflow-hidden rounded-lg shadow-lg">
       <Link to={`/blog/${id}`}>

@@ -4,6 +4,10 @@ import Center from './Center';
 const NotFound = (): JSX.Element => {
   useEffect(() => {
     document.title = 'Not Found';
+
+    return () => {
+      document.title = 'Mohammad Al Zouabi';
+    };
   }, []);
 
   return (

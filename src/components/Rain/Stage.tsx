@@ -1,8 +1,12 @@
 /* eslint-disable no-param-reassign */
 import React, { Component, createRef, RefObject } from 'react';
+import { ConnectedProps } from 'react-redux';
+import { rainDropsConnector } from '../../store';
 import Drop, { RainDrops } from './Drop';
 
-interface IProps {
+type ReduxProps = ConnectedProps<typeof rainDropsConnector>;
+
+interface IProps extends ReduxProps {
   dropsElements: (HTMLElement | string)[];
 }
 
@@ -19,38 +23,51 @@ export class Stage extends Component<IProps, IState> {
   }
 
   componentDidMount = (): void => {
-    const { dropsElements } = this.props;
+    const {
+      dropsElements,
+      rainDrops: { areInitialized, rainDrops },
+      initializeRainDrops,
+    } = this.props;
     const { current: stage } = this.stageRef;
 
     if (stage) {
       const { offsetWidth: stageWidth, offsetHeight: stageHeight } = stage;
 
-      // initialize randomly placed drops on screens
-      const drops = dropsElements.map((dropElement) => {
-        // create a new drop
-        const drop = new Drop(dropElement);
-        // add drop to stage
-        stage.appendChild(drop);
-        // after appending to get the actual width
-        drop.top = Math.random() * stageHeight;
-        // make sure drop is inside stage
-        drop.left = Math.random() * (stageWidth - drop.width);
-
-        return drop;
-      });
-
-      // rearrange overlapping drops
-      drops.forEach((drop) => {
-        while (Stage.anyOverlapping(drops, drop)) {
+      if (!areInitialized) {
+        const newDrops = dropsElements.map((dropElement) => {
+          // initialize randomly placed drops on screens
+          // create a new drop
+          const drop = new Drop(dropElement);
+          // add drop to stage
+          stage.appendChild(drop);
+          // after appending to get the actual width
           drop.top = Math.random() * stageHeight;
-          drop.left = Math.random() * stageWidth;
-        }
-      });
+          // make sure drop is inside stage
+          drop.left = Math.random() * (stageWidth - drop.width);
 
-      // start ticking
-      this.setState({
-        ticker: setInterval(Stage.tick, 35, stage, drops),
-      });
+          return drop;
+        });
+
+        // rearrange overlapping drops
+        newDrops.forEach((drop) => {
+          while (Stage.anyOverlapping(newDrops, drop)) {
+            drop.top = Math.random() * stageHeight;
+            drop.left = Math.random() * stageWidth;
+          }
+        });
+
+        initializeRainDrops(newDrops);
+
+        this.setState({
+          ticker: setInterval(Stage.tick, 35, stage, newDrops),
+        });
+      } else {
+        rainDrops.forEach((drop) => stage.appendChild(drop));
+
+        this.setState({
+          ticker: setInterval(Stage.tick, 35, stage, rainDrops),
+        });
+      }
     }
   };
 
@@ -92,4 +109,4 @@ export class Stage extends Component<IProps, IState> {
   };
 }
 
-export default Stage;
+export default rainDropsConnector(Stage);

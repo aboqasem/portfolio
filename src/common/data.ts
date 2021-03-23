@@ -1,3 +1,4 @@
+import { renderToStaticMarkup } from 'react-dom/server';
 import {
   SiJavascript,
   SiDart,
@@ -72,6 +73,10 @@ export const myTechnologiesIcons = [
   FaVuejs,
   SiArduino,
 ];
+
+export const myTechnologiesDropsElements = myTechnologiesIcons.map((icon) =>
+  renderToStaticMarkup(icon({ className: 'text-2xl sm:text-3xl md:text-4xl' })),
+);
 
 const githubUrl = 'https://github.com/aboqasem';
 const githubRawContentUrl = 'https://raw.githubusercontent.com/aboqasem';

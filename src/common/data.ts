@@ -51,7 +51,7 @@ export const myContacts: IContact[] = [
   },
 ];
 
-export const myTechnologies = [
+export const myTechnologiesIcons = [
   SiJavascript,
   SiTypescript,
   SiDart,

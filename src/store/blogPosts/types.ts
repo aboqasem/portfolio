@@ -10,7 +10,7 @@ export interface IBlogPost {
 }
 
 export interface IApiBlogPost {
-  _id: string;
+  id: string;
   img?: string;
   title: string;
   content: string;

@@ -15,10 +15,9 @@ export const fetchBlogPosts = (): BlogPostsThunk => async (dispatch) => {
       type: BLOG_POSTS_SUCCEEDED,
       payload: new Map(
         posts.map((post) => [
-          post._id,
+          post.id,
           {
             ...post,
-            id: post._id,
             // unescape escaped newlines if any
             content: post.content.replaceAll('\\n', '\n'),
             createdAt: new Date(post.createdAt),

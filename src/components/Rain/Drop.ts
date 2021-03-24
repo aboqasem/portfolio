@@ -4,6 +4,7 @@ import Position from './Position';
  * A drop is an element that can be placed on the stage.
  * Its top and left are its actual position, but they will not be used to check overlapping.
  * Instead, the actual view's position will be used.
+ *
  * Resources:
  * - https://developer.mozilla.org/en-US/docs/Web/API/CSS_Object_Model/Determining_the_dimensions_of_elements#how_much_room_does_it_use_up.3f
  * - https://stackoverflow.com/a/4036212/11019230
@@ -38,13 +39,9 @@ export default class Drop extends HTMLElement {
     this.updatePosition();
   }
 
-  constructor(content: HTMLElement | string) {
+  constructor(content: string) {
     super();
-    if (content instanceof HTMLElement) {
-      this.outerHTML = content.outerHTML;
-    } else {
-      this.innerHTML = content;
-    }
+    this.innerHTML = content;
 
     this.style.position = 'fixed';
 

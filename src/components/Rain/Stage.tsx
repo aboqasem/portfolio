@@ -7,7 +7,7 @@ import Drop, { RainDrops } from './Drop';
 type ReduxProps = ConnectedProps<typeof rainDropsConnector>;
 
 interface IProps extends ReduxProps {
-  dropsElements: (HTMLElement | string)[];
+  htmlStrings: string[];
 }
 
 interface IState {
@@ -24,7 +24,7 @@ export class Stage extends Component<IProps, IState> {
 
   componentDidMount = (): void => {
     const {
-      dropsElements,
+      htmlStrings,
       rainDrops: { areInitialized, rainDrops },
       initializeRainDrops,
     } = this.props;
@@ -34,10 +34,10 @@ export class Stage extends Component<IProps, IState> {
       const { offsetWidth: stageWidth, offsetHeight: stageHeight } = stage;
 
       if (!areInitialized) {
-        const newDrops = dropsElements.map((dropElement) => {
+        const newDrops = htmlStrings.map((htmlString) => {
           // initialize randomly placed drops on screens
           // create a new drop
-          const drop = new Drop(dropElement);
+          const drop = new Drop(htmlString);
           // add drop to stage
           stage.appendChild(drop);
           // after appending to get the actual width

@@ -74,7 +74,7 @@ export const myTechnologiesIcons = [
   SiArduino,
 ];
 
-export const myTechnologiesDropsElements = myTechnologiesIcons.map((icon) =>
+export const myTechnologiesHtmlStrings = myTechnologiesIcons.map((icon) =>
   renderToStaticMarkup(icon({ className: 'text-2xl sm:text-3xl md:text-4xl' })),
 );
 

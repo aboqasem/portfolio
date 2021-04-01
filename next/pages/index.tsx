@@ -3,7 +3,7 @@ import { Center, MyCard } from '@/components';
 import { useSelector } from 'react-redux';
 import { selectCommonDataState } from '@/store';
 
-export default function Home() {
+const Home = () => {
   const [element, setElement] = useState(<></>);
   const { techIconsHtmlStrings } = useSelector(selectCommonDataState);
 
@@ -20,4 +20,6 @@ export default function Home() {
   });
 
   return element;
-}
+};
+
+export default Home;

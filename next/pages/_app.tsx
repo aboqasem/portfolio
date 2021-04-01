@@ -5,7 +5,7 @@ import store from '@/store';
 import { Navbar } from '@/components';
 import '@/styles/globals.css';
 
-function MyApp({ Component, pageProps }: AppProps) {
+const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     <Provider store={store}>
       <Head>
@@ -24,6 +24,6 @@ function MyApp({ Component, pageProps }: AppProps) {
       </div>
     </Provider>
   );
-}
+};
 
 export default MyApp;

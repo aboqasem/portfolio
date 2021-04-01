@@ -1,10 +1,12 @@
+import { Provider } from 'react-redux';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
+import store from '@/store';
 import '@/styles/globals.css';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <>
+    <Provider store={store}>
       <Head>
         <meta charSet="utf-8" />
         <meta content="width=device-width, initial-scale=1" name="viewport" />
@@ -16,7 +18,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta content="Mohammad Al Zouabi's personal website." name="description" />
       </Head>
       <Component {...pageProps} />
-    </>
+    </Provider>
   );
 }
 

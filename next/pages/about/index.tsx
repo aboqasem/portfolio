@@ -5,7 +5,7 @@ import { Project } from '@/components';
 import Center from '@/components/Center';
 import { selectCommonDataState } from '@/store';
 
-const About = (): JSX.Element => {
+const About = () => {
   const { projects } = useSelector(selectCommonDataState);
 
   return (

@@ -1,6 +1,6 @@
 module.exports = {
   purge: {
-    content: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
+    content: ['./pages/**/*.tsx', './components/**/*.tsx'],
     options: {
       safelist: ['hover:text-blue-charcoal', 'hover:text-denim', 'hover:text-spring-green', 'hover:text-flamingo'],
     },

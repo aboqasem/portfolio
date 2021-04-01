@@ -2,9 +2,26 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import { FaVuejs } from 'react-icons/fa';
 import { GoMarkGithub } from 'react-icons/go';
 import {
-    SiArduino, SiC, SiCplusplus, SiCss3, SiDart, SiFlutter, SiGmail, SiGnubash, SiHtml5, SiJava,
-    SiJavascript, SiLinkedin, SiMongodb, SiNodeDotJs, SiReact, SiRedux, SiRust, SiTailwindcss,
-    SiTypescript, SiWhatsapp
+  SiArduino,
+  SiC,
+  SiCplusplus,
+  SiCss3,
+  SiDart,
+  SiFlutter,
+  SiGmail,
+  SiGnubash,
+  SiHtml5,
+  SiJava,
+  SiJavascript,
+  SiLinkedin,
+  SiMongodb,
+  SiNodeDotJs,
+  SiReact,
+  SiRedux,
+  SiRust,
+  SiTailwindcss,
+  SiTypescript,
+  SiWhatsapp,
 } from 'react-icons/si';
 
 import { ICommonDataState } from './types';

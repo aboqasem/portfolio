@@ -1,13 +1,23 @@
-import Head from 'next/head';
+import { useEffect, useState } from 'react';
+import { Center, MyCard } from '@/components';
+import { useSelector } from 'react-redux';
+import { selectCommonDataState } from '@/store';
 
 export default function Home() {
-  return (
-    <div>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <p className="text-2xl">Hello, World!</p>
-    </div>
-  );
+  const [element, setElement] = useState(<></>);
+  const { techIconsHtmlStrings } = useSelector(selectCommonDataState);
+
+  // web components from '@/components/Rain' are not defined on the server, useEffect ensures their existence
+  useEffect(() => {
+    import('@/components/Rain').then(({ default: Rain }) => {
+      setElement(
+        <Center>
+          <Rain htmlStrings={techIconsHtmlStrings} />
+          <MyCard />
+        </Center>,
+      );
+    });
+  });
+
+  return element;
 }

@@ -1,4 +1,4 @@
-import { RainDrops } from '../../components/Rain';
+import { RainDrops } from '@/components/Rain';
 
 export const RAIN_DROPS_INIT = 'RAIN_DROPS_INIT';
 

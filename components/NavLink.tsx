@@ -7,7 +7,7 @@ interface IProps {
   children: ReactNode | ReactNode[];
 }
 
-const NavLink = ({ href, children }: IProps): JSX.Element => {
+const NavLink = ({ href, children }: IProps) => {
   const { pathname } = useRouter();
 
   return (

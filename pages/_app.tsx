@@ -25,6 +25,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         <link href="/manifest.json" rel="manifest" />
         <meta content="Mohammad Al Zouabi's personal website." name="description" />
       </Head>
+
       <div className="font-serif">
         <Navbar />
         <Component {...pageProps} />

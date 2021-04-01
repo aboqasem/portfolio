@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 import NavLink from './NavLink';
 
-const Navbar = (): JSX.Element => {
+const Navbar = () => {
   const { pathname } = useRouter();
 
   return (

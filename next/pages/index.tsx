@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
-import { Center, MyCard } from '@/components';
 import { useSelector } from 'react-redux';
+
+import { Center, MyCard } from '@/components';
 import { selectCommonDataState } from '@/store';
 
 const Home = () => {

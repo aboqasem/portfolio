@@ -1,6 +1,6 @@
-import { ReactNode } from 'react';
 import { useRouter } from 'next/dist/client/router';
 import Link from 'next/link';
+import { ReactNode } from 'react';
 
 interface IProps {
   href: string;

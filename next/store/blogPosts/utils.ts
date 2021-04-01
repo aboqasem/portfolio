@@ -1,5 +1,5 @@
 /* eslint-disable no-restricted-syntax */
-import { IBlogPost, BlogPosts, IBlogPostsState } from './types';
+import { BlogPosts, IBlogPost, IBlogPostsState } from './types';
 
 export const blogPostEquals = (l: IBlogPost, r: IBlogPost): boolean => {
   if (l === r) {

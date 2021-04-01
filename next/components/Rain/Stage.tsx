@@ -1,6 +1,7 @@
 /* eslint-disable no-param-reassign */
 import React, { Component, createRef, RefObject } from 'react';
 import { ConnectedProps } from 'react-redux';
+
 import { rainDropsConnector } from '../../store';
 import Drop, { RainDrops } from './Drop';
 

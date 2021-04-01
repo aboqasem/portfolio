@@ -1,4 +1,6 @@
-import { BlogPostsDispatchTypes, BLOG_POSTS_FAILED, BLOG_POSTS_LOADING, BLOG_POSTS_SUCCEEDED } from './actionTypes';
+import {
+    BLOG_POSTS_FAILED, BLOG_POSTS_LOADING, BLOG_POSTS_SUCCEEDED, BlogPostsDispatchTypes
+} from './actionTypes';
 import { IBlogPostsState } from './types';
 
 const initialState: IBlogPostsState = {

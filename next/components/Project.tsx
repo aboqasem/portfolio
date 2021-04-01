@@ -1,7 +1,8 @@
-import { IProject } from '@/store/commonData';
 import React from 'react';
 import { BsCodeSlash } from 'react-icons/bs';
 import { MdOpenInNew } from 'react-icons/md';
+
+import { IProject } from '@/store/commonData';
 
 interface IProps {
   project: IProject;

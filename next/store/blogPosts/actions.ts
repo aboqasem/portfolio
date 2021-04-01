@@ -1,6 +1,7 @@
 import { kApiUrl } from '@/common/constants';
+
 import { BLOG_POSTS_FAILED, BLOG_POSTS_LOADING, BLOG_POSTS_SUCCEEDED } from './actionTypes';
-import { BlogPostsThunk, ApiBlogPosts } from './types';
+import { ApiBlogPosts, BlogPostsThunk } from './types';
 
 export const fetchBlogPosts = (): BlogPostsThunk => async (dispatch) => {
   try {

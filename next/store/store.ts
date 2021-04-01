@@ -1,8 +1,10 @@
 import { applyMiddleware, createStore } from 'redux';
-import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import rootReducer from './rootReducer';
+import thunk from 'redux-thunk';
+
 import { __PROD__ } from '@/common/constants';
+
+import rootReducer from './rootReducer';
 
 let enhancer = applyMiddleware(thunk);
 

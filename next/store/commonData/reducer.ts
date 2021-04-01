@@ -1,29 +1,13 @@
-import { ICommonDataState } from './types';
 import { renderToStaticMarkup } from 'react-dom/server';
-import {
-  SiJavascript,
-  SiDart,
-  SiCplusplus,
-  SiC,
-  SiJava,
-  SiGnubash,
-  SiMongodb,
-  SiArduino,
-  SiNodeDotJs,
-  SiFlutter,
-  SiReact,
-  SiRedux,
-  SiRust,
-  SiLinkedin,
-  SiWhatsapp,
-  SiGmail,
-  SiTypescript,
-  SiTailwindcss,
-  SiHtml5,
-  SiCss3,
-} from 'react-icons/si';
-import { GoMarkGithub } from 'react-icons/go';
 import { FaVuejs } from 'react-icons/fa';
+import { GoMarkGithub } from 'react-icons/go';
+import {
+    SiArduino, SiC, SiCplusplus, SiCss3, SiDart, SiFlutter, SiGmail, SiGnubash, SiHtml5, SiJava,
+    SiJavascript, SiLinkedin, SiMongodb, SiNodeDotJs, SiReact, SiRedux, SiRust, SiTailwindcss,
+    SiTypescript, SiWhatsapp
+} from 'react-icons/si';
+
+import { ICommonDataState } from './types';
 
 const initialState: ICommonDataState = {
   contacts: [

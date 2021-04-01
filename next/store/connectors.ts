@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+
 import { initializeRainDrops } from './rainDrops';
 import { RootState } from './types';
 

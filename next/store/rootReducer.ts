@@ -1,7 +1,8 @@
 import { combineReducers } from 'redux';
+
 import blogPostsReducer from './blogPosts';
-import rainDropsReducer from './rainDrops';
 import commonDataReducer from './commonData';
+import rainDropsReducer from './rainDrops';
 
 const rootReducer = combineReducers({
   blogPosts: blogPostsReducer,

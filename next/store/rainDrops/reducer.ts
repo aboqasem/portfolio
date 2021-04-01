@@ -1,4 +1,4 @@
-import { RainDropsDispatchTypes, RAIN_DROPS_INIT } from './actionTypes';
+import { RAIN_DROPS_INIT, RainDropsDispatchTypes } from './actionTypes';
 import { IRainDropsState } from './types';
 
 const initialState: IRainDropsState = {

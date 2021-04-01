@@ -1,6 +1,8 @@
-import { selectCommonDataState } from '@/store';
 import React from 'react';
 import { useSelector } from 'react-redux';
+
+import { selectCommonDataState } from '@/store';
+
 import CollapsibleResume from './CollapsibleResume';
 
 const MyCard = (): JSX.Element => {

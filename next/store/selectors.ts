@@ -1,7 +1,7 @@
-import { RootState } from './types';
 import { IBlogPostsState } from './blogPosts';
-import { IRainDropsState } from './rainDrops';
 import { ICommonDataState } from './commonData';
+import { IRainDropsState } from './rainDrops';
+import { RootState } from './types';
 
 export const selectBlogPostsState = (state: RootState): IBlogPostsState => state.blogPosts;
 

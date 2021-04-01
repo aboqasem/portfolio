@@ -1,5 +1,5 @@
 import { RainDrops } from '../../components/Rain';
-import { RainDropsDispatchTypes, RAIN_DROPS_INIT } from './actionTypes';
+import { RAIN_DROPS_INIT, RainDropsDispatchTypes } from './actionTypes';
 
 export const initializeRainDrops = (rainDrops: RainDrops): RainDropsDispatchTypes => {
   return {

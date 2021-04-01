@@ -3,9 +3,14 @@ import '@/styles/globals.css';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 import { Provider } from 'react-redux';
+import { ThunkDispatch } from 'redux-thunk';
 
 import { Navbar } from '@/components';
 import store from '@/store';
+import { BlogPostsDispatchTypes, fetchBlogPosts, IBlogPostsState } from '@/store/blogPosts';
+
+// fetch blog posts on app mount for faster loading
+(store.dispatch as ThunkDispatch<IBlogPostsState, void, BlogPostsDispatchTypes>)(fetchBlogPosts());
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (

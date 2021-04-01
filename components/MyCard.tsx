@@ -1,12 +1,12 @@
-import React from 'react';
 import { useSelector } from 'react-redux';
 
 import { selectCommonDataState } from '@/store';
 
 import CollapsibleResume from './CollapsibleResume';
 
-const MyCard = (): JSX.Element => {
+const MyCard = () => {
   const { contacts } = useSelector(selectCommonDataState);
+
   return (
     <div
       className="shadow-md rounded-xl bg-gradient-to-tr from-vista-white md:shadow-xl"

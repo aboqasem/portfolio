@@ -1,8 +1,9 @@
 /* eslint-disable no-param-reassign */
-import React, { Component, createRef, RefObject } from 'react';
+import { Component, createRef, RefObject } from 'react';
 import { ConnectedProps } from 'react-redux';
 
-import { rainDropsConnector } from '../../store';
+import { rainDropsConnector } from '@/store';
+
 import Drop, { RainDrops } from './Drop';
 
 type ReduxProps = ConnectedProps<typeof rainDropsConnector>;
@@ -15,7 +16,7 @@ interface IState {
   ticker?: number;
 }
 
-export class Stage extends Component<IProps, IState> {
+class Stage extends Component<IProps, IState> {
   private stageRef: RefObject<HTMLDivElement>;
 
   constructor(props: IProps) {

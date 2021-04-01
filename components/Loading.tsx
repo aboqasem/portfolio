@@ -1,10 +1,8 @@
-import React from 'react';
-
 import LoadingIcon from '@/svgs/LoadingIcon';
 
 import Center from './Center';
 
-const Loading = (): JSX.Element => {
+const Loading = () => {
   return (
     <Center>
       <div className="flex justify-center">

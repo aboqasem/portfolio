@@ -1,7 +1,7 @@
-import React, { useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 
-const CollapsibleResume = (): JSX.Element => {
+const CollapsibleResume = () => {
   const [isResumeShown, setIsResumeShown] = useState(false);
   const resumeRef = useRef<HTMLDivElement>(null);
 

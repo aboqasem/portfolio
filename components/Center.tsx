@@ -1,11 +1,11 @@
 import { useRouter } from 'next/dist/client/router';
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 
 interface IProps {
   children: ReactNode | ReactNode[];
 }
 
-const Center = ({ children }: IProps): JSX.Element => {
+const Center = ({ children }: IProps) => {
   const { pathname } = useRouter();
 
   return (

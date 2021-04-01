@@ -13,6 +13,7 @@ const About = () => {
       <Head>
         <title>About — Mohammad Al Zouabi</title>
       </Head>
+
       <Center>
         <div className="grid grid-cols-1 gap-4 auto-rows-min md:grid-cols-2 md:gap-2">
           <div className="self-center mb-5 text-3xl text-center text-dallas md:text-4xl">Some Mini Side Projects</div>

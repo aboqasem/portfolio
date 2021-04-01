@@ -1,4 +1,3 @@
-import React from 'react';
 import { BsCodeSlash } from 'react-icons/bs';
 import { MdOpenInNew } from 'react-icons/md';
 
@@ -8,7 +7,7 @@ interface IProps {
   project: IProject;
 }
 
-const Project = ({ project: { preview, previewMp4, url, sourceCode } }: IProps): JSX.Element => {
+const Project = ({ project: { preview, previewMp4, url, sourceCode } }: IProps) => {
   return (
     <div className="relative">
       <video className="object-cover w-full h-full shadow-xl rounded-xl" autoPlay loop muted playsInline>

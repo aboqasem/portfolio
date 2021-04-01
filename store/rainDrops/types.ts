@@ -1,4 +1,4 @@
-import { RainDrops } from '../../components/Rain';
+import { RainDrops } from '@/components/Rain';
 
 export interface IRainDropsState {
   areInitialized: boolean;

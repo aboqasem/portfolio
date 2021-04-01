@@ -16,7 +16,9 @@ const Blog = () => {
     }
   }, []);
 
-  if (areLoading) return <Loading />;
+  if (areLoading) {
+    return <Loading />;
+  }
 
   return (
     <>

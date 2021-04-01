@@ -1,14 +1,15 @@
 import Link from 'next/link';
 import React from 'react';
 
-import { blogPostEquals, IBlogPost } from '../store/blogPosts';
+import { blogPostEquals, IBlogPost } from '@/store/blogPosts';
+
 import AvatarLink from './AvatarLink';
 
 interface IProps {
   blogPost: IBlogPost;
 }
 
-const BlogPostPreview = ({ blogPost: { id, title, img, createdAt } }: IProps): JSX.Element => {
+const BlogPostPreview = ({ blogPost: { id, title, img, createdAt } }: IProps) => {
   return (
     <div className="w-full overflow-hidden rounded-lg shadow-lg">
       <Link

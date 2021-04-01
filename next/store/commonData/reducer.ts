@@ -40,7 +40,7 @@ const initialState: ICommonDataState = {
     {
       title: 'AI Luminance',
       description: 'Simple color luminance detector using neural networks from brain.js.',
-      preview: 'https://github.com/aboqasem/ai-luminance/main/docs/preview.webm',
+      preview: 'https://github.com/aboqasem/ai-luminance/blob/main/docs/preview.webm',
       previewMp4: 'https://raw.githubusercontent.com/aboqasem/ai-luminance/main/docs/preview.mp4',
       url: 'https://ai-luminance.aboqasem.dev/',
       sourceCode: `https://github.com/aboqasem/ai-luminance`,
@@ -48,7 +48,7 @@ const initialState: ICommonDataState = {
     {
       title: 'Time Progress',
       description: 'Various time progress bars.',
-      preview: 'https://github.com/aboqasem/time-progress/main/docs/preview.webm',
+      preview: 'https://github.com/aboqasem/time_progress/blob/main/docs/preview.webm',
       previewMp4: 'https://raw.githubusercontent.com/aboqasem/time_progress/main/docs/preview.mp4',
       url: 'https://time-progress.aboqasem.dev/',
       sourceCode: `https://github.com/aboqasem/time_progress`,
@@ -56,21 +56,21 @@ const initialState: ICommonDataState = {
     {
       title: 'Ants and Bugs',
       description: 'Simple Java Swing simulation game applying design patterns.',
-      preview: 'https://github.com/aboqasem/ants-and-bugs/main/docs/preview.webm',
+      preview: 'https://github.com/aboqasem/ants-and-bugs/blob/main/docs/preview.webm',
       previewMp4: 'https://raw.githubusercontent.com/aboqasem/ants-and-bugs/main/docs/preview.mp4',
       sourceCode: `https://github.com/aboqasem/ants-and-bugs`,
     },
     {
       title: 'FiRecorder',
       description: 'A simple sound recorder/player with Firebase auth and storage.',
-      preview: 'https://github.com/aboqasem/firecorder/main/docs/preview.webm',
+      preview: 'https://github.com/aboqasem/firecorder/blob/main/docs/preview.webm',
       previewMp4: 'https://raw.githubusercontent.com/aboqasem/firecorder/main/docs/preview.mp4',
       sourceCode: `https://github.com/aboqasem/firecorder`,
     },
     {
       title: 'International Checkers',
       description: 'Simple C++ implementation of international checkers in the command-line.',
-      preview: 'https://github.com/aboqasem/international-checkers/main/docs/preview.webm',
+      preview: 'https://github.com/aboqasem/international-checkers/blob/main/docs/preview.webm',
       previewMp4: 'https://raw.githubusercontent.com/aboqasem/international-checkers/main/docs/preview.mp4',
       sourceCode: `https://github.com/aboqasem/international-checkers`,
     },

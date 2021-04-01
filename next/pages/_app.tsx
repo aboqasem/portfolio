@@ -2,6 +2,7 @@ import { Provider } from 'react-redux';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 import store from '@/store';
+import { Navbar } from '@/components';
 import '@/styles/globals.css';
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -17,7 +18,10 @@ function MyApp({ Component, pageProps }: AppProps) {
         <link href="/manifest.json" rel="manifest" />
         <meta content="Mohammad Al Zouabi's personal website." name="description" />
       </Head>
-      <Component {...pageProps} />
+      <div className="font-serif">
+        <Navbar />
+        <Component {...pageProps} />
+      </div>
     </Provider>
   );
 }

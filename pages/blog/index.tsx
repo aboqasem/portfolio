@@ -42,6 +42,9 @@ export const getStaticProps: GetStaticProps<IProps> = async () => {
   let res: Response;
   try {
     res = await fetch(`${kApiUrl}posts`);
+    if (!res.ok) {
+      return { props: { posts: [] }, revalidate: 600 };
+    }
   } catch (e) {
     return { props: { posts: [] }, revalidate: 600 };
   }

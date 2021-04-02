@@ -6,3 +6,4 @@ export { default as CollapsibleResume } from './CollapsibleResume';
 export { default as MyCard } from './MyCard';
 export { default as Project } from './Project';
 export { default as BlogPostPreview } from './BlogPostPreview';
+export { default as AvatarLink } from './AvatarLink';

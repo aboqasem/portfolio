@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import React from 'react';
 
-import { blogPostEquals, IBlogPost } from '@/store/blogPosts';
+import { IBlogPost } from '@/common/types';
 
 import AvatarLink from './AvatarLink';
 
@@ -19,11 +19,7 @@ const BlogPostPreview = ({ blogPost: { id, title, img, createdAt } }: IProps) =>
         }}
       >
         <a className="block w-full h-52 md:h-64">
-          <img
-            className="object-cover w-full h-full"
-            src={img || `https://dummyimage.com/300x200/000000/E1DFDC&text=${title}`}
-            alt={title}
-          />
+          <img className="object-cover w-full h-full" src={img} alt={title} />
         </a>
       </Link>
 
@@ -53,4 +49,4 @@ const BlogPostPreview = ({ blogPost: { id, title, img, createdAt } }: IProps) =>
   );
 };
 
-export default React.memo(BlogPostPreview, (prev, next) => blogPostEquals(prev.blogPost, next.blogPost));
+export default BlogPostPreview;

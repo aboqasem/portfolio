@@ -5,22 +5,22 @@ import { Center, MyCard } from '@/components';
 import { selectCommonDataState } from '@/store';
 
 const Home = () => {
-  const [element, setElement] = useState(<></>);
+  const [rainElement, setRainElement] = useState(<></>);
   const { techIconsHtmlStrings } = useSelector(selectCommonDataState);
 
-  // web components from '@/components/Rain' are not defined on the server, useEffect ensures their existence
+  // web components from '@/components/Rain' are not defined on the server, importing them here ensures their existence
   useEffect(() => {
     import('@/components/Rain').then(({ default: Rain }) => {
-      setElement(
-        <Center>
-          <Rain htmlStrings={techIconsHtmlStrings} />
-          <MyCard />
-        </Center>,
-      );
+      setRainElement(<Rain htmlStrings={techIconsHtmlStrings} />);
     });
   }, []);
 
-  return element;
+  return (
+    <Center>
+      {rainElement}
+      <MyCard />
+    </Center>
+  );
 };
 
 export default Home;

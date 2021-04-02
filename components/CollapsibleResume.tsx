@@ -16,10 +16,7 @@ const CollapsibleResume = () => {
         style={{ paddingTop: isResumeShown ? '75%' : '0' }}
         ref={resumeRef}
       >
-        <iframe
-          className="absolute top-0 left-0 w-full h-full"
-          src="/assets/Resume_Mohammad_Al_Zouabi.pdf#view=FitV"
-        ></iframe>
+        <iframe className="absolute top-0 left-0 w-full h-full" src="/assets/Resume.pdf#view=FitV"></iframe>
       </div>
 
       <div

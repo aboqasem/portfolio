@@ -1,24 +1,20 @@
+import { GetStaticProps } from 'next';
 import Head from 'next/head';
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 
-import { BlogPostPreview, Center, Loading } from '@/components';
-import { selectBlogPostsState } from '@/store';
-import { blogPostsStateEquals, fetchBlogPosts } from '@/store/blogPosts';
+import { kApiUrl } from '@/common/constants';
+import { ApiBlogPosts, BlogPosts } from '@/common/types';
+import { BlogPostPreview, Center } from '@/components';
 
-const Blog = () => {
-  const dispatch = useDispatch();
-  const { areLoading, blogPosts } = useSelector(selectBlogPostsState, blogPostsStateEquals);
+interface IProps {
+  posts: ApiBlogPosts;
+}
 
-  useEffect(() => {
-    if (!areLoading && blogPosts.size === 0) {
-      dispatch(fetchBlogPosts());
-    }
-  }, []);
-
-  if (areLoading) {
-    return <Loading />;
-  }
+const Blog = ({ posts }: IProps) => {
+  const blogPosts: BlogPosts = posts.map((post) => ({
+    ...post,
+    img: post.img || `https://dummyimage.com/300x200/000000/E1DFDC&text=${post.title}`,
+    createdAt: new Date(post.createdAt),
+  }));
 
   return (
     <>
@@ -28,10 +24,10 @@ const Blog = () => {
       </Head>
 
       <Center>
-        {blogPosts.size ? (
+        {blogPosts.length ? (
           <div className="grid grid-cols-1 gap-4">
-            {Array.from(blogPosts).map(([id, post]) => {
-              return <BlogPostPreview key={id} blogPost={post} />;
+            {blogPosts.map((blogPost) => {
+              return <BlogPostPreview key={blogPost.id} blogPost={blogPost} />;
             })}
           </div>
         ) : (
@@ -40,6 +36,18 @@ const Blog = () => {
       </Center>
     </>
   );
+};
+
+export const getStaticProps: GetStaticProps<IProps> = async () => {
+  const res = await fetch(`${kApiUrl}posts`);
+
+  const apiPosts: ApiBlogPosts = await res.json();
+  const posts: ApiBlogPosts = apiPosts.map((post) => ({
+    ...post,
+    // unescape escaped newlines if any, `replaceAll` does not work on the server
+    content: post.content.replace(/\\n/g, '\n'),
+  }));
+  return { props: { posts }, revalidate: 3600 };
 };
 
 export default Blog;

@@ -39,7 +39,12 @@ const Blog = ({ posts }: IProps) => {
 };
 
 export const getStaticProps: GetStaticProps<IProps> = async () => {
-  const res = await fetch(`${kApiUrl}posts`);
+  let res: Response;
+  try {
+    res = await fetch(`${kApiUrl}posts`);
+  } catch (e) {
+    return { props: { posts: [] }, revalidate: 600 };
+  }
 
   const apiPosts: ApiBlogPosts = await res.json();
   const posts: ApiBlogPosts = apiPosts.map((post) => ({

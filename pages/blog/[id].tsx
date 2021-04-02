@@ -1,17 +1,24 @@
 import markdownToTxt from 'markdown-to-txt';
-import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from 'next';
+import { GetStaticPaths, GetStaticProps } from 'next';
+import { useRouter } from 'next/dist/client/router';
 import Head from 'next/head';
 import ReactMarkdown from 'react-markdown';
 
 import { kApiUrl } from '@/common/constants';
 import { ApiBlogPosts, IApiBlogPost, IBlogPost } from '@/common/types';
-import { AvatarLink, Center } from '@/components';
+import { AvatarLink, Center, Loading } from '@/components';
 
 interface IProps {
   post: IApiBlogPost;
 }
 
 const BlogPost = ({ post }: IProps) => {
+  const router = useRouter();
+
+  if (router.isFallback) {
+    return <Loading />;
+  }
+
   const { title, content, img, createdAt }: IBlogPost = {
     ...post,
     img: post.img || `https://dummyimage.com/700x200/000000/E1DFDC&text=${post.title}`,
@@ -52,21 +59,37 @@ const BlogPost = ({ post }: IProps) => {
 };
 
 export const getStaticPaths: GetStaticPaths<{ id: string }> = async () => {
-  const res = await fetch(`${kApiUrl}posts`);
+  let res: Response;
+  try {
+    res = await fetch(`${kApiUrl}posts`);
+  } catch (e) {
+    return { paths: [], fallback: true };
+  }
+
   const apiPosts: ApiBlogPosts = await res.json();
   const paths = apiPosts.map(({ id }) => ({ params: { id } }));
 
-  return { paths, fallback: false };
+  return { paths, fallback: true };
 };
 
 export const getStaticProps: GetStaticProps<IProps> = async ({ params }) => {
   const id = params?.id as string;
 
-  const res = await fetch(`${kApiUrl}posts/${id}`);
+  let res: Response;
+  try {
+    res = await fetch(`${kApiUrl}posts/${id}`);
+
+    if (!res.ok) {
+      return { notFound: true };
+    }
+  } catch (e) {
+    return { notFound: true };
+  }
+
   const apiPost: IApiBlogPost = await res.json();
   const post: IApiBlogPost = {
     ...apiPost,
-    // unescape escaped newlines if any
+    // unescape escaped newlines if any, `replaceAll` does not work on the server
     content: apiPost.content.replace(/\\n/g, '\n'),
   };
 

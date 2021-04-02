@@ -1,4 +1,4 @@
-import markdownToTxt from 'markdown-to-txt';
+import markdownToTxt from 'markdown-to-text';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { useRouter } from 'next/dist/client/router';
 import Head from 'next/head';

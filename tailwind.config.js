@@ -1,11 +1,11 @@
 module.exports = {
   purge: {
-    content: ['./pages/**/*.tsx', './components/**/*.tsx'],
+    content: ['./pages/**/*.tsx', './components/**/*.tsx', './svgs/**/*.tsx'],
     options: {
       safelist: ['hover:text-blue-charcoal', 'hover:text-denim', 'hover:text-spring-green', 'hover:text-flamingo'],
     },
   },
-  darkMode: false, // or 'media' or 'class'
+  darkMode: false,
   theme: {
     extend: {
       textColor: {
@@ -40,6 +40,5 @@ module.exports = {
   variants: {
     extend: {},
   },
-  // eslint-disable-next-line global-require
   plugins: [require('@tailwindcss/typography')],
 };

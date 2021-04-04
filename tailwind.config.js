@@ -1,3 +1,4 @@
+/** @type {import("@types/tailwindcss/tailwind-config").TailwindConfig} */
 module.exports = {
   purge: {
     content: ['./pages/**/*.tsx', './components/**/*.tsx', './svgs/**/*.tsx'],

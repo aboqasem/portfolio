@@ -39,7 +39,9 @@ module.exports = {
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      pointerEvents: ['group-focus'],
+    },
   },
   plugins: [require('@tailwindcss/typography')],
 };

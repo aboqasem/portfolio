@@ -16,7 +16,7 @@ const Project = ({ project: { title, description, preview, previewMp4, url, sour
         Your browser does not support the <code>video</code> element.
       </video>
       <div
-        className="absolute top-0 left-0 flex flex-col items-center justify-center w-full h-full text-white transition-opacity bg-black opacity-0 cursor-pointer rounded-xl focus:outline-none focus:opacity-100"
+        className="absolute top-0 left-0 flex flex-col items-center justify-center w-full h-full text-white transition-opacity bg-black opacity-0 cursor-pointer group rounded-xl focus:outline-none focus:opacity-100"
         tabIndex={1}
       >
         <div className="grid grid-flow-row p-4 text-base text-center md:text-lg">
@@ -25,12 +25,22 @@ const Project = ({ project: { title, description, preview, previewMp4, url, sour
         </div>
         <div className="grid grid-flow-col">
           {url && (
-            <a className="m-3 text-3xl rounded-lg md:m-2 md:rounded" href={url} target="_blank" rel="noreferrer">
+            <a
+              className="m-3 text-3xl rounded-lg pointer-events-none group-focus:pointer-events-auto md:m-2 md:rounded"
+              href={url}
+              target="_blank"
+              rel="noreferrer"
+            >
               <MdOpenInNew />
             </a>
           )}
           {sourceCode && (
-            <a className="m-3 text-3xl rounded-lg md:m-2 md:rounded" href={sourceCode} target="_blank" rel="noreferrer">
+            <a
+              className="m-3 text-3xl rounded-lg pointer-events-none group-focus:pointer-events-auto md:m-2 md:rounded"
+              href={sourceCode}
+              target="_blank"
+              rel="noreferrer"
+            >
               <BsCodeSlash />
             </a>
           )}

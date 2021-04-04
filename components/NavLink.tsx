@@ -12,13 +12,7 @@ const NavLink = ({ href, children }: IProps) => {
 
   return (
     <Link href={href}>
-      <a
-        className={`p-3 block md:p-4 hover:text-gray-900 ${
-          pathname === href ? 'text-gray-800 pointer-events-none' : ''
-        }`}
-      >
-        {children}
-      </a>
+      <a className={`p-3 block md:p-4 hover:text-gray-900 ${pathname === href ? 'text-gray-800' : ''}`}>{children}</a>
     </Link>
   );
 };

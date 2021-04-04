@@ -1,11 +1,8 @@
-import { useRouter } from 'next/dist/client/router';
 import Link from 'next/link';
 
 import NavLink from './NavLink';
 
 const Navbar = () => {
-  const { pathname } = useRouter();
-
   return (
     <header
       className="flex flex-wrap px-6 py-3 bg-transparent md:px-14 md:py-4"
@@ -13,11 +10,7 @@ const Navbar = () => {
     >
       <div className="flex items-center flex-1 select-none">
         <Link href="/">
-          <a
-            className={`font-nova-mono text-kilamanjaro text-lg sm:text-3xl md:text-4xl ${
-              pathname === '/' ? 'pointer-events-none' : ''
-            }`}
-          >
+          <a className="text-lg font-nova-mono text-kilamanjaro sm:text-3xl md:text-4xl">
             {'{ '}
             <img
               className="inline-block h-8 transform -translate-y-1 sm:h-10 md:h-12"

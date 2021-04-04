@@ -15,7 +15,10 @@ const Project = ({ project: { title, description, preview, previewMp4, url, sour
         {previewMp4 && <source src={previewMp4} type="video/mp4" />}
         Your browser does not support the <code>video</code> element.
       </video>
-      <button className="absolute top-0 left-0 flex flex-col items-center justify-center w-full h-full text-white transition-opacity bg-black opacity-0 focus:outline-none rounded-xl focus:opacity-100">
+      <div
+        tabIndex={1}
+        className="absolute top-0 left-0 flex flex-col items-center justify-center w-full h-full text-white transition-opacity bg-black opacity-0 cursor-pointer rounded-xl focus:outline-none focus:opacity-100"
+      >
         <div className="grid grid-flow-row p-4 text-2xl text-center md:text-lg">
           <p className="font-bold">{title}</p>
           <p>{description}</p>
@@ -42,7 +45,7 @@ const Project = ({ project: { title, description, preview, previewMp4, url, sour
             </a>
           )}
         </div>
-      </button>
+      </div>
     </div>
   );
 };

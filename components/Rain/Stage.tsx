@@ -40,11 +40,8 @@ class Stage extends Component<IProps, IState> {
           // initialize randomly placed drops on screens
           // create a new drop
           const drop = new Drop(htmlString);
-          // add drop to stage
           stage.appendChild(drop);
-          // after appending to get the actual width
           drop.top = Math.random() * stageHeight;
-          // make sure drop is inside stage
           drop.left = Math.random() * (stageWidth - drop.width);
 
           return drop;
@@ -64,7 +61,10 @@ class Stage extends Component<IProps, IState> {
           ticker: setInterval(Stage.tick, 35, stage, newDrops),
         });
       } else {
-        rainDrops.forEach((drop) => stage.appendChild(drop));
+        const fragment = new DocumentFragment();
+        // this won't cause a reflow to the actual document every time we append a drop
+        rainDrops.forEach((drop) => fragment.appendChild(drop));
+        stage.appendChild(fragment);
 
         this.setState({
           ticker: setInterval(Stage.tick, 35, stage, rainDrops),

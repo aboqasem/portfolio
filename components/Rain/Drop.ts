@@ -22,7 +22,7 @@ export default class Drop extends HTMLElement {
   }
 
   public get top(): number {
-    return +this.offsetTop;
+    return this.offsetTop;
   }
 
   public set top(v: number) {
@@ -31,7 +31,7 @@ export default class Drop extends HTMLElement {
   }
 
   public get left(): number {
-    return +this.offsetLeft;
+    return this.offsetLeft;
   }
 
   public set left(v: number) {

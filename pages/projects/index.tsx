@@ -5,13 +5,13 @@ import { Project } from '@/components';
 import Center from '@/components/Center';
 import { selectCommonDataState } from '@/store';
 
-const About = () => {
+const Projects = () => {
   const { projects } = useSelector(selectCommonDataState);
 
   return (
     <>
       <Head>
-        <title>About — Mohammad Al Zouabi</title>
+        <title>Projects — Mohammad Al Zouabi</title>
       </Head>
 
       <Center>
@@ -26,4 +26,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default Projects;

@@ -1,5 +1,2 @@
-module.exports = {
-  future: {
-    webpack5: true,
-  },
-};
+/** @type {import('next/types/index').NextConfig} */
+module.exports = {};

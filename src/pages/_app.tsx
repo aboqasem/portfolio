@@ -12,7 +12,9 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         <meta content="Personal website" name="description" />
       </Head>
 
-      <Component {...pageProps} />
+      <div className="font-serif">
+        <Component {...pageProps} />
+      </div>
     </>
   );
 }

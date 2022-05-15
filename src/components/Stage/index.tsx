@@ -1,62 +1,89 @@
 import { icons } from '@/components/Stage/icons';
 import { memo } from '@/utils/react/memo';
-import { useEffect, useRef } from 'react';
+import { RefObject, useEffect, useReducer, useRef } from 'react';
+
+type DropPosition = { top: number; left: number; width: number; height: number };
 
 export const Stage = memo(function Stage() {
   const stageRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const stage = stageRef.current;
-    if (!stage) return;
-    const { offsetWidth: stageWidth, offsetHeight: stageHeight } = stage;
-
-    const positions: [top: number, left: number, width: number, height: number][] = new Array(
-      icons.length,
-    );
-
-    for (let i = 0, len = stage.children.length; i < len; i++) {
-      const drop = stage.children[i] as SVGSVGElement;
-
-      const width = drop.clientWidth,
-        height = drop.clientHeight;
-
-      let top: number, left: number;
-      do {
-        top = Math.random() * (stageHeight - height);
-        left = Math.random() * (stageWidth - width);
-      } while (
-        // check if the drop overlaps with any previous drop
-        positions.some(([t, l, w, h]) => {
-          if (left + width < l || left > l + w) {
-            // if the drop is before or after the previous drop on the x axis
-            return false;
-          }
-          if (top + height < t || top > t + h) {
-            // if the drop is above or below the previous drop on the y axis
-            return false;
-          }
-          // else they overlap
-          return true;
-        })
-      );
-      positions[i] = [top, left, width, height];
-
-      drop.style.top = `${top}px`;
-      drop.style.left = `${left}px`;
-    }
-  }, []);
+  const positions = usePositions(stageRef);
 
   return (
     <div ref={stageRef} className="relative inset-0 w-full h-full">
-      {icons.map((Icon, idx) => (
+      {icons.map((Icon, i) => (
         <Icon
-          key={idx}
-          // We want to hide the icons until they are given random positions. But to access
-          // `clientWidth` and `clientHeight` we have to place the element in the DOM.
-          // So we place the element in the DOM but out of the viewport using -top-[current height]
-          className="absolute -top-6 text-2xl sm:-top-[1.875rem] sm:text-3xl md:-top-9 md:text-4xl"
+          key={i}
+          className="absolute text-2xl sm:text-3xl md:text-4xl"
+          style={{
+            top: positions[i]!.top,
+            left: positions[i]!.left,
+          }}
         />
       ))}
     </div>
   );
 });
+
+const LENGTH = icons.length;
+
+const positions: DropPosition[] = new Array(LENGTH).fill(null).map(() => ({
+  // We want to hide the icons until they are given random positions. But to access
+  // `clientWidth` and `clientHeight` we have to place the element in the DOM.
+  // So we place the element in the DOM but out of the viewport.
+  top: Number.MIN_SAFE_INTEGER,
+  // `-0` is to force `Double` representation (https://v8.dev/blog/react-cliff)
+  left: -0,
+  width: -0,
+  height: -0,
+}));
+
+function usePositions(stageRef: RefObject<HTMLDivElement>): DropPosition[] {
+  const [, forceUpdate] = useReducer((x) => x + 1, 0);
+
+  useEffect(() => {
+    // refs are always available in effects
+    const stage = stageRef.current!;
+
+    initializePositions(stage);
+    forceUpdate();
+  }, [stageRef]);
+
+  return positions;
+}
+
+function initializePositions(stage: HTMLDivElement) {
+  const { offsetWidth: stageWidth, offsetHeight: stageHeight } = stage;
+
+  for (let i = 0; i < LENGTH; i++) {
+    const drop = stage.children[i] as SVGSVGElement;
+
+    const width = drop.clientWidth,
+      height = drop.clientHeight;
+
+    let top: number = NaN,
+      left: number = NaN;
+    do {
+      top = Math.random() * (stageHeight - height);
+      left = Math.random() * (stageWidth - width);
+    } while (
+      // every other drop should be placed in a different position
+      !positions.every((other) => {
+        return (
+          // the drop is above the other drop
+          top + height < other.top ||
+          // or the drop is below the other drop
+          top > other.top + other.height ||
+          // or the drop is before the other drop
+          left + width < other.left ||
+          // or the drop is after the other drop
+          left > other.left + other.width
+        );
+      })
+    );
+
+    positions[i]!.width = width;
+    positions[i]!.height = height;
+    positions[i]!.top = top;
+    positions[i]!.left = left;
+  }
+}

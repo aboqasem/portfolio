@@ -41,6 +41,13 @@ const positions: DropPosition[] = new Array(LENGTH).fill(null).map(() => ({
 // updating the positions (e.g. when the stage is unmounted).
 let shouldUpdate = true;
 
+const prefersReducedMotionMedia =
+  typeof window !== 'undefined' ? window.matchMedia('(prefers-reduced-motion)') : null;
+let prefersReducedMotion = !!prefersReducedMotionMedia?.matches;
+prefersReducedMotionMedia?.addEventListener('change', (e) => {
+  prefersReducedMotion = e.matches;
+});
+
 function usePositions(stageRef: RefObject<HTMLDivElement>): DropPosition[] {
   const [, forceUpdate] = useReducer((x) => x + 1, 0);
 
@@ -70,9 +77,23 @@ function usePositions(stageRef: RefObject<HTMLDivElement>): DropPosition[] {
     });
     observer.observe(stage);
 
+    const interval = setInterval(() => {
+      if (prefersReducedMotion || shouldUpdate) {
+        return;
+      }
+      for (const position of positions) {
+        position.top += 1;
+        if (position.top >= stage.offsetHeight) {
+          position.top = -position.height;
+        }
+      }
+      forceUpdate();
+    }, 15);
+
     return () => {
       observer.disconnect();
       clearTimeout(timeout);
+      clearInterval(interval);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps -- `RefObject`s don't change
   }, []);

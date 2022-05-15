@@ -1,3 +1,4 @@
+import { Background } from '@/components/Background';
 import '@/styles/globals.css';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
@@ -13,6 +14,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       </Head>
 
       <div className="font-serif">
+        <Background />
         <Component {...pageProps} />
       </div>
     </>

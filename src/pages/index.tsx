@@ -32,7 +32,7 @@ const links = [
 export default memo(function Home() {
   return (
     <div className="flex items-center justify-center min-h-screen min-w-screen">
-      <div className="flex flex-col items-center justify-center max-w-2xl">
+      <div className="flex flex-col items-center justify-center max-w-2xl px-10 md:px-0">
         <div className="shadow-md rounded-xl bg-gradient-to-tr from-[#E1DFDC] md:shadow-xl backdrop-blur-lg">
           <div className="p-5 sm:p-7 md:p-10">
             <p className="mb-4 text-xl text-[#664A2D] sm:text-2xl md:text-3xl">

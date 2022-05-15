@@ -1,3 +1,4 @@
+import { memo } from '@/utils/react/memo';
 import { GoMarkGithub } from 'react-icons/go';
 import { SiGmail, SiLinkedin, SiTwitter } from 'react-icons/si';
 
@@ -28,7 +29,7 @@ const links = [
   },
 ];
 
-export default function Home() {
+export default memo(function Home() {
   return (
     <div className="flex items-center justify-center min-h-screen min-w-screen">
       <div className="flex flex-col items-center justify-center max-w-2xl">
@@ -63,4 +64,4 @@ export default function Home() {
       </div>
     </div>
   );
-}
+});

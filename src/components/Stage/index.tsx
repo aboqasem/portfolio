@@ -37,6 +37,10 @@ const positions: DropPosition[] = new Array(LENGTH).fill(null).map(() => ({
   height: -0,
 }));
 
+// This is needed to mark the positions as stale if the timeout got cleared before
+// updating the positions (e.g. when the stage is unmounted).
+let shouldUpdate = true;
+
 function usePositions(stageRef: RefObject<HTMLDivElement>): DropPosition[] {
   const [, forceUpdate] = useReducer((x) => x + 1, 0);
 
@@ -44,15 +48,50 @@ function usePositions(stageRef: RefObject<HTMLDivElement>): DropPosition[] {
     // refs are always available in effects
     const stage = stageRef.current!;
 
-    initializePositions(stage);
-    forceUpdate();
-  }, [stageRef]);
+    if (shouldUpdate) {
+      initializePositions(stage, forceUpdate);
+      shouldUpdate = false;
+    }
+
+    let timeout: any;
+    const observer = new ResizeObserver(() => {
+      if (timeout === undefined) {
+        // ignore the first resize event that is triggered when the stage is mounted
+        timeout = null;
+        return;
+      }
+
+      clearTimeout(timeout);
+      shouldUpdate = true;
+      timeout = setTimeout(() => {
+        initializePositions(stage, forceUpdate);
+        shouldUpdate = false;
+      }, 100);
+    });
+    observer.observe(stage);
+
+    return () => {
+      observer.disconnect();
+      clearTimeout(timeout);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- `RefObject`s don't change
+  }, []);
 
   return positions;
 }
 
-function initializePositions(stage: HTMLDivElement) {
+let lastStageWidth = NaN,
+  lastStageHeight = NaN;
+
+function initializePositions(stage: HTMLDivElement, cb?: () => void) {
   const { offsetWidth: stageWidth, offsetHeight: stageHeight } = stage;
+
+  if (stageWidth === lastStageWidth && stageHeight === lastStageHeight) {
+    return;
+  }
+
+  lastStageWidth = stageWidth;
+  lastStageHeight = stageHeight;
 
   for (let i = 0; i < LENGTH; i++) {
     const drop = stage.children[i] as SVGSVGElement;
@@ -60,11 +99,14 @@ function initializePositions(stage: HTMLDivElement) {
     const width = drop.clientWidth,
       height = drop.clientHeight;
 
+    const topMax = stageHeight - height,
+      leftMax = stageWidth - width;
+
     let top: number = NaN,
       left: number = NaN;
     do {
-      top = Math.random() * (stageHeight - height);
-      left = Math.random() * (stageWidth - width);
+      top = Math.random() * topMax;
+      left = Math.random() * leftMax;
     } while (
       // every other drop should be placed in a different position
       !positions.every((other) => {
@@ -85,5 +127,7 @@ function initializePositions(stage: HTMLDivElement) {
     positions[i]!.height = height;
     positions[i]!.top = top;
     positions[i]!.left = left;
+
+    cb?.();
   }
 }

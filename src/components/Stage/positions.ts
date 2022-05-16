@@ -25,17 +25,28 @@ prefersReducedMotionMedia?.addEventListener('change', (e) => {
   prefersReducedMotion = e.matches;
 });
 
-let mouseX = NaN,
-  mouseY = NaN;
+let pointerX = NaN,
+  pointerY = NaN;
 
-const onMouseMove = (e: MouseEvent) => {
-  mouseX = e.clientX;
-  mouseY = e.clientY;
-};
-const onMouseLeave = () => {
-  mouseX = NaN;
-  mouseY = NaN;
-};
+function isMouseEvent(e: Event): e is MouseEvent {
+  return e.type.startsWith('mouse');
+}
+function movePointer(e: MouseEvent | TouchEvent) {
+  if (isMouseEvent(e)) {
+    pointerX = e.clientX;
+    pointerY = e.clientY;
+  } else {
+    const touch = e.touches?.[0] ?? e.changedTouches?.[0];
+    if (touch) {
+      pointerX = touch.clientX;
+      pointerY = touch.clientY;
+    }
+  }
+}
+function clearPointer(e?: MouseEvent | TouchEvent) {
+  pointerX = NaN;
+  pointerY = NaN;
+}
 
 export function usePositions(stageRef: RefObject<HTMLDivElement>): DropPosition[] {
   const forceUpdate = useReducer((x) => x + 1, 0)[1];
@@ -77,10 +88,10 @@ export function usePositions(stageRef: RefObject<HTMLDivElement>): DropPosition[
 
         // do not move the drop if the mouse is hovering over it
         if (
-          mouseX >= position.left &&
-          mouseX <= position.left + position.width &&
-          mouseY >= position.top &&
-          mouseY <= position.top + position.height
+          pointerX >= position.left &&
+          pointerX <= position.left + position.width &&
+          pointerY >= position.top &&
+          pointerY <= position.top + position.height
         ) {
           continue;
         }
@@ -113,13 +124,20 @@ export function usePositions(stageRef: RefObject<HTMLDivElement>): DropPosition[
       forceUpdate();
     }, 15);
 
-    stage.addEventListener('mousemove', onMouseMove);
-    stage.addEventListener('mouseleave', onMouseLeave);
+    stage.addEventListener('mousemove', movePointer);
+    stage.addEventListener('mouseleave', clearPointer);
+    stage.addEventListener('touchmove', movePointer);
+    stage.addEventListener('touchcancel', clearPointer);
+    stage.addEventListener('touchstart', clearPointer);
 
     return () => {
-      stage.removeEventListener('mouseleave', onMouseLeave);
-      onMouseLeave();
-      stage.removeEventListener('mousemove', onMouseMove);
+      stage.removeEventListener('touchstart', clearPointer);
+      stage.removeEventListener('touchcancel', clearPointer);
+      stage.removeEventListener('touchmove', movePointer);
+      stage.removeEventListener('mouseleave', clearPointer);
+      stage.removeEventListener('mousemove', movePointer);
+      clearPointer();
+
       observer.disconnect();
       clearTimeout(timeout);
       clearInterval(interval);

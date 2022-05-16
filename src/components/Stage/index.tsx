@@ -26,6 +26,20 @@ export const Stage = memo(function Stage() {
 
 const LENGTH = icons.length;
 
+const positionsOverlap = (a: DropPosition, b: DropPosition): boolean => {
+  const doNotOverlap =
+    // the the drop is before the other drop
+    a.left + a.width < b.left ||
+    // or the drop is after the other drop
+    a.left > b.left + b.width ||
+    // or drop is above the other drop
+    a.top + a.height < b.top ||
+    // or the drop is below the other drop
+    a.top > b.top + b.height;
+
+  return !doNotOverlap;
+};
+
 const positions: DropPosition[] = new Array(LENGTH).fill(null).map(() => ({
   // We want to hide the icons until they are given random positions. But to access
   // `clientWidth` and `clientHeight` we have to place the element in the DOM.
@@ -47,6 +61,18 @@ let prefersReducedMotion = !!prefersReducedMotionMedia?.matches;
 prefersReducedMotionMedia?.addEventListener('change', (e) => {
   prefersReducedMotion = e.matches;
 });
+
+let mouseX = NaN,
+  mouseY = NaN;
+
+const onMouseMove = (e: MouseEvent) => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+};
+const onMouseLeave = () => {
+  mouseX = NaN;
+  mouseY = NaN;
+};
 
 function usePositions(stageRef: RefObject<HTMLDivElement>): DropPosition[] {
   const [, forceUpdate] = useReducer((x) => x + 1, 0);
@@ -81,16 +107,55 @@ function usePositions(stageRef: RefObject<HTMLDivElement>): DropPosition[] {
       if (prefersReducedMotion || shouldUpdate) {
         return;
       }
-      for (const position of positions) {
-        position.top += 1;
-        if (position.top >= stage.offsetHeight) {
-          position.top = -position.height;
+
+      for (let i = 0; i < LENGTH; i++) {
+        const position = positions[i]!;
+
+        // do not move the drop if the mouse is hovering over it
+        if (
+          mouseX >= position.left &&
+          mouseX <= position.left + position.width &&
+          mouseY >= position.top &&
+          mouseY <= position.top + position.height
+        ) {
+          continue;
         }
+
+        let newTop = position.top + 1;
+        if (newTop >= stage.offsetHeight) {
+          newTop = -position.height;
+        }
+
+        let move = true;
+        // do not move the drop if moving it would cause it to overlap with another stopped drop
+        for (let j = 0; j < LENGTH; j++) {
+          if (i === j) {
+            // skip the drop that is being moved
+            continue;
+          }
+          const movedPosition = positions[j]!;
+          if (positionsOverlap({ ...position, top: newTop }, movedPosition)) {
+            // the drop is going to overlap with another drop{
+            move = false;
+            break;
+          }
+        }
+        if (!move) {
+          continue;
+        }
+
+        position.top = newTop;
       }
       forceUpdate();
     }, 15);
 
+    stage.addEventListener('mousemove', onMouseMove);
+    stage.addEventListener('mouseleave', onMouseLeave);
+
     return () => {
+      stage.removeEventListener('mouseleave', onMouseLeave);
+      onMouseLeave();
+      stage.removeEventListener('mousemove', onMouseMove);
       observer.disconnect();
       clearTimeout(timeout);
       clearInterval(interval);
@@ -129,19 +194,8 @@ function initializePositions(stage: HTMLDivElement, cb?: () => void) {
       top = Math.random() * topMax;
       left = Math.random() * leftMax;
     } while (
-      // every other drop should be placed in a different position
-      !positions.every((other) => {
-        return (
-          // the drop is above the other drop
-          top + height < other.top ||
-          // or the drop is below the other drop
-          top > other.top + other.height ||
-          // or the drop is before the other drop
-          left + width < other.left ||
-          // or the drop is after the other drop
-          left > other.left + other.width
-        );
-      })
+      // any of the drops is overlapping with another drop
+      positions.some((other) => positionsOverlap({ top, left, width, height }, other))
     );
 
     positions[i]!.width = width;

@@ -75,3 +75,5 @@ export const icons = [
   SiYarn,
   SiMacos,
 ];
+
+export const ICONS_LENGTH = icons.length;

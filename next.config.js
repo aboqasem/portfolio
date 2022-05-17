@@ -1,5 +1,7 @@
 /** @type {import('next/types/index').NextConfig} */
 
-const config = {};
+const config = {
+  reactStrictMode: true,
+};
 
 module.exports = config;

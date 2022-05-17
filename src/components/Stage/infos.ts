@@ -4,15 +4,23 @@ import { RefObject, useEffect, useReducer } from 'react';
 
 type DropPosition = { top: number; left: number; width: number; height: number };
 
-const positions: DropPosition[] = new Array(ICONS_LENGTH).fill(null).map(() => ({
-  // We want to hide the icons until they are given random positions. But to access
-  // `clientWidth` and `clientHeight` we have to place the element in the DOM.
-  // So we place the element in the DOM but out of the viewport.
-  top: Number.MIN_SAFE_INTEGER,
-  // `-0` is to force `Double` representation (https://v8.dev/blog/react-cliff)
-  left: -0,
-  width: -0,
-  height: -0,
+type DropInfo = {
+  position: DropPosition;
+  hover: boolean;
+};
+
+const infos: DropInfo[] = new Array(ICONS_LENGTH).fill(null).map(() => ({
+  position: {
+    // We want to hide the icons until they are given random positions. But to access
+    // `clientWidth` and `clientHeight` we have to place the element in the DOM.
+    // So we place the element in the DOM but out of the viewport.
+    top: Number.MIN_SAFE_INTEGER,
+    // `-0` is to force `Double` representation (https://v8.dev/blog/react-cliff)
+    left: -0,
+    width: -0,
+    height: -0,
+  },
+  hover: false,
 }));
 
 // This is needed to mark the positions as stale if the `ResizeObserver` timeout got cleared before
@@ -25,30 +33,7 @@ prefersReducedMotionMedia?.addEventListener('change', (e) => {
   prefersReducedMotion = e.matches;
 });
 
-let pointerX = NaN,
-  pointerY = NaN;
-
-function isMouseEvent(e: Event): e is MouseEvent {
-  return e.type.startsWith('mouse');
-}
-function movePointer(e: MouseEvent | TouchEvent) {
-  if (isMouseEvent(e)) {
-    pointerX = e.clientX;
-    pointerY = e.clientY;
-  } else {
-    const touch = e.touches?.[0] ?? e.changedTouches?.[0];
-    if (touch) {
-      pointerX = touch.clientX;
-      pointerY = touch.clientY;
-    }
-  }
-}
-function clearPointer(e?: MouseEvent | TouchEvent) {
-  pointerX = NaN;
-  pointerY = NaN;
-}
-
-export function usePositions(stageRef: RefObject<HTMLDivElement>): DropPosition[] {
+export function useInfos(stageRef: RefObject<HTMLDivElement>): DropInfo[] {
   const forceUpdate = useReducer((x) => x + 1, 0)[1];
 
   useEffect(() => {
@@ -84,21 +69,15 @@ export function usePositions(stageRef: RefObject<HTMLDivElement>): DropPosition[
       }
 
       for (let i = 0; i < ICONS_LENGTH; i++) {
-        const position = positions[i]!;
+        const info = infos[i]!;
 
-        // do not move the drop if the mouse is hovering over it
-        if (
-          pointerX >= position.left &&
-          pointerX <= position.left + position.width &&
-          pointerY >= position.top &&
-          pointerY <= position.top + position.height
-        ) {
+        if (info.hover) {
           continue;
         }
 
-        let newTop = position.top + 1;
+        let newTop = info.position.top + 1;
         if (newTop >= stage.offsetHeight) {
-          newTop = -position.height;
+          newTop = -info.position.height;
         }
 
         let move = true;
@@ -108,8 +87,8 @@ export function usePositions(stageRef: RefObject<HTMLDivElement>): DropPosition[
             // skip checking the same drop
             continue;
           }
-          const movedPosition = positions[j]!;
-          if (doPositionsOverlap({ ...position, top: newTop }, movedPosition)) {
+          const otherInfo = infos[j]!;
+          if (doPositionsOverlap({ ...info.position, top: newTop }, otherInfo.position)) {
             // the drop is going to overlap with another drop{
             move = false;
             break;
@@ -119,25 +98,12 @@ export function usePositions(stageRef: RefObject<HTMLDivElement>): DropPosition[
           continue;
         }
 
-        position.top = newTop;
+        info.position.top = newTop;
       }
       forceUpdate();
     }, 15);
 
-    stage.addEventListener('mousemove', movePointer);
-    stage.addEventListener('mouseleave', clearPointer);
-    stage.addEventListener('touchmove', movePointer);
-    stage.addEventListener('touchcancel', clearPointer);
-    stage.addEventListener('touchstart', clearPointer);
-
     return () => {
-      stage.removeEventListener('touchstart', clearPointer);
-      stage.removeEventListener('touchcancel', clearPointer);
-      stage.removeEventListener('touchmove', movePointer);
-      stage.removeEventListener('mouseleave', clearPointer);
-      stage.removeEventListener('mousemove', movePointer);
-      clearPointer();
-
       observer.disconnect();
       clearTimeout(timeout);
       clearInterval(interval);
@@ -145,7 +111,7 @@ export function usePositions(stageRef: RefObject<HTMLDivElement>): DropPosition[
     // eslint-disable-next-line react-hooks/exhaustive-deps -- `RefObject`s don't change
   }, []);
 
-  return positions;
+  return infos;
 }
 
 let lastStageWidth = NaN,
@@ -177,13 +143,10 @@ function initializePositions(stage: HTMLDivElement, cb?: () => void) {
       left = Math.random() * leftMax;
     } while (
       // any of the drops is overlapping with another drop
-      positions.some((other) => doPositionsOverlap({ top, left, width, height }, other))
+      infos.some((other) => doPositionsOverlap({ top, left, width, height }, other.position))
     );
 
-    positions[i]!.width = width;
-    positions[i]!.height = height;
-    positions[i]!.top = top;
-    positions[i]!.left = left;
+    infos[i]!.position = { top, left, width, height };
 
     cb?.();
   }

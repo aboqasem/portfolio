@@ -1,11 +1,11 @@
 import { icons } from '@/components/Stage/icons';
-import { usePositions } from '@/components/Stage/positions';
+import { useInfos } from '@/components/Stage/infos';
 import { memo } from '@/utils/react/memo';
 import { useRef } from 'react';
 
 export const Stage = memo(function Stage() {
   const stageRef = useRef<HTMLDivElement>(null);
-  const positions = usePositions(stageRef);
+  const infos = useInfos(stageRef);
 
   return (
     <div ref={stageRef} className="relative inset-0 w-full h-full">
@@ -15,8 +15,14 @@ export const Stage = memo(function Stage() {
           title={icon.desc}
           className="absolute text-2xl select-none sm:text-3xl md:text-4xl"
           style={{
-            top: positions[i]!.top,
-            left: positions[i]!.left,
+            top: infos[i]!.position.top,
+            left: infos[i]!.position.left,
+          }}
+          onMouseOver={() => {
+            infos[i]!.hover = true;
+          }}
+          onMouseOut={() => {
+            infos[i]!.hover = false;
           }}
         />
       ))}

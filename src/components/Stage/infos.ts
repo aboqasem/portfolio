@@ -14,11 +14,15 @@ const infos: DropInfo[] = new Array(ICONS_LENGTH).fill(null).map(() => ({
     // We want to hide the icons until they are given random positions. But to access
     // `clientWidth` and `clientHeight` we have to place the element in the DOM.
     // So we place the element in the DOM but out of the viewport.
+    //
+    // Also, `top` can be set to negative and decimal numbers. That is why we should initialize with `Double`
+    // instead of `Smi` values for better performance: (https://v8.dev/blog/react-cliff)
     top: Number.MIN_SAFE_INTEGER,
-    // `-0` is to force `Double` representation (https://v8.dev/blog/react-cliff)
+    // `left` can be a decimal number.
     left: -0,
-    width: -0,
-    height: -0,
+    // `width` and `height` are typically `Smi`.
+    width: 0,
+    height: 0,
   },
   hover: false,
 }));

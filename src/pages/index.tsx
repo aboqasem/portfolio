@@ -52,7 +52,7 @@ export default memo(function Home() {
                   href={url}
                   target="_blank"
                   rel="noreferrer"
-                  className={className}
+                  className={`focus:outline-none focus:ring-2 border border-transparent focus:ring-[#664A2D] ${className}`}
                 >
                   <Icon aria-hidden />
                   <span className="sr-only">{name}</span>

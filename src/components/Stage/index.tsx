@@ -9,23 +9,27 @@ export const Stage = memo(function Stage() {
 
   return (
     <div ref={stageRef} className="absolute inset-0 w-full h-full">
-      {icons.map((icon, i) => (
-        <icon.Icon
-          key={i}
-          title={icon.desc}
-          className="absolute text-2xl select-none sm:text-3xl md:text-4xl"
-          style={{
-            top: infos[i]!.position.top,
-            left: infos[i]!.position.left,
-          }}
-          onMouseOver={() => {
-            infos[i]!.hover = true;
-          }}
-          onMouseOut={() => {
-            infos[i]!.hover = false;
-          }}
-        />
-      ))}
+      {icons.map((icon, i) => {
+        const info = infos[i]!;
+
+        return (
+          <icon.Icon
+            key={i}
+            title={icon.desc}
+            className="absolute text-2xl select-none sm:text-3xl md:text-4xl"
+            style={{
+              top: info!.position.top,
+              left: info!.position.left,
+            }}
+            onMouseOver={() => {
+              info!.hover = true;
+            }}
+            onMouseOut={() => {
+              info!.hover = false;
+            }}
+          />
+        );
+      })}
     </div>
   );
 });

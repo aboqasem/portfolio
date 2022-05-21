@@ -8,7 +8,7 @@ export const Stage = memo(function Stage() {
   const infos = useInfos(stageRef);
 
   return (
-    <div ref={stageRef} className="relative inset-0 w-full h-full">
+    <div ref={stageRef} className="absolute inset-0 w-full h-full">
       {icons.map((icon, i) => (
         <icon.Icon
           key={i}

@@ -1,5 +1,5 @@
 import { ICONS_LENGTH } from '@/components/Stage/icons';
-import { IS_BROWSER } from '@/constants/shared';
+import { stageSettings } from '@/components/Stage/Settings';
 import { RefObject, useEffect, useReducer } from 'react';
 
 type DropPosition = { top: number; left: number; width: number; height: number };
@@ -31,12 +31,6 @@ const infos: DropInfo[] = new Array(ICONS_LENGTH).fill(null).map(() => ({
 // updating the positions (i.e. when the stage is unmounted).
 let shouldUpdate = true;
 
-const prefersReducedMotionMedia = IS_BROWSER ? window.matchMedia('(prefers-reduced-motion)') : null;
-let prefersReducedMotion = !!prefersReducedMotionMedia?.matches;
-prefersReducedMotionMedia?.addEventListener('change', (e) => {
-  prefersReducedMotion = e.matches;
-});
-
 export function useInfos(stageRef: RefObject<HTMLDivElement>): DropInfo[] {
   const forceUpdate = useReducer((x) => x + 1, 0)[1];
 
@@ -67,8 +61,8 @@ export function useInfos(stageRef: RefObject<HTMLDivElement>): DropInfo[] {
     observer.observe(stage);
 
     const interval = setInterval(() => {
-      if (prefersReducedMotion || shouldUpdate) {
-        // if the user prefers reduced motion or an update is pending, don't move the drops
+      if (shouldUpdate) {
+        // if an update is pending, don't move the drops
         return;
       }
 
@@ -79,7 +73,7 @@ export function useInfos(stageRef: RefObject<HTMLDivElement>): DropInfo[] {
           continue;
         }
 
-        let newTop = info.position.top + 1;
+        let newTop = info.position.top + stageSettings.dropSpeed;
         if (newTop >= stage.offsetHeight) {
           newTop = -info.position.height;
         }

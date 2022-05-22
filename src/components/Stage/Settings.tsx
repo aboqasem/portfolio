@@ -27,7 +27,7 @@ export const StageSettings = memo(function StageSettings(_: StageSettingsProps) 
     <div className="absolute top-0 right-0 flex items-start mt-2">
       <button
         type="button"
-        className="p-2 border border-r-0 bg-stone-50 group group-hover:bg-stone-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-dallas rounded-l-xl"
+        className="p-2 border border-r-0 bg-stone-50 group group-hover:bg-stone-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-linen-800 rounded-l-xl"
         onClick={() => setShow((show) => !show)}
       >
         <FiSettings className="text-lg group group-hover:animate-[spin_2s_linear_infinite] group-focus:animate-[spin_2s_linear_infinite] motion-reduce:!animate-none" />

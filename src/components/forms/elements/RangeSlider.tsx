@@ -15,7 +15,7 @@ export const RangeSlider = memo(function RangeSlider({ label, ...props }: RangeS
       <div className="mt-1">
         <input
           type="range"
-          className={`w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-dallas accent-dallas ${props.className}`}
+          className={`w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-linen-800 accent-linen-800 ${props.className}`}
           {...props}
         ></input>
       </div>

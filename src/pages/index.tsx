@@ -33,9 +33,9 @@ export default memo(function Home() {
   return (
     <div className="flex items-center justify-center min-h-screen min-w-screen">
       <div className="flex flex-col items-center justify-center max-w-2xl px-10 md:px-0">
-        <div className="shadow-md rounded-xl bg-gradient-to-tr from-[#E1DFDC] md:shadow-xl backdrop-blur-lg">
+        <div className="shadow-md rounded-xl bg-gradient-to-tr from-stone-200/90 md:shadow-xl backdrop-blur-lg">
           <div className="p-5 sm:p-7 md:p-10">
-            <p className="mb-4 text-xl text-dallas sm:text-2xl md:text-3xl">
+            <p className="mb-4 text-xl text-linen-700 sm:text-2xl md:text-3xl">
               Hey, I&apos;m Mohammad Al Zouabi.
             </p>
 
@@ -52,7 +52,7 @@ export default memo(function Home() {
                   href={url}
                   target="_blank"
                   rel="noreferrer"
-                  className={`focus:outline-none focus:ring-2 border border-transparent focus:ring-dallas ${className}`}
+                  className={`focus:outline-none focus:ring-2 border border-transparent focus:ring-linen-800 ${className}`}
                 >
                   <Icon aria-hidden />
                   <span className="sr-only">{name}</span>

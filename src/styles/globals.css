@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 body {
-  background-color: #faf5ef;
+  background-color: theme('colors.linen.50');
 }

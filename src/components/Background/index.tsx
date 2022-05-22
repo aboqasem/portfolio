@@ -10,7 +10,7 @@ const StageSettings = dynamic<StageSettingsProps>(
 
 export const Background = memo(function Background() {
   return (
-    <div className="fixed inset-0 w-screen h-screen bg-[#faf5ef] z-0">
+    <div className="fixed inset-0 z-0 w-screen h-screen">
       <Stage />
 
       <StageSettings />

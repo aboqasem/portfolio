@@ -14,6 +14,12 @@ export const StageSettings = memo(function StageSettings(_: StageSettingsProps) 
   const [show, setShow] = useState(false);
 
   const [dropSpeed, setDropSpeed] = useState(() => {
+    const storedDropSpeed = +(localStorage.getItem('stageSettings.dropSpeed') ?? NaN);
+
+    if (!isNaN(storedDropSpeed)) {
+      return storedDropSpeed;
+    }
+
     const allowMotion = IS_BROWSER && !window.matchMedia('(prefers-reduced-motion)').matches;
 
     return allowMotion ? 1 : 0;
@@ -21,6 +27,8 @@ export const StageSettings = memo(function StageSettings(_: StageSettingsProps) 
 
   useEffect(() => {
     stageSettings.dropSpeed = dropSpeed;
+
+    localStorage.setItem('stageSettings.dropSpeed', dropSpeed.toString());
   }, [dropSpeed]);
 
   return (

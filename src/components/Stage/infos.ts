@@ -60,9 +60,9 @@ export function useInfos(stageRef: RefObject<HTMLDivElement>): DropInfo[] {
     });
     observer.observe(stage);
 
-    const interval = setInterval(() => {
-      if (shouldUpdate) {
-        // if an update is pending, don't move the drops
+    const animationInterval = setInterval(() => {
+      if (shouldUpdate || stageSettings.dropSpeed === 0) {
+        // if an update is pending, or drop speed is 0, don't move the drops
         return;
       }
 
@@ -104,7 +104,7 @@ export function useInfos(stageRef: RefObject<HTMLDivElement>): DropInfo[] {
     return () => {
       observer.disconnect();
       clearTimeout(timeout);
-      clearInterval(interval);
+      clearInterval(animationInterval);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps -- `RefObject`s don't change
   }, []);

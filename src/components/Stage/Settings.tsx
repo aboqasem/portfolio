@@ -11,7 +11,7 @@ export const stageSettings = {
 export interface StageSettingsProps {}
 
 export const StageSettings = memo(function StageSettings(_: StageSettingsProps) {
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(false);
 
   const [dropSpeed, setDropSpeed] = useState(() => {
     const allowMotion = IS_BROWSER && !window.matchMedia('(prefers-reduced-motion)').matches;
@@ -27,15 +27,15 @@ export const StageSettings = memo(function StageSettings(_: StageSettingsProps) 
     <div className="absolute top-0 right-0 flex items-start mt-2">
       <button
         type="button"
-        className="p-2 bg-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-dallas rounded-l-xl"
+        className="p-2 border border-r-0 bg-stone-50 group group-hover:bg-stone-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-dallas rounded-l-xl"
         onClick={() => setShow((show) => !show)}
       >
-        <FiSettings className="text-lg" />
+        <FiSettings className="text-lg group group-hover:animate-[spin_2s_linear_infinite] group-focus:animate-[spin_2s_linear_infinite] motion-reduce:!animate-none" />
         <span className="sr-only">Stage Settings</span>
       </button>
 
       {show && (
-        <div className="p-2 bg-white rounded-bl-xl">
+        <div className="p-2 border bg-stone-50 rounded-bl-xl">
           <RangeSlider
             id="stage-drop-speed"
             label="Drop speed"

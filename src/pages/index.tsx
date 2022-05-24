@@ -31,35 +31,31 @@ const links = [
 
 export default memo(function Home() {
   return (
-    <div className="flex items-center justify-center min-h-screen min-w-screen">
-      <div className="flex flex-col items-center justify-center max-w-2xl px-10 md:px-0">
-        <div className="shadow-md rounded-xl bg-gradient-to-tr from-stone-200/90 md:shadow-xl backdrop-blur-lg">
-          <div className="p-5 sm:p-7 md:p-10">
-            <p className="mb-4 text-xl text-linen-700 sm:text-2xl md:text-3xl">
-              Hey, I&apos;m Mohammad Al Zouabi.
-            </p>
+    <div className="absolute w-full max-w-2xl px-10 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 md:px-0">
+      <div className="p-5 shadow-md rounded-xl bg-gradient-to-tr from-stone-200/90 md:shadow-xl backdrop-blur-lg sm:p-7 md:p-10">
+        <p className="mb-4 text-xl text-linen-700 sm:text-2xl md:text-3xl">
+          Hey, I&apos;m Mohammad Al Zouabi.
+        </p>
 
-            <p className="text-lg sm:text-xl md:text-2xl">
-              An enthusiastic software developer who stands for quality, consistency, and attention
-              to details.
-            </p>
+        <p className="text-lg sm:text-xl md:text-2xl">
+          An enthusiastic software developer who stands for quality, consistency, and attention to
+          details.
+        </p>
 
-            <div className="grid grid-flow-col-dense mt-4 text-2xl justify-evenly sm:text-4xl">
-              {links.map(({ name, url, className, icon: Icon }) => (
-                <a
-                  key={name}
-                  title={name}
-                  href={url}
-                  target="_blank"
-                  rel="noreferrer"
-                  className={`focus:outline-none focus:ring-2 border border-transparent focus:ring-linen-800 ${className}`}
-                >
-                  <Icon aria-hidden />
-                  <span className="sr-only">{name}</span>
-                </a>
-              ))}
-            </div>
-          </div>
+        <div className="grid grid-flow-col-dense mt-4 text-2xl justify-evenly sm:text-4xl">
+          {links.map(({ name, url, className, icon: Icon }) => (
+            <a
+              key={name}
+              title={name}
+              href={url}
+              target="_blank"
+              rel="noreferrer"
+              className={`focus:outline-none focus:ring-2 border border-transparent focus:ring-linen-800 ${className}`}
+            >
+              <Icon aria-hidden />
+              <span className="sr-only">{name}</span>
+            </a>
+          ))}
         </div>
       </div>
     </div>

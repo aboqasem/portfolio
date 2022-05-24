@@ -1,1 +1,1 @@
-# [Personal Website](https://www.zouabi.me)
+# [Personal Website](https://zouabi.me)

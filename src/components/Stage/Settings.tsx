@@ -14,7 +14,9 @@ export const StageSettings = memo(function StageSettings(_: StageSettingsProps) 
   const [isShown, setIsShown] = useState(false);
 
   const [dropSpeed, setDropSpeed] = useState(() => {
-    const storedDropSpeed = +(localStorage.getItem('stageSettings.dropSpeed') ?? NaN);
+    const storedDropSpeed = +(
+      (IS_BROWSER ? localStorage.getItem('stageSettings.dropSpeed') : null) ?? NaN
+    );
 
     if (!isNaN(storedDropSpeed)) {
       return storedDropSpeed;

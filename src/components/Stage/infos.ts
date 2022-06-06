@@ -1,5 +1,4 @@
 import { ICONS_LENGTH } from '@/components/Stage/icons';
-import { stageSettings } from '@/components/Stage/Settings';
 import { RefObject, useEffect, useReducer } from 'react';
 
 type DropPosition = { top: number; left: number; width: number; height: number };
@@ -9,7 +8,11 @@ type DropInfo = {
   hover: boolean;
 };
 
-const infos: DropInfo[] = new Array(ICONS_LENGTH).fill(null).map(() => ({
+export const dropsSettings = {
+  speed: -0,
+};
+
+const dropsInfos: DropInfo[] = new Array(ICONS_LENGTH).fill(null).map(() => ({
   position: {
     // We want to hide the icons until they are given random positions. But to access
     // `clientWidth` and `clientHeight` we have to place the element in the DOM.
@@ -31,7 +34,7 @@ const infos: DropInfo[] = new Array(ICONS_LENGTH).fill(null).map(() => ({
 // updating the positions (i.e. when the stage is unmounted).
 let shouldUpdate = true;
 
-export function useInfos(stageRef: RefObject<HTMLDivElement>): DropInfo[] {
+export function useDropsInfos(stageRef: RefObject<HTMLDivElement>): DropInfo[] {
   const [, forceUpdate] = useReducer((x) => x + 1, 0);
 
   useEffect(() => {
@@ -61,19 +64,19 @@ export function useInfos(stageRef: RefObject<HTMLDivElement>): DropInfo[] {
     observer.observe(stage);
 
     const animationInterval = setInterval(() => {
-      if (shouldUpdate || stageSettings.dropSpeed === 0) {
+      if (shouldUpdate || dropsSettings.speed === 0) {
         // if an update is pending, or drop speed is 0, don't move the drops
         return;
       }
 
       for (let i = 0; i < ICONS_LENGTH; i++) {
-        const info = infos[i]!;
+        const info = dropsInfos[i]!;
 
         if (info.hover) {
           continue;
         }
 
-        let newTop = info.position.top + stageSettings.dropSpeed;
+        let newTop = info.position.top + dropsSettings.speed;
         if (newTop >= stage.offsetHeight) {
           newTop = -info.position.height;
         }
@@ -85,7 +88,7 @@ export function useInfos(stageRef: RefObject<HTMLDivElement>): DropInfo[] {
             // skip checking the same drop
             continue;
           }
-          const otherInfo = infos[j]!;
+          const otherInfo = dropsInfos[j]!;
           if (doPositionsOverlap({ ...info.position, top: newTop }, otherInfo.position)) {
             // the drop is going to overlap with another drop{
             move = false;
@@ -109,7 +112,7 @@ export function useInfos(stageRef: RefObject<HTMLDivElement>): DropInfo[] {
     // eslint-disable-next-line react-hooks/exhaustive-deps -- `RefObject`s don't change
   }, []);
 
-  return infos;
+  return dropsInfos;
 }
 
 let lastStageWidth = NaN,
@@ -141,10 +144,10 @@ function initializePositions(stage: HTMLDivElement, cb?: () => void) {
       left = Math.random() * leftMax;
     } while (
       // any of the drops is overlapping with another drop
-      infos.some((other) => doPositionsOverlap({ top, left, width, height }, other.position))
+      dropsInfos.some((other) => doPositionsOverlap({ top, left, width, height }, other.position))
     );
 
-    infos[i]!.position = { top, left, width, height };
+    dropsInfos[i]!.position = { top, left, width, height };
   }
 
   cb?.();

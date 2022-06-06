@@ -1,16 +1,16 @@
 import { icons } from '@/components/Stage/icons';
-import { useInfos } from '@/components/Stage/infos';
+import { useDropsInfos } from '@/components/Stage/infos';
 import { memo } from '@/utils/react/memo';
 import { useRef } from 'react';
 
 export const Stage = memo(function Stage() {
   const stageRef = useRef<HTMLDivElement>(null);
-  const infos = useInfos(stageRef);
+  const dropsInfos = useDropsInfos(stageRef);
 
   return (
     <div ref={stageRef} className="absolute inset-0 w-full h-full">
       {icons.map((icon, i) => {
-        const info = infos[i]!;
+        const dropInfo = dropsInfos[i]!;
 
         return (
           <icon.Icon
@@ -18,14 +18,14 @@ export const Stage = memo(function Stage() {
             title={icon.desc}
             className="absolute text-2xl select-none sm:text-3xl md:text-4xl"
             style={{
-              top: info!.position.top,
-              left: info!.position.left,
+              top: dropInfo!.position.top,
+              left: dropInfo!.position.left,
             }}
             onMouseOver={() => {
-              info!.hover = true;
+              dropInfo!.hover = true;
             }}
             onMouseOut={() => {
-              info!.hover = false;
+              dropInfo!.hover = false;
             }}
           />
         );

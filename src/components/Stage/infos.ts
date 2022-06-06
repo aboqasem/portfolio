@@ -32,7 +32,7 @@ const infos: DropInfo[] = new Array(ICONS_LENGTH).fill(null).map(() => ({
 let shouldUpdate = true;
 
 export function useInfos(stageRef: RefObject<HTMLDivElement>): DropInfo[] {
-  const forceUpdate = useReducer((x) => x + 1, 0)[1];
+  const [, forceUpdate] = useReducer((x) => x + 1, 0);
 
   useEffect(() => {
     // refs are always available in effects
@@ -145,9 +145,9 @@ function initializePositions(stage: HTMLDivElement, cb?: () => void) {
     );
 
     infos[i]!.position = { top, left, width, height };
-
-    cb?.();
   }
+
+  cb?.();
 }
 
 function doPositionsOverlap(a: DropPosition, b: DropPosition): boolean {

@@ -8,23 +8,26 @@ export const stageSettings = {
   dropSpeed: -0,
 };
 
-export interface StageSettingsProps {}
+const [minDropSpeed, maxDropSpeed] = [0, 3];
 
-export const StageSettings = memo(function StageSettings(_: StageSettingsProps) {
+export const StageSettings = memo(function StageSettings() {
   const [isShown, setIsShown] = useState(false);
 
   const [dropSpeed, setDropSpeed] = useState(() => {
-    const storedDropSpeed = +(
-      (IS_BROWSER ? localStorage.getItem('stageSettings.dropSpeed') : null) ?? NaN
-    );
-
-    if (!isNaN(storedDropSpeed)) {
-      return storedDropSpeed;
+    if (!IS_BROWSER) {
+      // set to 0 in SSR
+      return 0;
     }
 
-    const allowMotion = IS_BROWSER && !window.matchMedia('(prefers-reduced-motion)').matches;
+    const storedDropSpeed = +(localStorage.getItem('stageSettings.dropSpeed') ?? NaN);
 
-    return allowMotion ? 1 : 0;
+    if (!isNaN(storedDropSpeed)) {
+      // set to the locally stored value if it's a number (clamped to the range)
+      return Math.max(minDropSpeed, Math.min(maxDropSpeed, storedDropSpeed));
+    }
+
+    // otherwise assume it's 0 if the user prefers reduced motion, or 1 if they don't
+    return window.matchMedia('(prefers-reduced-motion)').matches ? 0 : 1;
   });
 
   useEffect(() => {
@@ -52,8 +55,8 @@ export const StageSettings = memo(function StageSettings(_: StageSettingsProps) 
         <RangeSlider
           id="stage-drop-speed"
           label="Drop speed"
-          min={0}
-          max={3}
+          min={minDropSpeed}
+          max={maxDropSpeed}
           step={0.2}
           value={dropSpeed}
           disabled={!isShown}

@@ -13,10 +13,8 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         <meta content="Personal website" name="description" />
       </Head>
 
-      <div className="font-serif">
-        <Background />
-        <Component {...pageProps} />
-      </div>
+      <Background />
+      <Component {...pageProps} />
     </>
   );
 }

@@ -29,7 +29,7 @@ if (
 
 if (
   // commit message has [skip deploy], [skip build], [no deploy], or [no build]
-  /\[(?:skip|no) (?:deploy|build)]/.test(VERCEL_GIT_COMMIT_MESSAGE)
+  /\[(?:skip|no)[ -](?:deploy|build)]/.test(VERCEL_GIT_COMMIT_MESSAGE)
 ) {
   noBuild();
 }

@@ -8,7 +8,10 @@ export interface RangeSliderProps
 export const RangeSlider = memo(function RangeSlider({ label, ...props }: RangeSliderProps) {
   return (
     <div>
-      <label htmlFor={props.id} className="block text-sm font-medium text-zinc-900">
+      <label
+        htmlFor={props.id}
+        className="block text-sm font-medium text-zinc-900 dark:text-zinc-100"
+      >
         {label}
       </label>
 

@@ -1,4 +1,5 @@
 import { StageSettings } from '@/components/Settings/Stage';
+import { ThemeSettings } from '@/components/Settings/Theme';
 import { memo } from '@/utils/react/memo';
 import { useState } from 'react';
 import { FiSettings } from 'react-icons/fi';
@@ -24,7 +25,9 @@ export const Settings = memo(function Settings() {
         <span className="sr-only">{hint}</span>
       </button>
 
-      <div className="w-[12rem] border rounded-bl-xl divide-y dark:divide-zinc-500 bg-white dark:bg-zinc-900 dark:border-zinc-500">
+      <div className="w-[12rem] border rounded-bl-xl divide-y dark:divide-zinc-500 bg-white dark:bg-black dark:border-zinc-500">
+        <ThemeSettings disabled={!isShown} />
+
         <StageSettings disabled={!isShown} />
       </div>
     </div>

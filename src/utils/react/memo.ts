@@ -1,3 +1,4 @@
+import { IS_DEV } from '@/constants/shared';
 import React from 'react';
 
 export function memo<T extends React.ComponentType<any>>(
@@ -7,10 +8,11 @@ export function memo<T extends React.ComponentType<any>>(
     nextProps: Readonly<React.ComponentProps<T>>,
   ) => boolean,
 ): T {
-  const displayName = Component.displayName || Component.name || 'MemoizedComponent';
-
   const MemoComponent = React.memo(Component, propsAreEqual);
-  MemoComponent.displayName = displayName;
+
+  if (IS_DEV) {
+    MemoComponent.displayName = Component.displayName || Component.name || 'MemoizedComponent';
+  }
 
   return MemoComponent as unknown as T;
 }

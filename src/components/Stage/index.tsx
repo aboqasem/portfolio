@@ -16,7 +16,7 @@ export const Stage = memo(function Stage() {
           <icon.Icon
             key={i}
             title={icon.desc}
-            className="absolute text-2xl select-none sm:text-3xl md:text-4xl text-zinc-900"
+            className="absolute w-6 h-6 select-none sm:w-8 sm:h-8 xl:w-9 xl:h-9 md:text-4xl text-zinc-900"
             style={{
               top: dropInfo!.position.top,
               left: dropInfo!.position.left,

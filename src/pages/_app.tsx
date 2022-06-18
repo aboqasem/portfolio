@@ -1,4 +1,5 @@
 import { Background } from '@/components/Background';
+import { ThemeProvider } from '@/components/shared/ThemeProvider';
 import '@/styles/globals.css';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
@@ -13,8 +14,10 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         <meta content="Personal website" name="description" />
       </Head>
 
-      <Background />
-      <Component {...pageProps} />
+      <ThemeProvider>
+        <Background />
+        <Component {...pageProps} />
+      </ThemeProvider>
     </>
   );
 }

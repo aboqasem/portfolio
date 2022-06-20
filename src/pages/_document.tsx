@@ -5,12 +5,8 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
-        {/* runs before hydration to avoid color ficker  */}
-        <Script
-          id="configure-theme"
-          strategy="beforeInteractive"
-          src="/js/theme/configure-theme.js"
-        />
+        {/* eslint-disable-next-line @next/next/no-sync-scripts -- to avoid color ficker */}
+        <script id="configure-theme" src="/js/theme/configure-theme.js" />
       </Head>
 
       <body className="duration-75 motion-safe:transition-colors bg-zinc-50 dark:bg-zinc-900">

@@ -2,7 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@aboqasem/prettierrc': 3.0.0
-  '@headlessui/react': 1.6.4
+  '@headlessui/react': 1.6.5
   '@types/node': 17.0.41
   '@types/react': 18.0.14
   autoprefixer: 10.4.7
@@ -22,7 +22,7 @@ specifiers:
 
 dependencies:
   '@aboqasem/prettierrc': 3.0.0
-  '@headlessui/react': 1.6.4_biqbaboplfbrettd7655fr4n2y
+  '@headlessui/react': 1.6.5_biqbaboplfbrettd7655fr4n2y
   next: 12.1.7-canary.41_biqbaboplfbrettd7655fr4n2y
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
@@ -176,8 +176,8 @@ packages:
       - supports-color
     dev: true
 
-  /@headlessui/react/1.6.4_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-0yqz1scwbFtwljmbbKjXsSGl5ABEYNICVHZnMCWo0UtOZodo2Tpu94uOVgCRjRZ77l2WcTi2S0uidINDvG7lsA==}
+  /@headlessui/react/1.6.5_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-3VkKteDxlxf3fE0KbfO9t60KC1lM7YNpZggLpwzVNg1J/zwL+h+4N7MBlFDVpInZI3rKlZGpNx0PWsG/9c2vQg==}
     engines: {node: '>=10'}
     peerDependencies:
       react: ^16 || ^17 || ^18

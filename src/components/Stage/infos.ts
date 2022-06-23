@@ -9,7 +9,7 @@ type DropInfo = {
 };
 
 export const dropsSettings = {
-  speed: -0,
+  speed: 0,
 };
 
 const dropsInfos: DropInfo[] = new Array(ICONS_LENGTH).fill(null).map(() => ({
@@ -17,13 +17,8 @@ const dropsInfos: DropInfo[] = new Array(ICONS_LENGTH).fill(null).map(() => ({
     // We want to hide the icons until they are given random positions. But to access
     // `clientWidth` and `clientHeight` we have to place the element in the DOM.
     // So we place the element in the DOM but out of the viewport.
-    //
-    // Also, `top` can be set to negative and decimal numbers. That is why we should initialize with `Double`
-    // instead of `Smi` values for better performance: (https://v8.dev/blog/react-cliff)
     top: Number.MIN_SAFE_INTEGER,
-    // `left` can be a decimal number.
-    left: -0,
-    // `width` and `height` are typically `Smi`.
+    left: 0,
     width: 0,
     height: 0,
   },
@@ -139,13 +134,22 @@ function initializePositions(stage: HTMLDivElement, cb?: () => void) {
 
     let top: number = NaN,
       left: number = NaN;
-    do {
+    // keep initializing a random position until it does not overlap with previously initialized ones
+    while (true) {
       top = Math.random() * topMax;
       left = Math.random() * leftMax;
-    } while (
-      // any of the drops is overlapping with another drop
-      dropsInfos.some((other) => doPositionsOverlap({ top, left, width, height }, other.position))
-    );
+
+      let overlaps;
+      for (let j = i - 1; j >= 0; j--) {
+        if (doPositionsOverlap({ top, left, width, height }, dropsInfos[j]!.position)) {
+          overlaps = true;
+          break;
+        }
+      }
+      if (!overlaps) {
+        break;
+      }
+    }
 
     dropsInfos[i]!.position = { top, left, width, height };
   }
@@ -154,15 +158,15 @@ function initializePositions(stage: HTMLDivElement, cb?: () => void) {
 }
 
 function doPositionsOverlap(a: DropPosition, b: DropPosition): boolean {
-  const doNotOverlap =
-    // the the drop is before the other drop
+  return !(
+    // prettier-ignore
+    // the drop is before the other drop
     a.left + a.width < b.left ||
-    // or the drop is after the other drop
+    // the drop is after the other drop
     a.left > b.left + b.width ||
-    // or drop is above the other drop
+    // the drop is above the other drop
     a.top + a.height < b.top ||
-    // or the drop is below the other drop
-    a.top > b.top + b.height;
-
-  return !doNotOverlap;
+    // the drop is below the other drop
+    a.top > b.top + b.height
+  );
 }

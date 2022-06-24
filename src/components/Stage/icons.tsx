@@ -1,41 +1,39 @@
-import { GoMarkGithub } from 'react-icons/go';
-import { MdHttp } from 'react-icons/md';
-import {
-  SiArduino,
-  SiC,
-  SiCplusplus,
-  SiCss3,
-  SiDart,
-  SiDocker,
-  SiExpress,
-  SiFlutter,
-  SiGnubash,
-  SiHomebrew,
-  SiHtml5,
-  SiInsomnia,
-  SiIntellijidea,
-  SiIterm2,
-  SiJava,
-  SiJavascript,
-  SiJson,
-  SiMacos,
-  SiMarkdown,
-  SiMongodb,
-  SiNestjs,
-  SiNextdotjs,
-  SiNodedotjs,
-  SiNpm,
-  SiPnpm,
-  SiPostgresql,
-  SiPostman,
-  SiRaspberrypi,
-  SiReact,
-  SiRedux,
-  SiTailwindcss,
-  SiTypescript,
-  SiVisualstudiocode,
-  SiYarn,
-} from 'react-icons/si';
+import GoMarkGithub from '@lib/icons/go/GoMarkGithub';
+import MdHttp from '@lib/icons/md/MdHttp';
+import SiArduino from '@lib/icons/si/SiArduino';
+import SiC from '@lib/icons/si/SiC';
+import SiCplusplus from '@lib/icons/si/SiCplusplus';
+import SiCss3 from '@lib/icons/si/SiCss3';
+import SiDart from '@lib/icons/si/SiDart';
+import SiDocker from '@lib/icons/si/SiDocker';
+import SiExpress from '@lib/icons/si/SiExpress';
+import SiFlutter from '@lib/icons/si/SiFlutter';
+import SiGnubash from '@lib/icons/si/SiGnubash';
+import SiHomebrew from '@lib/icons/si/SiHomebrew';
+import SiHtml5 from '@lib/icons/si/SiHtml5';
+import SiInsomnia from '@lib/icons/si/SiInsomnia';
+import SiIntellijidea from '@lib/icons/si/SiIntellijidea';
+import SiIterm2 from '@lib/icons/si/SiIterm2';
+import SiJava from '@lib/icons/si/SiJava';
+import SiJavascript from '@lib/icons/si/SiJavascript';
+import SiJson from '@lib/icons/si/SiJson';
+import SiMacos from '@lib/icons/si/SiMacos';
+import SiMarkdown from '@lib/icons/si/SiMarkdown';
+import SiMongodb from '@lib/icons/si/SiMongodb';
+import SiNestjs from '@lib/icons/si/SiNestjs';
+import SiNextdotjs from '@lib/icons/si/SiNextdotjs';
+import SiNodedotjs from '@lib/icons/si/SiNodedotjs';
+import SiNpm from '@lib/icons/si/SiNpm';
+import SiPnpm from '@lib/icons/si/SiPnpm';
+import SiPostgresql from '@lib/icons/si/SiPostgresql';
+import SiPostman from '@lib/icons/si/SiPostman';
+import SiRaspberrypi from '@lib/icons/si/SiRaspberrypi';
+import SiReact from '@lib/icons/si/SiReact';
+import SiRedux from '@lib/icons/si/SiRedux';
+import SiTailwindcss from '@lib/icons/si/SiTailwindcss';
+import SiTypescript from '@lib/icons/si/SiTypescript';
+import SiVisualstudiocode from '@lib/icons/si/SiVisualstudiocode';
+import SiYarn from '@lib/icons/si/SiYarn';
 
 export const icons = [
   {

@@ -1,35 +1,38 @@
 import { icons } from '@/components/Stage/icons';
-import { useDropsInfos } from '@/components/Stage/infos';
-import { memo } from '@/utils/react/memo';
-import { useRef } from 'react';
+import { dropsInfos, setDropsInfos, startStageAnimation } from '@/components/Stage/store';
+import { Component, Index, onMount } from 'solid-js';
 
-export const Stage = memo(function Stage() {
-  const stageRef = useRef<HTMLDivElement>(null);
-  const dropsInfos = useDropsInfos(stageRef);
+export const Stage: Component = () => {
+  let stage: HTMLDivElement | undefined;
+
+  onMount(() => {
+    startStageAnimation(stage!);
+  });
 
   return (
-    <div ref={stageRef} className="absolute inset-0 w-full h-full">
-      {icons.map((icon, i) => {
-        const dropInfo = dropsInfos[i]!;
+    <div ref={stage} class="absolute inset-0 w-full h-full">
+      <Index each={dropsInfos}>
+        {(dropInfo, i) => {
+          const icon = icons[i]!;
 
-        return (
-          <icon.Icon
-            key={i}
-            title={icon.desc}
-            className="absolute w-6 h-6 select-none sm:w-8 sm:h-8 xl:w-9 xl:h-9 md:text-4xl text-zinc-900 dark:text-zinc-50"
-            style={{
-              top: dropInfo!.position.top,
-              left: dropInfo!.position.left,
-            }}
-            onMouseOver={() => {
-              dropInfo!.hover = true;
-            }}
-            onMouseOut={() => {
-              dropInfo!.hover = false;
-            }}
-          />
-        );
-      })}
+          return (
+            <icon.Icon
+              title={icon.desc}
+              class="absolute w-6 h-6 select-none sm:w-8 sm:h-8 xl:w-9 xl:h-9 md:text-4xl text-zinc-900 dark:text-zinc-50"
+              style={{
+                top: `${dropInfo()!.position.top}px`,
+                left: `${dropInfo()!.position.left}px`,
+              }}
+              onMouseOver={() => {
+                setDropsInfos(i, 'hover', true);
+              }}
+              onMouseOut={() => {
+                setDropsInfos(i, 'hover', false);
+              }}
+            />
+          );
+        }}
+      </Index>
     </div>
   );
-});
+};

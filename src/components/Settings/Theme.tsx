@@ -1,41 +1,24 @@
 import { SelectMenu, SelectMenuOptions } from '@/components/forms/elements/SelectMenu';
-import { memo } from '@/utils/react/memo';
-import { Theme } from '@/utils/theme/configure-theme';
-import { useTheme } from '@/utils/theme/context';
-import { useEffect, useState } from 'react';
-import { MdDarkMode, MdDesktopMac, MdLightMode } from 'react-icons/md';
+import { isSettingsDisabled } from '@/components/Settings';
+import { setTheme, Theme, theme } from '@/store/theme';
+import { Component } from 'solid-js';
 
-export interface ThemeSettingsProps {
-  disabled?: boolean;
-}
+const themeOptions: SelectMenuOptions<Theme> = [
+  { value: Theme.Light, label: '💡 Light' },
+  { value: Theme.Dark, label: '🌙 Dark' },
+  { value: Theme.System, label: '🖥 System' },
+];
 
-const themeOptions: SelectMenuOptions<Theme> = {
-  [Theme.Light]: {
-    label: Theme.Light,
-    icon: <MdLightMode aria-hidden />,
-  },
-  [Theme.Dark]: {
-    label: Theme.Dark,
-    icon: <MdDarkMode aria-hidden />,
-  },
-  [Theme.System]: {
-    label: Theme.System,
-    icon: <MdDesktopMac aria-hidden />,
-  },
-};
-
-export const ThemeSettings = memo(function ThemeSettings({ disabled }: ThemeSettingsProps) {
-  const { theme, setTheme } = useTheme();
-
+export const ThemeSettings: Component = () => {
   return (
-    <div className="p-2">
+    <div class="p-2">
       <SelectMenu
         label="Theme"
-        value={theme ?? ''}
+        value={theme()}
         options={themeOptions}
         onChange={setTheme}
-        disabled={!theme || disabled}
+        disabled={!theme() || isSettingsDisabled()}
       />
     </div>
   );
-});
+};

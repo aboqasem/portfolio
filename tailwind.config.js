@@ -2,8 +2,8 @@
 const config = {
   mode: 'jit',
   darkMode: 'class',
-  content: ['./src/**/*.{js,ts,jsx,tsx}'],
-  plugins: [],
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx,css,md,mdx,html,json,scss}'],
+  plugins: [require('@tailwindcss/forms')],
   theme: {
     extend: {},
   },

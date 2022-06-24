@@ -1,13 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charSet="utf-8" />
+    <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1" name="viewport" />
 
     <title>Mohammad Al Zouabi</title>
     <meta content="Personal website" name="description" />
 
-    <script id="configure-theme" src="/js/theme/configure-theme.js"></script>
+    <script id="configure-theme">
+      const { theme } = localStorage;
+      document.documentElement.classList[
+        theme === 'Dark' ||
+        (theme !== 'Light' && window.matchMedia('(prefers-color-scheme: dark)').matches)
+          ? 'add'
+          : 'remove'
+      ]('dark');
+    </script>
   </head>
 
   <body class="duration-75 motion-safe:transition-colors bg-zinc-50 dark:bg-zinc-900">

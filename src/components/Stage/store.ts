@@ -93,7 +93,7 @@ export function startStageAnimation(stage: HTMLDivElement): DropInfo[] {
             continue;
           }
 
-          dropsInfos[i]!.position.top = newTop;
+          info!.position.top = newTop;
         }
       }),
     );

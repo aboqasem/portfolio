@@ -17,7 +17,7 @@ export const ThemeSettings: Component = () => {
         value={theme()}
         options={themeOptions}
         onChange={setTheme}
-        disabled={!theme() || isSettingsDisabled()}
+        disabled={isSettingsDisabled()}
       />
     </div>
   );

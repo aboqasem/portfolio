@@ -3,7 +3,7 @@ import { ThemeSettings } from '@/components/Settings/Theme';
 import FiSettings from '@lib/icons/fi/FiSettings';
 import { Component, createEffect, createMemo, createSignal } from 'solid-js';
 
-export const [isSettingsDisabled, setIsSettingsDisabled] = createSignal(false);
+export const [isSettingsDisabled, setIsSettingsDisabled] = createSignal(true);
 
 export const Settings: Component = () => {
   const [isShown, setIsShown] = createSignal(false);

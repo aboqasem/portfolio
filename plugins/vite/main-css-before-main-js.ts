@@ -13,7 +13,6 @@ export default function mainCssBeforeMainJs(): Plugin {
     },
     closeBundle() {
       const indexHtmlPath = `${config!.build.outDir}/index.html`;
-
       const html = fs.readFileSync(indexHtmlPath).toString();
 
       // e.g: <script type="module" crossorigin src="/assets/index.6392265d.js"></script>
@@ -33,7 +32,6 @@ export default function mainCssBeforeMainJs(): Plugin {
       if (!indexCssLinkMatch) {
         throw Error('Could not find index css link');
       }
-
       const origIndexCssLinkHtml = indexCssLinkMatch[1]!;
       const newIndexCssLinkHtml = origIndexCssLinkHtml.replace('<link', '<link ');
 

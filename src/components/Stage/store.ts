@@ -132,15 +132,15 @@ function initializePositions(stage: HTMLDivElement) {
         const topMax = stageHeight - height,
           leftMax = stageWidth - width;
 
-        let top: number = NaN,
-          left: number = NaN;
+        let top = NaN,
+          left = NaN;
         // keep initializing a random position until it does not overlap with previously initialized ones
         // eslint-disable-next-line no-constant-condition
         while (true) {
           top = Math.random() * topMax;
           left = Math.random() * leftMax;
 
-          let overlaps;
+          let overlaps = false;
           for (let j = i - 1; j >= 0; j--) {
             if (doPositionsOverlap({ top, left, width, height }, dropsInfos[j]!.position)) {
               overlaps = true;

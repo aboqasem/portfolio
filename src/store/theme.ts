@@ -10,7 +10,9 @@ export enum Theme {
 
 export const themes = Object.values(Theme);
 
-export const [theme, _setTheme] = createSignal<Theme>(configureTheme());
+const [theme, _setTheme] = createSignal<Theme>(configureTheme());
+
+export { theme };
 
 // @ts-expect-error
 export const setTheme: Setter<Theme> = (value) => {

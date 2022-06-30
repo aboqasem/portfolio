@@ -1,5 +1,4 @@
 import { ICONS_LENGTH } from '@/components/Stage/icons';
-import { onCleanup } from 'solid-js';
 import { createStore, produce } from 'solid-js/store';
 
 type DropPosition = { top: number; left: number; width: number; height: number };
@@ -32,7 +31,7 @@ export const [dropsInfos, setDropsInfos] = createStore<DropInfo[]>(
 // updating the positions (i.e. when the stage is unmounted).
 let shouldUpdate = true;
 
-export function startStageAnimation(stage: HTMLDivElement): DropInfo[] {
+export function startStageAnimation(stage: HTMLDivElement): () => void {
   if (shouldUpdate) {
     initializePositions(stage);
     shouldUpdate = false;
@@ -99,13 +98,11 @@ export function startStageAnimation(stage: HTMLDivElement): DropInfo[] {
     );
   }, 15);
 
-  onCleanup(() => {
+  return () => {
     observer.disconnect();
     clearTimeout(updateTimeout);
     clearInterval(animationInterval);
-  });
-
-  return dropsInfos;
+  };
 }
 
 let lastStageWidth = NaN,

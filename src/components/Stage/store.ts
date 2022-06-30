@@ -29,34 +29,30 @@ export const [dropsInfos, setDropsInfos] = createStore<DropInfo[]>(
 
 // This is needed to mark the positions as stale if the `ResizeObserver` timeout got cleared before
 // updating the positions (i.e. when the stage is unmounted).
-let shouldUpdate = true;
+let shouldInitPositions: boolean;
 
 export function startStageAnimation(stage: HTMLDivElement): () => void {
-  if (shouldUpdate) {
-    initializePositions(stage);
-    shouldUpdate = false;
-  }
+  let initPositionsTimeoutId: number | undefined;
 
-  let updateTimeout: any;
-  const observer = new ResizeObserver(() => {
-    if (updateTimeout === undefined) {
-      // ignore the first resize event that is triggered when the stage is mounted
-      updateTimeout = null;
-      return;
-    }
+  const initPositionsObserver = new ResizeObserver(() => {
+    clearTimeout(initPositionsTimeoutId);
 
-    clearTimeout(updateTimeout);
-    shouldUpdate = true;
-    updateTimeout = setTimeout(() => {
-      initializePositions(stage);
-      shouldUpdate = false;
-    }, 100);
+    shouldInitPositions = true;
+
+    initPositionsTimeoutId = setTimeout(
+      () => {
+        initializePositions(stage);
+        shouldInitPositions = false;
+      },
+      // initialize immediately in the first run
+      initPositionsTimeoutId === undefined ? 0 : 100,
+    ) as unknown as number;
   });
-  observer.observe(stage);
+  initPositionsObserver.observe(stage);
 
   const animationInterval = setInterval(() => {
-    if (shouldUpdate || dropsSettings.speed === 0) {
-      // if an update is pending, or drop speed is 0, don't move the drops
+    if (shouldInitPositions || dropsSettings.speed === 0) {
+      // if an initialization is pending, or drop speed is 0, don't move the drops
       return;
     }
 
@@ -99,8 +95,8 @@ export function startStageAnimation(stage: HTMLDivElement): () => void {
   }, 15);
 
   return () => {
-    observer.disconnect();
-    clearTimeout(updateTimeout);
+    initPositionsObserver.disconnect();
+    clearTimeout(initPositionsTimeoutId);
     clearInterval(animationInterval);
   };
 }

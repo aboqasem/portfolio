@@ -30,6 +30,7 @@ import SiPostman from '@lib/icons/si/SiPostman';
 import SiRaspberrypi from '@lib/icons/si/SiRaspberrypi';
 import SiReact from '@lib/icons/si/SiReact';
 import SiRedux from '@lib/icons/si/SiRedux';
+import SiSolid from '@lib/icons/si/SiSolid';
 import SiTailwindcss from '@lib/icons/si/SiTailwindcss';
 import SiTypescript from '@lib/icons/si/SiTypescript';
 import SiVisualstudiocode from '@lib/icons/si/SiVisualstudiocode';
@@ -83,6 +84,10 @@ export const icons = [
   {
     Icon: SiReact,
     desc: 'React.js',
+  },
+  {
+    Icon: SiSolid,
+    desc: 'Solid.js',
   },
   {
     Icon: SiNextdotjs,

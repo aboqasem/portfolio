@@ -1,12 +1,14 @@
 import { icons } from '@/components/Stage/icons';
 import { dropsInfos, setDropsInfos, startStageAnimation } from '@/components/Stage/store';
-import { Component, Index, onMount } from 'solid-js';
+import { Component, Index, onCleanup, onMount } from 'solid-js';
 
 export const Stage: Component = () => {
   let stage: HTMLDivElement | undefined;
 
   onMount(() => {
-    startStageAnimation(stage!);
+    const stop = startStageAnimation(stage!);
+
+    onCleanup(stop);
   });
 
   return (

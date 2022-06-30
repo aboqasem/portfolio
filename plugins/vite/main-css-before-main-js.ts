@@ -6,7 +6,7 @@ export default function mainCssBeforeMainJs(): Plugin {
   let config: ResolvedConfig;
 
   return {
-    name: 'preload-index-css',
+    name: 'main-css-before-main-js',
     enforce: 'post',
     configResolved(resolvedConfig) {
       config = resolvedConfig;
@@ -16,28 +16,28 @@ export default function mainCssBeforeMainJs(): Plugin {
       const html = fs.readFileSync(indexHtmlPath).toString();
 
       // e.g: <script type="module" crossorigin src="/assets/index.6392265d.js"></script>
-      const indexScriptMatch = html.match(
+      const mainScriptMatch = html.match(
         /(<script type="module" crossorigin src="\/assets\/index\.[A-Za-z0-9]+\.js"><\/script>)/,
       );
-      if (!indexScriptMatch) {
-        throw Error('Could not find index script');
+      if (!mainScriptMatch) {
+        throw Error('Could not find main script');
       }
-      const origIndexScriptHtml = indexScriptMatch[1]!;
-      const newIndexScriptHtml = origIndexScriptHtml.replace('<script', '<script ');
+      const origMainScriptHtml = mainScriptMatch[1]!;
+      const newMainScriptHtml = origMainScriptHtml.replace('<script', '<script ');
 
       // e.g: <link rel="stylesheet" href="/assets/index.d64a8d5d.css">
-      const indexCssLinkMatch = html.match(
+      const mainCssLinkMatch = html.match(
         /(<link rel="stylesheet" href="\/assets\/index\.[A-Za-z0-9]+\.css">)/,
       );
-      if (!indexCssLinkMatch) {
-        throw Error('Could not find index css link');
+      if (!mainCssLinkMatch) {
+        throw Error('Could not find main css link');
       }
-      const origIndexCssLinkHtml = indexCssLinkMatch[1]!;
-      const newIndexCssLinkHtml = origIndexCssLinkHtml.replace('<link', '<link ');
+      const origMainCssLinkHtml = mainCssLinkMatch[1]!;
+      const newMainCssLinkHtml = origMainCssLinkHtml.replace('<link', '<link ');
 
       const newHtml = html
-        .replace(origIndexScriptHtml, newIndexCssLinkHtml)
-        .replace(origIndexCssLinkHtml, newIndexScriptHtml);
+        .replace(origMainScriptHtml, newMainCssLinkHtml)
+        .replace(origMainCssLinkHtml, newMainScriptHtml);
 
       fs.writeFileSync(indexHtmlPath, newHtml);
     },

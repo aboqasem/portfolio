@@ -1,5 +1,5 @@
 import { ICONS_LENGTH } from '@/components/Stage/icons';
-import { createStore, produce } from 'solid-js/store';
+import { createStore } from 'solid-js/store';
 
 type DropPosition = { top: number; left: number; width: number; height: number };
 
@@ -26,6 +26,18 @@ export const [dropsInfos, setDropsInfos] = createStore<DropInfo[]>(
     hover: false,
   })),
 );
+
+function cloneDropsInfos(data: DropInfo[] = dropsInfos): DropInfo[] {
+  return data.map((info) => ({
+    hover: info.hover,
+    position: {
+      top: info.position.top,
+      left: info.position.left,
+      width: info.position.width,
+      height: info.position.height,
+    },
+  }));
+}
 
 // This is needed to mark the positions as stale if the `ResizeObserver` timeout got cleared before
 // updating the positions (i.e. when the stage is unmounted).
@@ -56,42 +68,52 @@ export function startStageAnimation(stage: HTMLDivElement): () => void {
       return;
     }
 
-    setDropsInfos(
-      produce((dropsInfos) => {
-        for (let i = 0; i < ICONS_LENGTH; i++) {
-          const info = dropsInfos[i]!;
+    const clonedDropsInfos = cloneDropsInfos();
 
-          if (info.hover) {
-            continue;
-          }
+    for (let i = 0; i < ICONS_LENGTH; i++) {
+      const info = clonedDropsInfos[i]!;
 
-          let newTop = info.position.top + dropsSettings.speed;
-          if (newTop >= stage.offsetHeight) {
-            newTop = -info.position.height;
-          }
+      if (info.hover) {
+        continue;
+      }
 
-          let move = true;
-          // do not move the drop if moving it would cause it to overlap with another stopped drop.
-          for (let j = 0; j < ICONS_LENGTH; j++) {
-            if (i === j) {
-              // skip checking the same drop
-              continue;
-            }
-            const otherInfo = dropsInfos[j]!;
-            if (doPositionsOverlap({ ...info.position, top: newTop }, otherInfo.position)) {
-              // the drop is going to overlap with another drop{
-              move = false;
-              break;
-            }
-          }
-          if (!move) {
-            continue;
-          }
+      let newTop = info.position.top + dropsSettings.speed;
+      if (newTop >= stage.offsetHeight) {
+        newTop = -info.position.height;
+      }
 
-          info!.position.top = newTop;
+      let move = true;
+      // do not move the drop if moving it would cause it to overlap with another stopped drop.
+      for (let j = 0; j < ICONS_LENGTH; j++) {
+        if (i === j) {
+          // skip checking the same drop
+          continue;
         }
-      }),
-    );
+        const otherInfo = clonedDropsInfos[j]!;
+        if (
+          doPositionsOverlap(
+            {
+              top: newTop,
+              left: info.position.left,
+              width: info.position.width,
+              height: info.position.height,
+            },
+            otherInfo.position,
+          )
+        ) {
+          // the drop is going to overlap with another drop{
+          move = false;
+          break;
+        }
+      }
+      if (!move) {
+        continue;
+      }
+
+      info!.position.top = newTop;
+    }
+
+    setDropsInfos(clonedDropsInfos);
   }, 15);
 
   return () => {
@@ -114,41 +136,41 @@ function initializePositions(stage: HTMLDivElement) {
   lastStageWidth = stageWidth;
   lastStageHeight = stageHeight;
 
-  setDropsInfos(
-    produce((dropsInfos) => {
-      for (let i = 0; i < ICONS_LENGTH; i++) {
-        const drop = stage.children[i] as SVGSVGElement;
+  const clonedDropsInfos = cloneDropsInfos();
 
-        const width = drop.clientWidth,
-          height = drop.clientHeight;
+  for (let i = 0; i < ICONS_LENGTH; i++) {
+    const drop = stage.children[i] as SVGSVGElement;
 
-        const topMax = stageHeight - height,
-          leftMax = stageWidth - width;
+    const width = drop.clientWidth,
+      height = drop.clientHeight;
 
-        let top = NaN,
-          left = NaN;
-        // keep initializing a random position until it does not overlap with previously initialized ones
-        // eslint-disable-next-line no-constant-condition
-        while (true) {
-          top = Math.random() * topMax;
-          left = Math.random() * leftMax;
+    const topMax = stageHeight - height,
+      leftMax = stageWidth - width;
 
-          let overlaps = false;
-          for (let j = i - 1; j >= 0; j--) {
-            if (doPositionsOverlap({ top, left, width, height }, dropsInfos[j]!.position)) {
-              overlaps = true;
-              break;
-            }
-          }
-          if (!overlaps) {
-            break;
-          }
+    let top = NaN,
+      left = NaN;
+    // keep initializing a random position until it does not overlap with previously initialized ones
+    // eslint-disable-next-line no-constant-condition
+    while (true) {
+      top = Math.random() * topMax;
+      left = Math.random() * leftMax;
+
+      let overlaps = false;
+      for (let j = i - 1; j >= 0; j--) {
+        if (doPositionsOverlap({ top, left, width, height }, clonedDropsInfos[j]!.position)) {
+          overlaps = true;
+          break;
         }
-
-        dropsInfos[i]!.position = { top, left, width, height };
       }
-    }),
-  );
+      if (!overlaps) {
+        break;
+      }
+    }
+
+    clonedDropsInfos[i]!.position = { top, left, width, height };
+  }
+
+  setDropsInfos(clonedDropsInfos);
 }
 
 function doPositionsOverlap(a: DropPosition, b: DropPosition): boolean {

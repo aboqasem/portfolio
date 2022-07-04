@@ -43,6 +43,9 @@ function cloneDropsInfos(data: DropInfo[] = dropsInfos): DropInfo[] {
 // updating the positions (i.e. when the stage is unmounted).
 let shouldInitPositions: boolean;
 
+let currentStageHeight = NaN,
+  currentStageWidth = NaN;
+
 export function startStageAnimation(stage: HTMLDivElement): () => void {
   let initPositionsTimeoutId: number | undefined;
 
@@ -53,6 +56,8 @@ export function startStageAnimation(stage: HTMLDivElement): () => void {
 
     initPositionsTimeoutId = setTimeout(
       () => {
+        currentStageHeight = stage.offsetHeight;
+        currentStageWidth = stage.offsetWidth;
         initializePositions(stage);
         shouldInitPositions = false;
       },
@@ -63,7 +68,9 @@ export function startStageAnimation(stage: HTMLDivElement): () => void {
   initPositionsObserver.observe(stage);
 
   const animationInterval = setInterval(() => {
-    if (shouldInitPositions || dropsSettings.speed === 0) {
+    const { speed: dropSpeed } = dropsSettings;
+
+    if (shouldInitPositions || dropSpeed === 0) {
       // if an initialization is pending, or drop speed is 0, don't move the drops
       return;
     }
@@ -77,9 +84,11 @@ export function startStageAnimation(stage: HTMLDivElement): () => void {
         continue;
       }
 
-      let newTop = info.position.top + dropsSettings.speed;
-      if (newTop >= stage.offsetHeight) {
-        newTop = -info.position.height;
+      const { top, left, width, height } = info.position;
+
+      let newTop = top + dropSpeed;
+      if (newTop >= currentStageHeight) {
+        newTop = -height;
       }
 
       let move = true;
@@ -90,17 +99,7 @@ export function startStageAnimation(stage: HTMLDivElement): () => void {
           continue;
         }
         const otherInfo = clonedDropsInfos[j]!;
-        if (
-          doPositionsOverlap(
-            {
-              top: newTop,
-              left: info.position.left,
-              width: info.position.width,
-              height: info.position.height,
-            },
-            otherInfo.position,
-          )
-        ) {
+        if (doPositionsOverlap({ top: newTop, left, width, height }, otherInfo.position)) {
           // the drop is going to overlap with another drop{
           move = false;
           break;
@@ -123,18 +122,16 @@ export function startStageAnimation(stage: HTMLDivElement): () => void {
   };
 }
 
-let lastStageWidth = NaN,
-  lastStageHeight = NaN;
+let lastInitStageWidth = NaN,
+  lastInitStageHeight = NaN;
 
 function initializePositions(stage: HTMLDivElement) {
-  const { offsetWidth: stageWidth, offsetHeight: stageHeight } = stage;
-
-  if (stageWidth === lastStageWidth && stageHeight === lastStageHeight) {
+  if (currentStageWidth === lastInitStageWidth && currentStageHeight === lastInitStageHeight) {
     return;
   }
 
-  lastStageWidth = stageWidth;
-  lastStageHeight = stageHeight;
+  lastInitStageWidth = currentStageWidth;
+  lastInitStageHeight = currentStageHeight;
 
   const clonedDropsInfos = cloneDropsInfos();
 
@@ -144,8 +141,8 @@ function initializePositions(stage: HTMLDivElement) {
     const width = drop.clientWidth,
       height = drop.clientHeight;
 
-    const topMax = stageHeight - height,
-      leftMax = stageWidth - width;
+    const topMax = currentStageHeight - height,
+      leftMax = currentStageWidth - width;
 
     let top = NaN,
       left = NaN;

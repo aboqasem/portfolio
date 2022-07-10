@@ -113,7 +113,7 @@ export function startStageAnimation(stage: HTMLDivElement): () => void {
     }
 
     setDropsInfos(clonedDropsInfos);
-  }, 15);
+  });
 
   return () => {
     initPositionsObserver.disconnect();

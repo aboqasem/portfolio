@@ -34,7 +34,7 @@
   "dependencies": {
     "@tailwindcss/forms": "0.5.2",
     "solid-headless": "0.11.1",
-    "solid-js": "1.4.6"
+    "solid-js": "1.4.7"
   },
   "prettier": "@aboqasem/prettierrc",
   "config": {

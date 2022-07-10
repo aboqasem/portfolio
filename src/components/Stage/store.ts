@@ -68,7 +68,7 @@ export function startStageAnimation(stage: HTMLDivElement): () => void {
   initPositionsObserver.observe(stage);
 
   const animationInterval = setInterval(() => {
-    const { speed: dropSpeed } = dropsSettings;
+    const dropSpeed = dropsSettings.speed;
 
     if (shouldInitPositions || dropSpeed === 0) {
       // if an initialization is pending, or drop speed is 0, don't move the drops
@@ -84,7 +84,10 @@ export function startStageAnimation(stage: HTMLDivElement): () => void {
         continue;
       }
 
-      const { top, left, width, height } = info.position;
+      const top = info.position.top,
+        left = info.position.left,
+        width = info.position.width,
+        height = info.position.height;
 
       let newTop = top + dropSpeed;
       if (newTop >= currentStageHeight) {

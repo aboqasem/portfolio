@@ -22,8 +22,8 @@ export const Stage: Component = () => {
               title={icon.desc}
               class="absolute w-6 h-6 select-none sm:w-8 sm:h-8 xl:w-9 xl:h-9 md:text-4xl text-zinc-900 dark:text-zinc-50"
               style={{
-                top: `${dropInfo()!.position.top}px`,
-                left: `${dropInfo()!.position.left}px`,
+                top: `${dropInfo().position.top}px`,
+                left: `${dropInfo().position.left}px`,
               }}
               onMouseOver={() => {
                 setDropsInfos(i, 'hover', true);

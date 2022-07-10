@@ -29,7 +29,6 @@ export const StageSettings: Component = () => {
   return (
     <div class="p-2">
       <RangeSlider
-        id="stage-drop-speed"
         label="Drop speed"
         min={minDropSpeed}
         max={maxDropSpeed}

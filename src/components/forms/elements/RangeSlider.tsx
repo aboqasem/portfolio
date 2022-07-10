@@ -1,4 +1,4 @@
-import { Component } from 'solid-js';
+import { Component, createMemo, createUniqueId } from 'solid-js';
 import { JSX } from 'solid-js/jsx-runtime';
 
 export type RangeSliderProps = JSX.IntrinsicElements['input'] & {
@@ -6,9 +6,10 @@ export type RangeSliderProps = JSX.IntrinsicElements['input'] & {
 };
 
 export const RangeSlider: Component<RangeSliderProps> = (props) => {
+  const id = createMemo(() => props.id ?? createUniqueId());
   return (
     <div>
-      <label for={props.id} class="block text-sm font-medium text-zinc-900 dark:text-zinc-100">
+      <label for={id()} class="block text-sm font-medium text-zinc-900 dark:text-zinc-100">
         {props.label}
       </label>
 

@@ -3,7 +3,11 @@ import { isSettingsDisabled } from '@/components/Settings';
 import { dropsSettings } from '@/components/Stage/store';
 import { Component, createEffect, createSignal } from 'solid-js';
 
-const [minDropSpeed, maxDropSpeed] = [0, 2];
+const [minDropSpeed, maxDropSpeed] = [0, 6];
+const dropSpeedStep = maxDropSpeed / 10;
+const defaultDropSpeed = window.matchMedia('(prefers-reduced-motion)').matches
+  ? 0
+  : dropSpeedStep * 4;
 
 export const StageSettings: Component = () => {
   const [dropSpeed, setDropSpeed] = createSignal(
@@ -15,7 +19,7 @@ export const StageSettings: Component = () => {
       }
 
       // otherwise assume it's 0 if the user prefers reduced motion, or 1 if they don't
-      return window.matchMedia('(prefers-reduced-motion)').matches ? 0 : 0.6;
+      return defaultDropSpeed;
     })(),
   );
 
@@ -32,7 +36,7 @@ export const StageSettings: Component = () => {
         label="Drop speed"
         min={minDropSpeed}
         max={maxDropSpeed}
-        step={0.2}
+        step={dropSpeedStep}
         value={dropSpeed()}
         disabled={isSettingsDisabled()}
         onInput={({ currentTarget: { valueAsNumber } }) => {

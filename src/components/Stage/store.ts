@@ -56,10 +56,12 @@ export function startStageAnimation(stage: HTMLDivElement): () => void {
 
     initPositionsTimeoutId = setTimeout(
       () => {
-        currentStageHeight = stage.offsetHeight;
-        currentStageWidth = stage.offsetWidth;
-        initializePositions(stage);
-        shouldInitPositions = false;
+        requestAnimationFrame(() => {
+          currentStageHeight = stage.offsetHeight;
+          currentStageWidth = stage.offsetWidth;
+          initializePositions(stage);
+          shouldInitPositions = false;
+        });
       },
       // initialize immediately in the first run
       initPositionsTimeoutId === undefined ? 0 : 100,
@@ -67,61 +69,22 @@ export function startStageAnimation(stage: HTMLDivElement): () => void {
   });
   initPositionsObserver.observe(stage);
 
-  const animationInterval = setInterval(() => {
-    const dropSpeed = dropsSettings.speed;
+  let shouldAnimate = true;
 
-    if (shouldInitPositions || dropSpeed === 0) {
-      // if an initialization is pending, or drop speed is 0, don't move the drops
-      return;
+  const start = () => {
+    updatePositions();
+    if (shouldAnimate) {
+      requestAnimationFrame(start);
     }
+  };
 
-    const clonedDropsInfos = cloneDropsInfos();
-
-    for (let i = 0; i < ICONS_LENGTH; i++) {
-      const info = clonedDropsInfos[i]!;
-
-      if (info.hover) {
-        continue;
-      }
-
-      const top = info.position.top,
-        left = info.position.left,
-        width = info.position.width,
-        height = info.position.height;
-
-      let newTop = top + dropSpeed;
-      if (newTop >= currentStageHeight) {
-        newTop = -height;
-      }
-
-      let move = true;
-      // do not move the drop if moving it would cause it to overlap with another stopped drop.
-      for (let j = 0; j < ICONS_LENGTH; j++) {
-        if (i === j) {
-          // skip checking the same drop
-          continue;
-        }
-        const otherInfo = clonedDropsInfos[j]!;
-        if (doPositionsOverlap({ top: newTop, left, width, height }, otherInfo.position)) {
-          // the drop is going to overlap with another drop{
-          move = false;
-          break;
-        }
-      }
-      if (!move) {
-        continue;
-      }
-
-      info!.position.top = newTop;
-    }
-
-    setDropsInfos(clonedDropsInfos);
-  });
+  const animationFrameId = requestAnimationFrame(start);
 
   return () => {
+    cancelAnimationFrame(animationFrameId);
     initPositionsObserver.disconnect();
     clearTimeout(initPositionsTimeoutId);
-    clearInterval(animationInterval);
+    shouldAnimate = false;
   };
 }
 
@@ -173,6 +136,57 @@ function initializePositions(stage: HTMLDivElement) {
   setDropsInfos(clonedDropsInfos);
 }
 
+function updatePositions() {
+  const dropSpeed = dropsSettings.speed;
+
+  if (shouldInitPositions || dropSpeed === 0) {
+    // if an initialization is pending, or drop speed is 0, don't move the drops
+    return;
+  }
+
+  const clonedDropsInfos = cloneDropsInfos();
+
+  for (let i = 0; i < ICONS_LENGTH; i++) {
+    const info = clonedDropsInfos[i]!;
+
+    if (info.hover) {
+      continue;
+    }
+
+    const top = info.position.top,
+      left = info.position.left,
+      width = info.position.width,
+      height = info.position.height;
+
+    let newTop = top + dropSpeed;
+    if (newTop >= currentStageHeight) {
+      newTop = -height;
+    }
+
+    let move = true;
+    // do not move the drop if moving it would cause it to overlap with another stopped drop.
+    for (let j = 0; j < ICONS_LENGTH; j++) {
+      if (i === j) {
+        // skip checking the same drop
+        continue;
+      }
+      const otherInfo = clonedDropsInfos[j]!;
+      if (doPositionsOverlap({ top: newTop, left, width, height }, otherInfo.position)) {
+        // the drop is going to overlap with another drop{
+        move = false;
+        break;
+      }
+    }
+    if (!move) {
+      continue;
+    }
+
+    info!.position.top = newTop;
+  }
+
+  setDropsInfos(clonedDropsInfos);
+}
+
 function doPositionsOverlap(a: DropPosition, b: DropPosition): boolean {
   return !(
     // prettier-ignore
@@ -181,8 +195,7 @@ function doPositionsOverlap(a: DropPosition, b: DropPosition): boolean {
     // the drop is after the other drop
     a.left > b.left + b.width ||
     // the drop is above the other drop
-    a.top + a.height < b.top ||
-    // the drop is below the other drop
+    a.top + a.height < b.top || // the drop is below the other drop
     a.top > b.top + b.height
   );
 }

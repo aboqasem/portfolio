@@ -18,8 +18,7 @@ export const Stage: Component = () => {
           const icon = icons[i]!;
 
           return (
-            <icon.Icon
-              title={icon.desc}
+            <div
               class="absolute w-6 h-6 select-none sm:w-8 sm:h-8 xl:w-9 xl:h-9 md:text-4xl text-zinc-900 dark:text-zinc-50"
               style={{
                 top: `${dropInfo().position.top}px`,
@@ -31,7 +30,9 @@ export const Stage: Component = () => {
               onMouseOut={() => {
                 setDropsInfos(i, 'hover', false);
               }}
-            />
+            >
+              <icon.Icon title={icon.desc} />
+            </div>
           );
         }}
       </Index>

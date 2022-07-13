@@ -102,7 +102,7 @@ function initializePositions(stage: HTMLDivElement) {
   const clonedDropsInfos = cloneDropsInfos();
 
   for (let i = 0; i < ICONS_LENGTH; i++) {
-    const drop = stage.children[i] as SVGSVGElement;
+    const drop = stage.children[i] as HTMLDivElement;
 
     const width = drop.clientWidth,
       height = drop.clientHeight;

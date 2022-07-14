@@ -18,7 +18,7 @@ specifiers:
   prettier: 2.7.1
   solid-headless: 0.11.1
   solid-js: 1.4.7
-  tailwindcss: 3.1.5
+  tailwindcss: 3.1.6
   typescript: 4.7.4
   vite: 2.9.14
   vite-plugin-eslint: 1.6.1
@@ -27,7 +27,7 @@ specifiers:
   vite-tsconfig-paths: 3.5.0
 
 dependencies:
-  '@tailwindcss/forms': 0.5.2_tailwindcss@3.1.5
+  '@tailwindcss/forms': 0.5.2_tailwindcss@3.1.6
   solid-headless: 0.11.1_solid-js@1.4.7
   solid-js: 1.4.7
 
@@ -46,7 +46,7 @@ devDependencies:
   husky: 8.0.1
   postcss: 8.4.14
   prettier: 2.7.1
-  tailwindcss: 3.1.5
+  tailwindcss: 3.1.6
   typescript: 4.7.4
   vite: 2.9.14
   vite-plugin-eslint: 1.6.1_eslint@8.19.0+vite@2.9.14
@@ -548,13 +548,13 @@ packages:
       picomatch: 2.3.1
     dev: true
 
-  /@tailwindcss/forms/0.5.2_tailwindcss@3.1.5:
+  /@tailwindcss/forms/0.5.2_tailwindcss@3.1.6:
     resolution: {integrity: sha512-pSrFeJB6Bg1Mrg9CdQW3+hqZXAKsBrSG9MAfFLKy1pVA4Mb4W7C0k7mEhlmS2Dfo/otxrQOET7NJiJ9RrS563w==}
     peerDependencies:
       tailwindcss: '>=3.0.0 || >= 3.0.0-alpha.1'
     dependencies:
       mini-svg-data-uri: 1.4.4
-      tailwindcss: 3.1.5
+      tailwindcss: 3.1.6
     dev: false
 
   /@tsconfig/node10/1.0.9:
@@ -2553,9 +2553,9 @@ packages:
       camelcase-css: 2.0.1
       postcss: 8.4.14
 
-  /postcss-load-config/4.0.1_postcss@8.4.14:
-    resolution: {integrity: sha512-vEJIc8RdiBRu3oRAI0ymerOn+7rPuMvRXslTvZUKZonDHFIczxztIyJ1urxM1x9JXEikvpWWTUUqal5j/8QgvA==}
-    engines: {node: '>= 14'}
+  /postcss-load-config/3.1.4_postcss@8.4.14:
+    resolution: {integrity: sha512-6DiM4E7v4coTE4uzA8U//WhtPwyhiim3eyjEMFCnUpzbrkK9wJHgKDT2mR+HbtSrd/NubVaYTOpSpjUl8NQeRg==}
+    engines: {node: '>= 10'}
     peerDependencies:
       postcss: '>=8.0.9'
       ts-node: '>=9.0.0'
@@ -2567,7 +2567,7 @@ packages:
     dependencies:
       lilconfig: 2.0.5
       postcss: 8.4.14
-      yaml: 2.1.1
+      yaml: 1.10.2
 
   /postcss-nested/5.0.6_postcss@8.4.14:
     resolution: {integrity: sha512-rKqm2Fk0KbA8Vt3AdGN0FB9OBOMDVajMG6ZCf/GoHgdxUJ4sBFp0A/uMIRm+MJUdo33YXEtjqIz8u7DAp8B7DA==}
@@ -2925,8 +2925,8 @@ packages:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
 
-  /tailwindcss/3.1.5:
-    resolution: {integrity: sha512-bC/2dy3dGPqxMWAqFSRgQxVCfmO/31ZbeEp8s9DMDh4zgPZ5WW1gxRJkbBkXcTUIzaSUdhWrcsrSOe32ccgB4w==}
+  /tailwindcss/3.1.6:
+    resolution: {integrity: sha512-7skAOY56erZAFQssT1xkpk+kWt2NrO45kORlxFPXUt3CiGsVPhH1smuH5XoDH6sGPXLyBv+zgCKA2HWBsgCytg==}
     engines: {node: '>=12.13.0'}
     hasBin: true
     dependencies:
@@ -2946,7 +2946,7 @@ packages:
       postcss: 8.4.14
       postcss-import: 14.1.0_postcss@8.4.14
       postcss-js: 4.0.0_postcss@8.4.14
-      postcss-load-config: 4.0.1_postcss@8.4.14
+      postcss-load-config: 3.1.4_postcss@8.4.14
       postcss-nested: 5.0.6_postcss@8.4.14
       postcss-selector-parser: 6.0.10
       postcss-value-parser: 4.2.0
@@ -3238,12 +3238,6 @@ packages:
   /yaml/1.10.2:
     resolution: {integrity: sha512-r3vXyErRCYJ7wg28yvBY5VSoAF8ZvlcW9/BwUzEtUsjvX/DKs24dIkuwjtuprwJJHsbyUbLApepYTR1BN4uHrg==}
     engines: {node: '>= 6'}
-    dev: true
-    optional: true
-
-  /yaml/2.1.1:
-    resolution: {integrity: sha512-o96x3OPo8GjWeSLF+wOAbrPfhFOGY0W00GNaxCDv+9hkcDJEnev1yh8S7pgHF0ik6zc8sQLuL8hjHjJULZp8bw==}
-    engines: {node: '>= 14'}
 
   /yn/3.1.1:
     resolution: {integrity: sha512-Ux4ygGWsu2c7isFWe8Yu1YluJmqVhxqK2cLXNQA5AcC3QfbGNpM7fu0Y8b/z16pXLnFxZYvWhd3fhBY9DLmC6Q==}

@@ -35,12 +35,12 @@ export function Home() {
   return (
     <div class="absolute w-full max-w-2xl px-10 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 md:px-0">
       <div class="p-5 font-serif shadow-md rounded-xl bg-gradient-to-tr from-zinc-200/90 dark:from-zinc-900 dark:to-zinc-100/10 md:shadow-xl backdrop-blur-lg sm:p-7 md:p-10">
-        <p class="mb-4 text-xl text-zinc-800 sm:text-2xl md:text-3xl dark:text-zinc-50">
+        <h1 class="mb-4 text-xl text-zinc-800 sm:text-2xl md:text-3xl dark:text-zinc-50">
           Hey, I&apos;m Mohammad Al Zouabi.
-        </p>
+        </h1>
 
         <p class="text-lg sm:text-xl md:text-2xl text-zinc-700 dark:text-zinc-300">
-          An enthusiastic software developer who stands for quality, consistency, and attention to
+          An enthusiastic software engineer who stands for quality, consistency, and attention to
           details.
         </p>
 

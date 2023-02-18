@@ -4,7 +4,7 @@ specifiers:
   '@aboqasem/prettierrc': 3.0.0
   '@tailwindcss/forms': 0.5.2
   '@types/eslint': 8.4.10
-  '@types/html-minifier-terser': 6.1.0
+  '@types/html-minifier-terser': 7.0.0
   '@types/node': 18.0.0
   '@typescript-eslint/eslint-plugin': 5.30.7
   '@typescript-eslint/parser': 5.30.7
@@ -32,7 +32,7 @@ dependencies:
 devDependencies:
   '@aboqasem/prettierrc': 3.0.0
   '@types/eslint': 8.4.10
-  '@types/html-minifier-terser': 6.1.0
+  '@types/html-minifier-terser': 7.0.0
   '@types/node': 18.0.0
   '@typescript-eslint/eslint-plugin': 5.30.7_gforxyl7sskxhrzxmxs4zgbvoi
   '@typescript-eslint/parser': 5.30.7_7yp3msae2ah6x4svoyguc3s57e
@@ -598,8 +598,8 @@ packages:
     resolution: {integrity: sha512-CuPgU6f3eT/XgKKPqKd/gLZV1Xmvf1a2R5POBOGQa6uv82xpls89HU5zKeVoyR8XzHd1RGNOlQlvUe3CFkjWNQ==}
     dev: true
 
-  /@types/html-minifier-terser/6.1.0:
-    resolution: {integrity: sha512-oh/6byDPnL1zeNXFrDXFLyZjkr1MsBG667IM792caf1L2UPOOMf65NFzjUH/ltyfwjAGfs1rsX1eftK0jC/KIg==}
+  /@types/html-minifier-terser/7.0.0:
+    resolution: {integrity: sha512-hw3bhStrg5e3FQT8qZKCJTrzt/UbEaunU1xRWJ+aNOTmeBMvE3S4Ml2HiiNnZgL8izu0LFVkHUoPFXL1s5QNpQ==}
     dev: true
 
   /@types/json-schema/7.0.11:

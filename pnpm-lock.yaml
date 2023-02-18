@@ -2,7 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@aboqasem/prettierrc': 3.0.0
-  '@tailwindcss/forms': 0.5.2
+  '@tailwindcss/forms': 0.5.3
   '@types/eslint': 8.4.10
   '@types/html-minifier-terser': 6.1.0
   '@types/node': 18.0.0
@@ -26,7 +26,7 @@ specifiers:
   vite-tsconfig-paths: 3.5.0
 
 dependencies:
-  '@tailwindcss/forms': 0.5.2_tailwindcss@3.1.6
+  '@tailwindcss/forms': 0.5.3_tailwindcss@3.1.6
   solid-js: 1.4.7
 
 devDependencies:
@@ -558,8 +558,8 @@ packages:
       picomatch: 2.3.1
     dev: true
 
-  /@tailwindcss/forms/0.5.2_tailwindcss@3.1.6:
-    resolution: {integrity: sha512-pSrFeJB6Bg1Mrg9CdQW3+hqZXAKsBrSG9MAfFLKy1pVA4Mb4W7C0k7mEhlmS2Dfo/otxrQOET7NJiJ9RrS563w==}
+  /@tailwindcss/forms/0.5.3_tailwindcss@3.1.6:
+    resolution: {integrity: sha512-y5mb86JUoiUgBjY/o6FJSFZSEttfb3Q5gllE4xoKjAAD+vBrnIhE4dViwUuow3va8mpH4s9jyUbUbrRGoRdc2Q==}
     peerDependencies:
       tailwindcss: '>=3.0.0 || >= 3.0.0-alpha.1'
     dependencies:

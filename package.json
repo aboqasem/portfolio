@@ -15,7 +15,7 @@
     "@types/node": "18.0.0",
     "@typescript-eslint/eslint-plugin": "5.30.7",
     "@typescript-eslint/parser": "5.30.7",
-    "autoprefixer": "10.4.7",
+    "autoprefixer": "10.4.13",
     "cz-conventional-changelog": "3.3.0",
     "eslint": "8.30.0",
     "eslint-config-prettier": "8.5.0",

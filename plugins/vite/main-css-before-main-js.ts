@@ -15,9 +15,9 @@ export default function mainCssBeforeMainJs(): Plugin {
       const indexHtmlPath = `${config!.build.outDir}/index.html`;
       const html = fs.readFileSync(indexHtmlPath).toString();
 
-      // e.g: <script type="module" crossorigin src="/assets/index.6392265d.js"></script>
+      // e.g: <script type="module" crossorigin src="/assets/index-6392265d.js"></script>
       const mainScriptMatch = html.match(
-        /(<script type="module" crossorigin src="\/assets\/index\.[A-Za-z0-9]+\.js"><\/script>)/,
+        /(<script type="module" crossorigin src="\/assets\/index-[A-Za-z0-9]+\.js"><\/script>)/,
       );
       if (!mainScriptMatch) {
         throw Error('Could not find main script');
@@ -25,9 +25,9 @@ export default function mainCssBeforeMainJs(): Plugin {
       const origMainScriptHtml = mainScriptMatch[1]!;
       const newMainScriptHtml = origMainScriptHtml.replace('<script', '<script ');
 
-      // e.g: <link rel="stylesheet" href="/assets/index.d64a8d5d.css">
+      // e.g: <link rel="stylesheet" href="/assets/index-d64a8d5d.css">
       const mainCssLinkMatch = html.match(
-        /(<link rel="stylesheet" href="\/assets\/index\.[A-Za-z0-9]+\.css">)/,
+        /(<link rel="stylesheet" href="\/assets\/index-[A-Za-z0-9]+\.css">)/,
       );
       if (!mainCssLinkMatch) {
         throw Error('Could not find main css link');

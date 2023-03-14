@@ -23,7 +23,7 @@ specifiers:
   vite-plugin-eslint: 1.8.1
   vite-plugin-minify: 1.5.2
   vite-plugin-solid: 2.5.0
-  vite-tsconfig-paths: 4.0.5
+  vite-tsconfig-paths: 4.0.7
 
 dependencies:
   '@tailwindcss/forms': 0.5.3_tailwindcss@3.2.7
@@ -50,7 +50,7 @@ devDependencies:
   vite-plugin-eslint: 1.8.1_eslint@8.34.0+vite@4.1.2
   vite-plugin-minify: 1.5.2_vite@4.1.2
   vite-plugin-solid: 2.5.0_solid-js@1.6.11+vite@4.1.2
-  vite-tsconfig-paths: 4.0.5_typescript@4.9.5
+  vite-tsconfig-paths: 4.0.7_f7vjlzfn2qz6iyr4iasvdrpcpu
 
 packages:
 
@@ -3219,12 +3219,18 @@ packages:
       - supports-color
     dev: true
 
-  /vite-tsconfig-paths/4.0.5_typescript@4.9.5:
-    resolution: {integrity: sha512-/L/eHwySFYjwxoYt1WRJniuK/jPv+WGwgRGBYx3leciR5wBeqntQpUE6Js6+TJemChc+ter7fDBKieyEWDx4yQ==}
+  /vite-tsconfig-paths/4.0.7_f7vjlzfn2qz6iyr4iasvdrpcpu:
+    resolution: {integrity: sha512-MwIYaby6kcbQGZqMH+gAK6h0UYQGOkjsuAgw4q6bP/5vWkn8VKvnmLuCQHA2+IzHAJHnE8OFTO4lnJLFMf9+7Q==}
+    peerDependencies:
+      vite: '*'
+    peerDependenciesMeta:
+      vite:
+        optional: true
     dependencies:
       debug: 4.3.4
       globrex: 0.1.2
       tsconfck: 2.0.2_typescript@4.9.5
+      vite: 4.1.2_@types+node@18.14.0
     transitivePeerDependencies:
       - supports-color
       - typescript

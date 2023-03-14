@@ -29,7 +29,7 @@
     "vite-plugin-eslint": "1.8.1",
     "vite-plugin-minify": "1.5.2",
     "vite-plugin-solid": "2.5.0",
-    "vite-tsconfig-paths": "4.0.5"
+    "vite-tsconfig-paths": "4.0.7"
   },
   "dependencies": {
     "@tailwindcss/forms": "0.5.3",

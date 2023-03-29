@@ -12,7 +12,7 @@
     "@aboqasem/prettierrc": "3.0.0",
     "@types/eslint": "8.21.1",
     "@types/html-minifier-terser": "7.0.0",
-    "@types/node": "18.14.0",
+    "@types/node": "18.15.11",
     "@typescript-eslint/eslint-plugin": "5.52.0",
     "@typescript-eslint/parser": "5.52.0",
     "autoprefixer": "10.4.13",

@@ -1,4 +1,5 @@
-import { createSignal, Setter } from 'solid-js';
+import type { Setter } from 'solid-js';
+import { createSignal } from 'solid-js';
 
 const THEME_KEY = 'theme';
 

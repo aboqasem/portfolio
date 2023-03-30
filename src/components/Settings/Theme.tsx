@@ -1,7 +1,8 @@
-import { SelectMenu, SelectMenuOptions } from '@/components/forms/elements/SelectMenu';
+import type { SelectMenuOptions } from '@/components/forms/elements/SelectMenu';
+import { SelectMenu } from '@/components/forms/elements/SelectMenu';
 import { isSettingsDisabled } from '@/components/Settings';
 import { setTheme, Theme, theme } from '@/store/theme';
-import { Component } from 'solid-js';
+import type { Component } from 'solid-js';
 
 const themeOptions: SelectMenuOptions<Theme> = [
   { value: Theme.Light, label: '💡 Light' },

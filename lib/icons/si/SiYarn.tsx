@@ -1,4 +1,4 @@
-import { Icon } from '..';
+import type { Icon } from '..';
 
 const SiYarn: Icon = (props) => {
   return (

@@ -195,7 +195,8 @@ function doPositionsOverlap(a: DropPosition, b: DropPosition): boolean {
     // the drop is after the other drop
     a.left > b.left + b.width ||
     // the drop is above the other drop
-    a.top + a.height < b.top || // the drop is below the other drop
+    a.top + a.height < b.top ||
+    // the drop is below the other drop
     a.top > b.top + b.height
   );
 }

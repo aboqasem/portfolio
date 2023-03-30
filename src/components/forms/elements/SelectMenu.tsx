@@ -1,5 +1,5 @@
 import { createEffect, createMemo, createSignal, createUniqueId, DEV, For } from 'solid-js';
-import { JSX } from 'solid-js/jsx-runtime';
+import type { JSX } from 'solid-js/jsx-runtime';
 
 export type SelectMenuOptions<T extends string = string> = { value: T; label: string }[];
 

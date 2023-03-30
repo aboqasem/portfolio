@@ -1,6 +1,6 @@
 import { Settings } from '@/components/Settings';
 import { Stage } from '@/components/Stage';
-import { Component } from 'solid-js';
+import type { Component } from 'solid-js';
 
 export const Background: Component = () => {
   return (

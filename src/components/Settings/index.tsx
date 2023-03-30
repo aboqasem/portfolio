@@ -1,7 +1,8 @@
 import { StageSettings } from '@/components/Settings/Stage';
 import { ThemeSettings } from '@/components/Settings/Theme';
 import FiSettings from '@lib/icons/fi/FiSettings';
-import { Component, createEffect, createMemo, createSignal } from 'solid-js';
+import type { Component } from 'solid-js';
+import { createEffect, createMemo, createSignal } from 'solid-js';
 
 export const [isSettingsDisabled, setIsSettingsDisabled] = createSignal(true);
 

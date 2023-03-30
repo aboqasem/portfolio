@@ -1,7 +1,8 @@
 import { RangeSlider } from '@/components/forms/elements/RangeSlider';
 import { isSettingsDisabled } from '@/components/Settings';
 import { dropsSettings } from '@/components/Stage/store';
-import { Component, createEffect, createSignal } from 'solid-js';
+import type { Component } from 'solid-js';
+import { createEffect, createSignal } from 'solid-js';
 
 const [minDropSpeed, maxDropSpeed] = [0, 6];
 const dropSpeedStep = maxDropSpeed / 10;

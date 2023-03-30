@@ -1,8 +1,7 @@
 import fs from 'fs';
-// eslint-disable-next-line no-redeclare
-import { Plugin, ResolvedConfig } from 'vite';
+import type { Plugin as VitePlugin, ResolvedConfig } from 'vite';
 
-export default function mainCssBeforeMainJs(): Plugin {
+export default function mainCssBeforeMainJs(): VitePlugin {
   let config: ResolvedConfig;
 
   return {

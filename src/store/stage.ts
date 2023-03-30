@@ -19,13 +19,11 @@ const DROP_SPEED_KEY = 'dropSpeed';
 
 export const minDropSpeed = 0;
 
-export const maxDropSpeed = 6;
+export const maxDropSpeed = 40;
 
 export const dropSpeedStep = maxDropSpeed / 10;
 
-const defaultDropSpeed = window.matchMedia('(prefers-reduced-motion)').matches
-  ? 0
-  : dropSpeedStep * 4;
+const defaultDropSpeed = window.matchMedia('(prefers-reduced-motion)').matches ? 0 : dropSpeedStep;
 
 export const [dropsInfos, setDropsInfos] = createStore<DropInfo[]>(
   new Array(ICONS_LENGTH).fill(null).map(() => ({

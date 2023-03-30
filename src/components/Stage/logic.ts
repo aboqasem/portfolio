@@ -1,43 +1,7 @@
 import { ICONS_LENGTH } from '@/components/Stage/icons';
-import { createStore } from 'solid-js/store';
-
-type DropPosition = { top: number; left: number; width: number; height: number };
-
-type DropInfo = {
-  position: DropPosition;
-  hover: boolean;
-};
-
-export const dropsSettings = {
-  speed: 0,
-};
-
-export const [dropsInfos, setDropsInfos] = createStore<DropInfo[]>(
-  new Array(ICONS_LENGTH).fill(null).map(() => ({
-    position: {
-      // We want to hide the icons until they are given random positions. But to access
-      // `clientWidth` and `clientHeight` we have to place the element in the DOM.
-      // So we place the element in the DOM but out of the viewport.
-      top: Number.MIN_SAFE_INTEGER,
-      left: 0,
-      width: 0,
-      height: 0,
-    },
-    hover: false,
-  })),
-);
-
-function cloneDropsInfos(data: DropInfo[] = dropsInfos): DropInfo[] {
-  return data.map((info) => ({
-    hover: info.hover,
-    position: {
-      top: info.position.top,
-      left: info.position.left,
-      width: info.position.width,
-      height: info.position.height,
-    },
-  }));
-}
+import type { DropPosition } from '@/store/stage';
+import { dropsInfos, dropSpeed, setDropsInfos } from '@/store/stage';
+import { createEffect } from 'solid-js';
 
 // This is needed to mark the positions as stale if the `ResizeObserver` timeout got cleared before
 // updating the positions (i.e. when the stage is unmounted).
@@ -136,8 +100,14 @@ function initializePositions(stage: HTMLDivElement) {
   setDropsInfos(clonedDropsInfos);
 }
 
+let _dropSpeedRef = dropSpeed();
+
+createEffect(() => {
+  _dropSpeedRef = dropSpeed();
+});
+
 function updatePositions() {
-  const dropSpeed = dropsSettings.speed;
+  const dropSpeed = _dropSpeedRef;
 
   if (shouldInitPositions || dropSpeed === 0) {
     // if an initialization is pending, or drop speed is 0, don't move the drops
@@ -199,4 +169,16 @@ function doPositionsOverlap(a: DropPosition, b: DropPosition): boolean {
     // the drop is below the other drop
     a.top > b.top + b.height
   );
+}
+
+function cloneDropsInfos() {
+  return dropsInfos.map((info) => ({
+    hover: info.hover,
+    position: {
+      top: info.position.top,
+      left: info.position.left,
+      width: info.position.width,
+      height: info.position.height,
+    },
+  }));
 }

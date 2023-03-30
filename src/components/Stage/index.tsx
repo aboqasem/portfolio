@@ -1,5 +1,6 @@
 import { icons } from '@/components/Stage/icons';
-import { dropsInfos, setDropsInfos, startStageAnimation } from '@/components/Stage/store';
+import { startStageAnimation } from '@/components/Stage/logic';
+import { dropsInfos, setDropsInfos } from '@/store/stage';
 import type { Component } from 'solid-js';
 import { Index, onCleanup, onMount } from 'solid-js';
 

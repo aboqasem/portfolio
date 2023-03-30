@@ -9,18 +9,16 @@ export enum Theme {
   System = 'System',
 }
 
-export const themes = Object.values(Theme);
-
-const [theme, _setTheme] = createSignal<Theme>(configureTheme());
-
-export { theme };
+const [theme, _setTheme] = createSignal<Theme>(storeTheme());
 
 // @ts-expect-error
-export const setTheme: Setter<Theme> = (value) => {
-  return _setTheme((prev) => configureTheme(typeof value === 'function' ? value(prev) : value));
+const setTheme: Setter<Theme> = (value) => {
+  return _setTheme((prev) => storeTheme(typeof value === 'function' ? value(prev) : value));
 };
 
-function configureTheme(theme?: Theme): Theme {
+export { theme, setTheme };
+
+function storeTheme(theme?: Theme): Theme {
   if (!theme) {
     const storedTheme = localStorage.getItem(THEME_KEY);
 

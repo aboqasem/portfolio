@@ -6,6 +6,8 @@ import { createEffect, createMemo, createSignal } from 'solid-js';
 
 export const [isSettingsDisabled, setIsSettingsDisabled] = createSignal(true);
 
+const width = '12rem';
+
 export const Settings: Component = () => {
   const [isShown, setIsShown] = createSignal(false);
 
@@ -17,8 +19,9 @@ export const Settings: Component = () => {
 
   return (
     <div
-      class={`absolute top-0 motion-safe:transition-[right] flex items-start mt-2 ${
-        isShown() ? 'right-0' : `-right-[12rem]`
+      style={{ '--settings-width': width }}
+      class={`absolute top-0 motion-safe:transition-[right] flex items-start mt-2 animate-bounce-x [animation-iteration-count:2] ${
+        isShown() ? 'right-0' : `-right-[var(--settings-width)]`
       }`}
     >
       <button
@@ -31,7 +34,7 @@ export const Settings: Component = () => {
         <span class="sr-only">{hint()}</span>
       </button>
 
-      <div class="w-[12rem] border rounded-bl-xl divide-y dark:divide-zinc-500 bg-white dark:bg-zinc-950 dark:border-zinc-500">
+      <div class="w-[var(--settings-width)] border rounded-bl-xl divide-y dark:divide-zinc-500 bg-white dark:bg-zinc-950 dark:border-zinc-500">
         <ThemeSettings />
 
         <StageSettings />

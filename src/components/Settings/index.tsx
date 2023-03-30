@@ -31,7 +31,7 @@ export const Settings: Component = () => {
         <span class="sr-only">{hint()}</span>
       </button>
 
-      <div class="w-[12rem] border rounded-bl-xl divide-y dark:divide-zinc-500 bg-white dark:bg-black dark:border-zinc-500">
+      <div class="w-[12rem] border rounded-bl-xl divide-y dark:divide-zinc-500 bg-white dark:bg-zinc-950 dark:border-zinc-500">
         <ThemeSettings />
 
         <StageSettings />

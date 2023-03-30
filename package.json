@@ -24,7 +24,7 @@
     "postcss": "8.4.21",
     "prettier": "2.8.7",
     "tailwindcss": "3.3.0",
-    "typescript": "5.0.2",
+    "typescript": "5.0.3",
     "vite": "4.2.1",
     "vite-plugin-eslint": "1.8.1",
     "vite-plugin-minify": "1.5.2",

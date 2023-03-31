@@ -38,11 +38,13 @@ const {
   SiMacos,
   SiTwitter,
   SiGmail,
+  SiSpringboot,
 } = require('react-icons/si');
 const { FaJava, FaLinkedinIn } = require('react-icons/fa');
 const { GoMarkGithub } = require('react-icons/go');
 const { MdHttp } = require('react-icons/md');
 const { FiSettings } = require('react-icons/fi');
+const { DiScrum } = require('react-icons/di');
 
 const icons = {
   si: [
@@ -82,11 +84,13 @@ const icons = {
     SiMacos,
     SiTwitter,
     SiGmail,
+    SiSpringboot,
   ],
   fa: [FaJava, FaLinkedinIn],
   go: [GoMarkGithub],
   md: [MdHttp],
   fi: [FiSettings],
+  di: [DiScrum],
 };
 
 module.exports = { icons };

@@ -1,3 +1,5 @@
+import type { Icon } from '@lib/icons';
+import DiScrum from '@lib/icons/di/DiScrum';
 import FaJava from '@lib/icons/fa/FaJava';
 import GoMarkGithub from '@lib/icons/go/GoMarkGithub';
 import MdHttp from '@lib/icons/md/MdHttp';
@@ -31,12 +33,13 @@ import SiRaspberrypi from '@lib/icons/si/SiRaspberrypi';
 import SiReact from '@lib/icons/si/SiReact';
 import SiRedux from '@lib/icons/si/SiRedux';
 import SiSolid from '@lib/icons/si/SiSolid';
+import SiSpringboot from '@lib/icons/si/SiSpringboot';
 import SiTailwindcss from '@lib/icons/si/SiTailwindcss';
 import SiTypescript from '@lib/icons/si/SiTypescript';
 import SiVisualstudiocode from '@lib/icons/si/SiVisualstudiocode';
 import SiYarn from '@lib/icons/si/SiYarn';
 
-export const icons = [
+export const icons: { Icon: Icon; desc: string }[] = [
   {
     Icon: SiTypescript,
     desc: 'TypeScript',
@@ -184,6 +187,14 @@ export const icons = [
   {
     Icon: SiMacos,
     desc: 'macOS',
+  },
+  {
+    Icon: SiSpringboot,
+    desc: 'Spring Boot',
+  },
+  {
+    Icon: DiScrum,
+    desc: 'Scrum',
   },
 ];
 

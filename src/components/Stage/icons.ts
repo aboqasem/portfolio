@@ -1,3 +1,4 @@
+import FaJava from '@lib/icons/fa/FaJava';
 import GoMarkGithub from '@lib/icons/go/GoMarkGithub';
 import MdHttp from '@lib/icons/md/MdHttp';
 import SiArduino from '@lib/icons/si/SiArduino';
@@ -14,7 +15,6 @@ import SiHtml5 from '@lib/icons/si/SiHtml5';
 import SiInsomnia from '@lib/icons/si/SiInsomnia';
 import SiIntellijidea from '@lib/icons/si/SiIntellijidea';
 import SiIterm2 from '@lib/icons/si/SiIterm2';
-import SiJava from '@lib/icons/si/SiJava';
 import SiJavascript from '@lib/icons/si/SiJavascript';
 import SiJson from '@lib/icons/si/SiJson';
 import SiMacos from '@lib/icons/si/SiMacos';
@@ -50,7 +50,7 @@ export const icons = [
     desc: 'Dart',
   },
   {
-    Icon: SiJava,
+    Icon: FaJava,
     desc: 'Java',
   },
   {

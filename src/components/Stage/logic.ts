@@ -65,12 +65,11 @@ function initializePositions(stage: HTMLDivElement) {
 
   const clonedDropsInfos = cloneDropsInfos();
 
+  // assume all drops are squares and have the same size
+  const width = (stage.children[0] as HTMLDivElement).offsetWidth,
+    height = width;
+
   for (let i = 0; i < ICONS_LENGTH; i++) {
-    const drop = stage.children[i] as HTMLDivElement;
-
-    const width = drop.offsetWidth,
-      height = drop.offsetHeight;
-
     const topMax = currentStageHeight - height,
       leftMax = currentStageWidth - width;
 
@@ -117,6 +116,10 @@ function updatePositions() {
 
   const clonedDropsInfos = cloneDropsInfos();
 
+  // assume all drops are squares and have the same size
+  const width = clonedDropsInfos[0]!.position.width,
+    height = width;
+
   for (let i = 0; i < ICONS_LENGTH; i++) {
     const info = clonedDropsInfos[i]!;
 
@@ -125,9 +128,7 @@ function updatePositions() {
     }
 
     const top = info.position.top,
-      left = info.position.left,
-      width = info.position.width,
-      height = info.position.height;
+      left = info.position.left;
 
     let newTop = top + dropSpeed;
     if (newTop >= currentStageHeight) {

@@ -68,17 +68,18 @@ function initializePositions(stage: HTMLDivElement) {
   for (let i = 0; i < ICONS_LENGTH; i++) {
     const drop = stage.children[i] as HTMLDivElement;
 
-    const width = drop.clientWidth,
-      height = drop.clientHeight;
+    const width = drop.offsetWidth,
+      height = drop.offsetHeight;
 
     const topMax = currentStageHeight - height,
       leftMax = currentStageWidth - width;
 
     let top = NaN,
-      left = NaN;
+      left = NaN,
+      retries = 500;
+
     // keep initializing a random position until it does not overlap with previously initialized ones
-    // eslint-disable-next-line no-constant-condition
-    while (true) {
+    while (--retries >= 0) {
       top = Math.random() * topMax;
       left = Math.random() * leftMax;
 

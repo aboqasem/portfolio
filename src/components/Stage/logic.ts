@@ -35,14 +35,14 @@ export function startStageAnimation(stage: HTMLDivElement): () => void {
 
   let shouldAnimate = true;
 
-  const start = () => {
+  let animationFrameId = requestAnimationFrame(start);
+
+  function start() {
     updatePositions();
     if (shouldAnimate) {
-      requestAnimationFrame(start);
+      animationFrameId = requestAnimationFrame(start);
     }
-  };
-
-  const animationFrameId = requestAnimationFrame(start);
+  }
 
   return () => {
     cancelAnimationFrame(animationFrameId);

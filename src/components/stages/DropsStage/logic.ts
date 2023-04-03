@@ -1,6 +1,7 @@
-import { ICONS_LENGTH } from '@/components/Stage/icons';
-import type { DropPosition } from '@/store/stage';
-import { dropsInfos, dropSpeed, setDropsInfos } from '@/store/stage';
+import { dropsSpeed } from '@/components/Settings/DropsStage/store';
+import { ICONS_LENGTH } from '@/components/stages/DropsStage/icons';
+import type { DropInfo, DropPosition } from '@/components/stages/DropsStage/store';
+import { dropsInfos, setDropsInfos } from '@/components/stages/DropsStage/store';
 import { createEffect } from 'solid-js';
 
 // This is needed to mark the positions as stale if the `ResizeObserver` timeout got cleared before
@@ -100,10 +101,10 @@ function initializePositions(stage: HTMLDivElement) {
   setDropsInfos(clonedDropsInfos);
 }
 
-let _dropSpeedRef = dropSpeed();
+let _dropSpeedRef = dropsSpeed();
 
 createEffect(() => {
-  _dropSpeedRef = dropSpeed();
+  _dropSpeedRef = dropsSpeed();
 });
 
 function updatePositions() {
@@ -144,7 +145,7 @@ function updatePositions() {
       }
       const otherInfo = clonedDropsInfos[j]!;
       if (doPositionsOverlap({ top: newTop, left, width, height }, otherInfo.position)) {
-        // the drop is going to overlap with another drop{
+        // the drop is going to overlap with another drop
         move = false;
         break;
       }
@@ -173,7 +174,7 @@ function doPositionsOverlap(a: DropPosition, b: DropPosition): boolean {
   );
 }
 
-function cloneDropsInfos() {
+function cloneDropsInfos(): DropInfo[] {
   return dropsInfos.map((info) => ({
     hover: info.hover,
     position: {

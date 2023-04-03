@@ -1,10 +1,10 @@
-import { icons } from '@/components/Stage/icons';
-import { startStageAnimation } from '@/components/Stage/logic';
-import { dropsInfos, setDropsInfos } from '@/store/stage';
+import { icons } from '@/components/stages/DropsStage/icons';
+import { startStageAnimation } from '@/components/stages/DropsStage/logic';
+import { dropsInfos, setDropsInfos } from '@/components/stages/DropsStage/store';
 import type { Component } from 'solid-js';
 import { Index, onCleanup, onMount } from 'solid-js';
 
-export const Stage: Component = () => {
+export const DropsStage: Component = () => {
   let stage: HTMLDivElement | undefined;
 
   onMount(() => {

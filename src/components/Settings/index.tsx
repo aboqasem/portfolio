@@ -1,4 +1,4 @@
-import { StageSettings } from '@/components/Settings/Stage';
+import { DropsStageSettings } from '@/components/Settings/DropsStage';
 import { ThemeSettings } from '@/components/Settings/Theme';
 import FiSettings from '@lib/icons/fi/FiSettings';
 import type { Component } from 'solid-js';
@@ -37,7 +37,7 @@ export const Settings: Component = () => {
       <div class="w-[var(--settings-width)] border rounded-bl-xl divide-y dark:divide-zinc-500 bg-white dark:bg-zinc-950 dark:border-zinc-500">
         <ThemeSettings />
 
-        <StageSettings />
+        <DropsStageSettings />
       </div>
     </div>
   );

@@ -1,8 +1,20 @@
-import { DropsStageSettings } from '@/components/Settings/DropsStage';
+import { ModeSettings } from '@/components/Settings/Mode';
+import { Mode, mode } from '@/components/Settings/Mode/store';
 import { ThemeSettings } from '@/components/Settings/Theme';
 import FiSettings from '@lib/icons/fi/FiSettings';
 import type { Component } from 'solid-js';
-import { createEffect, createMemo, createSignal } from 'solid-js';
+import { createEffect, createMemo, createSignal, lazy, Show } from 'solid-js';
+
+const GameOfLifeStageSettings = lazy(() =>
+  import('@/components/Settings/GameOfLifeStage').then((m) => ({
+    default: m.GameOfLifeStageSettings,
+  })),
+);
+const DropsStageSettings = lazy(() =>
+  import('@/components/Settings/DropsStage').then((m) => ({
+    default: m.DropsStageSettings,
+  })),
+);
 
 export const [isSettingsDisabled, setIsSettingsDisabled] = createSignal(true);
 
@@ -20,7 +32,7 @@ export const Settings: Component = () => {
   return (
     <div
       style={{ '--settings-width': width }}
-      class={`absolute top-0 motion-safe:transition-[right] flex items-start mt-2 animate-bounce-x [animation-iteration-count:2] ${
+      class={`fixed top-0 motion-safe:transition-[right] flex items-start mt-2 animate-bounce-x [animation-iteration-count:2] ${
         isShown() ? 'right-0' : `-right-[var(--settings-width)]`
       }`}
     >
@@ -37,7 +49,14 @@ export const Settings: Component = () => {
       <div class="w-[var(--settings-width)] border rounded-bl-xl divide-y dark:divide-zinc-500 bg-white dark:bg-zinc-950 dark:border-zinc-500">
         <ThemeSettings />
 
-        <DropsStageSettings />
+        <ModeSettings />
+
+        <Show when={mode() === Mode.GameOfLife}>
+          <GameOfLifeStageSettings />
+        </Show>
+        <Show when={mode() === Mode.Drops}>
+          <DropsStageSettings />
+        </Show>
       </div>
     </div>
   );

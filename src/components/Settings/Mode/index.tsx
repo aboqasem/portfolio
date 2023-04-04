@@ -1,0 +1,24 @@
+import type { SelectMenuOptions } from '@/components/forms/elements/SelectMenu';
+import { SelectMenu } from '@/components/forms/elements/SelectMenu';
+import { isSettingsDisabled } from '@/components/Settings';
+import { Mode, mode, setMode } from '@/components/Settings/Mode/store';
+import type { Component } from 'solid-js';
+
+const modeOptions: SelectMenuOptions<Mode> = [
+  { value: Mode.GameOfLife, label: '👾 Game of Life' },
+  { value: Mode.Drops, label: '🍃 Drops' },
+];
+
+export const ModeSettings: Component = () => {
+  return (
+    <div class="p-2">
+      <SelectMenu
+        label="Mode"
+        value={mode()}
+        options={modeOptions}
+        onChange={setMode}
+        disabled={isSettingsDisabled()}
+      />
+    </div>
+  );
+};

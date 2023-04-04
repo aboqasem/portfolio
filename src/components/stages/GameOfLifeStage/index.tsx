@@ -83,7 +83,7 @@ export const GameOfLifeStage: Component = () => {
                     width: `${cellDimension()}px`,
                     height: `${cellDimension()}px`,
                   }}
-                  onClick={() => {
+                  onMouseDown={() => {
                     setCellsInfos(i, 'toLive', true);
                   }}
                   onMouseOver={() => {

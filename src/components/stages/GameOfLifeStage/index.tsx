@@ -38,12 +38,14 @@ export const GameOfLifeStage: Component = () => {
         return true;
       });
     };
+
     stage!.addEventListener('touchmove', touchMoveHandler, { passive: false });
 
     const stop = startStageAnimation(stage!);
 
     onCleanup(() => {
       stage!.removeEventListener('touchmove', touchMoveHandler);
+
       stop();
     });
   });
@@ -51,7 +53,7 @@ export const GameOfLifeStage: Component = () => {
   return (
     <div
       ref={stage}
-      class="absolute inset-0 grid place-items-start place-content-start"
+      class="absolute inset-0 grid place-items-start place-content-start cursor-cell"
       style={{
         'margin-top': `-${extraHeight() / 2}px`,
         'margin-left': `-${extraWidth() / 2}px`,
@@ -73,7 +75,7 @@ export const GameOfLifeStage: Component = () => {
               <Show when={i <= maxCellIndex()}>
                 <div
                   data-cell-index={i}
-                  class="select-none p-[10%]"
+                  class="select-none p-[10%] sm:p-[14%]"
                   classList={{
                     'bg-zinc-900 text-zinc-50 dark:text-zinc-900 dark:bg-zinc-50':
                       cellInfo().alive || cellInfo().toLive,

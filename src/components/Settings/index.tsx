@@ -3,7 +3,7 @@ import { Mode, mode } from '@/components/Settings/Mode/store';
 import { ThemeSettings } from '@/components/Settings/Theme';
 import FiSettings from '@lib/icons/fi/FiSettings';
 import type { Component } from 'solid-js';
-import { createEffect, createMemo, createSignal, lazy, Show } from 'solid-js';
+import { createEffect, createMemo, createSignal, lazy, Show, Suspense } from 'solid-js';
 
 const GameOfLifeStageSettings = lazy(() =>
   import('@/components/Settings/GameOfLifeStage').then((m) => ({
@@ -15,6 +15,18 @@ const DropsStageSettings = lazy(() =>
     default: m.DropsStageSettings,
   })),
 );
+
+const SettingsElementSkeleton: Component = () => {
+  return (
+    <div class="p-2">
+      <div class="animate-pulse">
+        <div class="h-4 bg-zinc-300 dark:bg-zinc-700 rounded w-full" />
+
+        <div class="mt-1 h-7 bg-zinc-300 dark:bg-zinc-700 rounded" />
+      </div>
+    </div>
+  );
+};
 
 export const [isSettingsDisabled, setIsSettingsDisabled] = createSignal(true);
 
@@ -52,10 +64,14 @@ export const Settings: Component = () => {
         <ModeSettings />
 
         <Show when={mode() === Mode.GameOfLife}>
-          <GameOfLifeStageSettings />
+          <Suspense fallback={<SettingsElementSkeleton />}>
+            <GameOfLifeStageSettings />
+          </Suspense>
         </Show>
         <Show when={mode() === Mode.Drops}>
-          <DropsStageSettings />
+          <Suspense fallback={<SettingsElementSkeleton />}>
+            <DropsStageSettings />
+          </Suspense>
         </Show>
       </div>
     </div>

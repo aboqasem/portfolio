@@ -11,7 +11,7 @@ const DropsStage = lazy(() =>
 
 export const Background: Component = () => {
   return (
-    <div class="fixed inset-0 z-0 w-screen h-screen">
+    <div class="fixed inset-0 z-0 h-screen w-screen">
       <Show when={mode() === Mode.GameOfLife}>
         <GameOfLifeStage />
       </Show>

@@ -53,7 +53,7 @@ export const GameOfLifeStage: Component = () => {
   return (
     <div
       ref={stage}
-      class="absolute inset-0 grid place-items-start place-content-start cursor-cell"
+      class="absolute inset-0 grid cursor-cell place-content-start place-items-start"
       style={{
         'margin-top': `-${extraHeight() / 2}px`,
         'margin-left': `-${extraWidth() / 2}px`,

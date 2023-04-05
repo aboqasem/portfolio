@@ -14,14 +14,14 @@ export const DropsStage: Component = () => {
   });
 
   return (
-    <div ref={stage} class="absolute inset-0 w-full h-full">
+    <div ref={stage} class="absolute inset-0 h-full w-full">
       <Index each={dropsInfos}>
         {(dropInfo, i) => {
           const icon = icons[i]!;
 
           return (
             <div
-              class="absolute w-6 h-6 select-none sm:w-8 sm:h-8 xl:w-9 xl:h-9 md:text-4xl text-zinc-900 dark:text-zinc-50"
+              class="absolute h-6 w-6 select-none text-zinc-900 dark:text-zinc-50 sm:h-8 sm:w-8 md:text-4xl xl:h-9 xl:w-9"
               style={{
                 top: `${dropInfo().position.top}px`,
                 left: `${dropInfo().position.left}px`,

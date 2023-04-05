@@ -33,18 +33,18 @@ const links = [
 
 export function Home() {
   return (
-    <div class="absolute w-full max-w-2xl px-10 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 md:px-0">
-      <div class="p-5 font-serif shadow-md rounded-xl bg-gradient-to-tr from-zinc-200/90 dark:from-zinc-900 dark:to-zinc-100/10 md:shadow-xl backdrop-blur-lg sm:p-7 md:p-10">
-        <h1 class="mb-4 text-xl text-zinc-800 sm:text-2xl md:text-3xl dark:text-zinc-50">
+    <div class="absolute left-1/2 top-1/2 w-full max-w-2xl -translate-x-1/2 -translate-y-1/2 px-10 md:px-0">
+      <div class="rounded-xl bg-gradient-to-tr from-zinc-200/90 p-5 font-serif shadow-md backdrop-blur-lg dark:from-zinc-900 dark:to-zinc-100/10 sm:p-7 md:p-10 md:shadow-xl">
+        <h1 class="mb-4 text-xl text-zinc-800 dark:text-zinc-50 sm:text-2xl md:text-3xl">
           Hey, I&apos;m Mohammad Al Zouabi.
         </h1>
 
-        <p class="text-lg sm:text-xl md:text-2xl text-zinc-700 dark:text-zinc-300">
+        <p class="text-lg text-zinc-700 dark:text-zinc-300 sm:text-xl md:text-2xl">
           An enthusiastic software engineer who stands for quality, consistency, and attention to
           details.
         </p>
 
-        <div class="grid grid-flow-col-dense mt-4 text-2xl justify-evenly sm:text-4xl">
+        <div class="mt-4 grid grid-flow-col-dense justify-evenly text-2xl sm:text-4xl">
           <For each={links}>
             {({ name, url, class: className, Icon }) => (
               <a
@@ -52,9 +52,9 @@ export function Home() {
                 href={url}
                 target="_blank"
                 rel="noreferrer"
-                class={`p-1.5 rounded-lg border border-transparent hover:bg-opacity-80 focus:outline-none focus:ring-2 focus:ring-blue-500 ${className}`}
+                class={`rounded-lg border border-transparent p-1.5 hover:bg-opacity-80 focus:outline-none focus:ring-2 focus:ring-blue-500 ${className}`}
               >
-                <Icon class="w-6 h-6 md:w-8 md:h-8" aria-hidden />
+                <Icon class="h-6 w-6 md:h-8 md:w-8" aria-hidden />
                 <span class="sr-only">{name}</span>
               </a>
             )}

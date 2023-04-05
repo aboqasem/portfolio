@@ -18,12 +18,10 @@ const DropsStageSettings = lazy(() =>
 
 const SettingsElementSkeleton: Component = () => {
   return (
-    <div class="p-2">
-      <div class="animate-pulse">
-        <div class="h-4 bg-zinc-300 dark:bg-zinc-700 rounded w-full" />
+    <div class="p-2 animate-pulse">
+      <div class="h-4 bg-zinc-300 dark:bg-zinc-700 rounded w-full" />
 
-        <div class="mt-1 h-7 bg-zinc-300 dark:bg-zinc-700 rounded" />
-      </div>
+      <div class="mt-1 h-7 bg-zinc-300 dark:bg-zinc-700 rounded" />
     </div>
   );
 };
@@ -44,21 +42,21 @@ export const Settings: Component = () => {
   return (
     <div
       style={{ '--settings-width': width }}
-      class={`fixed top-0 motion-safe:transition-[right] flex items-start mt-2 animate-bounce-x [animation-iteration-count:2] ${
-        isShown() ? 'right-0' : `-right-[var(--settings-width)]`
+      class={`fixed top-2 motion-safe:transition-[right] flex items-start animate-bounce-x [animation-iteration-count:2] ${
+        isShown() ? 'right-0' : `-right-[--settings-width]`
       }`}
     >
       <button
         type="button"
         title={hint()}
-        class="inline-flex items-center p-3 text-blue-600 bg-blue-100 border border-r-0 border-transparent group focus:ring-inset rounded-l-xl hover:bg-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-blue-600 dark:hover:bg-blue-700 dark:text-zinc-100"
+        class="-left-12 absolute inline-flex items-center p-3 text-blue-600 bg-blue-100 border border-r-0 border-transparent group focus:ring-inset rounded-l-xl hover:bg-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-blue-600 dark:hover:bg-blue-700 dark:text-zinc-100"
         onClick={() => setIsShown((show) => !show)}
       >
         <FiSettings class="w-6 h-6 group motion-safe:group-hover:animate-[spin_2s_linear_infinite]" />
         <span class="sr-only">{hint()}</span>
       </button>
 
-      <div class="w-[var(--settings-width)] border rounded-bl-xl divide-y dark:divide-zinc-500 bg-white dark:bg-zinc-950 dark:border-zinc-500">
+      <div class="w-[--settings-width] border rounded-bl-xl divide-y dark:divide-zinc-500 bg-white dark:bg-zinc-950 dark:border-zinc-500">
         <ThemeSettings />
 
         <ModeSettings />

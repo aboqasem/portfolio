@@ -19,7 +19,7 @@ const config = {
         },
       },
       animation: {
-        'bounce-x': 'bounce-x 1s infinite',
+        'bounce-x': 'bounce-x 0.7s infinite',
       },
     },
   },

@@ -14,26 +14,28 @@ import { Index, onCleanup, onMount, Show } from 'solid-js';
 
 export const GameOfLifeStage: Component = () => {
   let stage: HTMLDivElement | undefined;
-  let holdingPress = false;
 
   onMount(() => {
     const touchMoveHandler = (e: TouchEvent) => {
+      if (e.touches.length !== 1) {
+        return;
+      }
+
       e.preventDefault();
 
       const { clientX, clientY } = e.touches[0]!;
 
       document.elementsFromPoint(clientX, clientY).find((el) => {
-        let cellIndex: number | undefined;
-
         if (!(el instanceof HTMLDivElement)) {
           return false;
         }
 
+        let cellIndex: number | undefined;
         if (isNaN((cellIndex = Number(el.dataset.cellIndex)))) {
           return false;
         }
 
-        setCellsInfos(cellIndex, 'toLive', true);
+        !cellsInfos[cellIndex]?.alive && setCellsInfos(cellIndex, 'toLive', true);
 
         return true;
       });
@@ -49,6 +51,8 @@ export const GameOfLifeStage: Component = () => {
       stop();
     });
   });
+
+  let holdingPress = false;
 
   return (
     <div
@@ -86,7 +90,7 @@ export const GameOfLifeStage: Component = () => {
                     height: `${cellDimension()}px`,
                   }}
                   onMouseDown={() => {
-                    setCellsInfos(i, 'toLive', true);
+                    !cellInfo().alive && setCellsInfos(i, 'toLive', true);
                   }}
                   onMouseOver={() => {
                     holdingPress && !cellInfo().alive && setCellsInfos(i, 'toLive', true);

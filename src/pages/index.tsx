@@ -1,8 +1,9 @@
+import BsChevronDown from '@lib/icons/bs/BsChevronDown';
 import FaLinkedinIn from '@lib/icons/fa/FaLinkedinIn';
 import GoMarkGithub from '@lib/icons/go/GoMarkGithub';
 import SiGmail from '@lib/icons/si/SiGmail';
 import SiTwitter from '@lib/icons/si/SiTwitter';
-import { For } from 'solid-js';
+import { createSignal, For } from 'solid-js';
 
 const links = [
   {
@@ -32,9 +33,17 @@ const links = [
 ];
 
 export function Home() {
+  const [isShowing, setIsShowing] = createSignal(true);
+
   return (
-    <div class="absolute left-1/2 top-1/2 w-full max-w-2xl -translate-x-1/2 -translate-y-1/2 px-10 md:px-0">
-      <div class="rounded-xl bg-gradient-to-tr from-zinc-200/90 p-5 font-serif shadow-md backdrop-blur-lg dark:from-zinc-900 dark:to-zinc-100/10 sm:p-7 md:p-10 md:shadow-xl">
+    <div
+      class="fixed left-1/2 w-full max-w-2xl -translate-x-1/2 px-10 motion-safe:transition-[top,transform] md:px-0"
+      classList={{
+        'top-1/2 -translate-y-1/2': isShowing(),
+        'top-full -translate-y-[1.5rem] md:-translate-y-[2rem]': !isShowing(),
+      }}
+    >
+      <div class="relative rounded-xl bg-gradient-to-tr from-zinc-200/90 p-5 !pt-11 font-serif shadow-md backdrop-blur-lg dark:from-zinc-900 dark:to-zinc-100/10 sm:p-7 sm:!pt-[3.25rem] md:p-10 md:!pt-16 md:shadow-xl">
         <h1 class="mb-4 text-xl text-zinc-800 dark:text-zinc-50 sm:text-2xl md:text-3xl">
           Hey, I&apos;m Mohammad Al Zouabi.
         </h1>
@@ -49,7 +58,7 @@ export function Home() {
             {({ name, url, class: className, Icon }) => (
               <a
                 title={name}
-                href={url}
+                href={isShowing() ? url : undefined}
                 target="_blank"
                 rel="noreferrer"
                 class={`rounded-lg border border-transparent p-1.5 hover:bg-opacity-80 focus:outline-none focus:ring-2 focus:ring-blue-500 ${className}`}
@@ -60,6 +69,21 @@ export function Home() {
             )}
           </For>
         </div>
+
+        <button
+          type="button"
+          class="absolute left-0 top-0 flex w-full items-center justify-center rounded-t-xl bg-zinc-400 bg-opacity-20 text-zinc-700 ring-inset focus:outline-none focus:ring-2 focus:ring-blue-500 motion-safe:transition-[transform] dark:text-zinc-300"
+          onClick={() => setIsShowing((isShowing) => !isShowing)}
+        >
+          <span class="sr-only">{isShowing() ? 'Hide' : 'Show'}</span>
+          <BsChevronDown
+            class="h-6 w-6 scale-x-[1.1] scale-y-[0.9] ease-in-out motion-safe:transition-[transform] md:h-8 md:w-8"
+            classList={{
+              '-scale-y-[0.9]': !isShowing(),
+            }}
+            aria-hidden
+          />
+        </button>
       </div>
     </div>
   );

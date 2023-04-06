@@ -77,9 +77,10 @@ export function Home() {
         >
           <span class="sr-only">{isShowing() ? 'Hide' : 'Show'}</span>
           <BsChevronDown
-            class="h-6 w-6 scale-x-[1.1] scale-y-[0.9] ease-in-out motion-safe:transition-[transform] md:h-8 md:w-8"
+            class="h-6 w-6 scale-x-[1.1] motion-safe:transition-[transform] md:h-8 md:w-8"
             classList={{
               '-scale-y-[0.9]': !isShowing(),
+              'scale-y-[0.9]': isShowing(),
             }}
             aria-hidden
           />

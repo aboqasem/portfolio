@@ -69,6 +69,9 @@ export const GameOfLifeStage: Component = () => {
       onMouseUp={() => {
         holdingPress = false;
       }}
+      onMouseLeave={() => {
+        holdingPress = false;
+      }}
     >
       <Show when={!isNaN(maxCellIndex())}>
         <Index each={cellsInfos}>

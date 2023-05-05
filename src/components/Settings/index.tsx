@@ -3,7 +3,7 @@ import { Mode, mode } from '@/components/Settings/Mode/store';
 import { ThemeSettings } from '@/components/Settings/Theme';
 import FiSettings from '@lib/icons/fi/FiSettings';
 import type { Component } from 'solid-js';
-import { createEffect, createMemo, createSignal, lazy, Show, Suspense } from 'solid-js';
+import { Show, Suspense, createEffect, createMemo, createSignal, lazy } from 'solid-js';
 
 const GameOfLifeStageSettings = lazy(() =>
   import('@/components/Settings/GameOfLifeStage').then((m) => ({

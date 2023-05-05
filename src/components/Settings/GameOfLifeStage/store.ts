@@ -3,7 +3,14 @@ import { createSignal } from 'solid-js';
 
 const GOL_TICK_SPEED_KEY = 'golTickSpeed';
 
-export const maxColsOrRowsCount = window.matchMedia('(max-width: 640px)').matches ? 35 : 40;
+export const maxColsOrRowsCount = (() => {
+  const windowWidth = window.innerWidth;
+  const isSm = windowWidth <= 640;
+  const isMd = windowWidth <= 768;
+  const isLg = windowWidth <= 1024;
+
+  return isSm ? 35 : isMd ? 40 : isLg ? 45 : 50;
+})();
 
 export const minTickSpeed = 0;
 

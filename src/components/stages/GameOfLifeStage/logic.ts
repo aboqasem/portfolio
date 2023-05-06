@@ -104,7 +104,20 @@ function initializePositions() {
   });
 }
 
-const neighborIndicesOffsets = [-1, -1, -1, 0, -1, 1, 0, -1, 0, 1, 1, -1, 1, 0, 1, 1] as const;
+// offsets of the neighbors of a cell, hardcoded to avoid the unnecessary overhead of a loop in each tick
+// prettier-ignore
+const neighborIndicesOffsets = [
+  -1, -1, // top-left
+  -1, 0, // top
+  -1, 1, // top-right
+  0, -1, // left
+  0, 1, // right
+  1, -1, // bottom-left
+  1, 0, // bottom
+  1, 1, // bottom-right
+] as const;
+const neighborIndicesOffsetsLength = 16;
+const neighborIndicesOffsetsStep = 2;
 
 let colsCount = NaN,
   rowsCount = NaN;
@@ -130,7 +143,7 @@ function updatePositions() {
         const cellIndex = cellIndexAt(col, row);
 
         let aliveNeighbors = 0;
-        for (let i = 0; i < 16; i += 2) {
+        for (let i = 0; i < neighborIndicesOffsetsLength; i += neighborIndicesOffsetsStep) {
           const neighborRow = row + neighborIndicesOffsets[i]!,
             neighborCol = col + neighborIndicesOffsets[i + 1]!;
           if (

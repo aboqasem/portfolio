@@ -10,7 +10,6 @@ export enum Mode {
 
 const [mode, _setMode] = createSignal<Mode>(storeMode());
 
-// @ts-expect-error
 const setMode: Setter<Mode> = (value) => {
   return _setMode((prev) => storeMode(typeof value === 'function' ? value(prev) : value));
 };

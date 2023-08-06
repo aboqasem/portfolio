@@ -11,12 +11,11 @@ export enum Theme {
 
 const [theme, _setTheme] = createSignal<Theme>(storeTheme());
 
-// @ts-expect-error
 const setTheme: Setter<Theme> = (value) => {
   return _setTheme((prev) => storeTheme(typeof value === 'function' ? value(prev) : value));
 };
 
-export { theme, setTheme };
+export { setTheme, theme };
 
 function storeTheme(theme?: Theme): Theme {
   if (!theme) {

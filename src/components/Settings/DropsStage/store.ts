@@ -15,7 +15,6 @@ const defaultDropsSpeed = window.matchMedia('(prefers-reduced-motion)').matches
 
 const [dropsSpeed, _setDropsSpeed] = createSignal<number>(storeDropsSpeed());
 
-// @ts-expect-error
 const setDropsSpeed: Setter<number> = (value) => {
   return _setDropsSpeed((prev) =>
     storeDropsSpeed(typeof value === 'function' ? value(prev) : value),

@@ -22,7 +22,6 @@ const defaultTickSpeed = window.matchMedia('(prefers-reduced-motion)').matches ?
 
 const [cellsTickSpeed, _setCellsTickSpeed] = createSignal<number>(storeCellsTickSpeed());
 
-// @ts-expect-error
 const setCellsTickSpeed: Setter<number> = (value) => {
   return _setCellsTickSpeed((prev) =>
     storeCellsTickSpeed(typeof value === 'function' ? value(prev) : value),

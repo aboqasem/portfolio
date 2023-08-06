@@ -161,6 +161,7 @@ function updatePositions() {
 }
 
 function doPositionsOverlap(a: DropPosition, b: DropPosition): boolean {
+  // prettier-ignore
   return !(
     // prettier-ignore
     // the drop is before the other drop

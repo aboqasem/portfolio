@@ -11,31 +11,31 @@
   },
   "devDependencies": {
     "@aboqasem/prettierrc": "3.0.0",
-    "@tailwindcss/forms": "0.5.4",
-    "@types/eslint": "8.44.2",
+    "@tailwindcss/forms": "0.5.6",
+    "@types/eslint": "8.44.3",
     "@types/html-minifier-terser": "7.0.0",
-    "@types/node": "20.4.8",
-    "@typescript-eslint/eslint-plugin": "6.2.1",
-    "@typescript-eslint/parser": "6.2.1",
-    "autoprefixer": "10.4.14",
+    "@types/node": "20.7.0",
+    "@typescript-eslint/eslint-plugin": "6.7.3",
+    "@typescript-eslint/parser": "6.7.3",
+    "autoprefixer": "10.4.16",
     "cz-conventional-changelog": "3.3.0",
-    "eslint": "8.46.0",
+    "eslint": "8.50.0",
     "eslint-config-prettier": "9.0.0",
-    "eslint-plugin-solid": "0.12.1",
+    "eslint-plugin-solid": "0.13.0",
     "husky": "8.0.3",
-    "postcss": "8.4.27",
-    "prettier": "3.0.1",
-    "prettier-plugin-tailwindcss": "0.4.1",
+    "postcss": "8.4.30",
+    "prettier": "3.0.3",
+    "prettier-plugin-tailwindcss": "0.5.4",
     "tailwindcss": "3.3.3",
-    "typescript": "5.1.6",
-    "vite": "4.4.8",
+    "typescript": "5.2.2",
+    "vite": "4.4.9",
     "vite-plugin-eslint": "1.8.1",
     "vite-plugin-minify": "1.5.2",
     "vite-plugin-solid": "2.7.0",
-    "vite-tsconfig-paths": "4.2.0"
+    "vite-tsconfig-paths": "4.2.1"
   },
   "dependencies": {
-    "solid-js": "1.7.9"
+    "solid-js": "1.7.12"
   },
   "config": {
     "commitizen": {

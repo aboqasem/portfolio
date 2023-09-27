@@ -78,14 +78,15 @@ function initializePositions(stage: HTMLDivElement) {
       left = NaN,
       retries = 500;
 
+    const position = (clonedDropsInfos[i]!.position = { top, left, width, height });
     // keep initializing a random position until it does not overlap with previously initialized ones
     while (--retries >= 0) {
-      top = Math.random() * topMax;
-      left = Math.random() * leftMax;
+      position.top = Math.floor(Math.random() * topMax);
+      position.left = Math.floor(Math.random() * leftMax);
 
       let overlaps = false;
       for (let j = i - 1; j >= 0; j--) {
-        if (doPositionsOverlap({ top, left, width, height }, clonedDropsInfos[j]!.position)) {
+        if (doPositionsOverlap(position, clonedDropsInfos[j]!.position)) {
           overlaps = true;
           break;
         }
@@ -94,8 +95,6 @@ function initializePositions(stage: HTMLDivElement) {
         break;
       }
     }
-
-    clonedDropsInfos[i]!.position = { top, left, width, height };
   }
 
   setDropsInfos(clonedDropsInfos);
@@ -135,6 +134,7 @@ function updatePositions() {
     if (newTop >= currentStageHeight) {
       newTop = -height;
     }
+    const newPosition: DropPosition = { top: newTop, left, width, height };
 
     let move = true;
     // do not move the drop if moving it would cause it to overlap with another stopped drop.
@@ -144,7 +144,7 @@ function updatePositions() {
         continue;
       }
       const otherInfo = clonedDropsInfos[j]!;
-      if (doPositionsOverlap({ top: newTop, left, width, height }, otherInfo.position)) {
+      if (doPositionsOverlap(newPosition, otherInfo.position)) {
         // the drop is going to overlap with another drop
         move = false;
         break;

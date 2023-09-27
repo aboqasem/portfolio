@@ -1,4 +1,5 @@
 import { cellsTickSpeed, maxColsOrRowsCount } from '@/components/Settings/GameOfLifeStage/store';
+import type { CellInfo } from '@/components/stages/GameOfLifeStage/store';
 import {
   cellsColsCount,
   cellsInfos,
@@ -10,6 +11,7 @@ import {
   setExtraHeight,
   setExtraWidth,
 } from '@/components/stages/GameOfLifeStage/store';
+import type { Accessor } from 'solid-js';
 import { batch, createEffect } from 'solid-js';
 
 // This is needed to mark the positions as stale if the `ResizeObserver` timeout got cleared before
@@ -137,52 +139,51 @@ function updatePositions() {
     return;
   }
 
-  batch(() => {
-    for (let row = rowsCount - 1; row >= 0; --row) {
-      for (let col = colsCount - 1; col >= 0; --col) {
-        const cellIndex = cellIndexAt(col, row);
-
-        let aliveNeighbors = 0;
-        for (let i = 0; i < neighborIndicesOffsetsLength; i += neighborIndicesOffsetsStep) {
-          const neighborRow = row + neighborIndicesOffsets[i]!,
-            neighborCol = col + neighborIndicesOffsets[i + 1]!;
-          if (
-            neighborRow >= 0 &&
-            neighborRow < rowsCount &&
-            neighborCol >= 0 &&
-            neighborCol < colsCount &&
-            cellsInfos[cellIndexAt(neighborCol, neighborRow)]!.alive &&
-            ++aliveNeighbors > 3
-          ) {
-            break;
-          }
-        }
-
-        setCellsInfos(cellIndex, (cellInfo) => {
-          const alive = cellInfo.alive;
-          let toLive = alive;
-
-          if (toLive) {
-            if (aliveNeighbors < 2 || aliveNeighbors > 3) {
-              toLive = false;
-            }
-          } else if (aliveNeighbors === 3) {
-            toLive = true;
-          }
-
-          return {
-            alive,
-            toLive: cellInfo.toLive || toLive,
-          };
-        });
-      }
-    }
-
-    for (let row = rowsCount - 1; row >= 0; --row) {
-      for (let col = colsCount - 1; col >= 0; --col) {
-        const cellIndex = cellIndexAt(col, row);
-        setCellsInfos(cellIndex, (cellInfo) => ({ alive: cellInfo.toLive, toLive: false }));
-      }
-    }
-  });
+  batch(updatePositionsBatchFn);
 }
+
+const updatePositionsBatchFn: Accessor<void> = () => {
+  for (let row = rowsCount - 1; row >= 0; --row) {
+    for (let col = colsCount - 1; col >= 0; --col) {
+      const cellIndex = cellIndexAt(col, row);
+
+      let aliveNeighbors = 0;
+      for (let i = 0; i < neighborIndicesOffsetsLength; i += neighborIndicesOffsetsStep) {
+        const neighborRow = row + neighborIndicesOffsets[i]!,
+          neighborCol = col + neighborIndicesOffsets[i + 1]!;
+        if (
+          neighborRow >= 0 &&
+          neighborRow < rowsCount &&
+          neighborCol >= 0 &&
+          neighborCol < colsCount &&
+          cellsInfos[cellIndexAt(neighborCol, neighborRow)]!.alive &&
+          ++aliveNeighbors > 3
+        ) {
+          break;
+        }
+      }
+
+      const cellInfo = cellsInfos[cellIndex]!;
+      let toLive = cellInfo.alive;
+
+      if (toLive) {
+        if (aliveNeighbors < 2 || aliveNeighbors > 3) {
+          toLive = false;
+        }
+      } else if (aliveNeighbors === 3) {
+        toLive = true;
+      }
+
+      setCellsInfos(cellIndex, 'toLive', cellInfo.toLive || toLive);
+    }
+  }
+
+  for (let row = rowsCount - 1; row >= 0; --row) {
+    for (let col = colsCount - 1; col >= 0; --col) {
+      const cellIndex = cellIndexAt(col, row);
+      setCellsInfos(cellIndex, cellInfoAliveSetter);
+    }
+  }
+};
+
+const cellInfoAliveSetter = (cellInfo: CellInfo) => ({ alive: cellInfo.toLive, toLive: false });

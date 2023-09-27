@@ -32,16 +32,16 @@ const {
   SiIntellijidea,
   SiVisualstudiocode,
   SiMarkdown,
+  SiGithub,
   SiNpm,
   SiPnpm,
   SiYarn,
   SiMacos,
-  SiTwitter,
+  SiX,
   SiGmail,
   SiSpringboot,
 } = require('react-icons/si');
-const { FaJava, FaLinkedinIn, FaChevronDown } = require('react-icons/fa');
-const { GoMarkGithub } = require('react-icons/go');
+const { FaJava, FaLinkedinIn } = require('react-icons/fa');
 const { MdHttp } = require('react-icons/md');
 const { FiSettings } = require('react-icons/fi');
 const { DiScrum } = require('react-icons/di');
@@ -80,15 +80,15 @@ const icons = {
     SiVisualstudiocode,
     SiMarkdown,
     SiNpm,
+    SiGithub,
     SiPnpm,
     SiYarn,
     SiMacos,
-    SiTwitter,
+    SiX,
     SiGmail,
     SiSpringboot,
   ],
   fa: [FaJava, FaLinkedinIn],
-  go: [GoMarkGithub],
   md: [MdHttp],
   fi: [FiSettings],
   di: [DiScrum],

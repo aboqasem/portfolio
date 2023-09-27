@@ -1,34 +1,34 @@
 import BsChevronDown from '@lib/icons/bs/BsChevronDown';
 import FaLinkedinIn from '@lib/icons/fa/FaLinkedinIn';
-import GoMarkGithub from '@lib/icons/go/GoMarkGithub';
+import SiGithub from '@lib/icons/si/SiGithub';
 import SiGmail from '@lib/icons/si/SiGmail';
-import SiTwitter from '@lib/icons/si/SiTwitter';
+import SiX from '@lib/icons/si/SiX';
 import { createSignal, For } from 'solid-js';
 
 const links = [
   {
     name: 'GitHub',
-    Icon: GoMarkGithub,
+    Icon: SiGithub,
     url: 'https://github.com/aboqasem',
-    class: 'text-white bg-[#24292E]',
+    className: 'text-white bg-[#24292E]',
   },
   {
     name: 'LinkedIn',
     Icon: FaLinkedinIn,
     url: 'https://www.linkedin.com/in/zouabi',
-    class: 'text-white bg-[#0D66C2]',
+    className: 'text-white bg-[#0D66C2]',
   },
   {
-    name: 'Twitter',
-    Icon: SiTwitter,
-    url: 'https://twitter.com/mbalzouabi',
-    class: 'text-white bg-[#1DA1F2]',
+    name: 'X',
+    Icon: SiX,
+    url: 'https://x.com/mbalzouabi',
+    className: 'text-white bg-black',
   },
   {
     name: 'Email',
     Icon: SiGmail,
     url: 'mailto:mb.alzouabi@gmail.com',
-    class: 'text-white bg-[#E65A4D]',
+    className: 'text-white bg-[#E65A4D]',
   },
 ];
 
@@ -55,7 +55,7 @@ export function Home() {
 
         <div class="mt-4 grid grid-flow-col-dense justify-evenly text-2xl sm:text-4xl">
           <For each={links}>
-            {({ name, url, class: className, Icon }) => (
+            {({ name, url, className, Icon }) => (
               <a
                 title={name}
                 href={isShowing() ? url : undefined}

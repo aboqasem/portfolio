@@ -25,7 +25,7 @@ async function main() {
 
     fs.mkdirSync(iconCategoryDir, { recursive: true });
 
-    icons.forEach((IconComponent) => {
+    icons.forEach(async (IconComponent) => {
       const svg = renderToStaticMarkup(IconComponent({}));
       const optimizedSvg = optimize(svg, svgoConfig).data;
 
@@ -41,7 +41,7 @@ const ${iconName}: Icon = (props) => {
 
 export default ${iconName};
 `.trimStart();
-      const formattedIconComponent = prettier.format(iconComponent, prettierOptions);
+      const formattedIconComponent = await prettier.format(iconComponent, prettierOptions);
 
       const iconFilePath = path.resolve(iconCategoryDir, `${iconName}.tsx`);
 

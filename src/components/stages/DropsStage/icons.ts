@@ -1,7 +1,6 @@
 import type { Icon } from '@lib/icons';
 import DiScrum from '@lib/icons/di/DiScrum';
 import FaJava from '@lib/icons/fa/FaJava';
-import GoMarkGithub from '@lib/icons/go/GoMarkGithub';
 import MdHttp from '@lib/icons/md/MdHttp';
 import SiArduino from '@lib/icons/si/SiArduino';
 import SiC from '@lib/icons/si/SiC';
@@ -11,6 +10,7 @@ import SiDart from '@lib/icons/si/SiDart';
 import SiDocker from '@lib/icons/si/SiDocker';
 import SiExpress from '@lib/icons/si/SiExpress';
 import SiFlutter from '@lib/icons/si/SiFlutter';
+import SiGithub from '@lib/icons/si/SiGithub';
 import SiGnubash from '@lib/icons/si/SiGnubash';
 import SiHomebrew from '@lib/icons/si/SiHomebrew';
 import SiHtml5 from '@lib/icons/si/SiHtml5';
@@ -69,7 +69,7 @@ export const icons: { Icon: Icon; desc: string }[] = [
     desc: 'GNU Bash',
   },
   {
-    Icon: GoMarkGithub,
+    Icon: SiGithub,
     desc: 'Github',
   },
   {

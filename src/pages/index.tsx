@@ -50,7 +50,7 @@ export function Home() {
 
         <p class="text-lg text-zinc-700 dark:text-zinc-300 sm:text-xl md:text-2xl">
           An enthusiastic software engineer who stands for quality, consistency, and attention to
-          details.
+          detail.
         </p>
 
         <div class="mt-4 grid grid-flow-col-dense justify-evenly text-2xl sm:text-4xl">

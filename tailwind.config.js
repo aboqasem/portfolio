@@ -1,9 +1,9 @@
 /** @type {import("tailwindcss").Config} */
-const config = {
+export default {
   mode: 'jit',
   darkMode: 'class',
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx,css,md,mdx,html,json,scss}'],
-  plugins: [require('@tailwindcss/forms')],
+  plugins: [import('@tailwindcss/forms')],
   theme: {
     extend: {
       keyframes: {
@@ -24,5 +24,3 @@ const config = {
     },
   },
 };
-
-module.exports = config;

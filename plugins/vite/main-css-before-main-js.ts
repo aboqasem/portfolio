@@ -24,9 +24,9 @@ export default function mainCssBeforeMainJs(): VitePlugin {
       const origMainScriptHtml = mainScriptMatch[1]!;
       const newMainScriptHtml = origMainScriptHtml.replace('<script', '<script ');
 
-      // e.g: <link rel="stylesheet" href="/assets/index-d64a8d5d.css">
+      // e.g: <link rel="stylesheet" crossorigin  href="/assets/index-d64a8d5d.css">
       const mainCssLinkMatch = html.match(
-        /(<link rel="stylesheet" href="\/assets\/index-[A-Za-z0-9]+\.css">)/,
+        /(<link rel="stylesheet" crossorigin href="\/assets\/index-[A-Za-z0-9]+\.css">)/,
       );
       if (!mainCssLinkMatch) {
         throw Error('Could not find main css link');

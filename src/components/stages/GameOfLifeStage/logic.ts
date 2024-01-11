@@ -186,4 +186,7 @@ const updatePositionsBatchFn: Accessor<void> = () => {
   }
 };
 
-const cellInfoAliveSetter = (cellInfo: CellInfo) => ({ alive: cellInfo.toLive, toLive: false });
+const cellInfoAliveSetter = (cellInfo: CellInfo) => ({
+  alive: cellInfo.toLive,
+  toLive: false,
+});

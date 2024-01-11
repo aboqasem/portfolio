@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite';
 import eslintPlugin from 'vite-plugin-eslint';
-import minifyHtmlPlugin from 'vite-plugin-minify';
+import { ViteMinifyPlugin } from 'vite-plugin-minify';
 import solidPlugin from 'vite-plugin-solid';
 import tsconfigPathsPlugin from 'vite-tsconfig-paths';
 import mainCssBeforeMainJs from './plugins/vite/main-css-before-main-js';
@@ -10,7 +10,7 @@ export default defineConfig({
     eslintPlugin(),
     tsconfigPathsPlugin(),
     solidPlugin(),
-    minifyHtmlPlugin({ minifyJS: true }),
+    ViteMinifyPlugin({ minifyJS: true }),
     mainCssBeforeMainJs(),
   ],
   build: {

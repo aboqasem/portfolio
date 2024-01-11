@@ -1,5 +1,7 @@
+import prettierrc from '@aboqasem/prettierrc' assert { type: 'json' };
+
 /** @type {import('prettier').Config} */
-module.exports = {
-  ...require('@aboqasem/prettierrc'),
+export default {
+  ...prettierrc,
   plugins: ['prettier-plugin-tailwindcss'],
 };

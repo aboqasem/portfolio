@@ -3,10 +3,14 @@ import type { Component } from 'solid-js';
 import { lazy, Show } from 'solid-js';
 
 const GameOfLifeStage = lazy(() =>
-  import('@/components/stages/GameOfLifeStage').then((m) => ({ default: m.GameOfLifeStage })),
+  import('@/components/stages/GameOfLifeStage').then((m) => ({
+    default: m.GameOfLifeStage,
+  })),
 );
 const DropsStage = lazy(() =>
-  import('@/components/stages/DropsStage').then((m) => ({ default: m.DropsStage })),
+  import('@/components/stages/DropsStage').then((m) => ({
+    default: m.DropsStage,
+  })),
 );
 
 export const Background: Component = () => {

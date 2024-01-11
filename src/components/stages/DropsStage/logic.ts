@@ -78,7 +78,12 @@ function initializePositions(stage: HTMLDivElement) {
       left = NaN,
       retries = 500;
 
-    const position = (clonedDropsInfos[i]!.position = { top, left, width, height });
+    const position = (clonedDropsInfos[i]!.position = {
+      top,
+      left,
+      width,
+      height,
+    });
     // keep initializing a random position until it does not overlap with previously initialized ones
     while (--retries >= 0) {
       position.top = Math.floor(Math.random() * topMax);

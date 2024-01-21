@@ -1,12 +1,12 @@
-import type { SelectMenuOptions } from '@/components/forms/elements/SelectMenu';
-import { SelectMenu } from '@/components/forms/elements/SelectMenu';
-import { isSettingsDisabled } from '@/components/Settings';
-import { Mode, mode, setMode } from '@/components/Settings/Mode/store';
-import type { Component } from 'solid-js';
+import { isSettingsDisabled } from "@/components/Settings";
+import { Mode, mode, setMode } from "@/components/Settings/Mode/store";
+import type { SelectMenuOptions } from "@/components/forms/elements/SelectMenu";
+import { SelectMenu } from "@/components/forms/elements/SelectMenu";
+import type { Component } from "solid-js";
 
 const modeOptions: SelectMenuOptions<Mode> = [
-  { value: Mode.GameOfLife, label: '👾 Game of Life' },
-  { value: Mode.Drops, label: '🍃 Drops' },
+  { value: Mode.GameOfLife, label: "👾 Game of Life" },
+  { value: Mode.Drops, label: "🍃 Drops" },
 ];
 
 export const ModeSettings: Component = () => {

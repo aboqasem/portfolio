@@ -1,5 +1,5 @@
-import { createEffect, createMemo, createSignal, createUniqueId, DEV, For } from 'solid-js';
-import type { JSX } from 'solid-js/jsx-runtime';
+import { DEV, For, createEffect, createMemo, createSignal, createUniqueId } from "solid-js";
+import type { JSX } from "solid-js/jsx-runtime";
 
 export type SelectMenuOptions<T extends string = string> = {
   value: T;
@@ -27,8 +27,8 @@ export const SelectMenu = <T extends string = string>(props: SelectMenuProps<T>)
       if (isControlled !== (props.value !== undefined)) {
         console.error(
           Error(
-            `${SelectMenu.name} switched from ${isControlled ? 'controlled' : 'uncontrolled'} to ${
-              props.value ? 'controlled' : 'uncontrolled'
+            `${SelectMenu.name} switched from ${isControlled ? "controlled" : "uncontrolled"} to ${
+              props.value ? "controlled" : "uncontrolled"
             } behavior`,
           ),
         );

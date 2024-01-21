@@ -1,34 +1,34 @@
-import BsChevronDown from '@lib/icons/bs/BsChevronDown';
-import FaLinkedinIn from '@lib/icons/fa/FaLinkedinIn';
-import SiGithub from '@lib/icons/si/SiGithub';
-import SiGmail from '@lib/icons/si/SiGmail';
-import SiX from '@lib/icons/si/SiX';
-import { createSignal, For } from 'solid-js';
+import BsChevronDown from "@lib/icons/bs/BsChevronDown";
+import FaLinkedinIn from "@lib/icons/fa/FaLinkedinIn";
+import SiGithub from "@lib/icons/si/SiGithub";
+import SiGmail from "@lib/icons/si/SiGmail";
+import SiX from "@lib/icons/si/SiX";
+import { For, createSignal } from "solid-js";
 
 const links = [
   {
-    name: 'GitHub',
+    name: "GitHub",
     Icon: SiGithub,
-    url: 'https://github.com/aboqasem',
-    className: 'text-white bg-[#24292E]',
+    url: "https://github.com/aboqasem",
+    className: "text-white bg-[#24292E]",
   },
   {
-    name: 'LinkedIn',
+    name: "LinkedIn",
     Icon: FaLinkedinIn,
-    url: 'https://www.linkedin.com/in/zouabi',
-    className: 'text-white bg-[#0D66C2]',
+    url: "https://www.linkedin.com/in/zouabi",
+    className: "text-white bg-[#0D66C2]",
   },
   {
-    name: 'X',
+    name: "X",
     Icon: SiX,
-    url: 'https://x.com/mbalzouabi',
-    className: 'text-white bg-black',
+    url: "https://x.com/mbalzouabi",
+    className: "text-white bg-black",
   },
   {
-    name: 'Email',
+    name: "Email",
     Icon: SiGmail,
-    url: 'mailto:mb.alzouabi@gmail.com',
-    className: 'text-white bg-[#E65A4D]',
+    url: "mailto:mb.alzouabi@gmail.com",
+    className: "text-white bg-[#E65A4D]",
   },
 ];
 
@@ -39,8 +39,8 @@ export function Home() {
     <div
       class="fixed left-1/2 w-full max-w-2xl -translate-x-1/2 px-10 motion-safe:transition-[top,transform] md:px-0"
       classList={{
-        'top-1/2 -translate-y-1/2': isShowing(),
-        'top-full -translate-y-[1.5rem] md:-translate-y-[2rem]': !isShowing(),
+        "top-1/2 -translate-y-1/2": isShowing(),
+        "top-full -translate-y-[1.5rem] md:-translate-y-[2rem]": !isShowing(),
       }}
     >
       <div class="relative rounded-xl bg-gradient-to-tr from-zinc-200/90 p-5 !pt-11 font-serif shadow-md backdrop-blur-lg dark:from-zinc-900 dark:to-zinc-100/10 sm:p-7 sm:!pt-[3.25rem] md:p-10 md:!pt-16 md:shadow-xl">
@@ -75,12 +75,12 @@ export function Home() {
           class="absolute left-0 top-0 flex w-full items-center justify-center rounded-t-xl bg-zinc-400 bg-opacity-20 text-zinc-700 ring-inset focus:outline-none focus:ring-2 focus:ring-blue-500 motion-safe:transition-[transform] dark:text-zinc-300"
           onClick={() => setIsShowing((isShowing) => !isShowing)}
         >
-          <span class="sr-only">{isShowing() ? 'Hide' : 'Show'}</span>
+          <span class="sr-only">{isShowing() ? "Hide" : "Show"}</span>
           <BsChevronDown
             class="h-6 w-6 scale-x-[1.1] motion-safe:transition-[transform] md:h-8 md:w-8"
             classList={{
-              '-scale-y-[0.9]': !isShowing(),
-              'scale-y-[0.9]': isShowing(),
+              "-scale-y-[0.9]": !isShowing(),
+              "scale-y-[0.9]": isShowing(),
             }}
             aria-hidden
           />

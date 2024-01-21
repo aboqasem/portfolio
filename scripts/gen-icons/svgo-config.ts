@@ -1,8 +1,6 @@
-/* global module */
-// @ts-check
+import type { Config } from "svgo";
 
-/** @type {import('svgo').Config} */
-const svgoConfig = {
+export const svgoConfig: Config = {
   multipass: true,
   plugins: [
     /* adds attributes to an outer <svg> element */
@@ -17,14 +15,14 @@ const svgoConfig = {
     // },
     /* cleanup attributes from newlines, trailing, and repeating spaces */
     {
-      name: 'cleanupAttrs',
+      name: "cleanupAttrs",
       params: {},
     },
     /* remove or cleanup enable-background attribute when possible */
-    { name: 'cleanupEnableBackground' },
+    { name: "cleanupEnableBackground" },
     /* remove unused and minify used IDs */
     {
-      name: 'cleanupIds',
+      name: "cleanupIds",
       params: {},
     },
     /* round numeric values in attributes that take a list of numbers (like viewBox or enable-background) */
@@ -34,26 +32,26 @@ const svgoConfig = {
     // },
     /* round numeric values to the fixed precision, remove default px units */
     {
-      name: 'cleanupNumericValues',
+      name: "cleanupNumericValues",
       params: {},
     },
     /* collapse useless groups */
-    { name: 'collapseGroups' },
+    { name: "collapseGroups" },
     /* convert colors (from rgb() to #rrggbb, from #rrggbb to #rgb) */
     {
-      name: 'convertColors',
+      name: "convertColors",
       params: {},
     },
     /* convert non-eccentric <ellipse> to <circle> */
-    { name: 'convertEllipseToCircle' },
+    { name: "convertEllipseToCircle" },
     /* convert Path data to relative or absolute (whichever is shorter), convert one segment to another, trim useless delimiters, smart rounding, and much more */
     {
-      name: 'convertPathData',
+      name: "convertPathData",
       params: {},
     },
     /* convert some basic shapes to <path> */
     {
-      name: 'convertShapeToPath',
+      name: "convertShapeToPath",
       params: {},
     },
     /* convert styles into attributes */
@@ -63,24 +61,24 @@ const svgoConfig = {
     // },
     /* collapse multiple transforms into one, convert matrices to the short aliases, and much more */
     {
-      name: 'convertTransform',
+      name: "convertTransform",
       params: {},
     },
     /* move and merge styles from <style> elements to element style attributes */
     {
-      name: 'inlineStyles',
+      name: "inlineStyles",
       params: {},
     },
     /* merge multiple Paths into one */
     {
-      name: 'mergePaths',
+      name: "mergePaths",
       params: {},
     },
     /* merge multiple style elements into one */
-    { name: 'mergeStyles' },
+    { name: "mergeStyles" },
     /* minify <style> elements content with CSSO */
     {
-      name: 'minifyStyles',
+      name: "minifyStyles",
       params: {},
     },
     /* move elements' attributes to their enclosing group */
@@ -100,19 +98,19 @@ const svgoConfig = {
     /* remove attributes by pattern */
     // { name: 'removeAttrs' },
     /* remove comments */
-    { name: 'removeComments' },
+    { name: "removeComments" },
     /* remove <desc> */
     {
-      name: 'removeDesc',
+      name: "removeDesc",
       params: {},
     },
     /* remove width/height and add viewBox if it's missing (opposite to removeViewBox, disable it first) */
-    { name: 'removeDimensions' },
+    { name: "removeDimensions" },
     /* remove doctype declaration */
-    { name: 'removeDoctype' },
+    { name: "removeDoctype" },
     /* remove editors namespaces, elements, and attributes */
     {
-      name: 'removeEditorsNSData',
+      name: "removeEditorsNSData",
       params: {},
     },
     /* remove arbitrary elements by ID or className */
@@ -121,23 +119,23 @@ const svgoConfig = {
     //   params: {},
     // },
     /* remove empty attributes */
-    { name: 'removeEmptyAttrs' },
+    { name: "removeEmptyAttrs" },
     /* remove empty Container elements */
-    { name: 'removeEmptyContainers' },
+    { name: "removeEmptyContainers" },
     /* remove empty Text elements */
     {
-      name: 'removeEmptyText',
+      name: "removeEmptyText",
       params: {},
     },
     /* remove hidden elements */
     {
-      name: 'removeHiddenElems',
+      name: "removeHiddenElems",
       params: {},
     },
     /* remove <metadata> */
-    { name: 'removeMetadata' },
+    { name: "removeMetadata" },
     /* remove non-inheritable group's "presentation" attributes */
-    { name: 'removeNonInheritableGroupAttrs' },
+    { name: "removeNonInheritableGroupAttrs" },
     /* removes elements that are drawn outside of the viewbox */
     // { name: 'removeOffCanvasPaths' },
     /* remove raster images */
@@ -147,19 +145,19 @@ const svgoConfig = {
     /* remove <style> elements */
     // { name: 'removeStyleElement' },
     /* remove <title> */
-    { name: 'removeTitle' },
+    { name: "removeTitle" },
     /* remove unknown elements content and attributes, remove attributes with default values */
     {
-      name: 'removeUnknownsAndDefaults',
+      name: "removeUnknownsAndDefaults",
       params: {},
     },
     /* remove unused namespaces declaration */
-    { name: 'removeUnusedNS' },
+    { name: "removeUnusedNS" },
     /* remove elements of <defs> without id */
-    { name: 'removeUselessDefs' },
+    { name: "removeUselessDefs" },
     /* remove useless stroke and fill attributes */
     {
-      name: 'removeUselessStrokeAndFill',
+      name: "removeUselessStrokeAndFill",
       params: {},
     },
     /* remove viewBox attribute when possible */
@@ -176,5 +174,3 @@ const svgoConfig = {
     // { name: 'sortDefsChildren' },
   ],
 };
-
-module.exports = { svgoConfig };

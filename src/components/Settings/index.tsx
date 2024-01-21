@@ -1,17 +1,17 @@
-import { ModeSettings } from '@/components/Settings/Mode';
-import { Mode, mode } from '@/components/Settings/Mode/store';
-import { ThemeSettings } from '@/components/Settings/Theme';
-import FiSettings from '@lib/icons/fi/FiSettings';
-import type { Component } from 'solid-js';
-import { Show, Suspense, createEffect, createMemo, createSignal, lazy } from 'solid-js';
+import { ModeSettings } from "@/components/Settings/Mode";
+import { Mode, mode } from "@/components/Settings/Mode/store";
+import { ThemeSettings } from "@/components/Settings/Theme";
+import FiSettings from "@lib/icons/fi/FiSettings";
+import type { Component } from "solid-js";
+import { Show, Suspense, createEffect, createMemo, createSignal, lazy } from "solid-js";
 
 const GameOfLifeStageSettings = lazy(() =>
-  import('@/components/Settings/GameOfLifeStage').then((m) => ({
+  import("@/components/Settings/GameOfLifeStage").then((m) => ({
     default: m.GameOfLifeStageSettings,
   })),
 );
 const DropsStageSettings = lazy(() =>
-  import('@/components/Settings/DropsStage').then((m) => ({
+  import("@/components/Settings/DropsStage").then((m) => ({
     default: m.DropsStageSettings,
   })),
 );
@@ -28,12 +28,12 @@ const SettingsElementSkeleton: Component = () => {
 
 export const [isSettingsDisabled, setIsSettingsDisabled] = createSignal(true);
 
-const width = '12rem';
+const width = "12rem";
 
 export const Settings: Component = () => {
   const [isShown, setIsShown] = createSignal(false);
 
-  const hint = createMemo(() => `${isShown() ? 'Hide' : 'Show'} settings`);
+  const hint = createMemo(() => `${isShown() ? "Hide" : "Show"} settings`);
 
   createEffect(() => {
     setIsSettingsDisabled(!isShown());
@@ -41,9 +41,9 @@ export const Settings: Component = () => {
 
   return (
     <div
-      style={{ '--settings-width': width }}
+      style={{ "--settings-width": width }}
       class={`fixed top-2 flex animate-bounce-x items-start [animation-iteration-count:2] motion-safe:transition-[right] ${
-        isShown() ? 'right-0' : `-right-[--settings-width]`
+        isShown() ? "right-0" : "-right-[--settings-width]"
       }`}
     >
       <button

@@ -1,15 +1,15 @@
-import { dropsSpeed } from '@/components/Settings/DropsStage/store';
-import { ICONS_LENGTH } from '@/components/stages/DropsStage/icons';
-import type { DropInfo, DropPosition } from '@/components/stages/DropsStage/store';
-import { dropsInfos, setDropsInfos } from '@/components/stages/DropsStage/store';
-import { createEffect } from 'solid-js';
+import { dropsSpeed } from "@/components/Settings/DropsStage/store";
+import { ICONS_LENGTH } from "@/components/stages/DropsStage/icons";
+import type { DropInfo, DropPosition } from "@/components/stages/DropsStage/store";
+import { dropsInfos, setDropsInfos } from "@/components/stages/DropsStage/store";
+import { createEffect } from "solid-js";
 
 // This is needed to mark the positions as stale if the `ResizeObserver` timeout got cleared before
 // updating the positions (i.e. when the stage is unmounted).
 let shouldInitPositions: boolean;
 
-let currentStageHeight = NaN,
-  currentStageWidth = NaN;
+let currentStageHeight = NaN;
+let currentStageWidth = NaN;
 
 export function startStageAnimation(stage: HTMLDivElement): () => void {
   let initPositionsTimeoutId: number | undefined;
@@ -53,8 +53,8 @@ export function startStageAnimation(stage: HTMLDivElement): () => void {
   };
 }
 
-let lastInitStageWidth = NaN,
-  lastInitStageHeight = NaN;
+let lastInitStageWidth = NaN;
+let lastInitStageHeight = NaN;
 
 function initializePositions(stage: HTMLDivElement) {
   if (currentStageWidth === lastInitStageWidth && currentStageHeight === lastInitStageHeight) {
@@ -67,23 +67,18 @@ function initializePositions(stage: HTMLDivElement) {
   const clonedDropsInfos = cloneDropsInfos();
 
   // assume all drops are squares and have the same size
-  const width = (stage.children[0] as HTMLDivElement).offsetWidth,
-    height = width;
+  const width = (stage.children[0] as HTMLDivElement).offsetWidth;
+  const height = width;
 
   for (let i = 0; i < ICONS_LENGTH; i++) {
-    const topMax = currentStageHeight - height,
-      leftMax = currentStageWidth - width;
+    const topMax = currentStageHeight - height;
+    const leftMax = currentStageWidth - width;
 
-    let top = NaN,
-      left = NaN,
-      retries = 500;
+    let retries = 500;
 
-    const position = (clonedDropsInfos[i]!.position = {
-      top,
-      left,
-      width,
-      height,
-    });
+    const position = { top: NaN, left: NaN, width, height };
+    clonedDropsInfos[i]!.position = position;
+
     // keep initializing a random position until it does not overlap with previously initialized ones
     while (--retries >= 0) {
       position.top = Math.floor(Math.random() * topMax);
@@ -122,8 +117,8 @@ function updatePositions() {
   const clonedDropsInfos = cloneDropsInfos();
 
   // assume all drops are squares and have the same size
-  const width = clonedDropsInfos[0]!.position.width,
-    height = width;
+  const width = clonedDropsInfos[0]!.position.width;
+  const height = width;
 
   for (let i = 0; i < ICONS_LENGTH; i++) {
     const info = clonedDropsInfos[i]!;
@@ -132,8 +127,8 @@ function updatePositions() {
       continue;
     }
 
-    const top = info.position.top,
-      left = info.position.left;
+    const top = info.position.top;
+    const left = info.position.left;
 
     let newTop = top + dropSpeed;
     if (newTop >= currentStageHeight) {
@@ -166,16 +161,11 @@ function updatePositions() {
 }
 
 function doPositionsOverlap(a: DropPosition, b: DropPosition): boolean {
-  // prettier-ignore
   return !(
-    // prettier-ignore
-    // the drop is before the other drop
-    a.left + a.width < b.left ||
-    // the drop is after the other drop
-    a.left > b.left + b.width ||
-    // the drop is above the other drop
-    a.top + a.height < b.top ||
-    // the drop is below the other drop
+    a.left + a.width < b.left /* the drop is before the other drop */ ||
+    a.left > b.left + b.width /* the drop is after the other drop */ ||
+    a.top + a.height < b.top /* the drop is above the other drops */ ||
+    /* the drop is below the other drop */
     a.top > b.top + b.height
   );
 }

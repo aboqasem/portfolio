@@ -1,5 +1,5 @@
-import { cellsTickSpeed, maxColsOrRowsCount } from '@/components/Settings/GameOfLifeStage/store';
-import type { CellInfo } from '@/components/stages/GameOfLifeStage/store';
+import { cellsTickSpeed, maxColsOrRowsCount } from "@/components/Settings/GameOfLifeStage/store";
+import type { CellInfo } from "@/components/stages/GameOfLifeStage/store";
 import {
   cellsColsCount,
   cellsInfos,
@@ -10,16 +10,16 @@ import {
   setCellsRowsCount,
   setExtraHeight,
   setExtraWidth,
-} from '@/components/stages/GameOfLifeStage/store';
-import type { Accessor } from 'solid-js';
-import { batch, createEffect } from 'solid-js';
+} from "@/components/stages/GameOfLifeStage/store";
+import type { Accessor } from "solid-js";
+import { batch, createEffect } from "solid-js";
 
 // This is needed to mark the positions as stale if the `ResizeObserver` timeout got cleared before
 // updating the positions (i.e. when the stage is unmounted).
 let shouldInitPositions: boolean;
 
-let currentStageHeight = NaN,
-  currentStageWidth = NaN;
+let currentStageHeight = NaN;
+let currentStageWidth = NaN;
 
 let tickSpeed = 0;
 
@@ -75,8 +75,8 @@ export function startStageAnimation(stage: HTMLDivElement): () => void {
   };
 }
 
-let lastInitStageWidth = NaN,
-  lastInitStageHeight = NaN;
+let lastInitStageWidth = NaN;
+let lastInitStageHeight = NaN;
 
 function initializePositions() {
   if (currentStageWidth === lastInitStageWidth && currentStageHeight === lastInitStageHeight) {
@@ -86,7 +86,9 @@ function initializePositions() {
   lastInitStageWidth = currentStageWidth;
   lastInitStageHeight = currentStageHeight;
 
-  let iconDimension: number, numColumns: number, numRows: number;
+  let iconDimension: number;
+  let numColumns: number;
+  let numRows: number;
   if (currentStageWidth > currentStageHeight) {
     numColumns = maxColsOrRowsCount;
     iconDimension = Math.ceil(currentStageWidth / numColumns);
@@ -107,7 +109,7 @@ function initializePositions() {
 }
 
 // offsets of the neighbors of a cell, hardcoded to avoid the unnecessary overhead of a loop in each tick
-// prettier-ignore
+// biome-ignore format: looks better
 const neighborIndicesOffsets = [
   -1, -1, // top-left
   -1, 0, // top
@@ -121,8 +123,8 @@ const neighborIndicesOffsets = [
 const neighborIndicesOffsetsLength = 16;
 const neighborIndicesOffsetsStep = 2;
 
-let colsCount = NaN,
-  rowsCount = NaN;
+let colsCount = NaN;
+let rowsCount = NaN;
 
 createEffect(() => {
   colsCount = cellsColsCount();
@@ -149,8 +151,8 @@ const updatePositionsBatchFn: Accessor<void> = () => {
 
       let aliveNeighbors = 0;
       for (let i = 0; i < neighborIndicesOffsetsLength; i += neighborIndicesOffsetsStep) {
-        const neighborRow = row + neighborIndicesOffsets[i]!,
-          neighborCol = col + neighborIndicesOffsets[i + 1]!;
+        const neighborRow = row + neighborIndicesOffsets[i]!;
+        const neighborCol = col + neighborIndicesOffsets[i + 1]!;
         if (
           neighborRow >= 0 &&
           neighborRow < rowsCount &&
@@ -174,7 +176,7 @@ const updatePositionsBatchFn: Accessor<void> = () => {
         toLive = true;
       }
 
-      setCellsInfos(cellIndex, 'toLive', cellInfo.toLive || toLive);
+      setCellsInfos(cellIndex, "toLive", cellInfo.toLive || toLive);
     }
   }
 

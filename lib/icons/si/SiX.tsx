@@ -1,4 +1,4 @@
-import type { Icon } from '..';
+import type { Icon } from "..";
 
 const SiX: Icon = (props) => {
   return (

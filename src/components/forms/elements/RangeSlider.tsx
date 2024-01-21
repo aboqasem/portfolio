@@ -1,8 +1,8 @@
-import type { Component } from 'solid-js';
-import { createMemo, createUniqueId } from 'solid-js';
-import type { JSX } from 'solid-js/jsx-runtime';
+import type { Component } from "solid-js";
+import { createMemo, createUniqueId } from "solid-js";
+import type { JSX } from "solid-js/jsx-runtime";
 
-export type RangeSliderProps = JSX.IntrinsicElements['input'] & {
+export type RangeSliderProps = JSX.IntrinsicElements["input"] & {
   label: string;
 };
 

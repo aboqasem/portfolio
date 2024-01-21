@@ -1,5 +1,5 @@
-import { ICONS_LENGTH } from '@/components/stages/DropsStage/icons';
-import { createStore } from 'solid-js/store';
+import { ICONS_LENGTH } from "@/components/stages/DropsStage/icons";
+import { createStore } from "solid-js/store";
 
 export type DropPosition = {
   top: number;

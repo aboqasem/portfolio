@@ -1,53 +1,50 @@
-/* global require, module */
-// @ts-check
-
-const {
-  SiTypescript,
-  SiJavascript,
-  SiDart,
-  SiCplusplus,
-  SiC,
-  SiGnubash,
-  SiNodedotjs,
-  SiExpress,
-  SiReact,
-  SiSolid,
-  SiNextdotjs,
-  SiNestjs,
-  SiJson,
-  SiFlutter,
-  SiMongodb,
-  SiPostgresql,
-  SiRedux,
-  SiHtml5,
-  SiCss3,
-  SiTailwindcss,
-  SiRaspberrypi,
+import { BsChevronDown } from "react-icons/bs";
+import { DiScrum } from "react-icons/di";
+import { FaJava, FaLinkedinIn } from "react-icons/fa";
+import { FiSettings } from "react-icons/fi";
+import { MdHttp } from "react-icons/md";
+import {
   SiArduino,
-  SiHomebrew,
+  SiC,
+  SiCplusplus,
+  SiCss3,
+  SiDart,
   SiDocker,
-  SiIterm2,
-  SiInsomnia,
-  SiPostman,
-  SiIntellijidea,
-  SiVisualstudiocode,
-  SiMarkdown,
+  SiExpress,
+  SiFlutter,
   SiGithub,
+  SiGmail,
+  SiGnubash,
+  SiHomebrew,
+  SiHtml5,
+  SiInsomnia,
+  SiIntellijidea,
+  SiIterm2,
+  SiJavascript,
+  SiJson,
+  SiMacos,
+  SiMarkdown,
+  SiMongodb,
+  SiNestjs,
+  SiNextdotjs,
+  SiNodedotjs,
   SiNpm,
   SiPnpm,
-  SiYarn,
-  SiMacos,
-  SiX,
-  SiGmail,
+  SiPostgresql,
+  SiPostman,
+  SiRaspberrypi,
+  SiReact,
+  SiRedux,
+  SiSolid,
   SiSpringboot,
-} = require('react-icons/si');
-const { FaJava, FaLinkedinIn } = require('react-icons/fa');
-const { MdHttp } = require('react-icons/md');
-const { FiSettings } = require('react-icons/fi');
-const { DiScrum } = require('react-icons/di');
-const { BsChevronDown } = require('react-icons/bs');
+  SiTailwindcss,
+  SiTypescript,
+  SiVisualstudiocode,
+  SiX,
+  SiYarn,
+} from "react-icons/si";
 
-const icons = {
+export const icons = {
   si: [
     SiTypescript,
     SiJavascript,
@@ -94,5 +91,3 @@ const icons = {
   di: [DiScrum],
   bs: [BsChevronDown],
 };
-
-module.exports = { icons };

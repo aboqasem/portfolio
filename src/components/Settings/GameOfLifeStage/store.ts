@@ -1,7 +1,7 @@
-import type { Setter } from 'solid-js';
-import { createSignal } from 'solid-js';
+import type { Setter } from "solid-js";
+import { createSignal } from "solid-js";
 
-const GOL_TICK_SPEED_KEY = 'golTickSpeed';
+const GOL_TICK_SPEED_KEY = "golTickSpeed";
 
 export const maxColsOrRowsCount = (() => {
   const windowWidth = window.innerWidth;
@@ -18,23 +18,23 @@ export const maxTickSpeed = 10;
 
 export const tickSpeedStep = 1;
 
-const defaultTickSpeed = window.matchMedia('(prefers-reduced-motion)').matches ? 0 : 4;
+const defaultTickSpeed = window.matchMedia("(prefers-reduced-motion)").matches ? 0 : 4;
 
 const [cellsTickSpeed, _setCellsTickSpeed] = createSignal<number>(storeCellsTickSpeed());
 
 const setCellsTickSpeed: Setter<number> = (value) => {
   return _setCellsTickSpeed((prev) =>
-    storeCellsTickSpeed(typeof value === 'function' ? value(prev) : value),
+    storeCellsTickSpeed(typeof value === "function" ? value(prev) : value),
   );
 };
 
 export { cellsTickSpeed, setCellsTickSpeed };
 
 function storeCellsTickSpeed(speed?: number): number {
-  if (typeof speed !== 'number' || isNaN(speed)) {
+  if (typeof speed !== "number" || Number.isNaN(speed)) {
     const storedSpeed = +(localStorage.getItem(GOL_TICK_SPEED_KEY) ?? NaN);
 
-    speed = isNaN(storedSpeed) ? defaultTickSpeed : storedSpeed;
+    speed = Number.isNaN(storedSpeed) ? defaultTickSpeed : storedSpeed;
   }
 
   speed = Math.max(minTickSpeed, Math.min(maxTickSpeed, speed));

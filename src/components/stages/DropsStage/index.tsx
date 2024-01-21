@@ -1,8 +1,8 @@
-import { icons } from '@/components/stages/DropsStage/icons';
-import { startStageAnimation } from '@/components/stages/DropsStage/logic';
-import { dropsInfos, setDropsInfos } from '@/components/stages/DropsStage/store';
-import type { Component } from 'solid-js';
-import { Index, onCleanup, onMount } from 'solid-js';
+import { icons } from "@/components/stages/DropsStage/icons";
+import { startStageAnimation } from "@/components/stages/DropsStage/logic";
+import { dropsInfos, setDropsInfos } from "@/components/stages/DropsStage/store";
+import type { Component } from "solid-js";
+import { Index, onCleanup, onMount } from "solid-js";
 
 export const DropsStage: Component = () => {
   let stage: HTMLDivElement | undefined;
@@ -20,6 +20,7 @@ export const DropsStage: Component = () => {
           const icon = icons[i]!;
 
           return (
+            // biome-ignore lint/a11y/useKeyWithMouseEvents: This is a mouse-only interaction
             <div
               class="absolute h-6 w-6 select-none text-zinc-900 dark:text-zinc-50 sm:h-8 sm:w-8 md:text-4xl xl:h-9 xl:w-9"
               style={{
@@ -27,10 +28,10 @@ export const DropsStage: Component = () => {
                 left: `${dropInfo().position.left}px`,
               }}
               onMouseOver={() => {
-                setDropsInfos(i, 'hover', true);
+                setDropsInfos(i, "hover", true);
               }}
               onMouseOut={() => {
-                setDropsInfos(i, 'hover', false);
+                setDropsInfos(i, "hover", false);
               }}
             >
               <icon.Icon title={icon.desc} />

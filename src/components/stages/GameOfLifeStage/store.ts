@@ -1,6 +1,6 @@
-import { maxColsOrRowsCount } from '@/components/Settings/GameOfLifeStage/store';
-import { createMemo, createSignal } from 'solid-js';
-import { createStore } from 'solid-js/store';
+import { maxColsOrRowsCount } from "@/components/Settings/GameOfLifeStage/store";
+import { createMemo, createSignal } from "solid-js";
+import { createStore } from "solid-js/store";
 
 export type CellInfo = {
   alive: boolean;

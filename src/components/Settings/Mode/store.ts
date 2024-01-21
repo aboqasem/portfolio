@@ -1,17 +1,17 @@
-import type { Setter } from 'solid-js';
-import { createSignal } from 'solid-js';
+import type { Setter } from "solid-js";
+import { createSignal } from "solid-js";
 
-const MODE_KEY = 'mode';
+const MODE_KEY = "mode";
 
 export enum Mode {
-  GameOfLife = 'GameOfLife',
-  Drops = 'Drops',
+  GameOfLife = "GameOfLife",
+  Drops = "Drops",
 }
 
 const [mode, _setMode] = createSignal<Mode>(storeMode());
 
 const setMode: Setter<Mode> = (value) => {
-  return _setMode((prev) => storeMode(typeof value === 'function' ? value(prev) : value));
+  return _setMode((prev) => storeMode(typeof value === "function" ? value(prev) : value));
 };
 
 export { mode, setMode };

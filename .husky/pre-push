@@ -3,4 +3,4 @@
 
 bun biome ci .
 
-git diff --name-only HEAD^ HEAD | grep --quiet --invert-match --extended-regexp '^README\\.md|(biome|vercel)\\.json|(\\.vscode|\\.github|\\.husky|scripts|server)/.*$' || bun run build
+git diff --name-only origin/"$(git_current_branch)" HEAD | grep --quiet --invert-match --extended-regexp '^README\\.md|(biome|vercel)\\.json|(\\.vscode|\\.github|\\.husky|scripts|server)/.*$' || bun run build

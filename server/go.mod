@@ -1,6 +1,6 @@
 module github.com/aboqasem/portfolio-server
 
-go 1.21.5
+go 1.21.6
 
 require github.com/rs/zerolog v1.31.0
 

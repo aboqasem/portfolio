@@ -5,5 +5,5 @@
   "outputDirectory": "dist",
   "devCommand": "bun dev",
   "framework": "vite",
-  "ignoreCommand": "! git diff --name-only HEAD^ HEAD | grep --quiet --invert-match --extended-regexp '^README\\.md|\\.biome\\.json|(\\.vscode|\\.github|\\.husky|scripts)/.*$'"
+  "ignoreCommand": "! git diff --name-only HEAD^ HEAD | grep --quiet --invert-match --extended-regexp '^README\\.md|biome\\.json|(\\.vscode|\\.github|\\.husky|scripts|server)/.*$'"
 }

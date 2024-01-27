@@ -1,4 +1,7 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-bun biome ci .
+bun check
+cd server || exit 1
+make tidy
+git add --update

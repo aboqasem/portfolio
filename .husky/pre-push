@@ -3,15 +3,16 @@
 
 bun biome ci .
 
-(
-  ! git diff --name-only origin/"$(git rev-parse --abbrev-ref HEAD)" HEAD |
-    grep --quiet --invert-match --extended-regexp '^README\\.md|(biome|vercel)\\.json|(\\.vscode|\\.github|\\.husky|scripts|server)/.*$'
-) &&
-  bun run build ||
-  echo "Skipping 'bun run build'"
+BRANCH="$(git rev-parse --abbrev-ref HEAD)"
 
-(
-  ! git diff --quiet --name-only origin/"$(git rev-parse --abbrev-ref HEAD)" HEAD server
-) &&
-  (cd server && make audit) ||
+if (git diff --name-only origin/"$BRANCH" HEAD | grep -qvE '^(README\.md|(biome|vercel)\.json|(\.vscode|\.github|\.husky|scripts|server)/.*)$'); then
+  bun run build
+else
+  echo "Skipping 'bun run build'"
+fi
+
+if (git diff --quiet --name-only origin/"$BRANCH" HEAD server); then
   echo "Skipping server 'make audit'"
+else
+  cd server && make audit
+fi

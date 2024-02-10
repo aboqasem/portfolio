@@ -5,8 +5,8 @@
   "packageRules": [
     {
       "matchDepTypes": ["devDependencies"],
-      "matchUpdateTypes": ["patch", "minor", "bump"],
-      "groupName": "devDependencies (non-major)"
+      "matchUpdateTypes": ["patch", "minor", "major"],
+      "groupName": "devDependencies"
     }
   ]
 }

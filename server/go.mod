@@ -1,4 +1,4 @@
-module github.com/aboqasem/portfolio-server
+module github.com/aboqasem/portfolio/server
 
 go 1.21.7
 

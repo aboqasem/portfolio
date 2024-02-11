@@ -1,6 +1,6 @@
 # Change these variables as necessary.
 MAIN_PACKAGE_PATH := ./
-BINARY_NAME := app
+BINARY_NAME ?= app
 
 # ==================================================================================== #
 # HELPERS
@@ -71,6 +71,11 @@ test/cover:
 .PHONY: build
 build:
 	go build -o=./tmp/${BINARY_NAME} ${MAIN_PACKAGE_PATH}
+
+## build/prod: build the application for production (stripped binary)
+.PHONY: build/prod
+build/prod:
+	go build -tags netgo -ldflags '-s -w' -o=./${BINARY_NAME} ${MAIN_PACKAGE_PATH}
 
 ## run: run the  application
 .PHONY: run

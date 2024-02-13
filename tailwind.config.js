@@ -1,9 +1,11 @@
+// @ts-check
+
 /** @type {import("tailwindcss").Config} */
 export default {
   mode: "jit",
   darkMode: "class",
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx,css,md,mdx,html,json,scss}"],
-  plugins: [import("@tailwindcss/forms")],
+  plugins: [require("@tailwindcss/forms")],
   theme: {
     extend: {
       keyframes: {

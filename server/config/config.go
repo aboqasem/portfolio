@@ -9,17 +9,27 @@ import (
 )
 
 var logger = log.With().Str("pkg", "config").Logger()
+var conf *Config
 
 type Config struct {
-	Port     uint16
-	LogLevel zerolog.Level
+	Port       uint16
+	CorsOrigin string
+	LogLevel   zerolog.Level
 }
 
-func Init() *Config {
+func new() *Config {
 	return &Config{
-		Port:     parseEnv("PORT", 8080, parseUint16),
-		LogLevel: parseEnv("LOG_LEVEL", zerolog.InfoLevel, parseLogLevel),
+		Port:       parseEnv("PORT", 8080, parseUint16),
+		CorsOrigin: parseEnv("CORS_ORIGIN", "*", nop),
+		LogLevel:   parseEnv("LOG_LEVEL", zerolog.InfoLevel, parseLogLevel),
 	}
+}
+
+func Get() *Config {
+	if conf == nil {
+		conf = new()
+	}
+	return conf
 }
 
 // UTILS
@@ -37,6 +47,10 @@ func parseEnv[V any, P func(string) (V, error)](key string, defaultVal V, parser
 }
 
 // PARSERS
+
+func nop(s string) (string, error) {
+	return s, nil
+}
 
 func parseUint(s string, bits int) (uint64, error) {
 	return strconv.ParseUint(s, 10, bits)

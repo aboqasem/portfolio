@@ -1,5 +1,4 @@
 #!/bin/sh
-. "$(dirname "$0")/_/husky.sh"
 
 if (git diff --name-only --staged | grep -qvE '^(README\.md|(biome|vercel)\.json|(\.vscode|\.github|\.husky|scripts|server)/.*)$'); then
   bun biome ci .

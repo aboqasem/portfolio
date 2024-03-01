@@ -4,13 +4,13 @@ import { Home } from "@/pages";
 import type { Component } from "solid-js";
 
 export const App: Component = () => {
-  return (
-    <>
-      <Background />
+	return (
+		<>
+			<Background />
 
-      <Home />
+			<Home />
 
-      <Settings />
-    </>
-  );
+			<Settings />
+		</>
+	);
 };

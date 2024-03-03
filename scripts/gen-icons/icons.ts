@@ -1,6 +1,7 @@
 import { BsChevronDown } from "react-icons/bs";
 import { DiScrum } from "react-icons/di";
 import { FaJava, FaLinkedinIn } from "react-icons/fa";
+import { FaGolang } from "react-icons/fa6";
 import { FiSettings } from "react-icons/fi";
 import { MdHttp } from "react-icons/md";
 import {
@@ -86,6 +87,7 @@ export const icons = {
 		SiSpringboot,
 	],
 	fa: [FaJava, FaLinkedinIn],
+	fa6: [FaGolang],
 	md: [MdHttp],
 	fi: [FiSettings],
 	di: [DiScrum],

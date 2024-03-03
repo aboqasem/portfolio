@@ -1,6 +1,7 @@
 import type { Icon } from "@lib/icons";
 import DiScrum from "@lib/icons/di/DiScrum";
 import FaJava from "@lib/icons/fa/FaJava";
+import FaGolang from "@lib/icons/fa6/FaGolang";
 import MdHttp from "@lib/icons/md/MdHttp";
 import SiArduino from "@lib/icons/si/SiArduino";
 import SiC from "@lib/icons/si/SiC";
@@ -55,6 +56,10 @@ export const icons: { Icon: Icon; desc: string }[] = [
 	{
 		Icon: FaJava,
 		desc: "Java",
+	},
+	{
+		Icon: FaGolang,
+		desc: "Go",
 	},
 	{
 		Icon: SiCplusplus,

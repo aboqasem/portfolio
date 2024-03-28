@@ -18,8 +18,8 @@ import { batch, createEffect } from "solid-js";
 // updating the positions (i.e. when the stage is unmounted).
 let shouldInitPositions: boolean;
 
-let currentStageHeight = NaN;
-let currentStageWidth = NaN;
+let currentStageHeight = Number.NaN;
+let currentStageWidth = Number.NaN;
 
 let tickSpeed = 0;
 
@@ -75,8 +75,8 @@ export function startStageAnimation(stage: HTMLDivElement): () => void {
 	};
 }
 
-let lastInitStageWidth = NaN;
-let lastInitStageHeight = NaN;
+let lastInitStageWidth = Number.NaN;
+let lastInitStageHeight = Number.NaN;
 
 function initializePositions() {
 	if (currentStageWidth === lastInitStageWidth && currentStageHeight === lastInitStageHeight) {
@@ -123,8 +123,8 @@ const neighborIndicesOffsets = [
 const neighborIndicesOffsetsLength = 16;
 const neighborIndicesOffsetsStep = 2;
 
-let colsCount = NaN;
-let rowsCount = NaN;
+let colsCount = Number.NaN;
+let rowsCount = Number.NaN;
 
 createEffect(() => {
 	colsCount = cellsColsCount();

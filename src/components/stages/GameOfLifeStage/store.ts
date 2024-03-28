@@ -21,14 +21,14 @@ export function cellIndexAt(col: number, row: number): number {
 	return row * cellsColsCount() + col;
 }
 
-export const [cellDimension, setCellDimension] = createSignal<number>(NaN);
+export const [cellDimension, setCellDimension] = createSignal<number>(Number.NaN);
 
-export const [cellsColsCount, setCellsColsCount] = createSignal<number>(NaN);
+export const [cellsColsCount, setCellsColsCount] = createSignal<number>(Number.NaN);
 
-export const [cellsRowsCount, setCellsRowsCount] = createSignal<number>(NaN);
+export const [cellsRowsCount, setCellsRowsCount] = createSignal<number>(Number.NaN);
 
 export const maxCellIndex = createMemo(() => cellIndexAt(cellsColsCount() - 1, cellsRowsCount() - 1));
 
-export const [extraWidth, setExtraWidth] = createSignal<number>(NaN);
+export const [extraWidth, setExtraWidth] = createSignal<number>(Number.NaN);
 
-export const [extraHeight, setExtraHeight] = createSignal<number>(NaN);
+export const [extraHeight, setExtraHeight] = createSignal<number>(Number.NaN);

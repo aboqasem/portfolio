@@ -21,7 +21,7 @@ export { dropsSpeed, setDropsSpeed };
 
 function storeDropsSpeed(speed?: number): number {
 	if (typeof speed !== "number" || Number.isNaN(speed)) {
-		const storedDropSpeed = +(localStorage.getItem(DROPS_SPEED_KEY) ?? NaN);
+		const storedDropSpeed = +(localStorage.getItem(DROPS_SPEED_KEY) ?? Number.NaN);
 
 		speed = Number.isNaN(storedDropSpeed) ? defaultDropsSpeed : storedDropSpeed;
 	}

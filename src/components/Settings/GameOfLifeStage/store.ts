@@ -30,7 +30,7 @@ export { cellsTickSpeed, setCellsTickSpeed };
 
 function storeCellsTickSpeed(speed?: number): number {
 	if (typeof speed !== "number" || Number.isNaN(speed)) {
-		const storedSpeed = +(localStorage.getItem(GOL_TICK_SPEED_KEY) ?? NaN);
+		const storedSpeed = +(localStorage.getItem(GOL_TICK_SPEED_KEY) ?? Number.NaN);
 
 		speed = Number.isNaN(storedSpeed) ? defaultTickSpeed : storedSpeed;
 	}

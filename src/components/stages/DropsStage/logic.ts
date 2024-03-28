@@ -8,8 +8,8 @@ import { createEffect } from "solid-js";
 // updating the positions (i.e. when the stage is unmounted).
 let shouldInitPositions: boolean;
 
-let currentStageHeight = NaN;
-let currentStageWidth = NaN;
+let currentStageHeight = Number.NaN;
+let currentStageWidth = Number.NaN;
 
 export function startStageAnimation(stage: HTMLDivElement): () => void {
 	let initPositionsTimeoutId: number | undefined;
@@ -53,8 +53,8 @@ export function startStageAnimation(stage: HTMLDivElement): () => void {
 	};
 }
 
-let lastInitStageWidth = NaN;
-let lastInitStageHeight = NaN;
+let lastInitStageWidth = Number.NaN;
+let lastInitStageHeight = Number.NaN;
 
 function initializePositions(stage: HTMLDivElement) {
 	if (currentStageWidth === lastInitStageWidth && currentStageHeight === lastInitStageHeight) {
@@ -76,7 +76,7 @@ function initializePositions(stage: HTMLDivElement) {
 
 		let retries = 500;
 
-		const position = { top: NaN, left: NaN, width, height };
+		const position = { top: Number.NaN, left: Number.NaN, width, height };
 		clonedDropsInfos[i]!.position = position;
 
 		// keep initializing a random position until it does not overlap with previously initialized ones

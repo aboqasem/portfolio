@@ -1,6 +1,6 @@
-import process from "child_process";
-import fs from "fs";
-import path from "path";
+import process from "node:child_process";
+import fs from "node:fs";
+import path from "node:path";
 import { renderToStaticMarkup } from "react-dom/server";
 import { optimize } from "svgo";
 import { icons } from "./icons";

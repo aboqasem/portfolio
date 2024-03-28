@@ -12,14 +12,13 @@
 		"enabled": true,
 		"rules": {
 			"recommended": true,
-			"nursery": {
-				"useGroupedTypeImport": "warn",
-				"useAwait": "warn",
-				"useImportType": "warn",
-				"useExportType": "warn",
-				"useConsistentArrayType": "warn"
+			"suspicious": {
+				"useAwait": "warn"
 			},
 			"style": {
+				"useConsistentArrayType": "warn",
+				"useImportType": "warn",
+				"useExportType": "warn",
 				"noNonNullAssertion": "off",
 				"noParameterAssign": "off"
 			}

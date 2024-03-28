@@ -1,5 +1,5 @@
-import fs from "fs";
-import type { Plugin as VitePlugin, ResolvedConfig } from "vite";
+import fs from "node:fs";
+import type { ResolvedConfig, Plugin as VitePlugin } from "vite";
 
 export default function mainCssBeforeMainJs(): VitePlugin {
 	let config: ResolvedConfig;
@@ -19,7 +19,7 @@ export default function mainCssBeforeMainJs(): VitePlugin {
 				/(<script type="module" crossorigin src="\/assets\/index-[A-Za-z0-9]+\.js"><\/script>)/,
 			);
 			if (!mainScriptMatch) {
-				throw Error("Could not find main script");
+				throw Error(`Could not find main script in:\n${html}`);
 			}
 			const origMainScriptHtml = mainScriptMatch[1]!;
 			const newMainScriptHtml = origMainScriptHtml.replace("<script", "<script ");
@@ -29,7 +29,7 @@ export default function mainCssBeforeMainJs(): VitePlugin {
 				/(<link rel="stylesheet" crossorigin href="\/assets\/index-[A-Za-z0-9]+\.css">)/,
 			);
 			if (!mainCssLinkMatch) {
-				throw Error("Could not find main css link");
+				throw Error(`Could not find main css link in:\n${html}`);
 			}
 			const origMainCssLinkHtml = mainCssLinkMatch[1]!;
 			const newMainCssLinkHtml = origMainCssLinkHtml.replace("<link", "<link ");

@@ -2,7 +2,7 @@ module github.com/aboqasem/portfolio/server
 
 go 1.22.1
 
-require github.com/rs/zerolog v1.32.0
+require github.com/rs/zerolog v1.33.0
 
 require golang.org/x/net v0.21.0 // indirect
 

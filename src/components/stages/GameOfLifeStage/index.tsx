@@ -83,7 +83,7 @@ export const GameOfLifeStage: Component = () => {
 								{/* biome-ignore lint/a11y/useKeyWithMouseEvents: This is a mouse-only interaction */}
 								<div
 									data-cell-index={i}
-									class="select-none p-[10%] ring-[0.25px] ring-zinc-900/60 dark:ring-zinc-50/60 sm:p-[14%]"
+									class="select-none p-[10%] border-[0.25px] border-zinc-900/60 dark:border-zinc-50/60 sm:p-[14%]"
 									classList={{
 										"bg-zinc-900 text-zinc-50 dark:text-zinc-900 dark:bg-zinc-50":
 											cellInfo().alive || cellInfo().toLive,

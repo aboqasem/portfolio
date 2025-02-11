@@ -18,5 +18,5 @@
 			"@lib/*": ["lib/*"]
 		}
 	},
-	"exclude": ["node_modules"]
+	"exclude": ["dist", "node_modules", "scripts/gen-icons"]
 }

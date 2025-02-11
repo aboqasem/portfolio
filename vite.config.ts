@@ -1,3 +1,4 @@
+import tailwindcss from "@tailwindcss/vite";
 import { type Plugin, defineConfig } from "vite";
 import { ViteMinifyPlugin } from "vite-plugin-minify";
 import solidPlugin from "vite-plugin-solid";
@@ -8,6 +9,7 @@ export default defineConfig({
 	plugins: [
 		tsconfigPathsPlugin(),
 		solidPlugin() as unknown as Plugin,
+		tailwindcss(),
 		ViteMinifyPlugin({ minifyJS: true }) as unknown as Plugin,
 		mainCssBeforeMainJs(),
 	],

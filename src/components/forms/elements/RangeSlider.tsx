@@ -17,7 +17,7 @@ export const RangeSlider: Component<RangeSliderProps> = (props) => {
 			<div class="mt-1">
 				<input
 					type="range"
-					class={`h-2 w-full cursor-pointer appearance-none rounded-lg bg-zinc-200 accent-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 ${props.class}`}
+					class={`h-2 w-full cursor-pointer appearance-none rounded-lg bg-zinc-200 accent-blue-500 focus:outline-hidden focus:ring-2 focus:ring-blue-500 ${props.class}`}
 					{...props}
 					id={id()}
 				/>

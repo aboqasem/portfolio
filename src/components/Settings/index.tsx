@@ -19,9 +19,9 @@ const DropsStageSettings = lazy(() =>
 const SettingsElementSkeleton: Component = () => {
 	return (
 		<div class="animate-pulse p-2">
-			<div class="h-4 w-full rounded bg-zinc-300 dark:bg-zinc-700" />
+			<div class="h-4 w-full rounded-sm bg-zinc-300 dark:bg-zinc-700" />
 
-			<div class="mt-1 h-7 rounded bg-zinc-300 dark:bg-zinc-700" />
+			<div class="mt-1 h-7 rounded-sm bg-zinc-300 dark:bg-zinc-700" />
 		</div>
 	);
 };
@@ -43,20 +43,20 @@ export const Settings: Component = () => {
 		<div
 			style={{ "--settings-width": width }}
 			class={`fixed top-2 flex animate-bounce-x items-start [animation-iteration-count:2] motion-safe:transition-[right] ${
-				isShown() ? "right-0" : "-right-[--settings-width]"
+				isShown() ? "right-0" : "-right-(--settings-width)"
 			}`}
 		>
 			<button
 				type="button"
 				title={hint()}
-				class="group absolute -left-12 inline-flex items-center rounded-l-xl border border-r-0 border-transparent bg-blue-100 p-3 text-blue-600 hover:bg-blue-200 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500 dark:bg-blue-600 dark:text-zinc-100 dark:hover:bg-blue-700"
+				class="group absolute -left-12 inline-flex items-center rounded-l-xl border border-r-0 border-transparent bg-blue-100 p-3 text-blue-600 hover:bg-blue-200 focus:outline-hidden focus:ring-2 focus:ring-inset focus:ring-blue-500 dark:bg-blue-600 dark:text-zinc-100 dark:hover:bg-blue-700"
 				onClick={() => setIsShown((show) => !show)}
 			>
 				<FiSettings class="group h-6 w-6 motion-safe:group-hover:animate-[spin_2s_linear_infinite]" />
 				<span class="sr-only">{hint()}</span>
 			</button>
 
-			<div class="w-[--settings-width] divide-y rounded-bl-xl border bg-white dark:divide-zinc-500 dark:border-zinc-500 dark:bg-zinc-950">
+			<div class="w-(--settings-width) divide-y rounded-bl-xl border bg-white dark:divide-zinc-500 dark:border-zinc-500 dark:bg-zinc-950">
 				<ThemeSettings />
 
 				<ModeSettings />

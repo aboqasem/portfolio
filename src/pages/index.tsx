@@ -43,7 +43,7 @@ export function Home() {
 				"top-full -translate-y-[1.5rem] md:-translate-y-[2rem]": !isShowing(),
 			}}
 		>
-			<div class="relative rounded-xl bg-gradient-to-tr from-zinc-200/90 p-5 !pt-11 font-serif shadow-md backdrop-blur-lg dark:from-zinc-900 dark:to-zinc-100/10 sm:p-7 sm:!pt-[3.25rem] md:p-10 md:!pt-16 md:shadow-xl">
+			<div class="relative rounded-xl bg-linear-to-tr from-zinc-200/90 p-5 pt-11! font-serif shadow-md backdrop-blur-lg dark:from-zinc-900 dark:to-zinc-100/10 sm:p-7 sm:pt-[3.25rem]! md:p-10 md:pt-16! md:shadow-xl">
 				<h1 class="mb-4 text-xl text-zinc-800 dark:text-zinc-50 sm:text-2xl md:text-3xl">
 					Hey, I&apos;m Mohammad Al Zouabi.
 				</h1>
@@ -60,7 +60,7 @@ export function Home() {
 								href={isShowing() ? url : undefined}
 								target="_blank"
 								rel="noreferrer"
-								class={`rounded-lg border border-transparent p-1.5 hover:bg-opacity-80 focus:outline-none focus:ring-2 focus:ring-blue-500 ${className}`}
+								class={`rounded-lg border border-transparent p-1.5 hover:bg-opacity-80 focus:outline-hidden focus:ring-2 focus:ring-blue-500 ${className}`}
 							>
 								<Icon class="h-6 w-6 md:h-8 md:w-8" aria-hidden />
 								<span class="sr-only">{name}</span>
@@ -71,7 +71,7 @@ export function Home() {
 
 				<button
 					type="button"
-					class="absolute left-0 top-0 flex w-full items-center justify-center rounded-t-xl bg-zinc-400 bg-opacity-20 text-zinc-700 ring-inset focus:outline-none focus:ring-2 focus:ring-blue-500 motion-safe:transition-[transform] dark:text-zinc-300"
+					class="absolute left-0 top-0 flex w-full items-center justify-center rounded-t-xl bg-zinc-400/20 text-zinc-700 ring-inset focus:outline-hidden focus:ring-2 focus:ring-blue-500 motion-safe:transition-[transform] dark:text-zinc-300"
 					onClick={() => setIsShowing((isShowing) => !isShowing)}
 				>
 					<span class="sr-only">{isShowing() ? "Hide" : "Show"}</span>

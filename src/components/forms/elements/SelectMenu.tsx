@@ -38,7 +38,7 @@ export const SelectMenu = <T extends string = string>(props: SelectMenuProps<T>)
 
 	const [selectedValue, setSelectedValue] = createSignal(
 		// eslint-disable-next-line solid/reactivity
-		isControlled ? props.value : props.defaultValue ?? props.options[0]?.value,
+		isControlled ? props.value : (props.defaultValue ?? props.options[0]?.value),
 	);
 
 	const isDisabled = () => props.disabled || !props.options.length || !props.onChange;

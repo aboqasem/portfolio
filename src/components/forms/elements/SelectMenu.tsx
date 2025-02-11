@@ -60,7 +60,7 @@ export const SelectMenu = <T extends string = string>(props: SelectMenuProps<T>)
 				id={id()}
 				name={props.name}
 				disabled={isDisabled()}
-				class="mt-1 block w-full rounded-md border-zinc-300 bg-white py-2 pl-3 pr-10 text-base focus:border-blue-500 focus:outline-none focus:ring-blue-500 disabled:bg-zinc-100 disabled:text-zinc-600 dark:bg-zinc-950 dark:text-white dark:disabled:border-zinc-400 dark:disabled:bg-zinc-900 dark:disabled:text-zinc-400 sm:text-sm"
+				class="mt-1 block w-full rounded-md border-zinc-300 bg-white py-2 pl-3 pr-10 text-base focus:border-blue-500 focus:outline-hidden focus:ring-blue-500 disabled:bg-zinc-100 disabled:text-zinc-600 dark:bg-zinc-950 dark:text-white dark:disabled:border-zinc-400 dark:disabled:bg-zinc-900 dark:disabled:text-zinc-400 sm:text-sm"
 				onInput={({ currentTarget: { value } }) => {
 					handleChange(value as T);
 				}}

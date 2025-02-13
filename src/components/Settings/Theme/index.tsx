@@ -5,9 +5,9 @@ import { SelectMenu } from "@/components/forms/elements/SelectMenu";
 import type { Component } from "solid-js";
 
 const themeOptions: SelectMenuOptions<Theme> = [
-	{ value: Theme.Light, label: "💡 Light" },
-	{ value: Theme.Dark, label: "🌙 Dark" },
-	{ value: Theme.System, label: "🖥 System" },
+	{ id: 0, value: Theme.Light, label: "💡 Light" },
+	{ id: 1, value: Theme.Dark, label: "🌙 Dark" },
+	{ id: 2, value: Theme.System, label: "🖥 System" },
 ];
 
 export const ThemeSettings: Component = () => {

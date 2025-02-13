@@ -1,7 +1,9 @@
+import { CustomEvent } from "@piwikpro/tracking-base-library";
 import { DEV, For, createEffect, createMemo, createSignal, createUniqueId } from "solid-js";
 import type { JSX } from "solid-js/jsx-runtime";
 
 export type SelectMenuOptions<T extends string = string> = {
+	id: number;
 	value: T;
 	label: string;
 }[];
@@ -48,6 +50,8 @@ export const SelectMenu = <T extends string = string>(props: SelectMenuProps<T>)
 			setSelectedValue(() => value);
 		}
 		props.onChange?.(value);
+		const id = props.options.find((option) => option.value === value)!.id;
+		CustomEvent.trackEvent("Select menu", "Change", props.label, id);
 	};
 
 	return (

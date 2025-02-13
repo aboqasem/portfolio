@@ -5,8 +5,8 @@ import { SelectMenu } from "@/components/forms/elements/SelectMenu";
 import type { Component } from "solid-js";
 
 const modeOptions: SelectMenuOptions<Mode> = [
-	{ value: Mode.GameOfLife, label: "👾 Game of Life" },
-	{ value: Mode.Drops, label: "🍃 Drops" },
+	{ id: 0, value: Mode.GameOfLife, label: "👾 Game of Life" },
+	{ id: 1, value: Mode.Drops, label: "🍃 Drops" },
 ];
 
 export const ModeSettings: Component = () => {

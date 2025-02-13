@@ -2,6 +2,7 @@ import { ModeSettings } from "@/components/Settings/Mode";
 import { Mode, mode } from "@/components/Settings/Mode/store";
 import { ThemeSettings } from "@/components/Settings/Theme";
 import FiSettings from "@lib/icons/fi/FiSettings";
+import { CustomEvent } from "@piwikpro/tracking-base-library";
 import type { Component } from "solid-js";
 import { Show, Suspense, createEffect, createMemo, createSignal, lazy } from "solid-js";
 
@@ -50,7 +51,10 @@ export const Settings: Component = () => {
 				type="button"
 				title={hint()}
 				class="group absolute -left-12 inline-flex items-center rounded-l-xl border border-r-0 border-transparent bg-blue-100 p-3 text-blue-600 hover:bg-blue-200 focus:outline-hidden focus:ring-2 focus:ring-inset focus:ring-blue-500 dark:bg-blue-600 dark:text-zinc-100 dark:hover:bg-blue-700"
-				onClick={() => setIsShown((show) => !show)}
+				onClick={() => {
+					setIsShown((show) => !show);
+					CustomEvent.trackEvent("Button", "Click", "Settings", Number(isShown()));
+				}}
 			>
 				<FiSettings class="group h-6 w-6 motion-safe:group-hover:animate-[spin_2s_linear_infinite]" />
 				<span class="sr-only">{hint()}</span>

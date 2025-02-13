@@ -20,7 +20,7 @@ jobs:
       - name: Set up Go
         uses: actions/setup-go@v5
         with:
-          go-version-file: 'server/go.mod'
+          go-version: 'stable'
           cache-dependency-path: 'server/go.sum'
 
       - name: Build server

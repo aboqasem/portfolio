@@ -1,4 +1,29 @@
 {
+	"biome.enabled": true,
+
+	"[javascript]": { "editor.defaultFormatter": "biomejs.biome" },
+	"[javascriptreact]": { "editor.defaultFormatter": "biomejs.biome" },
+	"[typescript]": { "editor.defaultFormatter": "biomejs.biome" },
+	"[typescriptreact]": { "editor.defaultFormatter": "biomejs.biome" },
+	"[json]": { "editor.defaultFormatter": "biomejs.biome" },
+	"[jsonc]": { "editor.defaultFormatter": "biomejs.biome" },
+	"[css]": { "editor.defaultFormatter": "biomejs.biome" },
+	"[html]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+	"[yaml]": { "editor.defaultFormatter": "redhat.vscode-yaml" },
+	"[markdown]": { "editor.defaultFormatter": "vscode.markdown-language-features" },
+
+	"prettier.arrowParens": "always",
+	"prettier.bracketSpacing": true,
+	"prettier.endOfLine": "lf",
+	"prettier.jsxSingleQuote": false,
+	"prettier.printWidth": 120,
+	"prettier.quoteProps": "as-needed",
+	"prettier.semi": true,
+	"prettier.singleQuote": false,
+	"prettier.tabWidth": 4,
+	"prettier.trailingComma": "all",
+	"prettier.useTabs": true,
+
 	"files.exclude": {
 		"**/.git": true,
 		"**/.svn": true,

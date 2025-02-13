@@ -1,28 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1" name="viewport" />
+	<head>
+		<meta charset="utf-8" />
+		<meta content="width=device-width, initial-scale=1" name="viewport" />
 
-    <title>Mohammad Al Zouabi</title>
-    <meta content="Personal website" name="description" />
+		<title>Mohammad Al Zouabi</title>
+		<meta
+			content="I'm a software engineer who stands for quality, consistency, and attention to detail."
+			name="description"
+		/>
 
-    <script id="configure-theme">
-      const { theme } = localStorage;
-      document.documentElement.classList[
-        theme === 'Dark' ||
-        (theme !== 'Light' && window.matchMedia('(prefers-color-scheme: dark)').matches)
-          ? 'add'
-          : 'remove'
-      ]('dark');
-    </script>
-  </head>
+		<script id="configure-theme">
+			const { theme } = localStorage;
+			document.documentElement.classList[
+				theme === "Dark" || (theme !== "Light" && window.matchMedia("(prefers-color-scheme: dark)").matches)
+					? "add"
+					: "remove"
+			]("dark");
+		</script>
+	</head>
 
-  <body class="bg-zinc-50 dark:bg-zinc-900" onload="document.body.classList.add('motion-safe:duration-75', 'motion-safe:transition-colors')">
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+	<body
+		class="bg-zinc-50 dark:bg-zinc-900"
+		onload="document.body.classList.add('motion-safe:duration-75', 'motion-safe:transition-colors')"
+	>
+		<noscript>You need to enable JavaScript to run this app.</noscript>
 
-    <div id="root"></div>
+		<div id="root"></div>
 
-    <script src="/src/index.tsx" type="module"></script>
-  </body>
+		<script src="/src/index.tsx" type="module"></script>
+	</body>
 </html>

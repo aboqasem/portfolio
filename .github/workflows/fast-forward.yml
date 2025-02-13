@@ -1,0 +1,26 @@
+# https://github.com/marketplace/actions/fast-forward-merge#fast-forwarding-a-pull-request
+
+name: fast-forward
+
+on:
+  issue_comment:
+    types: [created, edited]
+
+jobs:
+  fast-forward:
+    # Only run if the comment contains the /fast-forward command.
+    if: ${{ github.event.issue.pull_request && contains(github.event.comment.body, '/fast-forward') }}
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+
+    steps:
+      - name: Fast forwarding
+        uses: sequoia-pgp/fast-forward@v1
+        with:
+          github_token: '${{ secrets.PERSONAL_ACCESS_TOKEN }}'
+          merge: true
+          comment: always

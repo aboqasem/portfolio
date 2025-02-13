@@ -4,6 +4,7 @@
     "": {
       "name": "portfolio",
       "dependencies": {
+        "@piwikpro/tracking-base-library": "^1.3.0",
         "@tailwindcss/vite": "4.0.6",
         "solid-js": "1.9.4",
       },
@@ -167,6 +168,8 @@
     "@jridgewell/sourcemap-codec": ["@jridgewell/sourcemap-codec@1.4.15", "", {}, "sha512-eF2rxCRulEKXHTRiDrDy6erMYWqNw4LPdQ8UQA4huuxaQsVeRPFl2oM8oDGxMFhJUWZf9McpLtJasDDZb/Bpeg=="],
 
     "@jridgewell/trace-mapping": ["@jridgewell/trace-mapping@0.3.20", "", { "dependencies": { "@jridgewell/resolve-uri": "^3.1.0", "@jridgewell/sourcemap-codec": "^1.4.14" } }, "sha512-R8LcPeWZol2zR8mmH3JeKQ6QRCFb7XgUhV9ZlGhHLGyg4wpPiPZNQOOWhFZhxKw8u//yTbNGI42Bx/3paXEQ+Q=="],
+
+    "@piwikpro/tracking-base-library": ["@piwikpro/tracking-base-library@1.3.0", "", {}, "sha512-aFmqKletJSMHJRvWfVGk4+MeNi9OpC/riUhKW/wem+6yOThdcsFGNM8LuUS145ZrhXRMQqBgWjUa+BDc1Zy6GA=="],
 
     "@rollup/rollup-android-arm-eabi": ["@rollup/rollup-android-arm-eabi@4.34.6", "", { "os": "android", "cpu": "arm" }, "sha512-+GcCXtOQoWuC7hhX1P00LqjjIiS/iOouHXhMdiDSnq/1DGTox4SpUvO52Xm+div6+106r+TcvOeo/cxvyEyTgg=="],
 

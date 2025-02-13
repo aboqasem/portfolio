@@ -25,6 +25,7 @@
 		"vite-tsconfig-paths": "5.1.4"
 	},
 	"dependencies": {
+		"@piwikpro/tracking-base-library": "^1.3.0",
 		"@tailwindcss/vite": "4.0.6",
 		"solid-js": "1.9.4"
 	},

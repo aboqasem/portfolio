@@ -37,7 +37,7 @@ export function Home() {
 
 	return (
 		<div
-			class="fixed left-1/2 w-full max-w-2xl -translate-x-1/2 px-10 motion-safe:transition-[top,transform] md:px-0"
+			class="fixed left-1/2 w-full max-w-xl -translate-x-1/2 px-10 motion-safe:transition-[top,transform] md:px-0"
 			classList={{
 				"top-1/2 -translate-y-1/2": isShowing(),
 				"top-full -translate-y-[1.5rem] md:-translate-y-[2rem]": !isShowing(),

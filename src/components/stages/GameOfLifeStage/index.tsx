@@ -9,11 +9,13 @@ import {
 	maxCellIndex,
 	setCellsInfos,
 } from "@/components/stages/GameOfLifeStage/store";
+import { CustomEvent } from "@piwikpro/tracking-base-library";
 import type { Component } from "solid-js";
 import { Index, Show, onCleanup, onMount } from "solid-js";
 
 export const GameOfLifeStage: Component = () => {
 	let stage: HTMLDivElement | undefined;
+	let numCellsMarked = 0;
 
 	onMount(() => {
 		const touchMoveHandler = (e: TouchEvent) => {
@@ -35,7 +37,10 @@ export const GameOfLifeStage: Component = () => {
 					return false;
 				}
 
-				!cellsInfos[cellIndex]?.alive && setCellsInfos(cellIndex, "toLive", true);
+				if (!cellsInfos[cellIndex]?.alive) {
+					setCellsInfos(cellIndex, "toLive", true);
+					numCellsMarked++;
+				}
 
 				return true;
 			});
@@ -49,6 +54,10 @@ export const GameOfLifeStage: Component = () => {
 			stage!.removeEventListener("touchmove", touchMoveHandler);
 
 			stop();
+
+			if (numCellsMarked > 0) {
+				CustomEvent.trackEvent("Stage", "Cells marked", "Game of Life", numCellsMarked);
+			}
 		});
 	});
 
@@ -94,10 +103,17 @@ export const GameOfLifeStage: Component = () => {
 										height: `${cellDimension()}px`,
 									}}
 									onMouseDown={() => {
-										!cellInfo().alive && setCellsInfos(i, "toLive", true);
+										if (!cellInfo().alive) {
+											setCellsInfos(i, "toLive", true);
+											numCellsMarked++;
+										}
 									}}
 									onMouseOver={() => {
-										holdingPress && !cellInfo().alive && setCellsInfos(i, "toLive", true);
+										const info = cellInfo();
+										if (holdingPress && !info.alive && !info.toLive) {
+											setCellsInfos(i, "toLive", true);
+											numCellsMarked++;
+										}
 									}}
 								>
 									<Show when={cellInfo().alive || cellInfo().toLive}>

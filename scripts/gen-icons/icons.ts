@@ -1,4 +1,4 @@
-import { BsChevronDown } from "react-icons/bs";
+import { BsChevronDown, BsCursor } from "react-icons/bs";
 import { DiScrum } from "react-icons/di";
 import { FaJava, FaLinkedinIn } from "react-icons/fa";
 import { FaGolang } from "react-icons/fa6";
@@ -91,5 +91,5 @@ export const icons = {
 	md: [MdHttp],
 	fi: [FiSettings],
 	di: [DiScrum],
-	bs: [BsChevronDown],
+	bs: [BsChevronDown, BsCursor],
 };

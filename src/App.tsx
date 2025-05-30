@@ -1,7 +1,13 @@
 import { Background } from "@/components/Background";
 import { Settings } from "@/components/Settings";
 import { Home } from "@/pages";
-import type { Component } from "solid-js";
+import { type Component, lazy } from "solid-js";
+
+const Cursors = lazy(() =>
+	import("@/components/Cursors").then((m) => ({
+		default: m.Cursors,
+	})),
+);
 
 export const App: Component = () => {
 	return (
@@ -11,6 +17,8 @@ export const App: Component = () => {
 			<Home />
 
 			<Settings />
+
+			<Cursors />
 		</>
 	);
 };

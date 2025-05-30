@@ -6,6 +6,7 @@ import tsconfigPathsPlugin from "vite-tsconfig-paths";
 import mainCssBeforeMainJs from "./plugins/vite/main-css-before-main-js";
 
 export default defineConfig({
+	envPrefix: "PUB_",
 	plugins: [
 		tsconfigPathsPlugin(),
 		solidPlugin() as unknown as Plugin,

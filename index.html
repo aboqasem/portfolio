@@ -17,6 +17,9 @@
 					? "add"
 					: "remove"
 			]("dark");
+
+      // wake up server
+      fetch('%PUB_API_URL%%PUB_API_HEALTH_PATH%').catch(() => {});
 		</script>
 	</head>
 

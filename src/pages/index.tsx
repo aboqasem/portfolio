@@ -21,7 +21,7 @@ const links = [
 	{
 		name: "X",
 		Icon: SiX,
-		url: "https://x.com/mbalzouabi",
+		url: "https://x.com/abalqvsem",
 		className: "text-white bg-black",
 	},
 	{

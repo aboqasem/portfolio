@@ -14,7 +14,7 @@ import type { Component } from "solid-js";
 import { Index, Show, onCleanup, onMount } from "solid-js";
 
 export const GameOfLifeStage: Component = () => {
-	let stage: HTMLDivElement | undefined;
+	let stage: HTMLTableElement | undefined;
 	let numCellsMarked = 0;
 
 	onMount(() => {
@@ -28,7 +28,7 @@ export const GameOfLifeStage: Component = () => {
 			const { clientX, clientY } = e.touches[0]!;
 
 			document.elementsFromPoint(clientX, clientY).find((el) => {
-				if (!(el instanceof HTMLDivElement)) {
+				if (!(el instanceof HTMLTableElement)) {
 					return false;
 				}
 
@@ -64,7 +64,7 @@ export const GameOfLifeStage: Component = () => {
 	let holdingPress = false;
 
 	return (
-		<div
+		<table
 			ref={stage}
 			class="absolute inset-0 grid cursor-cell place-content-start place-items-start"
 			style={{
@@ -90,7 +90,7 @@ export const GameOfLifeStage: Component = () => {
 						return (
 							<Show when={i <= maxCellIndex()}>
 								{/* biome-ignore lint/a11y/useKeyWithMouseEvents: This is a mouse-only interaction */}
-								<div
+								<td
 									data-cell-index={i}
 									class="select-none p-[10%] border-[0.25px] border-zinc-900/60 dark:border-zinc-50/60 sm:p-[14%]"
 									classList={{
@@ -119,12 +119,12 @@ export const GameOfLifeStage: Component = () => {
 									<Show when={cellInfo().alive || cellInfo().toLive}>
 										<icon.Icon title={icon.desc} />
 									</Show>
-								</div>
+								</td>
 							</Show>
 						);
 					}}
 				</Index>
 			</Show>
-		</div>
+		</table>
 	);
 };

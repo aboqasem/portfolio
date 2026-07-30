@@ -27,7 +27,7 @@ createEffect(() => {
 	tickSpeed = cellsTickSpeed();
 });
 
-export function startStageAnimation(stage: HTMLDivElement): () => void {
+export function startStageAnimation(stage: HTMLTableElement): () => void {
 	let initPositionsTimeoutId: number | undefined;
 
 	const initPositionsObserver = new ResizeObserver(() => {

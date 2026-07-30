@@ -33,6 +33,7 @@ export const DropsStage: Component = () => {
 							onMouseOut={() => {
 								setDropsInfos(i, "hover", false);
 							}}
+							role="img"
 						>
 							<icon.Icon title={icon.desc} />
 						</div>

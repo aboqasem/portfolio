@@ -1,8 +1,8 @@
+import type { Component } from "solid-js";
+import { Index, onCleanup, onMount } from "solid-js";
 import { icons } from "@/components/stages/DropsStage/icons";
 import { startStageAnimation } from "@/components/stages/DropsStage/logic";
 import { dropsInfos, setDropsInfos } from "@/components/stages/DropsStage/store";
-import type { Component } from "solid-js";
-import { Index, onCleanup, onMount } from "solid-js";
 
 export const DropsStage: Component = () => {
 	let stage: HTMLDivElement | undefined;

@@ -1,10 +1,10 @@
-import { ModeSettings } from "@/components/Settings/Mode";
-import { Mode, mode } from "@/components/Settings/Mode/store";
-import { ThemeSettings } from "@/components/Settings/Theme";
 import FiSettings from "@lib/icons/fi/FiSettings";
 import { CustomEvent } from "@piwikpro/tracking-base-library";
 import type { Component } from "solid-js";
-import { Show, Suspense, createEffect, createMemo, createSignal, lazy } from "solid-js";
+import { createEffect, createMemo, createSignal, lazy, Show, Suspense } from "solid-js";
+import { ModeSettings } from "@/components/Settings/Mode";
+import { Mode, mode } from "@/components/Settings/Mode/store";
+import { ThemeSettings } from "@/components/Settings/Theme";
 
 const GameOfLifeStageSettings = lazy(() =>
 	import("@/components/Settings/GameOfLifeStage").then((m) => ({

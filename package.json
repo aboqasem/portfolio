@@ -6,11 +6,12 @@
 		"dev": "vite",
 		"build": "vite build",
 		"serve": "vite preview",
-		"check": "biome check --write .",
+		"check": "biome check .",
+		"check:write": "biome check --write .",
 		"prepare": "husky"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "1.9.4",
+		"@biomejs/biome": "2.5.5",
 		"@tailwindcss/forms": "0.5.10",
 		"@tailwindcss/postcss": "4.0.6",
 		"@types/html-minifier-terser": "7.0.2",
@@ -34,5 +35,7 @@
 			"path": "cz-conventional-changelog"
 		}
 	},
-	"trustedDependencies": ["@biomejs/biome"]
+	"trustedDependencies": [
+		"@biomejs/biome"
+	]
 }

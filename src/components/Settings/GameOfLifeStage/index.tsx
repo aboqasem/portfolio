@@ -1,3 +1,5 @@
+import type { Component } from "solid-js";
+import { RangeSlider } from "@/components/forms/elements/RangeSlider";
 import { isSettingsDisabled } from "@/components/Settings";
 import {
 	cellsTickSpeed,
@@ -6,8 +8,6 @@ import {
 	setCellsTickSpeed,
 	tickSpeedStep,
 } from "@/components/Settings/GameOfLifeStage/store";
-import { RangeSlider } from "@/components/forms/elements/RangeSlider";
-import type { Component } from "solid-js";
 
 export const GameOfLifeStageSettings: Component = () => {
 	return (

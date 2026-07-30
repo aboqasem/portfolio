@@ -1,8 +1,8 @@
-import { isSettingsDisabled } from "@/components/Settings";
-import { Mode, mode, setMode } from "@/components/Settings/Mode/store";
+import type { Component } from "solid-js";
 import type { SelectMenuOptions } from "@/components/forms/elements/SelectMenu";
 import { SelectMenu } from "@/components/forms/elements/SelectMenu";
-import type { Component } from "solid-js";
+import { isSettingsDisabled } from "@/components/Settings";
+import { Mode, mode, setMode } from "@/components/Settings/Mode/store";
 
 const modeOptions: SelectMenuOptions<Mode> = [
 	{ id: 0, value: Mode.GameOfLife, label: "👾 Game of Life" },

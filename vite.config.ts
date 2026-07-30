@@ -1,5 +1,5 @@
 import tailwindcss from "@tailwindcss/vite";
-import { type Plugin, defineConfig } from "vite";
+import { defineConfig, type Plugin } from "vite";
 import { ViteMinifyPlugin } from "vite-plugin-minify";
 import solidPlugin from "vite-plugin-solid";
 import tsconfigPathsPlugin from "vite-tsconfig-paths";

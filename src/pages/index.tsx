@@ -3,7 +3,7 @@ import FaLinkedinIn from "@lib/icons/fa/FaLinkedinIn";
 import SiGithub from "@lib/icons/si/SiGithub";
 import SiGmail from "@lib/icons/si/SiGmail";
 import SiX from "@lib/icons/si/SiX";
-import { For, createSignal } from "solid-js";
+import { createSignal, For } from "solid-js";
 
 const links = [
 	{

@@ -1,3 +1,5 @@
+import type { Accessor } from "solid-js";
+import { batch, createEffect } from "solid-js";
 import { cellsTickSpeed, maxColsOrRowsCount } from "@/components/Settings/GameOfLifeStage/store";
 import type { CellInfo } from "@/components/stages/GameOfLifeStage/store";
 import {
@@ -11,8 +13,6 @@ import {
 	setExtraHeight,
 	setExtraWidth,
 } from "@/components/stages/GameOfLifeStage/store";
-import type { Accessor } from "solid-js";
-import { batch, createEffect } from "solid-js";
 
 // This is needed to mark the positions as stale if the `ResizeObserver` timeout got cleared before
 // updating the positions (i.e. when the stage is unmounted).

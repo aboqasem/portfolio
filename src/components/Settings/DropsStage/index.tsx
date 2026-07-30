@@ -1,3 +1,5 @@
+import type { Component } from "solid-js";
+import { RangeSlider } from "@/components/forms/elements/RangeSlider";
 import { isSettingsDisabled } from "@/components/Settings";
 import {
 	dropsSpeed,
@@ -6,8 +8,6 @@ import {
 	minDropsSpeed,
 	setDropsSpeed,
 } from "@/components/Settings/DropsStage/store";
-import { RangeSlider } from "@/components/forms/elements/RangeSlider";
-import type { Component } from "solid-js";
 
 export const DropsStageSettings: Component = () => {
 	return (

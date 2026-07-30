@@ -1,6 +1,6 @@
-import { Mode, mode } from "@/components/Settings/Mode/store";
 import type { Component } from "solid-js";
-import { Show, lazy } from "solid-js";
+import { lazy, Show } from "solid-js";
+import { Mode, mode } from "@/components/Settings/Mode/store";
 
 const GameOfLifeStage = lazy(() =>
 	import("@/components/stages/GameOfLifeStage").then((m) => ({

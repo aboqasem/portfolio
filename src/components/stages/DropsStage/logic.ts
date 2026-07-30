@@ -1,8 +1,8 @@
+import { createEffect } from "solid-js";
 import { dropsSpeed } from "@/components/Settings/DropsStage/store";
 import { ICONS_LENGTH } from "@/components/stages/DropsStage/icons";
 import type { DropInfo, DropPosition } from "@/components/stages/DropsStage/store";
 import { dropsInfos, setDropsInfos } from "@/components/stages/DropsStage/store";
-import { createEffect } from "solid-js";
 
 // This is needed to mark the positions as stale if the `ResizeObserver` timeout got cleared before
 // updating the positions (i.e. when the stage is unmounted).

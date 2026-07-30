@@ -1,3 +1,6 @@
+import { CustomEvent } from "@piwikpro/tracking-base-library";
+import type { Component } from "solid-js";
+import { Index, onCleanup, onMount, Show } from "solid-js";
 import { ICONS_LENGTH, icons } from "@/components/stages/DropsStage/icons";
 import { startStageAnimation } from "@/components/stages/GameOfLifeStage/logic";
 import {
@@ -9,9 +12,6 @@ import {
 	maxCellIndex,
 	setCellsInfos,
 } from "@/components/stages/GameOfLifeStage/store";
-import { CustomEvent } from "@piwikpro/tracking-base-library";
-import type { Component } from "solid-js";
-import { Index, Show, onCleanup, onMount } from "solid-js";
 
 export const GameOfLifeStage: Component = () => {
 	let stage: HTMLTableElement | undefined;

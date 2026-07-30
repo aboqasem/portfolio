@@ -2,7 +2,7 @@
 	"compilerOptions": {
 		"target": "ESNext",
 		"module": "ESNext",
-		"moduleResolution": "node",
+		"moduleResolution": "bundler",
 		"allowSyntheticDefaultImports": true,
 		"esModuleInterop": true,
 		"jsx": "preserve",
@@ -12,10 +12,9 @@
 		"isolatedModules": true,
 		"strict": true,
 		"noUncheckedIndexedAccess": true,
-		"baseUrl": ".",
 		"paths": {
-			"@/*": ["src/*"],
-			"@lib/*": ["lib/*"]
+			"@/*": ["./src/*"],
+			"@lib/*": ["./lib/*"]
 		}
 	},
 	"exclude": ["dist", "node_modules", "scripts/gen-icons"]

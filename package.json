@@ -12,23 +12,23 @@
 	},
 	"devDependencies": {
 		"@biomejs/biome": "2.5.5",
-		"@tailwindcss/forms": "0.5.10",
-		"@tailwindcss/postcss": "4.0.6",
+		"@tailwindcss/forms": "0.5.11",
+		"@tailwindcss/postcss": "4.3.3",
 		"@types/html-minifier-terser": "7.0.2",
-		"@types/node": "22.13.2",
+		"@types/node": "26.1.1",
 		"cz-conventional-changelog": "3.3.0",
-		"husky": "9.1.3",
-		"tailwindcss": "4.0.6",
+		"husky": "9.1.7",
+		"tailwindcss": "4.3.3",
 		"typescript": "7.0.2",
 		"vite": "6.1.0",
 		"vite-plugin-minify": "2.1.0",
-		"vite-plugin-solid": "2.11.1",
+		"vite-plugin-solid": "2.11.13",
 		"vite-tsconfig-paths": "5.1.4"
 	},
 	"dependencies": {
 		"@piwikpro/tracking-base-library": "^1.3.0",
-		"@tailwindcss/vite": "4.0.6",
-		"solid-js": "1.9.4"
+		"@tailwindcss/vite": "4.3.3",
+		"solid-js": "1.9.14"
 	},
 	"config": {
 		"commitizen": {

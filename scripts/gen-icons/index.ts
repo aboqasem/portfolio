@@ -1,4 +1,4 @@
-import process from "node:child_process";
+import { spawnSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
 import { renderToStaticMarkup } from "react-dom/server";
@@ -43,10 +43,18 @@ export default ${iconName};
 	});
 
 	console.log("Running biome...");
-	process.spawnSync("bun", ["biome", "check", "--apply", ICONS_LIB_DIR], {
+	const result = spawnSync("bun", ["biome", "check", "--write", ICONS_LIB_DIR], {
 		cwd: ROOT_DIR,
 		stdio: "inherit",
 	});
+
+	if (result.error) {
+		throw result.error;
+	}
+
+	if (result.status !== 0) {
+		throw new Error(`Biome exited with status ${result.status ?? "unknown"}.`);
+	}
 }
 
 main();

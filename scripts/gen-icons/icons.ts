@@ -8,7 +8,7 @@ import {
 	SiArduino,
 	SiC,
 	SiCplusplus,
-	SiCss3,
+	SiCss,
 	SiDart,
 	SiDocker,
 	SiExpress,
@@ -40,10 +40,10 @@ import {
 	SiSpringboot,
 	SiTailwindcss,
 	SiTypescript,
-	SiVisualstudiocode,
 	SiX,
 	SiYarn,
 } from "react-icons/si";
+import { VscVscode } from "react-icons/vsc";
 
 export const icons = {
 	si: [
@@ -65,7 +65,7 @@ export const icons = {
 		SiPostgresql,
 		SiRedux,
 		SiHtml5,
-		SiCss3,
+		SiCss,
 		SiTailwindcss,
 		SiRaspberrypi,
 		SiArduino,
@@ -75,7 +75,7 @@ export const icons = {
 		SiInsomnia,
 		SiPostman,
 		SiIntellijidea,
-		SiVisualstudiocode,
+		VscVscode,
 		SiMarkdown,
 		SiNpm,
 		SiGithub,

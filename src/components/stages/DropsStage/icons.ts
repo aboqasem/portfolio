@@ -6,7 +6,7 @@ import MdHttp from "@lib/icons/md/MdHttp";
 import SiArduino from "@lib/icons/si/SiArduino";
 import SiC from "@lib/icons/si/SiC";
 import SiCplusplus from "@lib/icons/si/SiCplusplus";
-import SiCss3 from "@lib/icons/si/SiCss3";
+import SiCss from "@lib/icons/si/SiCss";
 import SiDart from "@lib/icons/si/SiDart";
 import SiDocker from "@lib/icons/si/SiDocker";
 import SiExpress from "@lib/icons/si/SiExpress";
@@ -37,8 +37,8 @@ import SiSolid from "@lib/icons/si/SiSolid";
 import SiSpringboot from "@lib/icons/si/SiSpringboot";
 import SiTailwindcss from "@lib/icons/si/SiTailwindcss";
 import SiTypescript from "@lib/icons/si/SiTypescript";
-import SiVisualstudiocode from "@lib/icons/si/SiVisualstudiocode";
 import SiYarn from "@lib/icons/si/SiYarn";
+import VscVscode from "@lib/icons/si/VscVscode";
 
 export const icons: { Icon: Icon; desc: string }[] = [
 	{
@@ -130,7 +130,7 @@ export const icons: { Icon: Icon; desc: string }[] = [
 		desc: "HTML5",
 	},
 	{
-		Icon: SiCss3,
+		Icon: SiCss,
 		desc: "CSS3",
 	},
 	{
@@ -170,7 +170,7 @@ export const icons: { Icon: Icon; desc: string }[] = [
 		desc: "IntelliJ Idea",
 	},
 	{
-		Icon: SiVisualstudiocode,
+		Icon: VscVscode,
 		desc: "Visual Studio Code",
 	},
 	{
